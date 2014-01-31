@@ -1,0 +1,107 @@
+{
+	"global": {
+		"scale": "148"
+	},
+
+	"blocks": [{
+		"id": 1,
+		"length": 3000, 
+		"output_hw": "7BD304000000",
+		"output_id": 0,
+		"polarity": 1,
+		"signals": { 
+			"lead_green": {
+			"output_hw": "7FD441000000",
+			"output_id": 3,
+			"output_seq": 0 
+			},
+			"lead_red": {
+			"output_hw": "7FD441000000",
+			"output_id": 3,
+			"output_seq": 1 
+			},
+			"lag_green": {
+			"output_hw": "7FD441000000",
+			"output_id": 3,
+			"output_seq": 3
+			},
+			"lag_red": {
+			"output_hw": "7FD441000000",
+			"output_id": 3,
+			"output_seq": 4
+			}
+		}
+	}, {
+		"id": 2,
+		"length": 1000,
+		"output_hw": "7BD304000000",
+		"output_id": 1,
+		"polarity": 0
+	}, {
+		"id": 3,
+		"length": 2000, 
+		"scale": 10, 
+		"output_hw": "7FD441000000",
+		"output_id": 0,
+		"polarity": 0
+	}],
+	"joins": [{
+		"ids": [{
+			"id": 1,
+			"type": "direct"
+		}, {
+			"id": 2,
+			"type": "direct"
+		}],
+		"restrict": [ 
+		]
+	}, {
+		"ids": [{ 
+			"id": 2,
+			"type": "fanin"
+		}, {
+			"id": 3,
+			"type": "straight"
+		}, {
+			"id": 4,
+			"type": "diverge"
+		}
+		],
+		"restrict": [
+			{
+				"ids": [1, 2]
+			}
+		],
+		"point": {
+			"output_hw": "7FD441000000",
+			"output_id": 2,
+			"polarity": 0 
+		},
+		"signal": {
+			"straight": {
+				"output_hw": "7FD441000000",
+				"output_id": 4,
+				"output_seq": 0 
+			},
+			"diverge": {
+				"output_hw": "7FD441000000",
+				"output_id": 4,
+				"output_seq": 1 
+			}
+		}
+	}],
+	"engines": [{
+		"id": 3,
+		"name": "FGW 1",
+		"length": 4000, 
+		"weight": 2000,
+		"speed": [0,1,2,3,4,5,6,7,8,9]
+	}],
+	"areas": [{
+		"id": 1,
+		"controllers": [
+			"7BD304000000",
+			"7FD441000000"
+		]
+	}]
+}

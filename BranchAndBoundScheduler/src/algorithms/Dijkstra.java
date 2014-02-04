@@ -3,6 +3,8 @@ package algorithms;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import bbentities.BlockOccupation;
+
 import entities.Block;
 import entities.Engine;
 import entities.Join;
@@ -20,7 +22,7 @@ public class Dijkstra {
 		joins = network.getJoins();
 	}
 	
-	public ArrayList<Block> shortestRoute(int sourceID, int destID) throws RouteNotFoundException{
+	public ArrayList<BlockOccupation> shortestRoute(int sourceID, int destID, Engine train) throws RouteNotFoundException{
 			
 		//Large number so found routes are smaller
 		int globalMin = 10000000;
@@ -95,19 +97,19 @@ public class Dijkstra {
 			throw new RouteNotFoundException(sourceID, destID);
 		}else{
 			//Solution found - create route
-			ArrayList<Block> route = new ArrayList<Block>();
+			ArrayList<BlockOccupation> route = new ArrayList<BlockOccupation>();
 			
 			//Get join of the destination
 			Join last = joins.get(destID);
 			
 			//Loop through adding blocks to root
 			while(last.getPrevJoin() != null){
-				route.add(last.getSource());
+				route.add(new BlockOccupation(train, last.getSource()));
 				last = last.getPrevJoin();
 			}
 			
 			//Add source block
-			route.add(blocks.get(sourceID));
+			route.add(new BlockOccupation(train, blocks.get(sourceID)));
 			
 			//reverse route (Now source to destination
 			Collections.reverse(route);

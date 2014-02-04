@@ -18,26 +18,15 @@ public class Journey {
 		this.train = train;
 		
 		Dijkstra d = new Dijkstra(n);
-		
-		ArrayList<Block> route = new ArrayList<Block>();
-		
-		//Get separate parts of the route
-		for(int x = 0; x < stations.length - 1; x++){
-			
-			ArrayList<Block> journeySegment;
-			
-			journeySegment = d.shortestRoute(stations[x], stations[x+1]);
-			route.addAll(journeySegment);
-		}
+				
+		//Get separate parts of the route (between stations)
+		for(int x = 0; x < stations.length - 1; x++)
+			journey.addAll(d.shortestRoute(stations[x], stations[x+1], train));
 		
 		//Remove duplicate stops in same block.
-		for(int x = 0; x < route.size() - 1; x++){
-			if(route.get(x) == route.get(x + 1))
-				route.remove(x + 1);
-			
-			journey.add(new BlockOccupation(train, route.get(x)));
-		}
-		
+		for(int x = 0; x < journey.size() - 1; x++)
+			if(journey.get(x).getBlock() == journey.get(x + 1).getBlock())
+				journey.remove(x + 1);
 		
 	}
 	

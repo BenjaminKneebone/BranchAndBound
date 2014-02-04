@@ -15,10 +15,9 @@ public class Journey {
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	
 	//When journey is first initialised
-	public Journey(Engine train, int[] stations, Network n) throws RouteNotFoundException{
+	public Journey(Engine train, int[] stations, Dijkstra d) throws RouteNotFoundException{
 		this.train = train;
 		
-		Dijkstra d = new Dijkstra(n);
 				
 		//Get separate parts of the route (between stations)
 		for(int x = 0; x < stations.length - 1; x++)

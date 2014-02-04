@@ -104,12 +104,12 @@ public class Dijkstra {
 			
 			//Loop through adding blocks to root
 			while(last.getPrevJoin() != null){
-				route.add(new BlockOccupation(train, last.getSource()));
+				route.add(new BlockOccupation(train, last.getSource(),0,0));
 				last = last.getPrevJoin();
 			}
 			
 			//Add source block
-			route.add(new BlockOccupation(train, blocks.get(sourceID)));
+			route.add(new BlockOccupation(train, blocks.get(sourceID),0,0));
 			
 			//reverse route (Now source to destination
 			Collections.reverse(route);

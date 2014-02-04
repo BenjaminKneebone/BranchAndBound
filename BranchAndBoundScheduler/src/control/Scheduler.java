@@ -15,23 +15,35 @@ public class Scheduler {
 	private ArrayList<Engine> trains;
 	
 	public Scheduler(ArrayList<Journey> journies, ArrayList<Block> blocks, ArrayList<Engine> trains){
-		ArrayList<Journey> newJournies = new ArrayList<Journey>();
-		for(Journey j: journies)
-			newJournies.add(j.clone());
 		
-		this.journies = newJournies;		
-			
+		//Clone blocks
 		ArrayList<Block> newBlocks = new ArrayList<Block>();
 		for(Block b: blocks)
 			newBlocks.add(b.clone());
 		
 		this.blocks = newBlocks;
 		
+		//Clone journies, pass in newly cloned blocks
+		ArrayList<Journey> newJournies = new ArrayList<Journey>();
+		for(Journey j: journies)
+			newJournies.add(j.clone(blocks));
+		
+		this.journies = newJournies;		
+			
 		//No need to clone trains
 		this.trains = trains;
-		
 	}
 	
+	public void printJournies(){
+		for(Journey j: journies)
+			for(BlockOccupation b: j.getBlockOccupations()){
+				b.printBlockDetail();
+			}
+		
+		for(Block b: blocks){
+			b.printBlockDetail();
+		}
+	}
 	
 	
 	

@@ -27,6 +27,14 @@ public class Block implements Cloneable {
 		sequence.add(eng);
 	}
 	
+	public void setArrivalTime(int arrTime){
+		this.lastArrival = arrTime;
+	}
+	
+	public void printBlockDetail(){
+		System.out.println("Block " + id + " Last Arrival: " + lastArrival);
+	}
+	
 	public Block clone(){
 		Block b = new Block(id, length, lastArrival);
 		return b;

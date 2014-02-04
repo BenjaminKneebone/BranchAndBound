@@ -1,5 +1,7 @@
 package bbentities;
 
+import java.util.ArrayList;
+
 import entities.Block;
 import entities.Engine;
 
@@ -37,8 +39,14 @@ public class BlockOccupation implements Cloneable{
 		return block;
 	}
 	
-	public BlockOccupation clone(){
-		BlockOccupation bo = new BlockOccupation(train, block, depTime, arrTime);
+	public void printBlockDetail(){
+		System.out.println("Train " + train.getID() + " using block " + block.getID());
+		System.out.println("Departing " + depTime + " Arriving " + arrTime);
+	}
+	
+	public BlockOccupation clone(ArrayList<Block> blocks){
+		//Clone BlockOccupation using reference to block in list provided
+		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime);
 		return bo;
 	}
 	

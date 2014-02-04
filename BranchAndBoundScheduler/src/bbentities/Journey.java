@@ -46,10 +46,14 @@ public class Journey {
 		}
 	}
 	
-	public Journey clone(){
+	public ArrayList<BlockOccupation> getBlockOccupations(){
+		return journey;
+	}
+	
+	public Journey clone(ArrayList<Block> blocks){
 		ArrayList<BlockOccupation> cloneBO = new ArrayList<BlockOccupation>();
 		for(BlockOccupation bo: journey)
-			cloneBO.add(bo.clone());
+			cloneBO.add(bo.clone(blocks));
 		
 		Journey j = new Journey(cloneBO, train);
 		

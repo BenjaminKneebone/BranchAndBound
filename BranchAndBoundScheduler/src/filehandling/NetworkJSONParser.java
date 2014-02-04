@@ -15,10 +15,15 @@ import org.json.simple.parser.ParseException;
 
 import entities.Block;
 import entities.Engine;
+import entities.Join;
 
 public class NetworkJSONParser {
 
 	JSONObject network;
+	
+	ArrayList<Engine> trains;
+	ArrayList<Block> blocks;
+	ArrayList<Join> joins;
 	
 	public NetworkJSONParser(){
 		JSONParser jp = new JSONParser();
@@ -35,63 +40,123 @@ public class NetworkJSONParser {
 			System.out.println("Error parsing Network.json");
 		}
 		
-		System.out.println(network.toString());
+		createTrains();
+		createBlocks();
+		createJoins();
+		
 	}
 	
-	public ArrayList<Engine> getTrains(){
+	private void createTrains(){
 		
-		ArrayList<Engine> trains = new ArrayList<Engine>();
+		trains = new ArrayList<Engine>();
 		
 		JSONArray engines = (JSONArray) network.get("engines");
+		//Initialize adjacency arraylist
+		for(int x = 0; x < engines.size(); x++)
+			trains.add(new Engine(0, 0, 0, null));
 		
 		@SuppressWarnings("unchecked")
 		Iterator<JSONObject> iterator = engines.iterator();
 		
+		int id;
+		
 		while (iterator.hasNext()) {
 			JSONObject train = iterator.next();
 			
+			id = Integer.parseInt(train.get("id").toString());
+			
+			//Create speed profile
 			JSONArray speed = (JSONArray) train.get("speed");
 			int[] speedProfile = new int[10];
 			for(int x = 0; x < speed.size(); x++)
 				speedProfile[x] = Integer.parseInt(speed.get(x).toString());
 			
-			Engine temp = new Engine(Integer.parseInt(train.get("id").toString()), Integer.parseInt(train.get("id").toString()), Integer.parseInt(train.get("id").toString()), speedProfile);
-			trains.add(temp);
+			Engine temp = new Engine(id, Integer.parseInt(train.get("id").toString()), Integer.parseInt(train.get("id").toString()), speedProfile);
+			trains.set(id,temp);
 		}
+	}
+	
+	private void createBlocks(){
 		
-		Collections.sort(trains, new Comparator<Engine>() {
-			@Override
-			public int compare(Engine a, Engine b) {
-				return a.getID() < b.getID() ? -1 : a.getID() == b.getID() ? 0: 1;
-			}
-		});
+		blocks = new ArrayList<Block>();
+		
+		JSONArray blockObjects = (JSONArray) network.get("blocks");
+		
+		//Initialize adjacency arraylist
+		for(int x = 0; x < blockObjects.size(); x++)
+			blocks.add(new Block(0, 0));
+		
+		
+		@SuppressWarnings("unchecked")
+		Iterator<JSONObject> blockIterator = blockObjects.iterator();
+		
+		int sourceID;
+		
+		while (blockIterator.hasNext()) {
+			JSONObject block = blockIterator.next();
+			sourceID = Integer.parseInt(block.get("id").toString());
+			
+			Block temp = new Block(sourceID, Integer.parseInt(block.get("length").toString()));
+			blocks.set(sourceID, temp);
+		}
+	}
+	
+	private void createJoins(){
+		
+		joins = new ArrayList<Join>();
+		
+		JSONArray blockObjects = (JSONArray) network.get("blocks");
+		
+		//Initialize adjacency arraylist
+		for(int x = 0; x < blockObjects.size(); x++)
+			joins.add(new Join(blocks.get(x), null));
+		
+		
+		JSONArray joinObjects = (JSONArray) network.get("joins");
+		
+		@SuppressWarnings("unchecked")
+		Iterator<JSONObject> joinIterator = joinObjects.iterator();
 		
 		
 		
+		//For each join
+		while(joinIterator.hasNext()){
+			//Get the blocks involved
+			JSONArray ids = (JSONArray) joinIterator.next().get("ids");
+			
+			//Block leading into the join
+			JSONObject sourceBlock = (JSONObject) ids.get(0);
+			int sourceID = Integer.parseInt(sourceBlock.get("id").toString());
+			Block source = blocks.get(sourceID);
+			
+			ArrayList<Block> dest = new ArrayList<Block>();
+			
+			//Block leading out of block - add to adjacency for source block
+			JSONObject destBlock1 = (JSONObject) ids.get(1);
+			int dest1ID = Integer.parseInt(destBlock1.get("id").toString());
+			dest.add(blocks.get(dest1ID));
+			
+			//Possible 2nd lead out - add to adjacency for source block
+			if(ids.size() == 3){
+				JSONObject destBlock2 = (JSONObject) ids.get(2);
+				int dest2ID = Integer.parseInt(destBlock2.get("id").toString());
+				dest.add(blocks.get(dest2ID));
+			}	
+			
+			joins.set(sourceID, new Join(source, dest));
+			
+		}
+	}
+	
+	public ArrayList<Engine> getTrains(){
 		return trains;
 	}
 	
+	public ArrayList<Join> getJoins(){
+		return joins;
+	}
+	
 	public ArrayList<Block> getBlocks(){
-		
-		JSONArray blockObjects = (JSONArray) network.get("blocks");
-		ArrayList<Block> blocks = new ArrayList<Block>(blockObjects.size());
-		
-		@SuppressWarnings("unchecked")
-		Iterator<JSONObject> iterator = blockObjects.iterator();
-		
-		while (iterator.hasNext()) {
-			JSONObject block = iterator.next();
-			Block temp = new Block(Integer.parseInt(block.get("id").toString()), Integer.parseInt(block.get("length").toString()));
-			blocks.add(temp);
-		}
-		
-		Collections.sort(blocks, new Comparator<Block>() {
-			@Override
-			public int compare(Block a, Block b) {
-				return a.getID() < b.getID() ? -1 : a.getID() == b.getID() ? 0: 1;
-			}
-		});
-		
 		return blocks;
 	}
 	

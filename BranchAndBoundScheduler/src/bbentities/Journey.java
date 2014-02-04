@@ -14,6 +14,7 @@ public class Journey {
 	private Engine train;
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	
+	//When journey is first initialised
 	public Journey(Engine train, int[] stations, Network n) throws RouteNotFoundException{
 		this.train = train;
 		
@@ -30,6 +31,12 @@ public class Journey {
 		
 	}
 	
+	//When journey is cloned
+	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train){
+		this.train = train;
+		this.journey = blockOccupation;
+	}
+	
 	public void printJourney(){
 		System.out.println("Train: " + train.getID());
 		System.out.println("Passing block: ");
@@ -38,6 +45,16 @@ public class Journey {
 			System.out.println("Arriving: " + j.getDepTime());
 			System.out.println("Departing: " + j.getArrTime());
 		}
+	}
+	
+	public Journey clone(){
+		ArrayList<BlockOccupation> cloneBO = new ArrayList<BlockOccupation>();
+		for(BlockOccupation bo: journey)
+			cloneBO.add(bo.clone());
+		
+		Journey j = new Journey(cloneBO, train);
+		
+		return j;
 	}
 	
 	

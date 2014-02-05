@@ -11,12 +11,30 @@ public class BlockOccupation implements Cloneable{
 	private Block block;
 	private int depTime = 0;
 	private int arrTime = 0;
+	private int arrSpeed = 0;
+	private int depSpeed = 0;
 	
 	public BlockOccupation(Engine train, Block block, int depTime, int arrTime){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
 		this.arrTime = arrTime;
+	}
+	
+	public int getArrSpeed() {
+		return arrSpeed;
+	}
+
+	public void setArrSpeed(int arrSpeed) {
+		this.arrSpeed = arrSpeed;
+	}
+
+	public int getDepSpeed() {
+		return depSpeed;
+	}
+
+	public void setDepSpeed(int depSpeed) {
+		this.depSpeed = depSpeed;
 	}
 
 	public int getDepTime() {
@@ -37,6 +55,10 @@ public class BlockOccupation implements Cloneable{
 	
 	public Block getBlock() {
 		return block;
+	}
+	
+	public Engine getTrain(){
+		return train;
 	}
 	
 	public void printBlockDetail(){

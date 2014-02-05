@@ -48,6 +48,29 @@ public class Engine {
 		this.speedProfile = speedProfile;
 	}
 	
+	public double timeToTraverse(Block block, int speed){
+		
+		if(distanceToFullSpeed(speed) > block.getLength()){
+			
+			
+			return 0;
+		}else{
+			
+			double distanceAtFullSpeed = block.getLength() - distanceToFullSpeed(speed);
+			double totalTime = timeToFullSpeed(speed) + (distanceAtFullSpeed/ (speedProfile[9] / 3600));
+			return totalTime;
+		}
+		
+		
+		
+		
+		
+	}
+	
+	public double timeToFullSpeed(int speed){
+
+		return (speedProfile[9] - speed) / acceleration;
+	}
 
 	
 	public double distanceToFullSpeed(int speed){

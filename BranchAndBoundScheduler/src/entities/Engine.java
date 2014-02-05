@@ -3,10 +3,11 @@ package entities;
 public class Engine {
 
 	private int id;
-	private int length;
-	private int weight;
-	private int driForce;
-	private int braForce;
+	private int length;         //mm
+	private int weight;         //kilograms
+	private int driForce;		//Newtons
+	private int braForce;       //Newtons
+	private double acceleration;//m/s^2
 	private String name;
 	private int[] speedProfile = new int[10];
 	
@@ -17,6 +18,7 @@ public class Engine {
 		this.driForce = driForce;
 		this.braForce = breForce;
 		this.name = name;
+		this.acceleration = (double) driForce / weight;
 		this.speedProfile = speedProfile;
 	}
 	
@@ -44,15 +46,39 @@ public class Engine {
 		this.speedProfile = speedProfile;
 	}
 	
+	public void timeToTraverse(Block block, int speed){
+		
+		
+		
+		
+		
+		
+	}
+	
+	public double distanceToFullSpeed(int speed){
+		
+		//Final speed m/s
+		double vsquared = Math.pow((double) (speedProfile[9] * 1000) / 3600, 2);
+		
+		//Initial speed m/s
+		double usquared = Math.pow((double) (speed * 1000) / 3600, 2);
+		
+		//Distance in m
+		return (((double) vsquared - usquared) / ((double) 2 * acceleration));
+	}
+	
+	
 	public void printDetails(){
 		System.out.println(name + " profile:");
 		System.out.println("Length: " + length);
 		System.out.println("Weight: " + weight);
 		System.out.println("Driving Force: " + driForce);
-		System.out.println("Breaking Force: " + braForce);
+		System.out.println("Braking Force: " + braForce);
+		System.out.println("Acceleration: " + acceleration);
 		System.out.print("Speed Profile: ");
 		for(int x = 0; x < 10; x++)
 			System.out.print(speedProfile[x] + " ");
+		System.out.println();
 	}
 
 }

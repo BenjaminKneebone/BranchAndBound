@@ -53,7 +53,7 @@ public class NetworkJSONParser {
 		JSONArray engines = (JSONArray) network.get("engines");
 		//Initialize adjacency arraylist
 		for(int x = 0; x < engines.size(); x++)
-			trains.add(new Engine(0, 0, 0, null));
+			trains.add(new Engine(0, 0, 0, 0, 0, "", null));
 		
 		@SuppressWarnings("unchecked")
 		Iterator<JSONObject> iterator = engines.iterator();
@@ -71,7 +71,10 @@ public class NetworkJSONParser {
 			for(int x = 0; x < speed.size(); x++)
 				speedProfile[x] = Integer.parseInt(speed.get(x).toString());
 			
-			Engine temp = new Engine(id, Integer.parseInt(train.get("id").toString()), Integer.parseInt(train.get("id").toString()), speedProfile);
+			Engine temp = new Engine(id, Integer.parseInt(train.get("length").toString()), Integer.parseInt(train.get("weight").toString()), 
+					Integer.parseInt(train.get("driving force").toString()), Integer.parseInt(train.get("braking force").toString()), 
+					train.get("name").toString(), speedProfile);
+			
 			trains.set(id,temp);
 		}
 	}

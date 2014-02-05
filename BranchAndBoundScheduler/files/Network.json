@@ -407,10 +407,12 @@
 	],
 	"engines": [{
 		"id": 0,
-		"name": "FGW 1",
-		"length": 4000, 
-		"weight": 2000,
-		"speed": [0,1,2,3,4,5,6,7,8,9]
+		"name": "Class 66",
+		"length": 21400, 
+		"weight": 1290000,
+		"driving force": 6000,
+		"braking force": 3000, 
+		"speed": [0,20,38,53,67,77,84,93,100,105]
 	}],
 	"areas": [{
 		"id": 1,

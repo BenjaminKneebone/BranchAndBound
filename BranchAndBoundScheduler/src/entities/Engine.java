@@ -48,21 +48,160 @@ public class Engine {
 		this.speedProfile = speedProfile;
 	}
 	
-	/**Calculate traversal providing the mimumum amount of the time the train must spend in the block
+	/**Calculate traversal providing the minimum amount of the time the train must spend in the block
 	 * @param block - block to be traversed
 	 * @param speed - entry speed
 	 * @param time - minimum time to spend in bloc
 	 * @return BlockExit object containing time to traverse block and exit speed
 	 */
-	public BlockExit delayTraversal(Block block, double speed, double time){
+	public BlockExit delayTraversal(Block block, int speed, double time){
+		
+		double newSpeed = speed;
+		
+		//Time traversing block at entry speed
+		double timeAtInputSpeed = timeToTraverseSetSpeed(block.getLength(), speed);
+		System.out.println(timeAtInputSpeed);
+		
+		//Should train slow down or accelerate in block?
+		if(timeAtInputSpeed < time){
 			
-		double acc = (2 * (block.getLength() - ((speed/3.6) * time))) / Math.pow(time,2);
-		System.out.println("acc: " + acc);
+			//Too quick - slow down
+			double decelerationTime = 0;
+			double decelerationDist = 0;
+			double constantTime = 0;
+			
+			/* Iterate down through speeds. When the total time is shorter than the minimum time 
+			 * that speed is the fastest possible and exiting the block after minimum time given */
+			
+			//Until speed is quicker than minimum time
+			while(decelerationTime + constantTime < time){
+				
+				//Test new speed
+				newSpeed--;
+
+				if(newSpeed == 0){
+					
+					double stopTime = timeToStop(speed);
+					double stopDist = distanceToStop(speed);
+					
+					constantTime = timeToTraverseSetSpeed(block.getLength() - stopDist, speed);
+					
+					String message = name + " took " + (stopTime + constantTime) + " to traverse block " + id + ", entering at " + speed + ", decelerating at " + (block.getLength() - stopDist) + " leaving at 0km/h";
+					
+					return new BlockExit(stopTime + constantTime, 0, message);
+				}else{
+					//Time & distance changing speed
+					decelerationTime = timeToReachSpeed(speed, newSpeed);
+					decelerationDist = distanceToReachSpeed(speed, newSpeed);
+					
+					//Time at constant speed
+					constantTime = timeToTraverseSetSpeed(block.getLength() - decelerationDist, newSpeed);
+				}
+			}
+			
+			System.out.println("Acc time " + decelerationTime);
+			System.out.println("Acc dist " + decelerationDist);
+			System.out.println("Con time " + constantTime);
+			System.out.println("Con dist " + (block.getLength() - decelerationDist));
+			
+			String message = name + " took " + (decelerationTime + constantTime) + " to traverse block " + id + ", entering at " + speed + ", leaving at " + newSpeed + "km/h";
+			
+			return new BlockExit(decelerationTime + constantTime, newSpeed, message);
+		}else{
+			
+			//Too slow - can speed up
+			double accelerationTime = 100000;
+			double accelerationDist = 100000;
+			double constantTime = 0;
+			
+			/* Iterate up through speeds. When the total time is shorter than the minimum time it is too fast so 
+			 * the previous speed tested is the fastest possible and exiting the block after minimum time given */
+			
+			//Until time is longer than minimum possible
+			while(accelerationTime + constantTime > time){
+				
+				//Test new speed
+				newSpeed++;
+				
+				if(newSpeed == 0 || newSpeed == speedProfile[9]){
+					System.out.println("Train has come to a halt or reached full speed");
+				}else{
+					//Time & distance changing speed
+					accelerationTime = timeToReachSpeed(speed, newSpeed);
+					accelerationDist = distanceToReachSpeed(speed, newSpeed);
+					
+					//Time at constant speed
+					constantTime = timeToTraverseSetSpeed(block.getLength() - accelerationDist, newSpeed);
+				}
+			}
+			
+			newSpeed--;
+			
+			//NewSpeed set to fastest speed possible (Highest speed giving longer time than minimum time)
+			accelerationTime = timeToReachSpeed(speed, newSpeed);
+			accelerationDist = distanceToReachSpeed(speed, newSpeed);
+			constantTime = timeToTraverseSetSpeed(block.getLength() - accelerationDist, newSpeed);
+			
+			System.out.println("Acc time " + accelerationTime);
+			System.out.println("Acc dist " + accelerationDist);
+			System.out.println("Con time " + constantTime);
+			System.out.println("Con dist " + (block.getLength() - accelerationDist));
+			
+			String message = name + " took " + (accelerationTime + constantTime) + " to traverse block " + id + ", entering at " + speed + "kmh, leaving at " + newSpeed + "km/h";
+			
+			return new BlockExit(accelerationTime + constantTime, newSpeed, message);
+		}
+			
 		
-		double finalVel = ((2 * block.getLength())/time) - (speed/3.6);
+	}
+	
+	
+	private double timeToReachSpeed(double initialSpeed, double finalSpeed){
 		
-		return new BlockExit(time, finalVel);
+		if(finalSpeed == initialSpeed)
+			return 0;
 		
+		
+		if(finalSpeed > initialSpeed)
+			return (kmhToMs(finalSpeed) - kmhToMs(initialSpeed)) / acceleration;	
+		else
+			return (kmhToMs(initialSpeed) - kmhToMs(finalSpeed)) / deceleration;
+	}
+	
+	private double distanceToReachSpeed(double initialSpeed, double finalSpeed){
+		if(finalSpeed == initialSpeed)
+			return 0;
+		
+		double vsquared;
+		double usquared;
+		
+		if(finalSpeed > initialSpeed){
+		
+			//Final speed m/s
+			vsquared = Math.pow((double) kmhToMs(finalSpeed), 2);
+					
+			//Initial speed m/s
+			usquared = Math.pow((double) kmhToMs(initialSpeed), 2);
+					
+			//Distance in m (v2 - u2 / 2a)
+			return (((double) vsquared - usquared) / ((double) 2 * acceleration));
+			
+		}else{
+			
+			//Final speed m/s
+			vsquared = Math.pow((double) kmhToMs(initialSpeed), 2);
+					
+			//Initial speed m/s
+			usquared = Math.pow((double) kmhToMs(finalSpeed), 2);
+					
+			//Distance in m (v2 - u2 / 2a)
+			return (((double) vsquared - usquared) / ((double) 2 * deceleration));
+			
+		}
+	}
+	
+	private double timeToTraverseSetSpeed(double distance, double speed){
+		return distance / kmhToMs(speed);
 	}
 	
 	/**Returns information about a train traversing a block if at full power
@@ -75,26 +214,30 @@ public class Engine {
 		//Not enough time to reach full speed
 		if(distanceToFullSpeed(speed) > block.getLength()){
 			
-			//The final velocity achievable over the distance (sqrt(u^2 - 2as))
-			double finalVel = Math.sqrt(Math.pow((speed / 36), 2) + (2 * acceleration * block.getLength()));
+			//The final velocity achievable over the distance (sqrt(u^2 + 2as))
+			double finalVel = Math.sqrt(Math.pow(kmhToMs(speed), 2) + (2 * acceleration * block.getLength()));
 	
 			//The time it will take to reach this velocity (hence time in the block) ((v-u) / a)
-			double time = (finalVel - (speed/ 3.6)) / acceleration;
+			double time = (finalVel - kmhToMs(speed)) / acceleration;
 			
 			//convert to km
-			finalVel = (finalVel * 3.6);
+			finalVel = msToKmh(finalVel);
 			
-			return new BlockExit(time, finalVel);
+			String message = name + " took " + time + " to traverse block " + id + ", entering at " + speed + "kmh, leaving at " + finalVel + "km/h -- Full Power";
+			
+			return new BlockExit(time, finalVel, message);
 		}else{
 			
 			//distance left after getting to full speed
 			double distanceAtFullSpeed = block.getLength() - distanceToFullSpeed(speed);
 			
 			//Time to accelerate to full speed and to cover remaining distance at full speed
-			double totalTime = timeToFullSpeed(speed) + (distanceAtFullSpeed/ ((double) speedProfile[9] / 3.6));
+			double time = timeToFullSpeed(speed) + (distanceAtFullSpeed / kmhToMs(speedProfile[9]));
+			
+			String message = name + " took " + time + " to traverse block " + id + ", entering at " + speed + "kmh, leaving at " + speedProfile[9] + "km/h -- Full Power";
 			
 			//Leaving at full speed
-			return new BlockExit(totalTime, speedProfile[9]);
+			return new BlockExit(time, speedProfile[9], message);
 		}	
 	}
 	
@@ -104,8 +247,8 @@ public class Engine {
 	 * @return time taken to reach full speed (in seconds)
 	 */
 	public double timeToFullSpeed(double speed){
-		//Difference in speed (m/s) divided by acceleration (m/s/s)
-		return ((speedProfile[9]/3.6) - (speed/3.6)) / acceleration;
+		//(v - u) / a  
+		return (kmhToMs(speedProfile[9]) - kmhToMs(speed)) / acceleration;
 	}
 
 	/**
@@ -115,10 +258,10 @@ public class Engine {
 	public double distanceToFullSpeed(double speed){
 		
 		//Final speed m/s
-		double vsquared = Math.pow((double) (speedProfile[9] / 3.6), 2);
+		double vsquared = Math.pow((double) kmhToMs(speedProfile[9]), 2);
 		
 		//Initial speed m/s
-		double usquared = Math.pow((double) (speed / 3.6), 2);
+		double usquared = Math.pow((double) kmhToMs(speed), 2);
 		
 		//Distance in m (v2 - u2 / 2a)
 		return (((double) vsquared - usquared) / ((double) 2 * acceleration));
@@ -130,7 +273,7 @@ public class Engine {
 	 */
 	public double timeToStop(double speed){
 		//Difference in speed (m/s) divided by acceleration (m/s/s)
-		return (speed/3.6) / deceleration;
+		return kmhToMs(speed) / deceleration;
 	}
 	
 	/**
@@ -140,10 +283,18 @@ public class Engine {
 	public double distanceToStop(double speed){
 		
 		//Initial speed m/s
-		double vsquared = Math.pow((double) (speed / 3.6), 2);
+		double vsquared = Math.pow((double) kmhToMs(speed), 2);
 								
-		//Distance in m (v2 - u2 / 2a) - u = 0
+		//Distance in m (v2 - u2 / 2a) --> u = 0
 		return ((double) vsquared / ((double) 2 * deceleration));
+	}
+	
+	private double kmhToMs(double kmSpeed){
+		return kmSpeed / 3.6;
+	}
+	
+	private double msToKmh(double msSpeed){
+		return msSpeed * 3.6;
 	}
 	
 	

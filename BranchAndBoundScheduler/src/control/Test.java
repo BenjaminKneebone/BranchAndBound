@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import algorithms.Dijkstra;
 import bbentities.BlockOccupation;
 import bbentities.Journey;
+import entities.BlockExit;
+import entities.Engine;
 import entities.Network;
 import exceptions.RouteNotFoundException;
 
@@ -21,6 +23,16 @@ public class Test {
 		
 		Dijkstra d = new Dijkstra(n);
 
+		Engine t = n.getTrains().get(0);
+		t.printDetails();
+	
+		BlockExit b = t.delayTraversal(n.getBlocks().get(0), 25, 70000);
+		System.out.println(b.getMessage());
+		
+		BlockExit b1 = t.timeToTraverse(n.getBlocks().get(0), 25);
+		System.out.println(b1.getMessage());
+		
+		/*
 		int[] stations = {0, 5,4,0,17};
 		
 		Journey j;
@@ -32,7 +44,7 @@ public class Test {
 		}
 		
 		
-		/*
+		
 		//Test Cloning
 		
 		//Create a scheduler with original configuration

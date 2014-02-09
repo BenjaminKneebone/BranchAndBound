@@ -25,12 +25,8 @@ public class Test {
 
 		Engine t = n.getTrains().get(0);
 		t.printDetails();
-	
-		BlockExit b = t.delayTraversal(n.getBlocks().get(0), 25, 70000);
-		System.out.println(b.getMessage());
+			
 		
-		BlockExit b1 = t.timeToTraverse(n.getBlocks().get(0), 25);
-		System.out.println(b1.getMessage());
 		
 		/*
 		int[] stations = {0, 5,4,0,17};

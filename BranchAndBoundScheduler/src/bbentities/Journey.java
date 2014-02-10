@@ -46,6 +46,10 @@ public class Journey {
 		}
 	}
 	
+	public Engine getTrain(){
+		return train;
+	}
+	
 	public ArrayList<BlockOccupation> getBlockOccupations(){
 		return journey;
 	}

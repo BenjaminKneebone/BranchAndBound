@@ -9,12 +9,18 @@ public class BlockOccupation implements Cloneable{
 
 	private Engine train;
 	private Block block;
-	private int depTime = 0;
-	private int arrTime = 0;
+	//Speed entering block
 	private int arrSpeed = 0;
+	//Speed leaving block
 	private int depSpeed = 0;
 	
-	public BlockOccupation(Engine train, Block block, int depTime, int arrTime){
+	//Time leaving block
+	private double depTime = 0;
+	//Time entering block
+	private double arrTime = 0;
+	
+	
+	public BlockOccupation(Engine train, Block block, double depTime, double arrTime){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
@@ -37,19 +43,19 @@ public class BlockOccupation implements Cloneable{
 		this.depSpeed = depSpeed;
 	}
 
-	public int getDepTime() {
+	public double getDepTime() {
 		return depTime;
 	}
 
-	public void setDepTime(int depTime) {
+	public void setDepTime(double depTime) {
 		this.depTime = depTime;
 	}
 
-	public int getArrTime() {
+	public double getArrTime() {
 		return arrTime;
 	}
 
-	public void setArrTime(int arrTime) {
+	public void setArrTime(double arrTime) {
 		this.arrTime = arrTime;
 	}
 	

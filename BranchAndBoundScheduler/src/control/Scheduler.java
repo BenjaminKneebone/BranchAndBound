@@ -3,7 +3,9 @@ package control;
 import java.util.ArrayList;
 
 import entities.Block;
+import entities.BlockExit;
 import entities.Engine;
+import exceptions.InvalidSpeedException;
 
 import bbentities.BlockOccupation;
 import bbentities.Journey;
@@ -33,6 +35,63 @@ public class Scheduler {
 		//No need to clone trains
 		this.trains = trains;
 	}
+	
+	public void schedule(){
+		
+		for(Journey j : journies){
+			
+			BlockOccupation currentBlock = j.getBlockOccupations().get(0);
+			BlockOccupation nextBlock = j.getBlockOccupations().get(1);
+			Engine train = currentBlock.getTrain();
+			
+			boolean canStopInNextBlock = train.canStopInBlock(currentBlock.getBlock());
+			
+			if(canStopInNextBlock){
+				
+				//Full speed ahead
+				try {
+					BlockExit b = train.timeToTraverse(currentBlock.getBlock(), currentBlock.getArrSpeed());
+					//Time leaving block
+					currentBlock.setDepTime(currentBlock.getArrTime() + b.getTime());
+					//Speed leaving block
+					currentBlock.setDepSpeed(b.getSpeed());
+				} catch (InvalidSpeedException e) {
+					e.printStackTrace();
+				}
+			}else{
+				
+				Block nextBlockcocklotsandlotsofcock = null;
+				int depSpeed = train.highestBlockEntrySpeed(nextBlockcocklotsandlotsofcock);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 	
 	public void printJournies(){
 		for(Journey j: journies)

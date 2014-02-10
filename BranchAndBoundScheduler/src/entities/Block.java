@@ -6,7 +6,7 @@ public class Block implements Cloneable {
 
 	private int id;
 	private int length;
-	private int lastArrival;
+	private int lastArrival = 0;
 	private ArrayList<Engine> sequence = new ArrayList<Engine>();
 	
 	public Block(int id, int length, int lastArrival){

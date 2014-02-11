@@ -30,7 +30,7 @@ public class Test {
 		
 		Journey j;
 		try {
-			j = new Journey(n.getTrains().get(0), stations, d);
+			j = new Journey(n.getTrains().get(0), stations, d, 0);
 			journies.add(j);
 		} catch (RouteNotFoundException e) {
 			e.printStackTrace();

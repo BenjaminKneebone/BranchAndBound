@@ -6,13 +6,13 @@ public class Block implements Cloneable {
 
 	private int id;
 	private int length;
-	private int lastArrival = 0;
+	private double nextPossibleEntry = 0;
 	private ArrayList<Engine> sequence = new ArrayList<Engine>();
 	
-	public Block(int id, int length, int lastArrival){
+	public Block(int id, int length, double nextPossibleEntry){
 		this.id = id;
 		this.length = length;
-		this.lastArrival = lastArrival;
+		this.nextPossibleEntry = nextPossibleEntry;
 	}
 	
 	public int getID(){
@@ -27,16 +27,20 @@ public class Block implements Cloneable {
 		sequence.add(eng);
 	}
 	
-	public void setArrivalTime(int arrTime){
-		this.lastArrival = arrTime;
+	public void setArrivalTime(double arrTime){
+		this.nextPossibleEntry = arrTime;
+	}
+	
+	public double getNextPossibleEntry(){
+		return nextPossibleEntry;
 	}
 	
 	public void printBlockDetail(){
-		System.out.println("Block " + id + " Last Arrival: " + lastArrival);
+		System.out.println("Block " + id + " Last Arrival: " + nextPossibleEntry);
 	}
 	
 	public Block clone(){
-		Block b = new Block(id, length, lastArrival);
+		Block b = new Block(id, length, nextPossibleEntry);
 		return b;
 	}
 	

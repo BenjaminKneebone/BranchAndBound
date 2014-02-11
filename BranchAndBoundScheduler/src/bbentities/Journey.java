@@ -13,12 +13,13 @@ public class Journey {
 
 	private Engine train;
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
+	//The index of the first unscheduled BlockOccupation
+	private int nextToBeScheduled;
 	
 	//When journey is first initialised
-	public Journey(Engine train, int[] stations, Dijkstra d) throws RouteNotFoundException{
+	public Journey(Engine train, int[] stations, Dijkstra d, int nextToBeScheduled) throws RouteNotFoundException{
 		this.train = train;
-		
-				
+			
 		//Get separate parts of the route (between stations)
 		for(int x = 0; x < stations.length - 1; x++)
 			journey.addAll(d.shortestRoute(stations[x], stations[x+1], train));
@@ -28,10 +29,12 @@ public class Journey {
 			if(journey.get(x).getBlock() == journey.get(x + 1).getBlock())
 				journey.remove(x + 1);
 		
+		this.nextToBeScheduled = nextToBeScheduled;
+		
 	}
 	
 	//When journey is cloned
-	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train){
+	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled){
 		this.train = train;
 		this.journey = blockOccupation;
 	}
@@ -54,12 +57,28 @@ public class Journey {
 		return journey;
 	}
 	
+	public BlockOccupation getNextToBeScheduled(){
+		return journey.get(nextToBeScheduled);
+	}
+	
+	public BlockOccupation getSecondToBeScheduled(){
+		return journey.get(nextToBeScheduled+1);
+	}
+	
+	public void incrementJourney(){
+		nextToBeScheduled++;
+	}
+	
+	public boolean journeyScheduled(){
+		if(nextToBeScheduled > )
+	}
+	
 	public Journey clone(ArrayList<Block> blocks){
 		ArrayList<BlockOccupation> cloneBO = new ArrayList<BlockOccupation>();
 		for(BlockOccupation bo: journey)
 			cloneBO.add(bo.clone(blocks));
 		
-		Journey j = new Journey(cloneBO, train);
+		Journey j = new Journey(cloneBO, train, nextToBeScheduled);
 		
 		return j;
 	}

@@ -102,6 +102,9 @@ public class Engine {
 	 */
 	public BlockExit exitBlockAtSetSpeed(Block block, int speed, int finalSpeed) throws InvalidSpeedException{
 			
+		System.out.println("Method speed: " + speed);
+		System.out.println("Method finalspeed: " + finalSpeed);
+		
 		if(speed < 0 || speed > speedProfile[9])
 			throw new InvalidSpeedException(speed, name, speedProfile[9]);
 		
@@ -132,7 +135,8 @@ public class Engine {
 			double decelerationDist = distanceToChangeSpeed(speed, finalSpeed);
 			
 			//Time at constant speed
-			double constantTime = timeToTraverseSetSpeed(block.getLength() - decelerationDist, finalSpeed);
+			double constantTime = timeToTraverseSetSpeed(block.getLength() - decelerationDist, speed);
+			System.out.println("Time in block: " + constantTime );
 			
 			String message = name + " entered " + block.getID() + " at " + speed + ", begin deceleration at " + (block.getLength() - decelerationDist) + " exiting at final speed after " + (decelerationTime + constantTime) + " seconds";
 			

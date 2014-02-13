@@ -34,8 +34,12 @@ public class Scheduler {
 		
 		//Wipe all arrival times (Last line of step 2)
 		for(Journey j: journeys){
-			j.getNextToBeScheduled().setArrSpeed(0);
-			j.getNextToBeScheduled().setArrTime(0);
+			if(!j.isScheduled() && j.toBeWiped()){
+				j.getNextToBeScheduled().setArrSpeed(0);
+				j.getNextToBeScheduled().setArrTime(0);
+			}else{
+				j.setToBeWiped(true);
+			}
 		}
 			
 		//No need to clone trains
@@ -49,10 +53,10 @@ public class Scheduler {
 		//Details for earliest block exit for this node
 		int index = 0;
 		double firstArrival = Integer.MAX_VALUE;
-		
+		System.out.println("--------NODE-------------");
 		//Schedule next block for each train
 		for(Journey j : journeys){
-			
+			System.out.println("Journey");
 			if(!j.isScheduled()){
 				//Journey not completed
 				
@@ -148,44 +152,51 @@ public class Scheduler {
 		System.out.println("The first arrival is " + firstArrival + " within journey " + index + " at block " + j.getID());
 		
 		for(Journey jou: journeys){
-			
-			BlockOccupation bo = jou.getNextToBeScheduled();
-			Block jstar = bo.getBlock();
-			
-			System.out.println(j);
-			System.out.println(jstar);
-			System.out.println(bo.getArrTime());
-			System.out.println(j.getNextPossibleEntry());
-			
-			//If next block is that of earliest arrival and depij < mav
-			if(j == jstar && bo.getArrTime() <= firstArrival){
-			
-				System.out.println("Same block");
+			if(!jou.isScheduled()){
 				
-				//Update last arrival time for the block
-				j.setNextPossibleEntry(bo.getDepTime());
+				BlockOccupation bo = jou.getNextToBeScheduled();
+				Block jstar = bo.getBlock();
 				
-				if(!jou.lastBlock()){
-					System.out.println("Update next block");
-					//Not the last block so update entry into next block
-					BlockOccupation bo2 = jou.getSecondToBeScheduled();
-					bo2.setArrTime(bo.getDepTime());
-					bo2.setArrSpeed(bo.getDepSpeed());
-					System.out.println(bo2.getArrSpeed());
-					bo2.getBlock().setLastEntry(bo.getDepTime());
-				}
+				System.out.println(j);
+				System.out.println(jstar);
+				System.out.println(bo.getArrTime());
+				System.out.println(j.getNextPossibleEntry());
 				
-				jou.incrementJourney();
+				//If next block is that of earliest arrival and depij < mav
+				if(j == jstar && bo.getArrTime() <= firstArrival){
 				
-				
-				if(allJourneysScheduled()){
-					System.out.println("Schedule complete");
+					System.out.println("Same block");
 					
-				}else{
-					Scheduler s = new Scheduler(journeys, blocks, trains);
-					s.schedule();
+					//Update last arrival time for the block
+					j.setNextPossibleEntry(bo.getDepTime());
+					
+					if(!jou.lastBlock()){
+						System.out.println("Update next block");
+						//Not the last block so update entry into next block
+						BlockOccupation bo2 = jou.getSecondToBeScheduled();
+						bo2.setArrTime(bo.getDepTime());
+						bo2.setArrSpeed(bo.getDepSpeed());
+						System.out.println(bo2.getArrSpeed());
+						bo2.getBlock().setLastEntry(bo.getDepTime());
+					}
+					
+					jou.incrementJourney();
+					jou.setToBeWiped(false);
+					
+					if(allJourneysScheduled()){
+						System.out.println("Schedule complete");
+						
+						for(Journey journey : journeys)
+							for(BlockOccupation b : journey.getBlockOccupations())
+								b.printBlockDetail();
+						
+					}else{
+						Scheduler s = new Scheduler(journeys, blocks, trains);
+						s.schedule();
+					}
+					jou.setToBeWiped(true);
+					
 				}
-				
 			}
 					
 			

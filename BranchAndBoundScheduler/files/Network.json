@@ -413,6 +413,14 @@
 		"driving force": 409000,
 		"braking force": 666852, 
 		"speed": [0,20,38,53,67,77,84,93,100,105]
+	},{
+		"id": 1,
+		"name": "FGW 125",
+		"length": 21400, 
+		"weight": 129000,
+		"driving force": 409000,
+		"braking force": 666852, 
+		"speed": [0,20,38,53,67,77,84,93,100,105]
 	}],
 	"areas": [{
 		"id": 1,

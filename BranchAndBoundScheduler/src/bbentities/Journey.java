@@ -15,6 +15,7 @@ public class Journey {
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	//The index of the first unscheduled BlockOccupation
 	private int nextToBeScheduled;
+	private boolean wipe = true;
 	
 	//When journey is first initialised
 	public Journey(Engine train, int[] stations, Dijkstra d, int nextToBeScheduled) throws RouteNotFoundException{
@@ -36,9 +37,10 @@ public class Journey {
 	}
 	
 	//When journey is cloned
-	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled){
+	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, boolean wipe){
 		this.train = train;
 		this.journey = blockOccupation;
+		this.wipe = wipe;
 		
 		this.nextToBeScheduled = nextToBeScheduled;
 		System.out.println("Next to be scheduled value = " + nextToBeScheduled);
@@ -70,6 +72,14 @@ public class Journey {
 		return journey.get(nextToBeScheduled+1);
 	}
 	
+	public boolean toBeWiped(){
+		return wipe;
+	}
+	
+	public void setToBeWiped(boolean wipe){
+		this.wipe = wipe;
+	}
+	
 	/**Increment counter pointing at next block to be scheduled
 	 */
 	public void incrementJourney(){
@@ -81,6 +91,9 @@ public class Journey {
 	 * @return true if the journey has been completely scheduled
 	 */
 	public boolean isScheduled(){
+		System.out.println("isScheduled");
+		System.out.println(nextToBeScheduled);
+		System.out.println(journey.size());
 		return nextToBeScheduled > journey.size() - 1;
 	}
 	
@@ -96,7 +109,7 @@ public class Journey {
 		for(BlockOccupation bo: journey)
 			cloneBO.add(bo.clone(blocks));
 		
-		Journey j = new Journey(cloneBO, train, nextToBeScheduled);
+		Journey j = new Journey(cloneBO, train, nextToBeScheduled, wipe);
 		System.out.println("Constructor value " + nextToBeScheduled);
 		
 		return j;

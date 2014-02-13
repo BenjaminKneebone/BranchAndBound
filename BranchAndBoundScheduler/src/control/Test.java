@@ -27,10 +27,14 @@ public class Test {
 		t.printDetails();
 			
 		int[] stations = {0, 5,4,0,17};
+		int[] stations2 = {0, 5,0,17};
 		
 		Journey j;
 		try {
 			j = new Journey(n.getTrains().get(0), stations, d, 0);
+			journies.add(j);
+			j.printJourney();
+			j = new Journey(n.getTrains().get(1), stations2, d, 0);
 			journies.add(j);
 			j.printJourney();
 		} catch (RouteNotFoundException e) {

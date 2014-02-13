@@ -70,8 +70,10 @@ public class BlockOccupation implements Cloneable{
 	}
 	
 	public void printBlockDetail(){
+		System.out.println("------------------------------------------------------------");
 		System.out.println("Train " + train.getID() + " using block " + block.getID());
-		System.out.println("Departing " + depTime + " Arriving " + arrTime);
+		System.out.println("Arrives in block at " + arrTime + " at speed " + arrSpeed);
+		System.out.println("Departs at " + depTime + " at speed " + depSpeed);
 	}
 	
 	public BlockOccupation clone(ArrayList<Block> blocks){

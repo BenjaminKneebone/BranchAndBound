@@ -128,7 +128,7 @@ public class Engine {
 			
 			String message = name + " entered " + block.getID() + " at " + speed + ", begin acceleration at " + (block.getLength() - accelerationDist) + " exiting at final speed after " + (accelerationTime + constantTime) + " seconds";
 			
-			return new BlockExit(accelerationTime + constantTime, speed, message);
+			return new BlockExit(accelerationTime + constantTime, finalSpeed, message);
 		}else{
 			//Decelerates over the block
 			double decelerationTime = timeToChangeSpeed(speed, finalSpeed);
@@ -140,7 +140,7 @@ public class Engine {
 			
 			String message = name + " entered " + block.getID() + " at " + speed + ", begin deceleration at " + (block.getLength() - decelerationDist) + " exiting at final speed after " + (decelerationTime + constantTime) + " seconds";
 			
-			return new BlockExit(decelerationTime + constantTime, speed, message);
+			return new BlockExit(decelerationTime + constantTime, finalSpeed, message);
 		}
 	}
 

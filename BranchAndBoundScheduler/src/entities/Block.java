@@ -6,8 +6,14 @@ public class Block implements Cloneable {
 
 	private int id;
 	private int length;
-	private double nextPossibleEntry = 0;
+	private double nextPossibleEntry = Integer.MAX_VALUE;
+	private double lastEntry = 0;
 	private ArrayList<Engine> sequence = new ArrayList<Engine>();
+	
+	public Block(int id, int length){
+		this.id = id;
+		this.length = length;
+	}
 	
 	public Block(int id, int length, double nextPossibleEntry){
 		this.id = id;
@@ -27,12 +33,20 @@ public class Block implements Cloneable {
 		sequence.add(eng);
 	}
 	
-	public void setArrivalTime(double arrTime){
+	public void setNextPossibleEntry(double arrTime){
 		this.nextPossibleEntry = arrTime;
 	}
 	
 	public double getNextPossibleEntry(){
 		return nextPossibleEntry;
+	}
+	
+	public double getLastEntry(){
+		return lastEntry;
+	}
+	
+	public void setLastEntry(double lastEntry){
+		this.lastEntry = lastEntry;
 	}
 	
 	public void printBlockDetail(){

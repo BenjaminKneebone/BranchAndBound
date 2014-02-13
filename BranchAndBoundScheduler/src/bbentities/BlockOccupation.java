@@ -20,11 +20,13 @@ public class BlockOccupation implements Cloneable{
 	private double arrTime = 0;
 	
 	
-	public BlockOccupation(Engine train, Block block, double depTime, double arrTime){
+	public BlockOccupation(Engine train, Block block, double depTime, double arrTime, int arrSpeed, int depSpeed){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
 		this.arrTime = arrTime;
+		this.depSpeed = depSpeed;
+		this.arrSpeed = arrSpeed;
 	}
 	
 	public int getArrSpeed() {
@@ -74,7 +76,7 @@ public class BlockOccupation implements Cloneable{
 	
 	public BlockOccupation clone(ArrayList<Block> blocks){
 		//Clone BlockOccupation using reference to block in list provided
-		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime);
+		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime, arrSpeed, depSpeed);
 		return bo;
 	}
 	

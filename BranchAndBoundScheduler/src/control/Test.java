@@ -32,21 +32,14 @@ public class Test {
 		try {
 			j = new Journey(n.getTrains().get(0), stations, d, 0);
 			journies.add(j);
+			j.printJourney();
 		} catch (RouteNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		
-		
-		//Test Cloning
-		
+			
 		//Create a scheduler with original configuration
 		Scheduler s = new Scheduler(journies, n.getBlocks(), n.getTrains());
-		
+		s.schedule();
 		
 		
 		

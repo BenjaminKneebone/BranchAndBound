@@ -46,7 +46,7 @@
 		"polarity": 0
 	}, {
 		"id": 3,
-		"length": 200000, 
+		"length": 2000, 
 		"scale": 10, 
 		"output_hw": "7FD441000000",
 		"output_id": 0,

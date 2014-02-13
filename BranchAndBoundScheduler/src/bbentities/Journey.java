@@ -29,14 +29,19 @@ public class Journey {
 			if(journey.get(x).getBlock() == journey.get(x + 1).getBlock())
 				journey.remove(x + 1);
 		
-		this.nextToBeScheduled = nextToBeScheduled;
-		
+		//Set start of journey to time 0, speed 0
+		journey.get(0).setArrTime(0);
+		journey.get(0).setArrSpeed(0);
+	
 	}
 	
 	//When journey is cloned
 	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled){
 		this.train = train;
 		this.journey = blockOccupation;
+		
+		this.nextToBeScheduled = nextToBeScheduled;
+		System.out.println("Next to be scheduled value = " + nextToBeScheduled);
 	}
 	
 	public void printJourney(){
@@ -65,12 +70,25 @@ public class Journey {
 		return journey.get(nextToBeScheduled+1);
 	}
 	
+	/**Increment counter pointing at next block to be scheduled
+	 */
 	public void incrementJourney(){
 		nextToBeScheduled++;
+		System.out.println("incremented " + nextToBeScheduled);
 	}
 	
-	public boolean journeyScheduled(){
-		if(nextToBeScheduled > )
+	/**
+	 * @return true if the journey has been completely scheduled
+	 */
+	public boolean isScheduled(){
+		return nextToBeScheduled > journey.size() - 1;
+	}
+	
+	/**
+	 * @return true if the next block to be scheduled is the last block in the journey
+	 */
+	public boolean lastBlock(){
+		return nextToBeScheduled == journey.size() - 1;
 	}
 	
 	public Journey clone(ArrayList<Block> blocks){
@@ -79,6 +97,7 @@ public class Journey {
 			cloneBO.add(bo.clone(blocks));
 		
 		Journey j = new Journey(cloneBO, train, nextToBeScheduled);
+		System.out.println("Constructor value " + nextToBeScheduled);
 		
 		return j;
 	}

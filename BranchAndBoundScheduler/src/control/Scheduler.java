@@ -18,6 +18,8 @@ public class Scheduler {
 	
 	public Scheduler(ArrayList<Journey> journeys, ArrayList<Block> blocks, ArrayList<Engine> trains){
 		
+		System.out.println("---NODE---");
+		
 		//Clone blocks
 		ArrayList<Block> newBlocks = new ArrayList<Block>();
 		for(Block b: blocks)
@@ -25,10 +27,13 @@ public class Scheduler {
 		
 		this.blocks = newBlocks;		
 		
+		for(Block b: this.blocks)
+			b.printBlockDetail();
+		
 		//Clone journeys, pass in newly cloned blocks
 		ArrayList<Journey> newJournies = new ArrayList<Journey>();
 		for(Journey j: journeys)
-			newJournies.add(j.clone(blocks));
+			newJournies.add(j.clone(this.blocks));
 		
 		this.journeys = newJournies;	
 		
@@ -48,28 +53,31 @@ public class Scheduler {
 	
 	public void schedule(){
 		
-		System.out.println("Scheduling");
-		
 		//Details for earliest block exit for this node
 		int index = 0;
 		double firstArrival = Integer.MAX_VALUE;
-		System.out.println("--------NODE-------------");
+		
 		//Schedule next block for each train
 		for(Journey j : journeys){
-			System.out.println("Journey");
 			if(!j.isScheduled()){
 				//Journey not completed
 				
 				//Get first block to be scheduled on journey
 				BlockOccupation firstBlock = j.getNextToBeScheduled();
-				System.out.println("Arrival Speed " + firstBlock.getArrSpeed());
+				
+				//If train enters block before possible, change arrival time (Speed should be 0)
+				if(firstBlock.getArrTime() < firstBlock.getBlock().getNextPossibleEntry())
+					if(firstBlock.getArrSpeed() == 0)
+						firstBlock.setArrTime(firstBlock.getBlock().getNextPossibleEntry());
+					else
+						System.out.println("--------ERRRRRRRRRRROOOOOORRRRRRRRRRRRRRRRRRR------------------------------------------------------");
+				
 				Engine train = firstBlock.getTrain();
 				BlockExit b = null;
-				
-				System.out.println("Scheduling " + train.getName() + " in block " + firstBlock.getBlock().getID());
-				
+					
 				if(j.lastBlock()){
-					System.out.println("Last block");
+					
+					System.out.println("Scheduling last block " + firstBlock.getBlock().getID() + " for " + train.getName());
 					
 					//Last block of the journey
 					try {
@@ -86,10 +94,10 @@ public class Scheduler {
 					//Get second block
 					BlockOccupation secondBlock = j.getSecondToBeScheduled();
 					
-					System.out.println("The next block for " + train.getName() + " in block " + secondBlock.getBlock().getID());
-					
 					//If second block has enough space for train to enter at full speed
 					if(train.canStopInBlock(secondBlock.getBlock())){
+						
+						System.out.println("Scheduling block " + firstBlock.getBlock().getID() + " for " + train.getName() + " at full speed");
 						
 						//Full speed ahead
 						try {
@@ -98,6 +106,8 @@ public class Scheduler {
 							e.printStackTrace();
 						}
 					}else{
+						
+						System.out.println("Scheduling block " + firstBlock.getBlock().getID() + " for " + train.getName() + " leaving at reduced speed");
 						
 						//Train must leave block at reduced speed
 						int depSpeed = train.highestBlockEntrySpeed(secondBlock.getBlock());
@@ -109,18 +119,15 @@ public class Scheduler {
 							e.printStackTrace();
 						}
 					}
-				
-					//If train would get to next block while its still occupied
-					if(firstBlock.getArrTime() + b.getTime() < secondBlock.getBlock().getNextPossibleEntry()){
+									
+					//If next block is occupied
+					if(secondBlock.getBlock().isOccupied()){
 						
-						//Train needs to be slowed down
-			
-						//minimum time train needs to spend in block
-						double timeInBlock = secondBlock.getBlock().getNextPossibleEntry() - firstBlock.getArrTime();
+						System.out.println("Next block still occupied - extend time in block");
 						
-						//calculate speed and time so train arrives when next block is unoccupied
+						//Train needs to stop at the end of the block
 						try {
-							b = train.minimumTimeTraversal(firstBlock.getBlock(), firstBlock.getArrSpeed(), timeInBlock);
+							b = train.exitBlockAtSetSpeed(firstBlock.getBlock(), firstBlock.getArrSpeed(), 0);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -128,12 +135,13 @@ public class Scheduler {
 					}
 				}
 				
+				System.out.println("Arriving at " + firstBlock.getArrTime());
+				System.out.println("Leaving at " + (firstBlock.getArrTime() + b.getTime()) + " at " + b.getSpeed());
+				
 				//Time leaving block
 				firstBlock.setDepTime(firstBlock.getArrTime() + b.getTime());
 				//Speed leaving block
 				firstBlock.setDepSpeed(b.getSpeed());
-				
-				System.out.println("Train " + train.getName() + " takes " + b.getTime() + " in block " + firstBlock.getBlock().getID() + " leaving at " + firstBlock.getDepTime() + " at " + b.getSpeed() + "km/h");
 				
 				//If this is the BlockOccupation with the earliest exit
 				if(firstBlock.getDepTime() < firstArrival){
@@ -149,42 +157,65 @@ public class Scheduler {
 		//Get block corresponding to earliest arrival
 		Block j = journeys.get(index).getNextToBeScheduled().getBlock();
 		
-		System.out.println("The first arrival is " + firstArrival + " within journey " + index + " at block " + j.getID());
-		
 		for(Journey jou: journeys){
 			if(!jou.isScheduled()){
 				
 				BlockOccupation bo = jou.getNextToBeScheduled();
 				Block jstar = bo.getBlock();
 				
-				System.out.println(j);
-				System.out.println(jstar);
-				System.out.println(bo.getArrTime());
-				System.out.println(j.getNextPossibleEntry());
 				
 				//If next block is that of earliest arrival and depij < mav
 				if(j == jstar && bo.getArrTime() <= firstArrival){
 				
-					System.out.println("Same block");
+					double prevNextEntry = j.getNextPossibleEntry();
+					double prevLastEntry = 0;
+					
+					
+					System.out.println("---CREATING NODE---");
+					System.out.println("Updating block " + bo.getBlock().getID() + " for " + bo.getTrain().getName());
+					
+					//If not the first block
+					if(!jou.firstBlock())
+						//If arrived at 0 (I.e. Waited in last block)
+						if(bo.getArrSpeed() == 0)
+							//Unoccupy previous block
+							jou.getPreviousBlock().getBlock().setOccupied(false);
+					
 					
 					//Update last arrival time for the block
 					j.setNextPossibleEntry(bo.getDepTime());
+					//Set this block to occupied if we halt at end of block
+					if(bo.getDepSpeed() != 0)
+						bo.getBlock().setOccupied(false);
+					else
+						bo.getBlock().setOccupied(true);
 					
 					if(!jou.lastBlock()){
-						System.out.println("Update next block");
+						
 						//Not the last block so update entry into next block
 						BlockOccupation bo2 = jou.getSecondToBeScheduled();
+						prevLastEntry = bo2.getBlock().getLastEntry();
+						
+						System.out.println("Updating next block " + bo2.getBlock().getID());
 						bo2.setArrTime(bo.getDepTime());
 						bo2.setArrSpeed(bo.getDepSpeed());
-						System.out.println(bo2.getArrSpeed());
 						bo2.getBlock().setLastEntry(bo.getDepTime());
+						
+						//If we enter the next block, occupy it
+						if(bo.getDepSpeed() != 0)
+							bo2.getBlock().setOccupied(true);
 					}
 					
+					//Move to next block of this journey
 					jou.incrementJourney();
+					
+					//Indicate not to reset arrival details in new node for this journey
 					jou.setToBeWiped(false);
 					
 					if(allJourneysScheduled()){
-						System.out.println("Schedule complete");
+						for(Block b: this.blocks)
+							b.printBlockDetail();
+						System.out.println("-----COMPLETE SCHEDULE-----");
 						
 						for(Journey journey : journeys)
 							for(BlockOccupation b : journey.getBlockOccupations())
@@ -194,8 +225,24 @@ public class Scheduler {
 						Scheduler s = new Scheduler(journeys, blocks, trains);
 						s.schedule();
 					}
-					jou.setToBeWiped(true);
 					
+					//undo alterations
+					jou.decrementJourney();
+					jou.setToBeWiped(true);
+					j.setNextPossibleEntry(prevNextEntry);
+					
+					if(!jou.lastBlock()){
+						//Not the last block so update entry into next block
+						BlockOccupation bo2 = jou.getSecondToBeScheduled();
+						System.out.println("Resetting block " + bo2.getBlock().getID());
+						bo2.setArrTime(Integer.MAX_VALUE);
+						bo2.setArrSpeed(0);
+						bo2.getBlock().setLastEntry(prevLastEntry);
+						
+						//If we entered the next block, indicate that it is actually unoccupied
+						if(bo.getDepSpeed() != 0)
+						bo2.getBlock().setOccupied(false);
+					}
 				}
 			}
 					

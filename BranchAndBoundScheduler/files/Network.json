@@ -5,7 +5,7 @@
 
 	"blocks": [{
 		"id": 0,
-		"length": 3000, 
+		"length": 300, 
 		"output_hw": "7BD304000000",
 		"output_id": 0,
 		"polarity": 1,
@@ -416,6 +416,14 @@
 	},{
 		"id": 1,
 		"name": "FGW 125",
+		"length": 21400, 
+		"weight": 129000,
+		"driving force": 409000,
+		"braking force": 666852, 
+		"speed": [0,20,38,53,67,77,84,93,100,105]
+	}, ,{
+		"id": 2,
+		"name": "Class 60",
 		"length": 21400, 
 		"weight": 129000,
 		"driving force": 409000,

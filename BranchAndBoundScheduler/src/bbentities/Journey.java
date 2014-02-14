@@ -43,17 +43,12 @@ public class Journey {
 		this.wipe = wipe;
 		
 		this.nextToBeScheduled = nextToBeScheduled;
-		System.out.println("Next to be scheduled value = " + nextToBeScheduled);
 	}
 	
 	public void printJourney(){
-		System.out.println("Train: " + train.getID());
-		System.out.println("Passing block: ");
-		for(BlockOccupation j: journey){
-			System.out.println(j.getBlock().getID());
-			System.out.println("Arriving: " + j.getDepTime());
-			System.out.println("Departing: " + j.getArrTime());
-		}
+		System.out.println("Train " + train.getName() + " journey");
+		for(BlockOccupation j: journey)
+			System.out.println("Train: " + train.getID() + " Passing block: " + j.getBlock().getID() + " Arriving: " + j.getArrTime() + " at " + j.getArrSpeed() + "km/h Departing at: " + j.getDepTime() + " at " + j.getDepSpeed() + "km/h");
 	}
 	
 	public Engine getTrain(){
@@ -84,17 +79,27 @@ public class Journey {
 	 */
 	public void incrementJourney(){
 		nextToBeScheduled++;
-		System.out.println("incremented " + nextToBeScheduled);
+	}
+	
+	/**Decrement counter pointing at next block to be scheduled
+	 */
+	public void decrementJourney(){
+		nextToBeScheduled--;
 	}
 	
 	/**
 	 * @return true if the journey has been completely scheduled
 	 */
 	public boolean isScheduled(){
-		System.out.println("isScheduled");
-		System.out.println(nextToBeScheduled);
-		System.out.println(journey.size());
 		return nextToBeScheduled > journey.size() - 1;
+	}
+	
+	public boolean firstBlock(){
+		return nextToBeScheduled == 0;
+	}
+	
+	public BlockOccupation getPreviousBlock(){
+		return journey.get(nextToBeScheduled - 1);
 	}
 	
 	/**
@@ -110,7 +115,6 @@ public class Journey {
 			cloneBO.add(bo.clone(blocks));
 		
 		Journey j = new Journey(cloneBO, train, nextToBeScheduled, wipe);
-		System.out.println("Constructor value " + nextToBeScheduled);
 		
 		return j;
 	}

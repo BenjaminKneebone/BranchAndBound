@@ -102,9 +102,6 @@ public class Engine {
 	 */
 	public BlockExit exitBlockAtSetSpeed(Block block, int speed, int finalSpeed) throws InvalidSpeedException{
 			
-		System.out.println("Method speed: " + speed);
-		System.out.println("Method finalspeed: " + finalSpeed);
-		
 		if(speed < 0 || speed > speedProfile[9])
 			throw new InvalidSpeedException(speed, name, speedProfile[9]);
 		
@@ -112,6 +109,54 @@ public class Engine {
 			throw new InvalidSpeedException(finalSpeed, name, speedProfile[9]);
 		
 		if(finalSpeed == speed){
+			
+			if(speed == 0){
+				
+				//System.out.println("Speed up and down in block");
+				
+				int maxSpeed = 1;
+				double accelerationTime;
+				double accelerationDist;
+				double decelerationTime;
+				double decelerationDist;
+				double constantTime;
+				double constantDist;
+				
+				
+				for(;maxSpeed < speedProfile[9]; maxSpeed++){
+					//System.out.println("X: " + maxSpeed);
+					//System.out.println("Block length" + block.getLength());
+					
+					accelerationDist = distanceToChangeSpeed(0, maxSpeed);
+					decelerationDist = distanceToChangeSpeed(maxSpeed, 0);
+					
+					//System.out.println("Changing speed dist " + (accelerationDist + decelerationDist));
+					
+					if(block.getLength() < accelerationDist + decelerationDist){
+						maxSpeed--;
+						break;
+					}
+				}
+				
+				//System.out.println("maxSpeed: " + maxSpeed);
+				
+				accelerationTime = timeToChangeSpeed(0,maxSpeed);
+				decelerationTime = timeToChangeSpeed(maxSpeed, 0);
+				accelerationDist = distanceToChangeSpeed(0, maxSpeed);
+				decelerationDist = distanceToChangeSpeed(maxSpeed, 0);
+				constantTime = timeToTraverseSetSpeed(block.getLength() - accelerationDist - decelerationDist, maxSpeed);
+				
+				//System.out.println("ACC: " + accelerationTime);
+				//System.out.println("DEC: " + decelerationTime);
+				//System.out.println("CON: " + constantTime);
+				
+				
+				//Stay at constant speed
+				String message = name + " traversed block " + block.getID() + " in " + (accelerationTime + constantTime + decelerationTime) + " seconds, starting and leaving at 0km/h";
+				return new BlockExit((accelerationTime + constantTime + decelerationTime), speed, message);
+			
+			}
+			
 			//Stay at constant speed
 			String message = name + " traversed block " + block.getID() + " at " + speed + "km/h, taking " + timeToTraverseSetSpeed(block.getLength(), speed) + " seconds";
 			return new BlockExit(timeToTraverseSetSpeed(block.getLength(), speed), speed, message);
@@ -136,7 +181,6 @@ public class Engine {
 			
 			//Time at constant speed
 			double constantTime = timeToTraverseSetSpeed(block.getLength() - decelerationDist, speed);
-			System.out.println("Time in block: " + constantTime );
 			
 			String message = name + " entered " + block.getID() + " at " + speed + ", begin deceleration at " + (block.getLength() - decelerationDist) + " exiting at final speed after " + (decelerationTime + constantTime) + " seconds";
 			
@@ -236,11 +280,6 @@ public class Engine {
 			accelerationTime = timeToChangeSpeed(speed, newSpeed);
 			accelerationDist = distanceToChangeSpeed(speed, newSpeed);
 			constantTime = timeToTraverseSetSpeed(block.getLength() - accelerationDist, newSpeed);
-			
-			System.out.println("Acc time " + accelerationTime);
-			System.out.println("Acc dist " + accelerationDist);
-			System.out.println("Con time " + constantTime);
-			System.out.println("Con dist " + (block.getLength() - accelerationDist));
 			
 			String message = name + " took " + (accelerationTime + constantTime) + " to traverse block " + id + ", entering at " + speed + "kmh, leaving at " + newSpeed + "km/h";
 			

@@ -85,7 +85,7 @@ public class NetworkJSONParser {
 		
 		//Initialize adjacency arraylist
 		for(int x = 0; x < blockObjects.size(); x++)
-			blocks.add(new Block(0, 0, 0));
+			blocks.add(new Block(0, 0, 0 , 0, false));
 		
 		
 		@SuppressWarnings("unchecked")
@@ -97,7 +97,7 @@ public class NetworkJSONParser {
 			JSONObject block = blockIterator.next();
 			sourceID = Integer.parseInt(block.get("id").toString());
 			
-			Block temp = new Block(sourceID, Integer.parseInt(block.get("length").toString()), 0);
+			Block temp = new Block(sourceID, Integer.parseInt(block.get("length").toString()), 0, 0, false);
 			blocks.set(sourceID, temp);
 		}
 	}

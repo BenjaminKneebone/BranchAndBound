@@ -59,96 +59,94 @@ public class Scheduler {
 		
 		//Schedule next block for each train
 		for(Journey j : journeys){
-			if(!j.isScheduled()){
-				//Journey not completed
-				
+			if(!j.isScheduled() && !(j.firstBlock() && j.getNextToBeScheduled().getBlock().isOccupied())){
+				//Journey to be scheduled & we're not looking at the first block and its occupied
+							
 				//Get first block to be scheduled on journey
 				BlockOccupation firstBlock = j.getNextToBeScheduled();
+				System.out.println("Occupied: " + firstBlock.getBlock().isOccupied());
+
+				if(firstBlock.getArrTime() < firstBlock.getBlock().getNextPossibleEntry()){
+					firstBlock.setArrTime(firstBlock.getBlock().getNextPossibleEntry());
+				}
 				
-				//If train enters block before possible, change arrival time (Speed should be 0)
-				if(firstBlock.getArrTime() < firstBlock.getBlock().getNextPossibleEntry())
-					if(firstBlock.getArrSpeed() == 0)
-						firstBlock.setArrTime(firstBlock.getBlock().getNextPossibleEntry());
-					else
-						System.out.println("--------ERRRRRRRRRRROOOOOORRRRRRRRRRRRRRRRRRR------------------------------------------------------");
-				
-				Engine train = firstBlock.getTrain();
-				BlockExit b = null;
-					
-				if(j.lastBlock()){
-					
-					System.out.println("Scheduling last block " + firstBlock.getBlock().getID() + " for " + train.getName());
-					
-					//Last block of the journey
-					try {
-						//Train coming to a stop at the end of the block
-						b = train.exitBlockAtSetSpeed(firstBlock.getBlock(), firstBlock.getArrSpeed(), 0);
-					} catch (InvalidSpeedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-				}else{
-					//Not the last block of the journey
-				
-					//Get second block
-					BlockOccupation secondBlock = j.getSecondToBeScheduled();
-					
-					//If second block has enough space for train to enter at full speed
-					if(train.canStopInBlock(secondBlock.getBlock())){
+					Engine train = firstBlock.getTrain();
+					BlockExit b = null;
 						
-						System.out.println("Scheduling block " + firstBlock.getBlock().getID() + " for " + train.getName() + " at full speed");
+					if(j.lastBlock()){
 						
-						//Full speed ahead
+						System.out.println("Scheduling last block " + firstBlock.getBlock().getID() + " for " + train.getName());
+						
+						//Last block of the journey
 						try {
-							b = train.timeToTraverse(firstBlock.getBlock(), firstBlock.getArrSpeed());
-						} catch (InvalidSpeedException e) {
-							e.printStackTrace();
-						}
-					}else{
-						
-						System.out.println("Scheduling block " + firstBlock.getBlock().getID() + " for " + train.getName() + " leaving at reduced speed");
-						
-						//Train must leave block at reduced speed
-						int depSpeed = train.highestBlockEntrySpeed(secondBlock.getBlock());
-						
-						try {
-							b = train.exitBlockAtSetSpeed(firstBlock.getBlock(), firstBlock.getArrSpeed(), depSpeed);
-						} catch (InvalidSpeedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-									
-					//If next block is occupied
-					if(secondBlock.getBlock().isOccupied()){
-						
-						System.out.println("Next block still occupied - extend time in block");
-						
-						//Train needs to stop at the end of the block
-						try {
+							//Train coming to a stop at the end of the block
 							b = train.exitBlockAtSetSpeed(firstBlock.getBlock(), firstBlock.getArrSpeed(), 0);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+					}else{
+						//Not the last block of the journey
+					
+						//Get second block
+						BlockOccupation secondBlock = j.getSecondToBeScheduled();
+						
+						//If second block has enough space for train to enter at full speed
+						if(train.canStopInBlock(secondBlock.getBlock())){
+							
+							System.out.println("Scheduling block " + firstBlock.getBlock().getID() + " for " + train.getName() + " at full speed");
+							
+							//Full speed ahead
+							try {
+								b = train.timeToTraverse(firstBlock.getBlock(), firstBlock.getArrSpeed());
+							} catch (InvalidSpeedException e) {
+								e.printStackTrace();
+							}
+						}else{
+							
+							System.out.println("Scheduling block " + firstBlock.getBlock().getID() + " for " + train.getName() + " leaving at reduced speed");
+							
+							//Train must leave block at reduced speed
+							int depSpeed = train.highestBlockEntrySpeed(secondBlock.getBlock());
+							
+							try {
+								b = train.exitBlockAtSetSpeed(firstBlock.getBlock(), firstBlock.getArrSpeed(), depSpeed);
+							} catch (InvalidSpeedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+										
+						//If next block is occupied or we arrive before the last train has cleared
+						if(secondBlock.getBlock().isOccupied() || ((firstBlock.getArrTime() + b.getTime()) < secondBlock.getBlock().getNextPossibleEntry())){
+							
+							System.out.println("Next block still occupied - extend time in block");
+							
+							//Train needs to stop at the end of the block
+							try {
+								b = train.exitBlockAtSetSpeed(firstBlock.getBlock(), firstBlock.getArrSpeed(), 0);
+							} catch (InvalidSpeedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
 					}
-				}
+					
+					System.out.println("Arriving at " + firstBlock.getArrTime() + " at " + firstBlock.getArrSpeed());
+					System.out.println("Leaving at " + (firstBlock.getArrTime() + b.getTime()) + " at " + b.getSpeed());
+					
+					//Time leaving block
+					firstBlock.setDepTime(firstBlock.getArrTime() + b.getTime());
+					//Speed leaving block
+					firstBlock.setDepSpeed(b.getSpeed());
+					
+					//If this is the BlockOccupation with the earliest exit
+					if(firstBlock.getDepTime() < firstArrival){
+						firstArrival = firstBlock.getDepTime();
+						index = journeys.indexOf(j);
+					}
 				
-				System.out.println("Arriving at " + firstBlock.getArrTime());
-				System.out.println("Leaving at " + (firstBlock.getArrTime() + b.getTime()) + " at " + b.getSpeed());
-				
-				//Time leaving block
-				firstBlock.setDepTime(firstBlock.getArrTime() + b.getTime());
-				//Speed leaving block
-				firstBlock.setDepSpeed(b.getSpeed());
-				
-				//If this is the BlockOccupation with the earliest exit
-				if(firstBlock.getDepTime() < firstArrival){
-					firstArrival = firstBlock.getDepTime();
-					index = journeys.indexOf(j);
-				}
-			
 			}			
 		}
 		
@@ -158,7 +156,7 @@ public class Scheduler {
 		Block j = journeys.get(index).getNextToBeScheduled().getBlock();
 		
 		for(Journey jou: journeys){
-			if(!jou.isScheduled()){
+			if(!jou.isScheduled()  && !(jou.firstBlock() && jou.getNextToBeScheduled().getBlock().isOccupied())){
 				
 				BlockOccupation bo = jou.getNextToBeScheduled();
 				Block jstar = bo.getBlock();
@@ -184,6 +182,7 @@ public class Scheduler {
 					
 					//Update last arrival time for the block
 					j.setNextPossibleEntry(bo.getDepTime());
+					
 					//Set this block to occupied if we halt at end of block
 					if(bo.getDepSpeed() != 0)
 						bo.getBlock().setOccupied(false);
@@ -217,10 +216,12 @@ public class Scheduler {
 							b.printBlockDetail();
 						System.out.println("-----COMPLETE SCHEDULE-----");
 						
-						for(Journey journey : journeys)
+						for(Journey journey : journeys){
+							System.out.println("\n" + journey.getTrain().getName() + " schedule");
 							for(BlockOccupation b : journey.getBlockOccupations())
 								b.printBlockDetail();
-						
+						}
+							
 					}else{
 						Scheduler s = new Scheduler(journeys, blocks, trains);
 						s.schedule();

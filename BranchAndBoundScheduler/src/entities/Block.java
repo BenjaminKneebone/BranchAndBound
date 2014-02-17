@@ -69,4 +69,12 @@ public class Block implements Cloneable {
 		return b;
 	}
 	
+	public void copyBlock(Block copyBlock){
+		this.id = copyBlock.getID();
+		this.length = copyBlock.getLength();
+		this.lastEntry = copyBlock.getLastEntry();
+		this.nextPossibleEntry = copyBlock.getNextPossibleEntry();
+		this.occupied = copyBlock.isOccupied();
+	}
+	
 }

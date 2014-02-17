@@ -34,13 +34,13 @@ public class Test {
 		System.out.println("---JOURNEYS---");
 		Journey j;
 		try {
-			j = new Journey(n.getTrains().get(0), stations, d, 0);
+			j = new Journey(n.getTrains().get(0), stations, d, 0, 0);
 			journies.add(j);
 			j.printJourney();
-			j = new Journey(n.getTrains().get(1), stations, d, 0);
+			j = new Journey(n.getTrains().get(1), stations, d, 0, 1);
 			journies.add(j);
 			j.printJourney();
-			j = new Journey(n.getTrains().get(2), stations, d, 0);
+			j = new Journey(n.getTrains().get(2), stations, d, 0, 2);
 			journies.add(j);
 			j.printJourney();
 		} catch (RouteNotFoundException e) {

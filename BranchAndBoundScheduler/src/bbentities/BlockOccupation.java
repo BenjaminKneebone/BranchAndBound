@@ -78,7 +78,7 @@ public class BlockOccupation implements Cloneable{
 		*/
 		
 		//System.out.printf("%.1f / %.1f ->", arrTime, depTime);
-		System.out.println(arrTime + "/" + depTime + " in block " + block.getID());
+		System.out.println(arrTime + "/" + depTime + " in block " + block.getID() + " Arr Speed: " + arrSpeed + " Dep Speed: " + depSpeed);
 	}
 	
 	public BlockOccupation clone(ArrayList<Block> blocks){
@@ -87,5 +87,13 @@ public class BlockOccupation implements Cloneable{
 		return bo;
 	}
 	
+	public void copyBlockOccupation(BlockOccupation copyBlockOccupation){
+		this.depTime = copyBlockOccupation.getDepTime();
+		this.arrTime = copyBlockOccupation.getArrTime();
+		this.depSpeed = copyBlockOccupation.getDepSpeed();
+		this.arrSpeed = copyBlockOccupation.getArrSpeed();
+		
+		
+	}
 	
 }

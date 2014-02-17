@@ -16,9 +16,10 @@ public class Journey {
 	//The index of the first unscheduled BlockOccupation
 	private int nextToBeScheduled;
 	private boolean wipe = true;
+	private int index;
 	
 	//When journey is first initialised
-	public Journey(Engine train, int[] stations, Dijkstra d, int nextToBeScheduled) throws RouteNotFoundException{
+	public Journey(Engine train, int[] stations, Dijkstra d, int nextToBeScheduled, int index) throws RouteNotFoundException{
 		this.train = train;
 			
 		//Get separate parts of the route (between stations)
@@ -33,14 +34,17 @@ public class Journey {
 		//Set start of journey to time 0, speed 0
 		journey.get(0).setArrTime(0);
 		journey.get(0).setArrSpeed(0);
+		
+		this.index = index;
 	
 	}
 	
 	//When journey is cloned
-	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, boolean wipe){
+	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, boolean wipe, int index){
 		this.train = train;
 		this.journey = blockOccupation;
 		this.wipe = wipe;
+		this.index = index;
 		
 		this.nextToBeScheduled = nextToBeScheduled;
 	}
@@ -73,6 +77,10 @@ public class Journey {
 	
 	public void setToBeWiped(boolean wipe){
 		this.wipe = wipe;
+	}
+	
+	public int getIndex(){
+		return index;
 	}
 	
 	/**Increment counter pointing at next block to be scheduled
@@ -114,7 +122,7 @@ public class Journey {
 		for(BlockOccupation bo: journey)
 			cloneBO.add(bo.clone(blocks));
 		
-		Journey j = new Journey(cloneBO, train, nextToBeScheduled, wipe);
+		Journey j = new Journey(cloneBO, train, nextToBeScheduled, wipe, index);
 		
 		return j;
 	}

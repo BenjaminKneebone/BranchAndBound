@@ -25,7 +25,7 @@ public class Test {
 
 		Engine t = n.getTrains().get(0);
 			
-		int[] stations = {0, 1,2, 4};
+		int[] stations = {0, 1, 2};
 		
 		System.out.println("---INITIAL STATE---");
 		System.out.println("---BLOCKS---");

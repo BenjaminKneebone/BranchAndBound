@@ -16,8 +16,8 @@ import bbentities.Journey;
 
 public class TrainDiagramCreator {
 
-	public void drawDiagram(ArrayList<Journey> journeys){
-		File f = new File("chart.jpg");
+	public void drawDiagram(ArrayList<Journey> journeys, double id){
+		File f = new File("chart" + id + ".jpg");
 		try {
 			f.createNewFile();
 		} catch (IOException e1) {

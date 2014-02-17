@@ -114,7 +114,7 @@ public class Journey {
 	 * @return true if the next block to be scheduled is the last block in the journey
 	 */
 	public boolean lastBlock(){
-		return nextToBeScheduled == journey.size() - 1;
+		return nextToBeScheduled >= journey.size() - 1;
 	}
 	
 	public Journey clone(ArrayList<Block> blocks){

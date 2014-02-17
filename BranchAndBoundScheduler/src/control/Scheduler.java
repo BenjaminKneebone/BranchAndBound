@@ -1,6 +1,7 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import traindiagrams.TrainDiagramCreator;
 
@@ -18,6 +19,7 @@ public class Scheduler {
 	private ArrayList<Block> blocks;
 	private ArrayList<Journey> journeyCopy;
 	private ArrayList<Engine> trains;
+	double id = 0;
 
 	public Scheduler(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains) {
@@ -68,6 +70,8 @@ public class Scheduler {
 
 		this.journeyCopy = newJournies;
 		journeyCopy.set(index, alteredJourney);
+		
+		id = Math.random();
 	}
 
 	public void schedule() {
@@ -227,19 +231,25 @@ public class Scheduler {
 			Block firstBlockCopy = bo.getBlock().clone();
 			Block secondBlockCopy = null;
 			
+			String y = "hey";
 			
 			if (!jou.lastBlock()){
+				
 				bo2 = jou.getSecondToBeScheduled();
 				secondBlockCopy = jou.getSecondToBeScheduled().getBlock().clone();
+				System.out.println("---bo2: " + bo2);
+				y = bo2.toString();
 			}
 
+			
+			
 			// If next block is that of earliest arrival and depij < mav
 			if (firstArrivalBlock == bo.getBlock()
 					&& bo.getArrTime() <= firstArrival) {
 				
 				
 
-				System.out.println("---CREATING NODE---");
+				
 				System.out.println("Updating block "
 						+ bo.getBlock().getID() + " for "
 						+ bo.getTrain().getName());
@@ -255,7 +265,7 @@ public class Scheduler {
 							.setNextPossibleEntry(bo.getArrTime());
 					firstArrivalBlock.setLastEntry(bo.getArrTime());
 				}
-
+				System.out.println("---bo2: " + bo2 + "  " + id);
 				// ----LEAVING CURRENT BLOCK?----//
 				if (bo.getDepSpeed() != 0) {
 					// Update last arrival time for the block, do not occupy
@@ -266,7 +276,7 @@ public class Scheduler {
 					// Occupy this block
 					firstArrivalBlock.setOccupied(true);
 				}
-
+				System.out.println("---bo2: " + bo2 + "  " + id);
 				// ----LAST BLOCK?----//
 				if (!jou.lastBlock()) {
 
@@ -287,13 +297,14 @@ public class Scheduler {
 					bo.getBlock().setOccupied(false);
 					bo.getBlock().setNextPossibleEntry(bo.getDepTime());
 				}
-
+				System.out.println("---bo2: " + bo2 + "  " + id);
 				// Move to next block of this journey
 				jou.incrementJourney();
 				
 				// Indicate not to reset arrival details in new node for
 				// this journey
 				jou.setToBeWiped(false);
+				
 
 				if (allJourneysScheduled()) {
 					for(int x = 0; x < 5; x++)
@@ -310,7 +321,7 @@ public class Scheduler {
 					}
 					
 					TrainDiagramCreator tdc = new TrainDiagramCreator();
-					tdc.drawDiagram(journeys);
+					tdc.drawDiagram(journeys, id);
 
 				} else {
 					System.out.println("----JUST BEFORE COPY - ALTERATIONS PERFORMED");
@@ -318,12 +329,16 @@ public class Scheduler {
 					for(int x = 0; x < 5; x++)
 						blocks.get(x).printBlockDetail();
 					
+					
+					System.out.println("bo2: " + y + "  " + id);
+					System.out.println("---CREATING NODE---");
 					Scheduler s = new Scheduler(journeyCopy, blocks, trains, jou, jou.getIndex());
 					s.schedule();
 					
 					firstArrivalBlock.copyBlock(firstBlockCopy);
 					
 					if (!jou.lastBlock()){ 
+						System.out.println("bo2: " + y + "  " + id);
 						System.out.println("bo2: " + bo2);
 						bo2.getBlock().copyBlock(secondBlockCopy);
 					}

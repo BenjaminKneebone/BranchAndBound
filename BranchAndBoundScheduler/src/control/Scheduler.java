@@ -299,12 +299,7 @@ public class Scheduler {
 				}
 				System.out.println("---bo2: " + bo2 + "  " + id);
 				// Move to next block of this journey
-				jou.incrementJourney();
-				
-				// Indicate not to reset arrival details in new node for
-				// this journey
-				jou.setToBeWiped(false);
-				
+				jou.incrementJourney();			
 
 				if (allJourneysScheduled()) {
 					for(int x = 0; x < 5; x++)

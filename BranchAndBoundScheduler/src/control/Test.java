@@ -25,7 +25,8 @@ public class Test {
 
 		Engine t = n.getTrains().get(0);
 			
-		int[] stations = {0, 1, 2};
+		int[] stations = {0, 4, 8};
+		int[] stations2 = {2, 4, 8};
 		
 		System.out.println("---INITIAL STATE---");
 		System.out.println("---BLOCKS---");
@@ -40,7 +41,7 @@ public class Test {
 			j = new Journey(n.getTrains().get(1), stations, d, 0, 1);
 			journies.add(j);
 			j.printJourney();
-			j = new Journey(n.getTrains().get(2), stations, d, 0, 2);
+			j = new Journey(n.getTrains().get(2), stations2, d, 0, 2);
 			journies.add(j);
 			j.printJourney();
 		} catch (RouteNotFoundException e) {

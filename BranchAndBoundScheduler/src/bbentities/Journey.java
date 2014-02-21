@@ -15,7 +15,6 @@ public class Journey {
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	//The index of the first unscheduled BlockOccupation
 	private int nextToBeScheduled;
-	private boolean wipe = true;
 	private int index;
 	
 	//When journey is first initialised
@@ -40,10 +39,9 @@ public class Journey {
 	}
 	
 	//When journey is cloned
-	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, boolean wipe, int index){
+	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, int index){
 		this.train = train;
 		this.journey = blockOccupation;
-		this.wipe = wipe;
 		this.index = index;
 		
 		this.nextToBeScheduled = nextToBeScheduled;
@@ -70,15 +68,7 @@ public class Journey {
 	public BlockOccupation getSecondToBeScheduled(){
 		return journey.get(nextToBeScheduled+1);
 	}
-	
-	public boolean toBeWiped(){
-		return wipe;
-	}
-	
-	public void setToBeWiped(boolean wipe){
-		this.wipe = wipe;
-	}
-	
+		
 	public int getIndex(){
 		return index;
 	}
@@ -122,7 +112,7 @@ public class Journey {
 		for(BlockOccupation bo: journey)
 			cloneBO.add(bo.clone(blocks));
 		
-		Journey j = new Journey(cloneBO, train, nextToBeScheduled, wipe, index);
+		Journey j = new Journey(cloneBO, train, nextToBeScheduled, index);
 		
 		return j;
 	}

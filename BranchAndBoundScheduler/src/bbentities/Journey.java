@@ -39,6 +39,8 @@ public class Journey {
 			
 		}
 		
+		journey.get(journey.size() - 1).setStation(true);
+		
 		System.out.println("Journey Size: " + journey.size());
 		
 		//Set start of journey to time 0, speed 0

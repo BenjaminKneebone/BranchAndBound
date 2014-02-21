@@ -18,24 +18,34 @@ public class Journey {
 	private int index;
 	
 	//When journey is first initialised
-	public Journey(Engine train, int[] stations, Dijkstra d, int nextToBeScheduled, int index) throws RouteNotFoundException{
+	public Journey(Engine train, ArrayList<Integer> stations, Dijkstra d, int nextToBeScheduled, int index) throws RouteNotFoundException{
 		this.train = train;
 			
 		//Get separate parts of the route (between stations)
-		for(int x = 0; x < stations.length - 1; x++)
-			journey.addAll(d.shortestRoute(stations[x], stations[x+1], train));
+		for(int x = 0; x < stations.size() - 1; x++)
+			journey.addAll(d.shortestRoute(stations.get(x), stations.get(x + 1), train));
+		
+		int stationIndex = 0;
 		
 		//Remove duplicate stops in same block.
-		for(int x = 0; x < journey.size() - 1; x++)
+		for(int x = 0; x < journey.size() - 1; x++){
 			if(journey.get(x).getBlock() == journey.get(x + 1).getBlock())
 				journey.remove(x + 1);
+			
+			if(stations.get(stationIndex) == journey.get(x).getBlock().getID()){
+					journey.get(x).setStation(true);
+					stationIndex++;
+			}
+			
+		}
+		
+		System.out.println("Journey Size: " + journey.size());
 		
 		//Set start of journey to time 0, speed 0
 		journey.get(0).setArrTime(0);
 		journey.get(0).setArrSpeed(0);
 		
-		this.index = index;
-	
+		this.index = index;	
 	}
 	
 	//When journey is cloned
@@ -50,7 +60,7 @@ public class Journey {
 	public void printJourney(){
 		System.out.println("Train " + train.getName() + " journey");
 		for(BlockOccupation j: journey)
-			System.out.println("Train: " + train.getID() + " Passing block: " + j.getBlock().getID() + " Arriving: " + j.getArrTime() + " at " + j.getArrSpeed() + "km/h Departing at: " + j.getDepTime() + " at " + j.getDepSpeed() + "km/h");
+			System.out.println("Train: " + train.getID() + " Passing block: " + j.getBlock().getID() + " Arriving: " + j.getArrTime() + " at " + j.getArrSpeed() + "km/h Departing at: " + j.getDepTime() + " at " + j.getDepSpeed() + "km/h + Station: " + j.isStation());
 	}
 	
 	public Engine getTrain(){

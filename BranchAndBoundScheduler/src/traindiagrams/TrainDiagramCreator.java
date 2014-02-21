@@ -32,7 +32,7 @@ public class TrainDiagramCreator {
 			XYSeries series = new XYSeries(j.getTrain().getName());
 			for(BlockOccupation b: j.getBlockOccupations()){
 				
-				series.add(b.getArrTime(), b.getBlock().getID() + 1);
+				series.add(b.getArrTime(), b.getBlock().getID());
 				series.add(b.getDepTime(), b.getBlock().getID() + 1);
 			}
 			dataset.addSeries(series);

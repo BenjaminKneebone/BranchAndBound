@@ -25,8 +25,15 @@ public class Test {
 
 		Engine t = n.getTrains().get(0);
 			
-		int[] stations = {0, 4, 8};
-		int[] stations2 = {2, 4, 8};
+		ArrayList<Integer> stations = new ArrayList<Integer>();
+		stations.add(0);
+		stations.add(4);
+		stations.add(8);
+		
+		ArrayList<Integer> stations2 = new ArrayList<Integer>();
+		stations2.add(2);
+		stations2.add(4);
+		stations2.add(8);
 		
 		System.out.println("---INITIAL STATE---");
 		System.out.println("---BLOCKS---");

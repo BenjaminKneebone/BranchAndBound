@@ -24,6 +24,7 @@ public class Dijkstra {
 	
 	public ArrayList<BlockOccupation> shortestRoute(int sourceID, int destID, Engine train) throws RouteNotFoundException{
 			
+		
 		//Large number so found routes are smaller
 		int globalMin = 10000000;
 		boolean destFound = false;
@@ -104,12 +105,12 @@ public class Dijkstra {
 			
 			//Loop through adding blocks to root
 			while(last.getPrevJoin() != null){
-				route.add(new BlockOccupation(train, last.getSource(),Integer.MAX_VALUE,Integer.MAX_VALUE, 0, 0));
+				route.add(new BlockOccupation(train, last.getSource(),Integer.MAX_VALUE,Integer.MAX_VALUE, 0, 0, false));
 				last = last.getPrevJoin();
 			}
 			
 			//Add source block
-			route.add(new BlockOccupation(train, blocks.get(sourceID),Integer.MAX_VALUE,Integer.MAX_VALUE, 0, 0));
+			route.add(new BlockOccupation(train, blocks.get(sourceID),Integer.MAX_VALUE,Integer.MAX_VALUE, 0, 0, false));
 			
 			//reverse route (Now source to destination
 			Collections.reverse(route);

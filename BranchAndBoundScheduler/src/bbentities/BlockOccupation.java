@@ -18,15 +18,21 @@ public class BlockOccupation implements Cloneable{
 	private double depTime = 0;
 	//Time entering block
 	private double arrTime = 0;
+	private boolean station;
 	
 	
-	public BlockOccupation(Engine train, Block block, double depTime, double arrTime, int arrSpeed, int depSpeed){
+	public BlockOccupation(Engine train, Block block, double depTime, double arrTime, int arrSpeed, int depSpeed, boolean station){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
 		this.arrTime = arrTime;
 		this.depSpeed = depSpeed;
 		this.arrSpeed = arrSpeed;
+		this.station = station;
+	}
+	
+	public void setStation(boolean station){
+		this.station = station;
 	}
 	
 	public int getArrSpeed() {
@@ -69,6 +75,10 @@ public class BlockOccupation implements Cloneable{
 		return train;
 	}
 	
+	public boolean isStation(){
+		return station;
+	}
+	
 	public void printBlockDetail(){
 		/*
 		System.out.println("------------------------------------------------------------");
@@ -83,7 +93,7 @@ public class BlockOccupation implements Cloneable{
 	
 	public BlockOccupation clone(ArrayList<Block> blocks){
 		//Clone BlockOccupation using reference to block in list provided
-		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime, arrSpeed, depSpeed);
+		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime, arrSpeed, depSpeed, station);
 		return bo;
 	}
 	

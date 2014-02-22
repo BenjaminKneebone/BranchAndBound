@@ -316,7 +316,7 @@ public class Scheduler {
 					}
 					
 					TrainDiagramCreator tdc = new TrainDiagramCreator();
-					tdc.drawDiagram(journeys, id);
+					tdc.drawDiagram(journeys, String.valueOf(id));
 
 				} else {
 					System.out.println("----JUST BEFORE COPY - ALTERATIONS PERFORMED");

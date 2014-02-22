@@ -14,6 +14,15 @@ public class Engine {
 	private String name;
 	private int[] speedProfile = new int[10];
 
+	/**
+	 * @param id Train ID
+	 * @param length in metres
+	 * @param weight in kilograms
+	 * @param driForce in Newtons
+	 * @param breForce in Newtons
+	 * @param name 
+	 * @param speedProfile A ten int array of speeds at power levels 1-10
+	 */
 	public Engine(int id, int length, int weight, int driForce, int breForce,
 			String name, int[] speedProfile) {
 		this.id = id;
@@ -52,8 +61,8 @@ public class Engine {
 	}
 
 	/**
-	 * Use if train can proceed at full power (Next block is long enough and
-	 * unoccupied)
+	 * Calculates time and speed at block exit assuming train
+	 * is at full power across block
 	 * 
 	 * @param block
 	 *            - block to be traversed
@@ -111,8 +120,8 @@ public class Engine {
 	}
 
 	/**
-	 * Use if train must exit the block at a set speed (Next block cannot
-	 * support full speed stopping)
+	 * Calculates exit time if train must exit the block
+	 * at a certain speed
 	 * 
 	 * @param block
 	 *            block to be traversed
@@ -144,7 +153,6 @@ public class Engine {
 				double decelerationTime;
 				double decelerationDist;
 				double constantTime;
-				double constantDist;
 
 				for (; maxSpeed < speedProfile[9]; maxSpeed++) {
 					// System.out.println("X: " + maxSpeed);
@@ -233,15 +241,15 @@ public class Engine {
 	}
 
 	/**
-	 * Use if train must spend certain amount of time in the block (If next
-	 * block is occupied)
+	 * Calculates exit speed if train must spend certain amount
+	 * of time in the block
 	 * 
 	 * @param block
 	 *            - block to be traversed
 	 * @param speed
 	 *            - entry speed
 	 * @param time
-	 *            - minimum time to spend in bloc
+	 *            - minimum time to spend in block
 	 * @return BlockExit object containing time to traverse block and exit speed
 	 * @throws InvalidSpeedException
 	 */
@@ -366,7 +374,7 @@ public class Engine {
 	}
 
 	/**
-	 * Whether a train can stop in the given block
+	 * Whether a train can stop from full speed in the given block
 	 * 
 	 * @param block
 	 *            block in question

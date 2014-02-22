@@ -16,31 +16,34 @@ public class Dijkstra {
 	private ArrayList<Block> blocks;
 	private ArrayList<Join> joins;
 	
-	
 	public Dijkstra(Network network){
 		blocks = network.getBlocks();
 		joins = network.getJoins();
 	}
 	
+	/**
+	 * 
+	 * @param sourceID Id of first block
+	 * @param destID Id of final block
+	 * @param train train that will conduct this route
+	 * @return A List of BlockOccupations representing the quickest route between destination and source
+	 * @throws RouteNotFoundException
+	 */
 	public ArrayList<BlockOccupation> shortestRoute(int sourceID, int destID, Engine train) throws RouteNotFoundException{
 			
-		
 		//Large number so found routes are smaller
 		int globalMin = 10000000;
 		boolean destFound = false;
 		
 		//The "Front"
 		ArrayList<Join> activeJoins = new ArrayList<Join>();
-		
-		//Large number so found routes are smaller
-		for(Join j: joins)
-			j.setMinDistance(10000000);
-		
+				
 		//Get the first join
 		activeJoins.add(joins.get(sourceID));
 		
 		//Set distance to first join
 		joins.get(sourceID).setMinDistance(blocks.get(sourceID).getLength());
+		//Set this join to beginning of the chain
 		joins.get(sourceID).setPrevJoin(null);	
 		
 		//Whilst we have active joins
@@ -69,14 +72,14 @@ public class Dijkstra {
 								joins.get(destID).setPrevJoin(oldJ);
 							}
 						}else{
-							//Add new join to the "front"
 							Join newJ = joins.get(b.getID());
 							
 							//Check if quicker route has been found to this join
 							if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
-									newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
-									newJ.setPrevJoin(oldJ);
-									newActive.add(newJ);
+								//Set new minimum distance values and add join to the "Front"
+								newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
+								newJ.setPrevJoin(oldJ);
+								newActive.add(newJ);
 							}
 						}
 					}		
@@ -112,7 +115,7 @@ public class Dijkstra {
 			//Add source block
 			route.add(new BlockOccupation(train, blocks.get(sourceID),Integer.MAX_VALUE,Integer.MAX_VALUE, 0, 0, false));
 			
-			//reverse route (Now source to destination
+			//reverse route (Now source to destination)
 			Collections.reverse(route);
 			
 			//Reset joins

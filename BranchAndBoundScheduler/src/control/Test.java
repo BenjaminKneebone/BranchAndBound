@@ -19,7 +19,7 @@ public class Test {
 	
 
 	public static void main(String[] args){
-		Network n = new Network();
+		Network n = new Network("files/Network.json");
 		
 		Dijkstra d = new Dijkstra(n);
 

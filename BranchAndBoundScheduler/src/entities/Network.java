@@ -10,8 +10,11 @@ public class Network {
 	private ArrayList<Block> blocks;
 	private ArrayList<Join> joins;
 	
-	public Network(){
-		NetworkJSONParser js = new NetworkJSONParser();
+	/**
+	 * @param filename File to parse network data from
+	 */
+	public Network(String filename){
+		NetworkJSONParser js = new NetworkJSONParser(filename);
 		trains = js.getTrains();
 		blocks = js.getBlocks();
 		joins = js.getJoins();

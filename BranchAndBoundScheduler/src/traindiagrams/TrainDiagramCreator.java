@@ -21,7 +21,12 @@ import bbentities.Journey;
 
 public class TrainDiagramCreator {
 
-	public void drawDiagram(ArrayList<Journey> journeys, double id){
+	/**
+	 * Creates a train diagram
+	 * @param journeys The journeys the schedule consists of
+	 * @param id File will be stored in files/chartid.jpg
+	 */
+	public void drawDiagram(ArrayList<Journey> journeys, String id){
 		File f = new File("chart" + id + ".jpg");
 		try {
 			f.createNewFile();
@@ -30,13 +35,13 @@ public class TrainDiagramCreator {
 			e1.printStackTrace();
 		}
 		
-		
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		
 		for(Journey j: journeys){
 			XYSeries series = new XYSeries(j.getTrain().getName());
 			for(BlockOccupation b: j.getBlockOccupations()){
 				
+				//Draws diagonal line (transit across block) 
 				series.add(b.getArrTime(), b.getBlock().getID());
 				series.add(b.getDepTime(), b.getBlock().getID() + 1);
 			}
@@ -62,13 +67,13 @@ public class TrainDiagramCreator {
 		// Configure chart to generate URLs?
 		);
 		
+		//Show diamond at each block entry/exit
 		Shape cross = ShapeUtilities.createDiagonalCross(1, 1);
 		
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-		renderer.setSeriesShapesVisible(0, true);
-		renderer.setSeriesShape(0, cross);
-		renderer.setSeriesShape(1, cross);
-		renderer.setSeriesShape(2, cross);
+		
+		for(int x = 0; x < dataset.getSeriesCount(); x++)
+			renderer.setSeriesShape(x, cross);
 		
 		chart.getXYPlot().setRenderer(renderer);
 		

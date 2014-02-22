@@ -17,25 +17,26 @@ import entities.Join;
 
 public class NetworkJSONParser {
 
-	JSONObject network;
+	private JSONObject network;
+	private ArrayList<Engine> trains;
+	private ArrayList<Block> blocks;
+	private ArrayList<Join> joins;
 	
-	ArrayList<Engine> trains;
-	ArrayList<Block> blocks;
-	ArrayList<Join> joins;
-	
-	public NetworkJSONParser(){
+	/**
+	 * @param filename File to parse network data from
+	 */
+	public NetworkJSONParser(String filename){
 		JSONParser jp = new JSONParser();
 		
 		try {
-			Object obj = jp.parse(new FileReader("files/Network.json"));
+			Object obj = jp.parse(new FileReader(filename));
 			network = (JSONObject) obj;
 		} catch (FileNotFoundException e) {
-			System.out.println("Network.json not found");
+			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
-			System.out.println("Error parsing Network.json");
+			e.printStackTrace();
 		}
 		
 		createTrains();
@@ -46,10 +47,16 @@ public class NetworkJSONParser {
 	
 	private void createTrains(){
 		
+		/*Empty list set up so that trains can be added to the list in the
+		 * index represented by their ID. Before being performed this way, 
+		 * the originally created ArrayList was not always ordered by train
+		 * ID. Ordering is now guaranteed.
+		 */
+		
 		trains = new ArrayList<Engine>();
 		
 		JSONArray engines = (JSONArray) network.get("engines");
-		//Initialize adjacency arraylist
+		//Initialise adjacency ArrayList
 		for(int x = 0; x < engines.size(); x++)
 			trains.add(new Engine(0, 0, 0, 0, 0, "", null));
 		
@@ -69,21 +76,29 @@ public class NetworkJSONParser {
 			for(int x = 0; x < speed.size(); x++)
 				speedProfile[x] = Integer.parseInt(speed.get(x).toString());
 			
+			//Create Engine
 			Engine temp = new Engine(id, Integer.parseInt(train.get("length").toString()), Integer.parseInt(train.get("weight").toString()), 
 					Integer.parseInt(train.get("driving force").toString()), Integer.parseInt(train.get("braking force").toString()), 
 					train.get("name").toString(), speedProfile);
 			
+			//Add Engine
 			trains.set(id,temp);
 		}
 	}
 	
 	private void createBlocks(){
 		
+		/*Empty list set up so that blocks can be added to the list in the
+		 * index represented by their ID. Before being performed this way, 
+		 * the originally created ArrayList was not always ordered by block
+		 * ID. Ordering is now guaranteed.
+		 */
+		
 		blocks = new ArrayList<Block>();
 		
 		JSONArray blockObjects = (JSONArray) network.get("blocks");
 		
-		//Initialize adjacency arraylist
+		//Initialise adjacency ArrayList
 		for(int x = 0; x < blockObjects.size(); x++)
 			blocks.add(new Block(0, 0, 0 , 0, false));
 		
@@ -97,18 +112,26 @@ public class NetworkJSONParser {
 			JSONObject block = blockIterator.next();
 			sourceID = Integer.parseInt(block.get("id").toString());
 			
+			//create block
 			Block temp = new Block(sourceID, Integer.parseInt(block.get("length").toString()), 0, 0, false);
+			
+			//add in correct place
 			blocks.set(sourceID, temp);
 		}
 	}
 	
 	private void createJoins(){
 		
-		joins = new ArrayList<Join>();
+		/*Empty list set up so that joins can be added to the list in the
+		 * index represented by their sourceID. Before being performed this way, 
+		 * the originally created ArrayList was not always ordered by source
+		 * ID. Ordering is now guaranteed.
+		 */
 		
+		joins = new ArrayList<Join>();
 		JSONArray blockObjects = (JSONArray) network.get("blocks");
 		
-		//Initialize adjacency arraylist
+		//Initialise adjacency arraylist
 		for(int x = 0; x < blockObjects.size(); x++)
 			joins.add(new Join(blocks.get(x), null));
 		
@@ -118,11 +141,10 @@ public class NetworkJSONParser {
 		@SuppressWarnings("unchecked")
 		Iterator<JSONObject> joinIterator = joinObjects.iterator();
 		
-		
-		
 		//For each join
 		while(joinIterator.hasNext()){
-			//Get the blocks involved
+			
+			//Get all blocks either side of the join
 			JSONArray ids = (JSONArray) joinIterator.next().get("ids");
 			
 			//Block leading into the join
@@ -130,22 +152,17 @@ public class NetworkJSONParser {
 			int sourceID = Integer.parseInt(sourceBlock.get("id").toString());
 			Block source = blocks.get(sourceID);
 			
+			//Blocks leading from the join
 			ArrayList<Block> dest = new ArrayList<Block>();
 			
-			//Block leading out of block - add to adjacency for source block
-			JSONObject destBlock1 = (JSONObject) ids.get(1);
-			int dest1ID = Integer.parseInt(destBlock1.get("id").toString());
-			dest.add(blocks.get(dest1ID));
+			//Add Blocks leading out of the join
+			for(int x = 1; x < ids.size(); x++){
+				//Block leading out of block - add to adjacency for source block
+				dest.add(blocks.get(Integer.parseInt(((JSONObject) ids.get(1)).get("id").toString())));
+			}
 			
-			//Possible 2nd lead out - add to adjacency for source block
-			if(ids.size() == 3){
-				JSONObject destBlock2 = (JSONObject) ids.get(2);
-				int dest2ID = Integer.parseInt(destBlock2.get("id").toString());
-				dest.add(blocks.get(dest2ID));
-			}	
-			
-			joins.set(sourceID, new Join(source, dest));
-			
+			//Position based on the source Blocks ID
+			joins.set(sourceID, new Join(source, dest));	
 		}
 	}
 	

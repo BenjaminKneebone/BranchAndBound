@@ -2,7 +2,7 @@ package entities;
 
 import exceptions.InvalidSpeedException;
 
-public class Engine {
+public class Engine implements Train{
 
 	private int id;
 	private int length; // mm

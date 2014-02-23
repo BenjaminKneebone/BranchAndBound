@@ -1,0 +1,31 @@
+Class 66 schedule
+Block 0 Arriving 0.0000   (0  km/h) Departing 137.7064 (0  km/h) 
+Block 1 Arriving 137.7064 (0  km/h) Departing 176.5918 (105km/h) 
+Block 2 Arriving 176.5918 (105km/h) Departing 245.1632 (105km/h) 
+Block 3 Arriving 245.1632 (105km/h) Departing 313.7346 (105km/h) 
+Block 4 Arriving 313.7346 (105km/h) Departing 505.1272 (0  km/h) 
+Block 5 Arriving 505.1272 (0  km/h) Departing 578.2982 (105km/h) 
+Block 6 Arriving 578.2982 (105km/h) Departing 646.8697 (105km/h) 
+Block 7 Arriving 646.8697 (105km/h) Departing 715.4411 (105km/h) 
+Block 8 Arriving 715.4411 (105km/h) Departing 786.8336 (0  km/h) 
+
+FGW 125 schedule
+Block 0 Arriving 137.7064 (0  km/h) Departing 275.4129 (0  km/h) 
+Block 1 Arriving 275.4129 (0  km/h) Departing 314.2982 (105km/h) 
+Block 2 Arriving 314.2982 (105km/h) Departing 382.8697 (105km/h) 
+Block 3 Arriving 382.8697 (105km/h) Departing 505.1272 (0  km/h) 
+Block 4 Arriving 505.1272 (0  km/h) Departing 701.1193 (0  km/h) 
+Block 5 Arriving 701.1193 (0  km/h) Departing 774.2904 (105km/h) 
+Block 6 Arriving 774.2904 (105km/h) Departing 842.8618 (105km/h) 
+Block 7 Arriving 842.8618 (105km/h) Departing 911.4332 (105km/h) 
+Block 8 Arriving 911.4332 (105km/h) Departing 982.8258 (0  km/h) 
+
+Class 60 schedule
+Block 2 Arriving 382.8697 (0  km/h) Departing 578.8618 (0  km/h) 
+Block 3 Arriving 578.8618 (0  km/h) Departing 701.1193 (0  km/h) 
+Block 4 Arriving 701.1193 (0  km/h) Departing 897.1115 (0  km/h) 
+Block 5 Arriving 897.1115 (0  km/h) Departing 970.2825 (105km/h) 
+Block 6 Arriving 970.2825 (105km/h) Departing 1038.8540 (105km/h) 
+Block 7 Arriving 1038.8540 (105km/h) Departing 1107.4254 (105km/h) 
+Block 8 Arriving 1107.4254 (105km/h) Departing 1178.8179 (0  km/h) 
+

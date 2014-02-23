@@ -1,5 +1,9 @@
 package control;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,11 +19,24 @@ import bbentities.Journey;
 
 public class Scheduler {
 
-	private ArrayList<Journey> journeys;
 	private ArrayList<Block> blocks;
+
+	/*
+	 * A copy of the journeys passed into this node. All potential alterations
+	 * to Journeys are stored in this list (Altered BlockOccupations)
+	 */
+	private ArrayList<Journey> journeys;
+	/*
+	 * A copy of the journeys passed into this node. This should not be altered
+	 * and is passed into new nodes along with one altered journey
+	 */
 	private ArrayList<Journey> journeyCopy;
 	private ArrayList<Engine> trains;
-	double id = 0;
+	private String id;
+
+	// Details for earliest block exit for this node
+	Block firstArrivalBlock = null;
+	double firstArrivalTime = Integer.MAX_VALUE;
 
 	public Scheduler(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains) {
@@ -27,19 +44,21 @@ public class Scheduler {
 		this.journeys = journeys;
 		this.blocks = blocks;
 		this.trains = trains;
-		
-		// Clone journeys, pass in newly cloned blocks
+		this.id = "0";
+
+		// Clone journeys
 		ArrayList<Journey> newJournies = new ArrayList<Journey>();
 		for (Journey j : journeys)
 			newJournies.add(j.clone(this.blocks));
 
 		this.journeyCopy = newJournies;
 	}
-	
-	public Scheduler(ArrayList<Journey> journeys, ArrayList<Block> blocks,
-			ArrayList<Engine> trains, Journey alteredJourney, int index) {
 
-		System.out.println("---NODE---");
+	private Scheduler(ArrayList<Journey> journeys, ArrayList<Block> blocks,
+			ArrayList<Engine> trains, Journey alteredJourney, int index,
+			String id) {
+
+		System.out.println("---NODE" + id + "---");
 
 		// Clone blocks
 		ArrayList<Block> newBlocks = new ArrayList<Block>();
@@ -49,18 +68,19 @@ public class Scheduler {
 		this.blocks = newBlocks;
 
 		alteredJourney = alteredJourney.clone(this.blocks);
-		
+
 		// Clone journeys, pass in newly cloned blocks
 		ArrayList<Journey> newJournies = new ArrayList<Journey>();
 		for (Journey j : journeys)
 			newJournies.add(j.clone(this.blocks));
 
 		this.journeys = newJournies;
+
+		// Add the altered journey that this node was created for
 		this.journeys.set(index, alteredJourney);
 
-		// No need to clone trains
-		this.trains = trains;
-		
+		// Create another copy of the journeys
+
 		alteredJourney = alteredJourney.clone(this.blocks);
 
 		// Clone journeys, pass in newly cloned blocks
@@ -70,50 +90,44 @@ public class Scheduler {
 
 		this.journeyCopy = newJournies;
 		journeyCopy.set(index, alteredJourney);
-		
-		id = Math.random();
+
+		this.id = id;
+
+		// No need to clone trains
+		this.trains = trains;
 	}
+
+	/*
+	 * schedule() will attempt to schedule the next BlockOccupation of each
+	 * Journey. It will alter the BlockOccupation objects stored within
+	 * journeys. So after schedule has been called, journeys will store the
+	 * journeys each with another Block scheduled (where feasible). It will find
+	 * the first arrival time and the block in which this occurs and pass it to
+	 * the node creation method. Note: No alterations are made to either
+	 * journeyCopy or blocks
+	 */
 
 	public void schedule() {
 
 		System.out.println("Node Creation");
-		for(int x = 0; x < 5; x++)
-			blocks.get(x).printBlockDetail();
-
-		
-		// Details for earliest block exit for this node
-		Block firstArrivalBlock = null;
-		double firstArrivalTime = Integer.MAX_VALUE;
 
 		// Schedule next block for each train
 		for (Journey j : journeys) {
 
-			// Do not schedule finished journeys
-			if (j.isScheduled())
+			if (!canBeScheduled(j))
 				continue;
-
-			// Do not schedule if train has not started and first block is
-			// occupied
-			if (j.firstBlock())
-				if (j.getNextToBeScheduled().getBlock().isOccupied()) {
-					continue;
-				}
-
-			if (j.getNextToBeScheduled().getArrSpeed() == 0)
-				if (j.getNextToBeScheduled().getBlock().isOccupied()) {
-					continue;
-				}
 
 			// Get first block to be scheduled on journey
 			BlockOccupation firstBlock = j.getNextToBeScheduled();
-			
+
 			if (firstBlock.getArrTime() < firstBlock.getBlock()
 					.getNextPossibleEntry()) {
 				firstBlock.setArrTime(firstBlock.getBlock()
 						.getNextPossibleEntry());
-				
-				if(!j.firstBlock())
-					j.getPreviousBlock().setDepTime(firstBlock.getBlock().getNextPossibleEntry());
+
+				if (!j.firstBlock())
+					j.getPreviousBlock().setDepTime(
+							firstBlock.getBlock().getNextPossibleEntry());
 			}
 
 			Engine train = firstBlock.getTrain();
@@ -137,51 +151,66 @@ public class Scheduler {
 				// Get second block
 				BlockOccupation secondBlock = j.getSecondToBeScheduled();
 
-				// If second block has enough space for train to enter at full
-				// speed
-				if (train.canStopInBlock(secondBlock.getBlock())) {
-
-					// Full speed ahead
+				if(firstBlock.isStation()){
 					try {
-						b = train.timeToTraverse(firstBlock.getBlock(),
-								firstBlock.getArrSpeed());
-					} catch (InvalidSpeedException e) {
-						e.printStackTrace();
-					}
-				} else {
-
-					// Train must leave block at reduced speed
-					int depSpeed = train.highestBlockEntrySpeed(secondBlock
-							.getBlock());
-
-					try {
-						b = train.exitBlockAtSetSpeed(firstBlock.getBlock(),
-								firstBlock.getArrSpeed(), depSpeed);
-					} catch (InvalidSpeedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-				// If next block is occupied or we arrive before the last train
-				// has cleared
-				if (secondBlock.getBlock().isOccupied()
-						|| ((firstBlock.getArrTime() + b.getTime()) < secondBlock
-								.getBlock().getNextPossibleEntry())) {
-
-					// Train needs to stop at the end of the block
-					try {
+						System.out.println("A STATION!!!!");
 						b = train.exitBlockAtSetSpeed(firstBlock.getBlock(),
 								firstBlock.getArrSpeed(), 0);
+						b.addStationTime(120);
 					} catch (InvalidSpeedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+					}
+				}else{
+					// If second block has enough space for train to enter at full
+					// speed
+					if (train.canStopInBlock(secondBlock.getBlock())) {
+	
+						// Full speed ahead
+						try {
+							b = train.timeToTraverse(firstBlock.getBlock(),
+									firstBlock.getArrSpeed());
+						} catch (InvalidSpeedException e) {
+							e.printStackTrace();
+						}
+					} else {
+	
+						// Train must leave block at reduced speed
+						int depSpeed = train.highestBlockEntrySpeed(secondBlock
+								.getBlock());
+	
+						try {
+							b = train.exitBlockAtSetSpeed(firstBlock.getBlock(),
+									firstBlock.getArrSpeed(), depSpeed);
+						} catch (InvalidSpeedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+	
+					// If next block is occupied or we arrive before the last train
+					// has cleared
+					if (secondBlock.getBlock().isOccupied()
+							|| ((firstBlock.getArrTime() + b.getTime()) < secondBlock
+									.getBlock().getNextPossibleEntry())) {
+	
+						// Train needs to stop at the end of the block
+						try {
+							b = train.exitBlockAtSetSpeed(firstBlock.getBlock(),
+									firstBlock.getArrSpeed(), 0);
+						} catch (InvalidSpeedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				}
 			}
-			
-			System.out.println("POSSIBLE OPTION: " + train.getName() + " Block: " + firstBlock.getBlock().getID() + " Arriving at " + firstBlock.getArrTime() + " at " + firstBlock.getArrSpeed() + 
-					"Leaving at " + (firstBlock.getArrTime() + b.getTime()) + " at "
+
+			System.out.println("POSSIBLE OPTION: " + train.getName()
+					+ " Block: " + firstBlock.getBlock().getID()
+					+ " Arriving at " + firstBlock.getArrTime() + " at "
+					+ firstBlock.getArrSpeed() + "Leaving at "
+					+ (firstBlock.getArrTime() + b.getTime()) + " at "
 					+ b.getSpeed());
 
 			// Time leaving block
@@ -200,72 +229,58 @@ public class Scheduler {
 		createNewNodes(firstArrivalBlock, firstArrivalTime);
 	}
 
+	/*
+	 * createNewNodes() will loop through the journeys finding any journey where
+	 * the the next BlockOccupation's departure time is before the first arrival
+	 * time and in the same block as the first arrival time.
+	 * 
+	 * It makes a copy of the block to be altered before any change is made. It
+	 * then passes journeyCopy (clean list of journeys) and the altered journey
+	 * into a new node (Where the altered journey is added to a clone of
+	 * journeyCopy).
+	 * 
+	 * The altered block is then made to copy the values copied before it was
+	 * altered (The block is reset to its initial state in this node).
+	 */
+
 	private void createNewNodes(Block firstArrivalBlock, double firstArrival) {
 		// ----STEP 3
-	
+
+		int childID = 0;
+
 		for (Journey jou : journeys) {
 			// Do not schedule finished journeys
-			
-			if (jou.isScheduled())
+
+			if (!canBeScheduled(jou))
 				continue;
-
-			// Do not schedule if train has not started and first block is
-			// occupied
-			if (jou.firstBlock())
-				if (jou.getNextToBeScheduled().getBlock().isOccupied()) {
-					System.out.println(jou.getTrain().getName() + " "
-							+ jou.getNextToBeScheduled().getBlock().getID());
-					continue;
-				}
-
-			if (jou.getNextToBeScheduled().getArrSpeed() == 0)
-				if (jou.getNextToBeScheduled().getBlock().isOccupied()) {
-					System.out.println(jou.getTrain().getName() + " "
-							+ jou.getNextToBeScheduled().getBlock().getID());
-					continue;
-				}
 
 			BlockOccupation bo = jou.getNextToBeScheduled();
 			BlockOccupation bo2 = null;
-			
+
+			// Take copies of affected blocks
 			Block firstBlockCopy = bo.getBlock().clone();
 			Block secondBlockCopy = null;
-			
-			String y = "hey";
-			
-			if (!jou.lastBlock()){
-				
+
+			if (!jou.lastBlock()) {
 				bo2 = jou.getSecondToBeScheduled();
-				secondBlockCopy = jou.getSecondToBeScheduled().getBlock().clone();
-				System.out.println("---bo2: " + bo2);
-				y = bo2.toString();
+				secondBlockCopy = jou.getSecondToBeScheduled().getBlock()
+						.clone();
 			}
 
-			
-			
 			// If next block is that of earliest arrival and depij < mav
 			if (firstArrivalBlock == bo.getBlock()
 					&& bo.getArrTime() <= firstArrival) {
-				
-				
 
-				
-				System.out.println("Updating block "
-						+ bo.getBlock().getID() + " for "
-						+ bo.getTrain().getName());
-
-				// ----PREVIOUS BLOCK?----//
-				// Train halted at the end of the previous block
+				// ----WAS HALTED IN PREVIOUS BLOCK?----//
 
 				if (!jou.firstBlock() && bo.getArrSpeed() == 0) {
-					// Unoccupy previous block, update leaving time from
-					// block
+					// Unoccupy previous block, update leaving time from block
 					jou.getPreviousBlock().getBlock().setOccupied(false);
 					jou.getPreviousBlock().getBlock()
 							.setNextPossibleEntry(bo.getArrTime());
 					firstArrivalBlock.setLastEntry(bo.getArrTime());
 				}
-				System.out.println("---bo2: " + bo2 + "  " + id);
+
 				// ----LEAVING CURRENT BLOCK?----//
 				if (bo.getDepSpeed() != 0) {
 					// Update last arrival time for the block, do not occupy
@@ -276,14 +291,11 @@ public class Scheduler {
 					// Occupy this block
 					firstArrivalBlock.setOccupied(true);
 				}
-				System.out.println("---bo2: " + bo2 + "  " + id);
+
 				// ----LAST BLOCK?----//
 				if (!jou.lastBlock()) {
-
 					// Not the last block so update entry into next block
-					
-					System.out.println("Updating next block "
-							+ bo2.getBlock().getID());
+
 					bo2.setArrTime(bo.getDepTime());
 					bo2.setArrSpeed(bo.getDepSpeed());
 					bo2.getBlock().setLastEntry(bo.getDepTime());
@@ -291,55 +303,85 @@ public class Scheduler {
 					// If we enter the next block, occupy it
 					if (bo.getDepSpeed() != 0)
 						bo2.getBlock().setOccupied(true);
-					
+
 				} else {
-					System.out.println("------------------------------------------------------------------------------------------------_SET TO FALSE");
 					bo.getBlock().setOccupied(false);
 					bo.getBlock().setNextPossibleEntry(bo.getDepTime());
 				}
-				System.out.println("---bo2: " + bo2 + "  " + id);
+
 				// Move to next block of this journey
-				jou.incrementJourney();			
+				jou.incrementJourney();
 
 				if (allJourneysScheduled()) {
-					for(int x = 0; x < 5; x++)
-						blocks.get(x).printBlockDetail();
-					System.out.println("-----COMPLETE SCHEDULE-----");
-
-					for (Journey journey : journeys) {
-						System.out.println("\n"
-								+ journey.getTrain().getName()
-								+ " schedule");
-						for (BlockOccupation b : journey
-								.getBlockOccupations())
-							b.printBlockDetail();
-					}
-					
-					TrainDiagramCreator tdc = new TrainDiagramCreator();
-					tdc.drawDiagram(journeys, String.valueOf(id));
-
+					scheduleComplete();
 				} else {
-					System.out.println("----JUST BEFORE COPY - ALTERATIONS PERFORMED");
-					
-					for(int x = 0; x < 5; x++)
-						blocks.get(x).printBlockDetail();
-					
-					
-					System.out.println("bo2: " + y + "  " + id);
-					System.out.println("---CREATING NODE---");
-					Scheduler s = new Scheduler(journeyCopy, blocks, trains, jou, jou.getIndex());
+
+					// Create node and reset blocks
+					System.out.println("---CREATING NODE "
+							+ id.concat(String.valueOf(childID)) + "---");
+					Scheduler s = new Scheduler(journeyCopy, blocks, trains,
+							jou, jou.getIndex(), id.concat(String
+									.valueOf(childID)));
 					s.schedule();
-					
+
+					childID++;
+
 					firstArrivalBlock.copyBlock(firstBlockCopy);
-					
-					if (!jou.lastBlock()){ 
-						System.out.println("bo2: " + y + "  " + id);
-						System.out.println("bo2: " + bo2);
+
+					if (!jou.lastBlock()) {
 						bo2.getBlock().copyBlock(secondBlockCopy);
 					}
 				}
 			}
 		}
+
+	}
+
+	private void scheduleComplete() {
+		File sch = new File("schedule/scheduleatnode" + id + ".txt");
+
+		FileWriter write = null;
+		PrintWriter print = null;
+		try {
+			write = new FileWriter(sch, false);
+
+			print = new PrintWriter(write);
+
+			
+			for (Journey journey : journeys) {
+				print.write(journey.getTrain().getName() + " schedule\n");
+
+				for (BlockOccupation b : journey.getBlockOccupations())
+					print.printf("Block %d Arriving %-8.4f (%-3dkm/h) Departing %-8.4f (%-3dkm/h) \n", b.getBlock().getID(), b.getArrTime(), b.getArrSpeed(),  b.getDepTime(), b.getDepSpeed()); 
+			
+				print.write("\n");
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (print != null) {
+				print.close();
+			}
+		}
+
+		TrainDiagramCreator tdc = new TrainDiagramCreator();
+		tdc.drawDiagram(journeys, String.valueOf(id));
+	}
+
+	private boolean canBeScheduled(Journey jou) {
+
+		// Journey already scheduled
+		if (jou.isScheduled())
+			return false;
+
+		// Train halted before next block and block is occupied
+		if (jou.getNextToBeScheduled().getArrSpeed() == 0
+				&& jou.getNextToBeScheduled().getBlock().isOccupied())
+			return false;
+
+		return true;
 
 	}
 

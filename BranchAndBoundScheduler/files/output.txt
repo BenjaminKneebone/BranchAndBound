@@ -52,2406 +52,297 @@ Train: 2 Passing block: 7 Arriving: 2.147483647E9 at 0km/h Departing at: 2.14748
 Train: 2 Passing block: 8 Arriving: 2.147483647E9 at 0km/h Departing at: 2.147483647E9 at 0km/h + Station: true
 ---END INITIAL STATE---
 Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 1 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 0 Arriving at 0.0 at 0Leaving at 14.885347537548027 at 105
-POSSIBLE OPTION: FGW 125 Block: 0 Arriving at 0.0 at 0Leaving at 14.885347537548027 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 73.1710618232623 at 105
----bo2: bbentities.BlockOccupation@535bab52
-Updating block 0 for Class 66
----bo2: bbentities.BlockOccupation@535bab52  0.0
----bo2: bbentities.BlockOccupation@535bab52  0.0
-Updating next block 1
----bo2: bbentities.BlockOccupation@535bab52  0.0
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: false
-Block 1 Last Arrival: 14.885347537548027 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@535bab52  0.0
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: false
-Block 1 Last Arrival: 14.885347537548027 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 1 Arriving at 14.885347537548027 at 105Leaving at 49.17106182326232 at 105
-POSSIBLE OPTION: FGW 125 Block: 0 Arriving at 14.885347537548027 at 0Leaving at 32.59178581187123 at 0
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 73.1710618232623 at 105
----bo2: bbentities.BlockOccupation@274cbf3f
----bo2: bbentities.BlockOccupation@1f9fd541
-Updating block 0 for FGW 125
----bo2: bbentities.BlockOccupation@1f9fd541  0.3858957904168495
----bo2: bbentities.BlockOccupation@1f9fd541  0.3858957904168495
-Updating next block 1
----bo2: bbentities.BlockOccupation@1f9fd541  0.3858957904168495
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@1f9fd541  0.3858957904168495
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 1 Arriving at 14.885347537548027 at 105Leaving at 49.17106182326232 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 73.1710618232623 at 105
----bo2: bbentities.BlockOccupation@3669ae9f
-Updating block 1 for Class 66
----bo2: bbentities.BlockOccupation@3669ae9f  0.7180844833040577
----bo2: bbentities.BlockOccupation@3669ae9f  0.7180844833040577
-Updating next block 2
----bo2: bbentities.BlockOccupation@3669ae9f  0.7180844833040577
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 49.17106182326232 occupied: false
-Block 2 Last Arrival: 49.17106182326232 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@3669ae9f  0.7180844833040577
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 49.17106182326232 occupied: false
-Block 2 Last Arrival: 49.17106182326232 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 49.17106182326232 at 105Leaving at 117.7424903946909 at 105
-POSSIBLE OPTION: FGW 125 Block: 1 Arriving at 49.17106182326232 at 0Leaving at 90.87750009758552 at 0
----bo2: bbentities.BlockOccupation@544764a1
----bo2: bbentities.BlockOccupation@1b1fb141
-Updating block 1 for FGW 125
----bo2: bbentities.BlockOccupation@1b1fb141  0.6798530515990306
----bo2: bbentities.BlockOccupation@1b1fb141  0.6798530515990306
-Updating next block 2
----bo2: bbentities.BlockOccupation@1b1fb141  0.6798530515990306
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@1b1fb141  0.6798530515990306
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 49.17106182326232 at 105Leaving at 117.7424903946909 at 105
----bo2: bbentities.BlockOccupation@3dae3050
-Updating block 2 for Class 66
----bo2: bbentities.BlockOccupation@3dae3050  0.04979678642957275
----bo2: bbentities.BlockOccupation@3dae3050  0.04979678642957275
-Updating next block 3
----bo2: bbentities.BlockOccupation@3dae3050  0.04979678642957275
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 0.0 occupied: true
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@3dae3050  0.04979678642957275
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 0.0 occupied: true
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 3 Arriving at 117.7424903946909 at 105Leaving at 186.3139189661195 at 105
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 193.73464295472837 at 0
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 193.73464295472837 at 0
----bo2: bbentities.BlockOccupation@76e5f3d2
-Updating block 3 for Class 66
----bo2: bbentities.BlockOccupation@76e5f3d2  0.16941089887016048
----bo2: bbentities.BlockOccupation@76e5f3d2  0.16941089887016048
-Updating next block 4
----bo2: bbentities.BlockOccupation@76e5f3d2  0.16941089887016048
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 186.3139189661195 occupied: false
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-bo2: bbentities.BlockOccupation@76e5f3d2  0.16941089887016048
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 186.3139189661195 occupied: false
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 186.3139189661195 at 105Leaving at 254.88534753754809 at 105
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 190.91355221795322 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 190.91355221795322 at 105
----bo2: bbentities.BlockOccupation@72ea9cf9
----bo2: bbentities.BlockOccupation@8e7da60
-Updating block 2 for FGW 125
----bo2: bbentities.BlockOccupation@8e7da60  0.4768947197044253
----bo2: bbentities.BlockOccupation@8e7da60  0.4768947197044253
-Updating next block 3
----bo2: bbentities.BlockOccupation@8e7da60  0.4768947197044253
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-bo2: bbentities.BlockOccupation@8e7da60  0.4768947197044253
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 186.3139189661195 at 105Leaving at 254.88534753754809 at 105
-POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 262.306071526157 at 0
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
----bo2: bbentities.BlockOccupation@2db1d931
-Updating block 4 for Class 66
----bo2: bbentities.BlockOccupation@2db1d931  0.7681496773445429
----bo2: bbentities.BlockOccupation@2db1d931  0.7681496773445429
-Updating next block 5
----bo2: bbentities.BlockOccupation@2db1d931  0.7681496773445429
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-bo2: bbentities.BlockOccupation@2db1d931  0.7681496773445429
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 259.4849807893818 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
----bo2: bbentities.BlockOccupation@772a3766
----bo2: bbentities.BlockOccupation@749b46a8
-Updating block 3 for FGW 125
----bo2: bbentities.BlockOccupation@749b46a8  0.742928680092104
----bo2: bbentities.BlockOccupation@749b46a8  0.742928680092104
-Updating next block 4
----bo2: bbentities.BlockOccupation@749b46a8  0.742928680092104
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@749b46a8  0.742928680092104
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 264.08461404121556 at 105
----bo2: bbentities.BlockOccupation@7e3bfb66
----bo2: bbentities.BlockOccupation@13f62649
----bo2: bbentities.BlockOccupation@54b8cdc
-Updating block 2 for Class 60
----bo2: bbentities.BlockOccupation@54b8cdc  0.1961570950487882
----bo2: bbentities.BlockOccupation@54b8cdc  0.1961570950487882
-Updating next block 3
----bo2: bbentities.BlockOccupation@54b8cdc  0.1961570950487882
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@54b8cdc  0.1961570950487882
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
----bo2: bbentities.BlockOccupation@230cc23b
-Updating block 5 for Class 66
----bo2: bbentities.BlockOccupation@230cc23b  0.5538750309523739
----bo2: bbentities.BlockOccupation@230cc23b  0.5538750309523739
-Updating next block 6
----bo2: bbentities.BlockOccupation@230cc23b  0.5538750309523739
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@230cc23b  0.5538750309523739
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 328.05640936081033 at 105
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
----bo2: bbentities.BlockOccupation@1aa3c177
----bo2: bbentities.BlockOccupation@74f2794a
-Updating block 4 for FGW 125
----bo2: bbentities.BlockOccupation@74f2794a  0.626969256201733
----bo2: bbentities.BlockOccupation@74f2794a  0.626969256201733
-Updating next block 5
----bo2: bbentities.BlockOccupation@74f2794a  0.626969256201733
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-bo2: bbentities.BlockOccupation@74f2794a  0.626969256201733
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 332.6560426126441 at 105
----bo2: bbentities.BlockOccupation@5af92541
----bo2: bbentities.BlockOccupation@1afcfd10
----bo2: bbentities.BlockOccupation@574a3347
-Updating block 3 for Class 60
----bo2: bbentities.BlockOccupation@574a3347  0.7602817600983885
----bo2: bbentities.BlockOccupation@574a3347  0.7602817600983885
-Updating next block 4
----bo2: bbentities.BlockOccupation@574a3347  0.7602817600983885
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@574a3347  0.7602817600983885
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
----bo2: bbentities.BlockOccupation@486ca716
-Updating block 6 for Class 66
----bo2: bbentities.BlockOccupation@486ca716  0.9239447145293262
----bo2: bbentities.BlockOccupation@486ca716  0.9239447145293262
-Updating next block 7
----bo2: bbentities.BlockOccupation@486ca716  0.9239447145293262
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@486ca716  0.9239447145293262
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 396.6278379322389 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
----bo2: bbentities.BlockOccupation@554dba7f
----bo2: bbentities.BlockOccupation@620f1399
-Updating block 5 for FGW 125
----bo2: bbentities.BlockOccupation@620f1399  0.22171045914069043
----bo2: bbentities.BlockOccupation@620f1399  0.22171045914069043
-Updating next block 6
----bo2: bbentities.BlockOccupation@620f1399  0.22171045914069043
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@620f1399  0.22171045914069043
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 401.22747118407267 at 105
----bo2: bbentities.BlockOccupation@4bcfd41a
----bo2: bbentities.BlockOccupation@396e1dd8
----bo2: bbentities.BlockOccupation@6c696d5c
-Updating block 4 for Class 60
----bo2: bbentities.BlockOccupation@6c696d5c  0.7906393880729707
----bo2: bbentities.BlockOccupation@6c696d5c  0.7906393880729707
-Updating next block 5
----bo2: bbentities.BlockOccupation@6c696d5c  0.7906393880729707
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@6c696d5c  0.7906393880729707
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
----bo2: bbentities.BlockOccupation@7d8aea9e
-Updating block 7 for Class 66
----bo2: bbentities.BlockOccupation@7d8aea9e  0.8272836306108798
----bo2: bbentities.BlockOccupation@7d8aea9e  0.8272836306108798
-Updating next block 8
----bo2: bbentities.BlockOccupation@7d8aea9e  0.8272836306108798
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@7d8aea9e  0.8272836306108798
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 465.19926650366745 at 105
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
----bo2: bbentities.BlockOccupation@2b316b76
-Updating block 6 for FGW 125
----bo2: bbentities.BlockOccupation@2b316b76  0.03490666299959044
----bo2: bbentities.BlockOccupation@2b316b76  0.03490666299959044
-Updating next block 7
----bo2: bbentities.BlockOccupation@2b316b76  0.03490666299959044
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@2b316b76  0.03490666299959044
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 469.7988997555012 at 105
----bo2: bbentities.BlockOccupation@39862621
----bo2: bbentities.BlockOccupation@16315e08
-Updating block 5 for Class 60
----bo2: bbentities.BlockOccupation@16315e08  0.43795829850333556
----bo2: bbentities.BlockOccupation@16315e08  0.43795829850333556
-Updating next block 6
----bo2: bbentities.BlockOccupation@16315e08  0.43795829850333556
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@16315e08  0.43795829850333556
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
-Updating block 8 for Class 66
----bo2: null  0.8278172323482819
----bo2: null  0.8278172323482819
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.8278172323482819
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.8278172323482819
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 533.770695075096 at 105
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
----bo2: bbentities.BlockOccupation@3146a9a
-Updating block 7 for FGW 125
----bo2: bbentities.BlockOccupation@3146a9a  0.36661523895700565
----bo2: bbentities.BlockOccupation@3146a9a  0.36661523895700565
-Updating next block 8
----bo2: bbentities.BlockOccupation@3146a9a  0.36661523895700565
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@3146a9a  0.36661523895700565
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 538.3703283269298 at 105
----bo2: bbentities.BlockOccupation@3162a60a
-Updating block 6 for Class 60
----bo2: bbentities.BlockOccupation@3162a60a  0.33486477546287563
----bo2: bbentities.BlockOccupation@3162a60a  0.33486477546287563
-Updating next block 7
----bo2: bbentities.BlockOccupation@3162a60a  0.33486477546287563
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@3162a60a  0.33486477546287563
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 609.7628476351335 at 0
-Updating block 8 for FGW 125
----bo2: null  0.8440270479390389
----bo2: null  0.8440270479390389
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.8440270479390389
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.8440270479390389
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 606.9417568983583 at 105
----bo2: bbentities.BlockOccupation@4382f3da
-Updating block 7 for Class 60
----bo2: bbentities.BlockOccupation@4382f3da  0.30771279072524405
----bo2: bbentities.BlockOccupation@4382f3da  0.30771279072524405
-Updating next block 8
----bo2: bbentities.BlockOccupation@4382f3da  0.30771279072524405
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@4382f3da  0.30771279072524405
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 60 Block: 8 Arriving at 606.9417568983583 at 105Leaving at 678.3342762065621 at 0
-Updating block 8 for Class 60
----bo2: null  0.6707247582546224
----bo2: null  0.6707247582546224
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.6707247582546224
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
------COMPLETE SCHEDULE-----
-
-Class 66 schedule
-0.0/14.885347537548027 in block 0 Arr Speed: 0 Dep Speed: 105
-14.885347537548027/49.17106182326232 in block 1 Arr Speed: 105 Dep Speed: 105
-49.17106182326232/117.7424903946909 in block 2 Arr Speed: 105 Dep Speed: 105
-117.7424903946909/186.3139189661195 in block 3 Arr Speed: 105 Dep Speed: 105
-186.3139189661195/254.88534753754809 in block 4 Arr Speed: 105 Dep Speed: 105
-254.88534753754809/323.45677610897667 in block 5 Arr Speed: 105 Dep Speed: 105
-323.45677610897667/392.0282046804052 in block 6 Arr Speed: 105 Dep Speed: 105
-392.0282046804052/460.5996332518338 in block 7 Arr Speed: 105 Dep Speed: 105
-460.5996332518338/531.9921525600375 in block 8 Arr Speed: 105 Dep Speed: 0
-
-FGW 125 schedule
-14.885347537548027/49.17106182326232 in block 0 Arr Speed: 0 Dep Speed: 0
-49.17106182326232/117.7424903946909 in block 1 Arr Speed: 0 Dep Speed: 0
-117.7424903946909/190.91355221795322 in block 2 Arr Speed: 0 Dep Speed: 105
-190.91355221795322/259.4849807893818 in block 3 Arr Speed: 105 Dep Speed: 105
-259.4849807893818/328.05640936081033 in block 4 Arr Speed: 105 Dep Speed: 105
-328.05640936081033/396.6278379322389 in block 5 Arr Speed: 105 Dep Speed: 105
-396.6278379322389/465.19926650366745 in block 6 Arr Speed: 105 Dep Speed: 105
-465.19926650366745/533.770695075096 in block 7 Arr Speed: 105 Dep Speed: 105
-533.770695075096/605.1632143832998 in block 8 Arr Speed: 105 Dep Speed: 0
-
-Class 60 schedule
-190.91355221795322/264.08461404121556 in block 2 Arr Speed: 0 Dep Speed: 105
-264.08461404121556/332.6560426126441 in block 3 Arr Speed: 105 Dep Speed: 105
-332.6560426126441/401.22747118407267 in block 4 Arr Speed: 105 Dep Speed: 105
-401.22747118407267/469.7988997555012 in block 5 Arr Speed: 105 Dep Speed: 105
-469.7988997555012/538.3703283269298 in block 6 Arr Speed: 105 Dep Speed: 105
-538.3703283269298/606.9417568983583 in block 7 Arr Speed: 105 Dep Speed: 105
-606.9417568983583/678.3342762065621 in block 8 Arr Speed: 105 Dep Speed: 0
----bo2: bbentities.BlockOccupation@27d0e91
-bo2: bbentities.BlockOccupation@3162a60a  0.33486477546287563
-bo2: bbentities.BlockOccupation@3162a60a
----bo2: bbentities.BlockOccupation@604752dd
----bo2: bbentities.BlockOccupation@6a915c8c
----bo2: bbentities.BlockOccupation@6d5321fc
-bo2: bbentities.BlockOccupation@16315e08  0.43795829850333556
-bo2: bbentities.BlockOccupation@16315e08
-bo2: bbentities.BlockOccupation@2b316b76  0.03490666299959044
-bo2: bbentities.BlockOccupation@2b316b76
----bo2: bbentities.BlockOccupation@6cdc5f76
----bo2: bbentities.BlockOccupation@77ff73cf
----bo2: bbentities.BlockOccupation@240c5895
-bo2: bbentities.BlockOccupation@6c696d5c  0.7906393880729707
-bo2: bbentities.BlockOccupation@6c696d5c
-bo2: bbentities.BlockOccupation@620f1399  0.22171045914069043
-bo2: bbentities.BlockOccupation@620f1399
----bo2: bbentities.BlockOccupation@268bb0b0
-bo2: bbentities.BlockOccupation@486ca716  0.9239447145293262
-bo2: bbentities.BlockOccupation@486ca716
----bo2: bbentities.BlockOccupation@1cfd0695
----bo2: bbentities.BlockOccupation@27bb2f11
-bo2: bbentities.BlockOccupation@574a3347  0.7602817600983885
-bo2: bbentities.BlockOccupation@574a3347
-bo2: bbentities.BlockOccupation@74f2794a  0.626969256201733
-bo2: bbentities.BlockOccupation@74f2794a
----bo2: bbentities.BlockOccupation@720f1977
-bo2: bbentities.BlockOccupation@230cc23b  0.5538750309523739
-bo2: bbentities.BlockOccupation@230cc23b
----bo2: bbentities.BlockOccupation@3d510e21
----bo2: bbentities.BlockOccupation@1476b7fa
-bo2: bbentities.BlockOccupation@54b8cdc  0.1961570950487882
-bo2: bbentities.BlockOccupation@54b8cdc
-bo2: bbentities.BlockOccupation@749b46a8  0.742928680092104
-bo2: bbentities.BlockOccupation@749b46a8
----bo2: bbentities.BlockOccupation@7e288894
-bo2: bbentities.BlockOccupation@2db1d931  0.7681496773445429
-bo2: bbentities.BlockOccupation@2db1d931
----bo2: bbentities.BlockOccupation@171eed41
----bo2: bbentities.BlockOccupation@6f6a5242
-bo2: bbentities.BlockOccupation@8e7da60  0.4768947197044253
-bo2: bbentities.BlockOccupation@8e7da60
----bo2: bbentities.BlockOccupation@2d3ea433
-Updating block 2 for Class 60
----bo2: bbentities.BlockOccupation@2d3ea433  0.4768947197044253
----bo2: bbentities.BlockOccupation@2d3ea433  0.4768947197044253
-Updating next block 3
----bo2: bbentities.BlockOccupation@2d3ea433  0.4768947197044253
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-bo2: bbentities.BlockOccupation@2d3ea433  0.4768947197044253
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 186.3139189661195 at 105Leaving at 254.88534753754809 at 105
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 262.306071526157 at 0
----bo2: bbentities.BlockOccupation@6b8e2779
-Updating block 4 for Class 66
----bo2: bbentities.BlockOccupation@6b8e2779  0.1899820949645028
----bo2: bbentities.BlockOccupation@6b8e2779  0.1899820949645028
-Updating next block 5
----bo2: bbentities.BlockOccupation@6b8e2779  0.1899820949645028
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-bo2: bbentities.BlockOccupation@6b8e2779  0.1899820949645028
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 259.4849807893818 at 105
----bo2: bbentities.BlockOccupation@41c1b019
----bo2: bbentities.BlockOccupation@13105b09
----bo2: bbentities.BlockOccupation@16c8b5a6
-Updating block 3 for Class 60
----bo2: bbentities.BlockOccupation@16c8b5a6  0.6308249695987043
----bo2: bbentities.BlockOccupation@16c8b5a6  0.6308249695987043
-Updating next block 4
----bo2: bbentities.BlockOccupation@16c8b5a6  0.6308249695987043
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@16c8b5a6  0.6308249695987043
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 264.08461404121556 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
----bo2: bbentities.BlockOccupation@530db0f9
----bo2: bbentities.BlockOccupation@27ddd608
-Updating block 2 for FGW 125
----bo2: bbentities.BlockOccupation@27ddd608  0.4409422733038586
----bo2: bbentities.BlockOccupation@27ddd608  0.4409422733038586
-Updating next block 3
----bo2: bbentities.BlockOccupation@27ddd608  0.4409422733038586
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@27ddd608  0.4409422733038586
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
----bo2: bbentities.BlockOccupation@550ebbaa
-Updating block 5 for Class 66
----bo2: bbentities.BlockOccupation@550ebbaa  0.96373117832137
----bo2: bbentities.BlockOccupation@550ebbaa  0.96373117832137
-Updating next block 6
----bo2: bbentities.BlockOccupation@550ebbaa  0.96373117832137
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@550ebbaa  0.96373117832137
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 328.05640936081033 at 105
----bo2: bbentities.BlockOccupation@3a42c186
----bo2: bbentities.BlockOccupation@74af624b
----bo2: bbentities.BlockOccupation@265e65c6
-Updating block 4 for Class 60
----bo2: bbentities.BlockOccupation@265e65c6  0.18774311247734232
----bo2: bbentities.BlockOccupation@265e65c6  0.18774311247734232
-Updating next block 5
----bo2: bbentities.BlockOccupation@265e65c6  0.18774311247734232
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-bo2: bbentities.BlockOccupation@265e65c6  0.18774311247734232
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 332.6560426126441 at 105
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
----bo2: bbentities.BlockOccupation@7f6bbdd7
----bo2: bbentities.BlockOccupation@7a7caf9b
-Updating block 3 for FGW 125
----bo2: bbentities.BlockOccupation@7a7caf9b  0.23863807374002766
----bo2: bbentities.BlockOccupation@7a7caf9b  0.23863807374002766
-Updating next block 4
----bo2: bbentities.BlockOccupation@7a7caf9b  0.23863807374002766
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@7a7caf9b  0.23863807374002766
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
----bo2: bbentities.BlockOccupation@fed27f0
-Updating block 6 for Class 66
----bo2: bbentities.BlockOccupation@fed27f0  0.9419173547597515
----bo2: bbentities.BlockOccupation@fed27f0  0.9419173547597515
-Updating next block 7
----bo2: bbentities.BlockOccupation@fed27f0  0.9419173547597515
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@fed27f0  0.9419173547597515
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 396.6278379322389 at 105
----bo2: bbentities.BlockOccupation@1ad905bb
----bo2: bbentities.BlockOccupation@1e0745c2
----bo2: bbentities.BlockOccupation@6f74d2f4
-Updating block 5 for Class 60
----bo2: bbentities.BlockOccupation@6f74d2f4  0.8559225543832206
----bo2: bbentities.BlockOccupation@6f74d2f4  0.8559225543832206
-Updating next block 6
----bo2: bbentities.BlockOccupation@6f74d2f4  0.8559225543832206
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@6f74d2f4  0.8559225543832206
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 401.22747118407267 at 105
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
----bo2: bbentities.BlockOccupation@5ec5ca56
----bo2: bbentities.BlockOccupation@b6704b6
-Updating block 4 for FGW 125
----bo2: bbentities.BlockOccupation@b6704b6  0.061843354113671256
----bo2: bbentities.BlockOccupation@b6704b6  0.061843354113671256
-Updating next block 5
----bo2: bbentities.BlockOccupation@b6704b6  0.061843354113671256
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@b6704b6  0.061843354113671256
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
----bo2: bbentities.BlockOccupation@18664e93
-Updating block 7 for Class 66
----bo2: bbentities.BlockOccupation@18664e93  0.37539895441859583
----bo2: bbentities.BlockOccupation@18664e93  0.37539895441859583
-Updating next block 8
----bo2: bbentities.BlockOccupation@18664e93  0.37539895441859583
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@18664e93  0.37539895441859583
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 465.19926650366745 at 105
----bo2: bbentities.BlockOccupation@64b0a168
----bo2: bbentities.BlockOccupation@834e67d
-Updating block 6 for Class 60
----bo2: bbentities.BlockOccupation@834e67d  0.40283936295736744
----bo2: bbentities.BlockOccupation@834e67d  0.40283936295736744
-Updating next block 7
----bo2: bbentities.BlockOccupation@834e67d  0.40283936295736744
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@834e67d  0.40283936295736744
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 469.7988997555012 at 105
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
----bo2: bbentities.BlockOccupation@49081cc0
-Updating block 5 for FGW 125
----bo2: bbentities.BlockOccupation@49081cc0  0.22627924114437348
----bo2: bbentities.BlockOccupation@49081cc0  0.22627924114437348
-Updating next block 6
----bo2: bbentities.BlockOccupation@49081cc0  0.22627924114437348
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@49081cc0  0.22627924114437348
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
-Updating block 8 for Class 66
----bo2: null  0.30435867988595455
----bo2: null  0.30435867988595455
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.30435867988595455
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.30435867988595455
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 533.770695075096 at 105
----bo2: bbentities.BlockOccupation@3397a6b5
----bo2: bbentities.BlockOccupation@2941cf89
-Updating block 7 for Class 60
----bo2: bbentities.BlockOccupation@2941cf89  0.6353594104213472
----bo2: bbentities.BlockOccupation@2941cf89  0.6353594104213472
-Updating next block 8
----bo2: bbentities.BlockOccupation@2941cf89  0.6353594104213472
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@2941cf89  0.6353594104213472
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 538.3703283269298 at 105
-POSSIBLE OPTION: Class 60 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
----bo2: bbentities.BlockOccupation@1fa04088
-Updating block 6 for FGW 125
----bo2: bbentities.BlockOccupation@1fa04088  0.7437827626887207
----bo2: bbentities.BlockOccupation@1fa04088  0.7437827626887207
-Updating next block 7
----bo2: bbentities.BlockOccupation@1fa04088  0.7437827626887207
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@1fa04088  0.7437827626887207
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 609.7628476351335 at 0
-POSSIBLE OPTION: Class 60 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
----bo2: bbentities.BlockOccupation@51ecb0f0
-Updating block 8 for Class 60
----bo2: null  0.8819299212195458
----bo2: null  0.8819299212195458
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.8819299212195458
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.8819299212195458
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 606.9417568983583 at 105
----bo2: bbentities.BlockOccupation@a548695
-Updating block 7 for FGW 125
----bo2: bbentities.BlockOccupation@a548695  0.3036036870514599
----bo2: bbentities.BlockOccupation@a548695  0.3036036870514599
-Updating next block 8
----bo2: bbentities.BlockOccupation@a548695  0.3036036870514599
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@a548695  0.3036036870514599
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 606.9417568983583 at 105Leaving at 678.3342762065621 at 0
-Updating block 8 for FGW 125
----bo2: null  0.07928145447540014
----bo2: null  0.07928145447540014
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.07928145447540014
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
------COMPLETE SCHEDULE-----
-
-Class 66 schedule
-0.0/14.885347537548027 in block 0 Arr Speed: 0 Dep Speed: 105
-14.885347537548027/49.17106182326232 in block 1 Arr Speed: 105 Dep Speed: 105
-49.17106182326232/117.7424903946909 in block 2 Arr Speed: 105 Dep Speed: 105
-117.7424903946909/186.3139189661195 in block 3 Arr Speed: 105 Dep Speed: 105
-186.3139189661195/254.88534753754809 in block 4 Arr Speed: 105 Dep Speed: 105
-254.88534753754809/323.45677610897667 in block 5 Arr Speed: 105 Dep Speed: 105
-323.45677610897667/392.0282046804052 in block 6 Arr Speed: 105 Dep Speed: 105
-392.0282046804052/460.5996332518338 in block 7 Arr Speed: 105 Dep Speed: 105
-460.5996332518338/531.9921525600375 in block 8 Arr Speed: 105 Dep Speed: 0
-
-FGW 125 schedule
-14.885347537548027/49.17106182326232 in block 0 Arr Speed: 0 Dep Speed: 0
-49.17106182326232/190.91355221795322 in block 1 Arr Speed: 0 Dep Speed: 0
-190.91355221795322/264.08461404121556 in block 2 Arr Speed: 0 Dep Speed: 105
-264.08461404121556/332.6560426126441 in block 3 Arr Speed: 105 Dep Speed: 105
-332.6560426126441/401.22747118407267 in block 4 Arr Speed: 105 Dep Speed: 105
-401.22747118407267/469.7988997555012 in block 5 Arr Speed: 105 Dep Speed: 105
-469.7988997555012/538.3703283269298 in block 6 Arr Speed: 105 Dep Speed: 105
-538.3703283269298/606.9417568983583 in block 7 Arr Speed: 105 Dep Speed: 105
-606.9417568983583/678.3342762065621 in block 8 Arr Speed: 105 Dep Speed: 0
-
-Class 60 schedule
-117.7424903946909/190.91355221795322 in block 2 Arr Speed: 0 Dep Speed: 105
-190.91355221795322/259.4849807893818 in block 3 Arr Speed: 105 Dep Speed: 105
-259.4849807893818/328.05640936081033 in block 4 Arr Speed: 105 Dep Speed: 105
-328.05640936081033/396.6278379322389 in block 5 Arr Speed: 105 Dep Speed: 105
-396.6278379322389/465.19926650366745 in block 6 Arr Speed: 105 Dep Speed: 105
-465.19926650366745/533.770695075096 in block 7 Arr Speed: 105 Dep Speed: 105
-533.770695075096/605.1632143832998 in block 8 Arr Speed: 105 Dep Speed: 0
-bo2: bbentities.BlockOccupation@1fa04088  0.7437827626887207
-bo2: bbentities.BlockOccupation@1fa04088
----bo2: bbentities.BlockOccupation@1642f9ef
----bo2: bbentities.BlockOccupation@726c554
-bo2: bbentities.BlockOccupation@49081cc0  0.22627924114437348
-bo2: bbentities.BlockOccupation@49081cc0
----bo2: bbentities.BlockOccupation@2651177
-bo2: bbentities.BlockOccupation@834e67d  0.40283936295736744
-bo2: bbentities.BlockOccupation@834e67d
----bo2: bbentities.BlockOccupation@395d9cdb
----bo2: bbentities.BlockOccupation@30e50b49
-bo2: bbentities.BlockOccupation@b6704b6  0.061843354113671256
-bo2: bbentities.BlockOccupation@b6704b6
----bo2: bbentities.BlockOccupation@d47feb3
-bo2: bbentities.BlockOccupation@6f74d2f4  0.8559225543832206
-bo2: bbentities.BlockOccupation@6f74d2f4
-bo2: bbentities.BlockOccupation@fed27f0  0.9419173547597515
-bo2: bbentities.BlockOccupation@fed27f0
----bo2: bbentities.BlockOccupation@71a2a094
----bo2: bbentities.BlockOccupation@6bdc8ed4
-bo2: bbentities.BlockOccupation@7a7caf9b  0.23863807374002766
-bo2: bbentities.BlockOccupation@7a7caf9b
----bo2: bbentities.BlockOccupation@5d25379e
-bo2: bbentities.BlockOccupation@265e65c6  0.18774311247734232
-bo2: bbentities.BlockOccupation@265e65c6
-bo2: bbentities.BlockOccupation@550ebbaa  0.96373117832137
-bo2: bbentities.BlockOccupation@550ebbaa
----bo2: bbentities.BlockOccupation@366695d8
----bo2: bbentities.BlockOccupation@8f7b3cf
-bo2: bbentities.BlockOccupation@27ddd608  0.4409422733038586
-bo2: bbentities.BlockOccupation@27ddd608
----bo2: bbentities.BlockOccupation@3e3ddfa2
-bo2: bbentities.BlockOccupation@16c8b5a6  0.6308249695987043
-bo2: bbentities.BlockOccupation@16c8b5a6
-bo2: bbentities.BlockOccupation@6b8e2779  0.1899820949645028
-bo2: bbentities.BlockOccupation@6b8e2779
----bo2: bbentities.BlockOccupation@5025249a
----bo2: bbentities.BlockOccupation@36862391
-bo2: bbentities.BlockOccupation@2d3ea433  0.4768947197044253
-bo2: bbentities.BlockOccupation@2d3ea433
-bo2: bbentities.BlockOccupation@76e5f3d2  0.16941089887016048
-bo2: bbentities.BlockOccupation@76e5f3d2
----bo2: bbentities.BlockOccupation@2089208e
----bo2: bbentities.BlockOccupation@ab85b52
-bo2: bbentities.BlockOccupation@3dae3050  0.04979678642957275
-bo2: bbentities.BlockOccupation@3dae3050
-FGW 125 2
-Class 60 2
-bo2: bbentities.BlockOccupation@1b1fb141  0.6798530515990306
-bo2: bbentities.BlockOccupation@1b1fb141
-Class 60 2
-bo2: bbentities.BlockOccupation@3669ae9f  0.7180844833040577
-bo2: bbentities.BlockOccupation@3669ae9f
-FGW 125 1
----bo2: bbentities.BlockOccupation@4d7369fd
-bo2: bbentities.BlockOccupation@1f9fd541  0.3858957904168495
-bo2: bbentities.BlockOccupation@1f9fd541
----bo2: bbentities.BlockOccupation@543388c4
-bo2: bbentities.BlockOccupation@535bab52  0.0
-bo2: bbentities.BlockOccupation@535bab52
----bo2: bbentities.BlockOccupation@358270c
-Updating block 0 for FGW 125
----bo2: bbentities.BlockOccupation@358270c  0.0
----bo2: bbentities.BlockOccupation@358270c  0.0
-Updating next block 1
----bo2: bbentities.BlockOccupation@358270c  0.0
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: false
-Block 1 Last Arrival: 14.885347537548027 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@358270c  0.0
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: false
-Block 1 Last Arrival: 14.885347537548027 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 0 Arriving at 14.885347537548027 at 0Leaving at 32.59178581187123 at 0
-POSSIBLE OPTION: FGW 125 Block: 1 Arriving at 14.885347537548027 at 105Leaving at 49.17106182326232 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 73.1710618232623 at 105
----bo2: bbentities.BlockOccupation@106b868b
-Updating block 0 for Class 66
----bo2: bbentities.BlockOccupation@106b868b  0.1090149190399986
----bo2: bbentities.BlockOccupation@106b868b  0.1090149190399986
-Updating next block 1
----bo2: bbentities.BlockOccupation@106b868b  0.1090149190399986
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@106b868b  0.1090149190399986
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 0.0 occupied: true
-Block 2 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 1 Arriving at 14.885347537548027 at 105Leaving at 49.17106182326232 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 73.1710618232623 at 105
-Class 66 1
----bo2: bbentities.BlockOccupation@34e1819
-Updating block 1 for FGW 125
----bo2: bbentities.BlockOccupation@34e1819  0.4381744689993671
----bo2: bbentities.BlockOccupation@34e1819  0.4381744689993671
-Updating next block 2
----bo2: bbentities.BlockOccupation@34e1819  0.4381744689993671
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 49.17106182326232 occupied: false
-Block 2 Last Arrival: 49.17106182326232 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@34e1819  0.4381744689993671
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 14.885347537548027 occupied: true
-Block 1 Last Arrival: 32.59178581187123 Last Departure: 49.17106182326232 occupied: false
-Block 2 Last Arrival: 49.17106182326232 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 1 Arriving at 49.17106182326232 at 0Leaving at 90.87750009758552 at 0
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 49.17106182326232 at 105Leaving at 117.7424903946909 at 105
----bo2: bbentities.BlockOccupation@7c101300
-Updating block 1 for Class 66
----bo2: bbentities.BlockOccupation@7c101300  0.29237778005197723
----bo2: bbentities.BlockOccupation@7c101300  0.29237778005197723
-Updating next block 2
----bo2: bbentities.BlockOccupation@7c101300  0.29237778005197723
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@7c101300  0.29237778005197723
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 0.0 occupied: true
-Block 3 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 49.17106182326232 at 105Leaving at 117.7424903946909 at 105
-Class 66 2
----bo2: bbentities.BlockOccupation@34fa4a2
-Updating block 2 for FGW 125
----bo2: bbentities.BlockOccupation@34fa4a2  0.497612530235254
----bo2: bbentities.BlockOccupation@34fa4a2  0.497612530235254
-Updating next block 3
----bo2: bbentities.BlockOccupation@34fa4a2  0.497612530235254
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 0.0 occupied: true
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-bo2: bbentities.BlockOccupation@34fa4a2  0.497612530235254
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 0.0 occupied: true
-Block 4 Last Arrival: 0.0 Last Departure: 0.0 occupied: false
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 193.73464295472837 at 0
-POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 117.7424903946909 at 105Leaving at 186.3139189661195 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 193.73464295472837 at 0
----bo2: bbentities.BlockOccupation@61c18960
----bo2: bbentities.BlockOccupation@69222fc3
-Updating block 3 for FGW 125
----bo2: bbentities.BlockOccupation@69222fc3  0.9166144126159254
----bo2: bbentities.BlockOccupation@69222fc3  0.9166144126159254
-Updating next block 4
----bo2: bbentities.BlockOccupation@69222fc3  0.9166144126159254
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 186.3139189661195 occupied: false
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-bo2: bbentities.BlockOccupation@69222fc3  0.9166144126159254
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 49.17106182326232 occupied: true
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 117.7424903946909 occupied: false
-Block 3 Last Arrival: 117.7424903946909 Last Departure: 186.3139189661195 occupied: false
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 190.91355221795322 at 105
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 186.3139189661195 at 105Leaving at 254.88534753754809 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 117.7424903946909 at 0Leaving at 190.91355221795322 at 105
----bo2: bbentities.BlockOccupation@436de121
-Updating block 2 for Class 66
----bo2: bbentities.BlockOccupation@436de121  0.7386839999233583
----bo2: bbentities.BlockOccupation@436de121  0.7386839999233583
-Updating next block 3
----bo2: bbentities.BlockOccupation@436de121  0.7386839999233583
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-bo2: bbentities.BlockOccupation@436de121  0.7386839999233583
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-POSSIBLE OPTION: Class 66 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 262.306071526157 at 0
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 186.3139189661195 at 105Leaving at 254.88534753754809 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
----bo2: bbentities.BlockOccupation@62d7601c
----bo2: bbentities.BlockOccupation@29e700f6
-Updating block 4 for FGW 125
----bo2: bbentities.BlockOccupation@29e700f6  0.8688363013631678
----bo2: bbentities.BlockOccupation@29e700f6  0.8688363013631678
-Updating next block 5
----bo2: bbentities.BlockOccupation@29e700f6  0.8688363013631678
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-bo2: bbentities.BlockOccupation@29e700f6  0.8688363013631678
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-POSSIBLE OPTION: Class 66 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 259.4849807893818 at 105
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
----bo2: bbentities.BlockOccupation@7cf02bf7
-Updating block 3 for Class 66
----bo2: bbentities.BlockOccupation@7cf02bf7  0.7197127427594932
----bo2: bbentities.BlockOccupation@7cf02bf7  0.7197127427594932
-Updating next block 4
----bo2: bbentities.BlockOccupation@7cf02bf7  0.7197127427594932
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@7cf02bf7  0.7197127427594932
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: Class 60 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 264.08461404121556 at 105
----bo2: bbentities.BlockOccupation@7bd6a535
----bo2: bbentities.BlockOccupation@48f87a17
----bo2: bbentities.BlockOccupation@3117a16e
-Updating block 2 for Class 60
----bo2: bbentities.BlockOccupation@3117a16e  0.6366135131302953
----bo2: bbentities.BlockOccupation@3117a16e  0.6366135131302953
-Updating next block 3
----bo2: bbentities.BlockOccupation@3117a16e  0.6366135131302953
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@3117a16e  0.6366135131302953
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
----bo2: bbentities.BlockOccupation@66755f0
----bo2: bbentities.BlockOccupation@6a3b02d8
-Updating block 5 for FGW 125
----bo2: bbentities.BlockOccupation@6a3b02d8  0.7927156604367335
----bo2: bbentities.BlockOccupation@6a3b02d8  0.7927156604367335
-Updating next block 6
----bo2: bbentities.BlockOccupation@6a3b02d8  0.7927156604367335
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@6a3b02d8  0.7927156604367335
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 328.05640936081033 at 105
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
----bo2: bbentities.BlockOccupation@4837e964
-Updating block 4 for Class 66
----bo2: bbentities.BlockOccupation@4837e964  0.3610135966748492
----bo2: bbentities.BlockOccupation@4837e964  0.3610135966748492
-Updating next block 5
----bo2: bbentities.BlockOccupation@4837e964  0.3610135966748492
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-bo2: bbentities.BlockOccupation@4837e964  0.3610135966748492
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 332.6560426126441 at 105
----bo2: bbentities.BlockOccupation@4ebbc946
----bo2: bbentities.BlockOccupation@a9b3b0c
----bo2: bbentities.BlockOccupation@55419644
-Updating block 3 for Class 60
----bo2: bbentities.BlockOccupation@55419644  0.255053352832154
----bo2: bbentities.BlockOccupation@55419644  0.255053352832154
-Updating next block 4
----bo2: bbentities.BlockOccupation@55419644  0.255053352832154
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@55419644  0.255053352832154
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
----bo2: bbentities.BlockOccupation@44f07616
----bo2: bbentities.BlockOccupation@6d8c1b6
-Updating block 6 for FGW 125
----bo2: bbentities.BlockOccupation@6d8c1b6  0.2723047789327321
----bo2: bbentities.BlockOccupation@6d8c1b6  0.2723047789327321
-Updating next block 7
----bo2: bbentities.BlockOccupation@6d8c1b6  0.2723047789327321
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@6d8c1b6  0.2723047789327321
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 396.6278379322389 at 105
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
----bo2: bbentities.BlockOccupation@95973d
-Updating block 5 for Class 66
----bo2: bbentities.BlockOccupation@95973d  0.6446552824095779
----bo2: bbentities.BlockOccupation@95973d  0.6446552824095779
-Updating next block 6
----bo2: bbentities.BlockOccupation@95973d  0.6446552824095779
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@95973d  0.6446552824095779
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 401.22747118407267 at 105
----bo2: bbentities.BlockOccupation@5cfc2617
----bo2: bbentities.BlockOccupation@2e28dfb2
----bo2: bbentities.BlockOccupation@7d7636ca
-Updating block 4 for Class 60
----bo2: bbentities.BlockOccupation@7d7636ca  0.8460633150014549
----bo2: bbentities.BlockOccupation@7d7636ca  0.8460633150014549
-Updating next block 5
----bo2: bbentities.BlockOccupation@7d7636ca  0.8460633150014549
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@7d7636ca  0.8460633150014549
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
----bo2: bbentities.BlockOccupation@5c07481f
----bo2: bbentities.BlockOccupation@62101a6c
-Updating block 7 for FGW 125
----bo2: bbentities.BlockOccupation@62101a6c  0.7564071057963963
----bo2: bbentities.BlockOccupation@62101a6c  0.7564071057963963
-Updating next block 8
----bo2: bbentities.BlockOccupation@62101a6c  0.7564071057963963
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@62101a6c  0.7564071057963963
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 465.19926650366745 at 105
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
----bo2: bbentities.BlockOccupation@f36dac0
-Updating block 6 for Class 66
----bo2: bbentities.BlockOccupation@f36dac0  0.45001572227619957
----bo2: bbentities.BlockOccupation@f36dac0  0.45001572227619957
-Updating next block 7
----bo2: bbentities.BlockOccupation@f36dac0  0.45001572227619957
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@f36dac0  0.45001572227619957
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 469.7988997555012 at 105
----bo2: bbentities.BlockOccupation@5a537b0d
----bo2: bbentities.BlockOccupation@1eb3c0cf
-Updating block 5 for Class 60
----bo2: bbentities.BlockOccupation@1eb3c0cf  0.810928965912232
----bo2: bbentities.BlockOccupation@1eb3c0cf  0.810928965912232
-Updating next block 6
----bo2: bbentities.BlockOccupation@1eb3c0cf  0.810928965912232
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@1eb3c0cf  0.810928965912232
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
----bo2: bbentities.BlockOccupation@2b3765c8
-Updating block 8 for FGW 125
----bo2: null  0.20657103355910567
----bo2: null  0.20657103355910567
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.20657103355910567
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.20657103355910567
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 533.770695075096 at 105
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
----bo2: bbentities.BlockOccupation@41fb43a2
-Updating block 7 for Class 66
----bo2: bbentities.BlockOccupation@41fb43a2  0.2804027873977971
----bo2: bbentities.BlockOccupation@41fb43a2  0.2804027873977971
-Updating next block 8
----bo2: bbentities.BlockOccupation@41fb43a2  0.2804027873977971
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@41fb43a2  0.2804027873977971
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 538.3703283269298 at 105
----bo2: bbentities.BlockOccupation@57156285
-Updating block 6 for Class 60
----bo2: bbentities.BlockOccupation@57156285  0.4845694062637934
----bo2: bbentities.BlockOccupation@57156285  0.4845694062637934
-Updating next block 7
----bo2: bbentities.BlockOccupation@57156285  0.4845694062637934
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@57156285  0.4845694062637934
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 609.7628476351335 at 0
-Updating block 8 for Class 66
----bo2: null  0.920299676056673
----bo2: null  0.920299676056673
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.920299676056673
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.920299676056673
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 606.9417568983583 at 105
----bo2: bbentities.BlockOccupation@3cf7366d
-Updating block 7 for Class 60
----bo2: bbentities.BlockOccupation@3cf7366d  0.20883290044363023
----bo2: bbentities.BlockOccupation@3cf7366d  0.20883290044363023
-Updating next block 8
----bo2: bbentities.BlockOccupation@3cf7366d  0.20883290044363023
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@3cf7366d  0.20883290044363023
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 60 Block: 8 Arriving at 606.9417568983583 at 105Leaving at 678.3342762065621 at 0
-Updating block 8 for Class 60
----bo2: null  0.0874179029176112
----bo2: null  0.0874179029176112
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.0874179029176112
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 117.7424903946909 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
------COMPLETE SCHEDULE-----
-
-Class 66 schedule
-14.885347537548027/49.17106182326232 in block 0 Arr Speed: 0 Dep Speed: 0
-49.17106182326232/117.7424903946909 in block 1 Arr Speed: 0 Dep Speed: 0
-117.7424903946909/190.91355221795322 in block 2 Arr Speed: 0 Dep Speed: 105
-190.91355221795322/259.4849807893818 in block 3 Arr Speed: 105 Dep Speed: 105
-259.4849807893818/328.05640936081033 in block 4 Arr Speed: 105 Dep Speed: 105
-328.05640936081033/396.6278379322389 in block 5 Arr Speed: 105 Dep Speed: 105
-396.6278379322389/465.19926650366745 in block 6 Arr Speed: 105 Dep Speed: 105
-465.19926650366745/533.770695075096 in block 7 Arr Speed: 105 Dep Speed: 105
-533.770695075096/605.1632143832998 in block 8 Arr Speed: 105 Dep Speed: 0
-
-FGW 125 schedule
-0.0/14.885347537548027 in block 0 Arr Speed: 0 Dep Speed: 105
-14.885347537548027/49.17106182326232 in block 1 Arr Speed: 105 Dep Speed: 105
-49.17106182326232/117.7424903946909 in block 2 Arr Speed: 105 Dep Speed: 105
-117.7424903946909/186.3139189661195 in block 3 Arr Speed: 105 Dep Speed: 105
-186.3139189661195/254.88534753754809 in block 4 Arr Speed: 105 Dep Speed: 105
-254.88534753754809/323.45677610897667 in block 5 Arr Speed: 105 Dep Speed: 105
-323.45677610897667/392.0282046804052 in block 6 Arr Speed: 105 Dep Speed: 105
-392.0282046804052/460.5996332518338 in block 7 Arr Speed: 105 Dep Speed: 105
-460.5996332518338/531.9921525600375 in block 8 Arr Speed: 105 Dep Speed: 0
-
-Class 60 schedule
-190.91355221795322/264.08461404121556 in block 2 Arr Speed: 0 Dep Speed: 105
-264.08461404121556/332.6560426126441 in block 3 Arr Speed: 105 Dep Speed: 105
-332.6560426126441/401.22747118407267 in block 4 Arr Speed: 105 Dep Speed: 105
-401.22747118407267/469.7988997555012 in block 5 Arr Speed: 105 Dep Speed: 105
-469.7988997555012/538.3703283269298 in block 6 Arr Speed: 105 Dep Speed: 105
-538.3703283269298/606.9417568983583 in block 7 Arr Speed: 105 Dep Speed: 105
-606.9417568983583/678.3342762065621 in block 8 Arr Speed: 105 Dep Speed: 0
----bo2: bbentities.BlockOccupation@602349e9
-bo2: bbentities.BlockOccupation@57156285  0.4845694062637934
-bo2: bbentities.BlockOccupation@57156285
----bo2: bbentities.BlockOccupation@2cc9914e
----bo2: bbentities.BlockOccupation@6562aeda
-bo2: bbentities.BlockOccupation@1eb3c0cf  0.810928965912232
-bo2: bbentities.BlockOccupation@1eb3c0cf
-bo2: bbentities.BlockOccupation@f36dac0  0.45001572227619957
-bo2: bbentities.BlockOccupation@f36dac0
----bo2: bbentities.BlockOccupation@31c59e36
----bo2: bbentities.BlockOccupation@251604c1
-bo2: bbentities.BlockOccupation@7d7636ca  0.8460633150014549
-bo2: bbentities.BlockOccupation@7d7636ca
-bo2: bbentities.BlockOccupation@95973d  0.6446552824095779
-bo2: bbentities.BlockOccupation@95973d
----bo2: bbentities.BlockOccupation@48922dec
----bo2: bbentities.BlockOccupation@7505062c
-bo2: bbentities.BlockOccupation@6d8c1b6  0.2723047789327321
-bo2: bbentities.BlockOccupation@6d8c1b6
----bo2: bbentities.BlockOccupation@1cd86eb9
-bo2: bbentities.BlockOccupation@55419644  0.255053352832154
-bo2: bbentities.BlockOccupation@55419644
-bo2: bbentities.BlockOccupation@4837e964  0.3610135966748492
-bo2: bbentities.BlockOccupation@4837e964
----bo2: bbentities.BlockOccupation@454d427a
----bo2: bbentities.BlockOccupation@53477b21
-bo2: bbentities.BlockOccupation@6a3b02d8  0.7927156604367335
-bo2: bbentities.BlockOccupation@6a3b02d8
----bo2: bbentities.BlockOccupation@79e4de3d
-bo2: bbentities.BlockOccupation@3117a16e  0.6366135131302953
-bo2: bbentities.BlockOccupation@3117a16e
-bo2: bbentities.BlockOccupation@7cf02bf7  0.7197127427594932
-bo2: bbentities.BlockOccupation@7cf02bf7
----bo2: bbentities.BlockOccupation@20bab550
----bo2: bbentities.BlockOccupation@41d5a7f9
-bo2: bbentities.BlockOccupation@29e700f6  0.8688363013631678
-bo2: bbentities.BlockOccupation@29e700f6
----bo2: bbentities.BlockOccupation@3206ee33
-bo2: bbentities.BlockOccupation@436de121  0.7386839999233583
-bo2: bbentities.BlockOccupation@436de121
----bo2: bbentities.BlockOccupation@65006fed
----bo2: bbentities.BlockOccupation@7fb46468
-Updating block 2 for Class 60
----bo2: bbentities.BlockOccupation@7fb46468  0.7386839999233583
----bo2: bbentities.BlockOccupation@7fb46468  0.7386839999233583
-Updating next block 3
----bo2: bbentities.BlockOccupation@7fb46468  0.7386839999233583
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-bo2: bbentities.BlockOccupation@7fb46468  0.7386839999233583
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 0.0 occupied: true
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
-POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 186.3139189661195 at 105Leaving at 254.88534753754809 at 105
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 262.306071526157 at 0
----bo2: bbentities.BlockOccupation@1c2c2958
----bo2: bbentities.BlockOccupation@174e5edb
-Updating block 4 for FGW 125
----bo2: bbentities.BlockOccupation@174e5edb  0.7808134496037727
----bo2: bbentities.BlockOccupation@174e5edb  0.7808134496037727
-Updating next block 5
----bo2: bbentities.BlockOccupation@174e5edb  0.7808134496037727
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-bo2: bbentities.BlockOccupation@174e5edb  0.7808134496037727
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 186.3139189661195 occupied: true
-Block 4 Last Arrival: 186.3139189661195 Last Departure: 254.88534753754809 occupied: false
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 266.9057047779907 at 0
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: Class 60 Block: 3 Arriving at 190.91355221795322 at 105Leaving at 259.4849807893818 at 105
----bo2: bbentities.BlockOccupation@1a3587d1
----bo2: bbentities.BlockOccupation@3067b7c8
----bo2: bbentities.BlockOccupation@6952c44b
-Updating block 3 for Class 60
----bo2: bbentities.BlockOccupation@6952c44b  0.9757927800774455
----bo2: bbentities.BlockOccupation@6952c44b  0.9757927800774455
-Updating next block 4
----bo2: bbentities.BlockOccupation@6952c44b  0.9757927800774455
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@6952c44b  0.9757927800774455
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 117.7424903946909 occupied: false
-Block 2 Last Arrival: 90.87750009758552 Last Departure: 190.91355221795322 occupied: false
-Block 3 Last Arrival: 190.91355221795322 Last Departure: 259.4849807893818 occupied: false
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 2 Arriving at 190.91355221795322 at 0Leaving at 264.08461404121556 at 105
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
----bo2: bbentities.BlockOccupation@38d54df2
-Updating block 2 for Class 66
----bo2: bbentities.BlockOccupation@38d54df2  0.2217829103197536
----bo2: bbentities.BlockOccupation@38d54df2  0.2217829103197536
-Updating next block 3
----bo2: bbentities.BlockOccupation@38d54df2  0.2217829103197536
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@38d54df2  0.2217829103197536
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
-POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 254.88534753754809 at 105Leaving at 323.45677610897667 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 330.87750009758554 at 0
----bo2: bbentities.BlockOccupation@3bf06804
----bo2: bbentities.BlockOccupation@243cfd5a
-Updating block 5 for FGW 125
----bo2: bbentities.BlockOccupation@243cfd5a  0.7706350384498604
----bo2: bbentities.BlockOccupation@243cfd5a  0.7706350384498604
-Updating next block 6
----bo2: bbentities.BlockOccupation@243cfd5a  0.7706350384498604
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-bo2: bbentities.BlockOccupation@243cfd5a  0.7706350384498604
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 254.88534753754809 occupied: true
-POSSIBLE OPTION: Class 66 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 335.4771333494193 at 0
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: Class 60 Block: 4 Arriving at 259.4849807893818 at 105Leaving at 328.05640936081033 at 105
----bo2: bbentities.BlockOccupation@201d324c
----bo2: bbentities.BlockOccupation@5cd12c0c
----bo2: bbentities.BlockOccupation@28a2f76f
-Updating block 4 for Class 60
----bo2: bbentities.BlockOccupation@28a2f76f  0.4560131233860937
----bo2: bbentities.BlockOccupation@28a2f76f  0.4560131233860937
-Updating next block 5
----bo2: bbentities.BlockOccupation@28a2f76f  0.4560131233860937
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-bo2: bbentities.BlockOccupation@28a2f76f  0.4560131233860937
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 259.4849807893818 occupied: true
-Block 4 Last Arrival: 259.4849807893818 Last Departure: 328.05640936081033 occupied: false
-POSSIBLE OPTION: Class 66 Block: 3 Arriving at 264.08461404121556 at 105Leaving at 332.6560426126441 at 105
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
----bo2: bbentities.BlockOccupation@6322ad40
-Updating block 3 for Class 66
----bo2: bbentities.BlockOccupation@6322ad40  0.21997023725749065
----bo2: bbentities.BlockOccupation@6322ad40  0.21997023725749065
-Updating next block 4
----bo2: bbentities.BlockOccupation@6322ad40  0.21997023725749065
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@6322ad40  0.21997023725749065
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
-POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 323.45677610897667 at 105Leaving at 392.0282046804052 at 105
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 399.4489286690141 at 0
----bo2: bbentities.BlockOccupation@799c7798
----bo2: bbentities.BlockOccupation@f6fda88
-Updating block 6 for FGW 125
----bo2: bbentities.BlockOccupation@f6fda88  0.8602912506308213
----bo2: bbentities.BlockOccupation@f6fda88  0.8602912506308213
-Updating next block 7
----bo2: bbentities.BlockOccupation@f6fda88  0.8602912506308213
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@f6fda88  0.8602912506308213
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 404.0485619208479 at 0
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: Class 60 Block: 5 Arriving at 328.05640936081033 at 105Leaving at 396.6278379322389 at 105
----bo2: bbentities.BlockOccupation@78741ea2
----bo2: bbentities.BlockOccupation@f875b76
----bo2: bbentities.BlockOccupation@7f85a7f0
-Updating block 5 for Class 60
----bo2: bbentities.BlockOccupation@7f85a7f0  0.8331884500751068
----bo2: bbentities.BlockOccupation@7f85a7f0  0.8331884500751068
-Updating next block 6
----bo2: bbentities.BlockOccupation@7f85a7f0  0.8331884500751068
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-bo2: bbentities.BlockOccupation@7f85a7f0  0.8331884500751068
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 328.05640936081033 occupied: true
-POSSIBLE OPTION: Class 66 Block: 4 Arriving at 332.6560426126441 at 105Leaving at 401.22747118407267 at 105
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
----bo2: bbentities.BlockOccupation@1fd4bef8
-Updating block 4 for Class 66
----bo2: bbentities.BlockOccupation@1fd4bef8  0.12356898050177845
----bo2: bbentities.BlockOccupation@1fd4bef8  0.12356898050177845
-Updating next block 5
----bo2: bbentities.BlockOccupation@1fd4bef8  0.12356898050177845
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@1fd4bef8  0.12356898050177845
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
-POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 392.0282046804052 at 105Leaving at 460.5996332518338 at 105
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 468.02035724044265 at 0
----bo2: bbentities.BlockOccupation@48459c1b
----bo2: bbentities.BlockOccupation@520bd5ae
-Updating block 7 for FGW 125
----bo2: bbentities.BlockOccupation@520bd5ae  0.930000150058402
----bo2: bbentities.BlockOccupation@520bd5ae  0.930000150058402
-Updating next block 8
----bo2: bbentities.BlockOccupation@520bd5ae  0.930000150058402
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@520bd5ae  0.930000150058402
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 472.61999049227643 at 0
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: Class 60 Block: 6 Arriving at 396.6278379322389 at 105Leaving at 465.19926650366745 at 105
----bo2: bbentities.BlockOccupation@6f9bc97
----bo2: bbentities.BlockOccupation@75cc6114
-Updating block 6 for Class 60
----bo2: bbentities.BlockOccupation@75cc6114  0.5328440768425413
----bo2: bbentities.BlockOccupation@75cc6114  0.5328440768425413
-Updating next block 7
----bo2: bbentities.BlockOccupation@75cc6114  0.5328440768425413
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@75cc6114  0.5328440768425413
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 5 Arriving at 401.22747118407267 at 105Leaving at 469.7988997555012 at 105
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
----bo2: bbentities.BlockOccupation@3cf9a477
-Updating block 5 for Class 66
----bo2: bbentities.BlockOccupation@3cf9a477  0.4426802115009929
----bo2: bbentities.BlockOccupation@3cf9a477  0.4426802115009929
-Updating next block 6
----bo2: bbentities.BlockOccupation@3cf9a477  0.4426802115009929
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@3cf9a477  0.4426802115009929
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
-POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 460.5996332518338 at 105Leaving at 531.9921525600375 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 536.5917858118712 at 0
----bo2: bbentities.BlockOccupation@299c9fe7
-Updating block 8 for FGW 125
----bo2: null  0.3654333639713645
----bo2: null  0.3654333639713645
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.3654333639713645
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.3654333639713645
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 541.191419063705 at 0
-POSSIBLE OPTION: Class 60 Block: 7 Arriving at 465.19926650366745 at 105Leaving at 533.770695075096 at 105
----bo2: bbentities.BlockOccupation@69c60c08
----bo2: bbentities.BlockOccupation@49401778
-Updating block 7 for Class 60
----bo2: bbentities.BlockOccupation@49401778  0.5949445484320874
----bo2: bbentities.BlockOccupation@49401778  0.5949445484320874
-Updating next block 8
----bo2: bbentities.BlockOccupation@49401778  0.5949445484320874
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@49401778  0.5949445484320874
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 6 Arriving at 469.7988997555012 at 105Leaving at 538.3703283269298 at 105
-POSSIBLE OPTION: Class 60 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
----bo2: bbentities.BlockOccupation@ec4ecda
-Updating block 6 for Class 66
----bo2: bbentities.BlockOccupation@ec4ecda  0.6011553268730829
----bo2: bbentities.BlockOccupation@ec4ecda  0.6011553268730829
-Updating next block 7
----bo2: bbentities.BlockOccupation@ec4ecda  0.6011553268730829
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@ec4ecda  0.6011553268730829
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 609.7628476351335 at 0
-POSSIBLE OPTION: Class 60 Block: 8 Arriving at 533.770695075096 at 105Leaving at 605.1632143832998 at 0
----bo2: bbentities.BlockOccupation@2299e3c9
-Updating block 8 for Class 60
----bo2: null  0.9839451992139471
----bo2: null  0.9839451992139471
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.9839451992139471
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: hey  0.9839451992139471
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 7 Arriving at 538.3703283269298 at 105Leaving at 606.9417568983583 at 105
----bo2: bbentities.BlockOccupation@2539b2de
-Updating block 7 for Class 66
----bo2: bbentities.BlockOccupation@2539b2de  0.5387638360803408
----bo2: bbentities.BlockOccupation@2539b2de  0.5387638360803408
-Updating next block 8
----bo2: bbentities.BlockOccupation@2539b2de  0.5387638360803408
-----JUST BEFORE COPY - ALTERATIONS PERFORMED
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-bo2: bbentities.BlockOccupation@2539b2de  0.5387638360803408
----CREATING NODE---
----NODE---
-Node Creation
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
-POSSIBLE OPTION: Class 66 Block: 8 Arriving at 606.9417568983583 at 105Leaving at 678.3342762065621 at 0
-Updating block 8 for Class 66
----bo2: null  0.8349152648004362
----bo2: null  0.8349152648004362
-------------------------------------------------------------------------------------------------_SET TO FALSE
----bo2: null  0.8349152648004362
-Block 0 Last Arrival: 0.0 Last Departure: 49.17106182326232 occupied: false
-Block 1 Last Arrival: 49.17106182326232 Last Departure: 190.91355221795322 occupied: false
-Block 2 Last Arrival: 190.91355221795322 Last Departure: 264.08461404121556 occupied: false
-Block 3 Last Arrival: 264.08461404121556 Last Departure: 332.6560426126441 occupied: false
-Block 4 Last Arrival: 332.6560426126441 Last Departure: 401.22747118407267 occupied: false
------COMPLETE SCHEDULE-----
-
-Class 66 schedule
-14.885347537548027/49.17106182326232 in block 0 Arr Speed: 0 Dep Speed: 0
-49.17106182326232/190.91355221795322 in block 1 Arr Speed: 0 Dep Speed: 0
-190.91355221795322/264.08461404121556 in block 2 Arr Speed: 0 Dep Speed: 105
-264.08461404121556/332.6560426126441 in block 3 Arr Speed: 105 Dep Speed: 105
-332.6560426126441/401.22747118407267 in block 4 Arr Speed: 105 Dep Speed: 105
-401.22747118407267/469.7988997555012 in block 5 Arr Speed: 105 Dep Speed: 105
-469.7988997555012/538.3703283269298 in block 6 Arr Speed: 105 Dep Speed: 105
-538.3703283269298/606.9417568983583 in block 7 Arr Speed: 105 Dep Speed: 105
-606.9417568983583/678.3342762065621 in block 8 Arr Speed: 105 Dep Speed: 0
-
-FGW 125 schedule
-0.0/14.885347537548027 in block 0 Arr Speed: 0 Dep Speed: 105
-14.885347537548027/49.17106182326232 in block 1 Arr Speed: 105 Dep Speed: 105
-49.17106182326232/117.7424903946909 in block 2 Arr Speed: 105 Dep Speed: 105
-117.7424903946909/186.3139189661195 in block 3 Arr Speed: 105 Dep Speed: 105
-186.3139189661195/254.88534753754809 in block 4 Arr Speed: 105 Dep Speed: 105
-254.88534753754809/323.45677610897667 in block 5 Arr Speed: 105 Dep Speed: 105
-323.45677610897667/392.0282046804052 in block 6 Arr Speed: 105 Dep Speed: 105
-392.0282046804052/460.5996332518338 in block 7 Arr Speed: 105 Dep Speed: 105
-460.5996332518338/531.9921525600375 in block 8 Arr Speed: 105 Dep Speed: 0
-
-Class 60 schedule
-117.7424903946909/190.91355221795322 in block 2 Arr Speed: 0 Dep Speed: 105
-190.91355221795322/259.4849807893818 in block 3 Arr Speed: 105 Dep Speed: 105
-259.4849807893818/328.05640936081033 in block 4 Arr Speed: 105 Dep Speed: 105
-328.05640936081033/396.6278379322389 in block 5 Arr Speed: 105 Dep Speed: 105
-396.6278379322389/465.19926650366745 in block 6 Arr Speed: 105 Dep Speed: 105
-465.19926650366745/533.770695075096 in block 7 Arr Speed: 105 Dep Speed: 105
-533.770695075096/605.1632143832998 in block 8 Arr Speed: 105 Dep Speed: 0
-bo2: bbentities.BlockOccupation@ec4ecda  0.6011553268730829
-bo2: bbentities.BlockOccupation@ec4ecda
----bo2: bbentities.BlockOccupation@38bf66e5
-bo2: bbentities.BlockOccupation@3cf9a477  0.4426802115009929
-bo2: bbentities.BlockOccupation@3cf9a477
----bo2: bbentities.BlockOccupation@1dfc617e
-bo2: bbentities.BlockOccupation@75cc6114  0.5328440768425413
-bo2: bbentities.BlockOccupation@75cc6114
----bo2: bbentities.BlockOccupation@2464a693
-bo2: bbentities.BlockOccupation@1fd4bef8  0.12356898050177845
-bo2: bbentities.BlockOccupation@1fd4bef8
----bo2: bbentities.BlockOccupation@4bf40f8f
----bo2: bbentities.BlockOccupation@4299c3e
-bo2: bbentities.BlockOccupation@7f85a7f0  0.8331884500751068
-bo2: bbentities.BlockOccupation@7f85a7f0
-bo2: bbentities.BlockOccupation@f6fda88  0.8602912506308213
-bo2: bbentities.BlockOccupation@f6fda88
----bo2: bbentities.BlockOccupation@47d0ac94
-bo2: bbentities.BlockOccupation@6322ad40  0.21997023725749065
-bo2: bbentities.BlockOccupation@6322ad40
----bo2: bbentities.BlockOccupation@54f24d61
----bo2: bbentities.BlockOccupation@6fb646d8
-bo2: bbentities.BlockOccupation@28a2f76f  0.4560131233860937
-bo2: bbentities.BlockOccupation@28a2f76f
-bo2: bbentities.BlockOccupation@243cfd5a  0.7706350384498604
-bo2: bbentities.BlockOccupation@243cfd5a
----bo2: bbentities.BlockOccupation@27e54834
-bo2: bbentities.BlockOccupation@38d54df2  0.2217829103197536
-bo2: bbentities.BlockOccupation@38d54df2
----bo2: bbentities.BlockOccupation@3de76262
----bo2: bbentities.BlockOccupation@21ec2fae
-bo2: bbentities.BlockOccupation@6952c44b  0.9757927800774455
-bo2: bbentities.BlockOccupation@6952c44b
-bo2: bbentities.BlockOccupation@174e5edb  0.7808134496037727
-bo2: bbentities.BlockOccupation@174e5edb
----bo2: bbentities.BlockOccupation@192e59e8
-bo2: bbentities.BlockOccupation@7fb46468  0.7386839999233583
-bo2: bbentities.BlockOccupation@7fb46468
-bo2: bbentities.BlockOccupation@69222fc3  0.9166144126159254
-bo2: bbentities.BlockOccupation@69222fc3
----bo2: bbentities.BlockOccupation@32109b42
-bo2: bbentities.BlockOccupation@34fa4a2  0.497612530235254
-bo2: bbentities.BlockOccupation@34fa4a2
-Class 60 2
-bo2: bbentities.BlockOccupation@7c101300  0.29237778005197723
-bo2: bbentities.BlockOccupation@7c101300
----bo2: bbentities.BlockOccupation@604123bb
-Class 60 2
-bo2: bbentities.BlockOccupation@34e1819  0.4381744689993671
-bo2: bbentities.BlockOccupation@34e1819
----bo2: bbentities.BlockOccupation@5490fb5b
-bo2: bbentities.BlockOccupation@106b868b  0.1090149190399986
-bo2: bbentities.BlockOccupation@106b868b
----bo2: bbentities.BlockOccupation@7a663ebc
----bo2: bbentities.BlockOccupation@4ea0e76b
-bo2: bbentities.BlockOccupation@358270c  0.0
-bo2: bbentities.BlockOccupation@358270c
----bo2: bbentities.BlockOccupation@25b94a21
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 0 Arriving at 0.0 at 0Leaving at 137.7064382743232 at 0
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 0 Arriving at 0.0 at 0Leaving at 137.7064382743232 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 195.99215256003748 at 0
+---CREATING NODE 00---
+---NODE00---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 1 Arriving at 137.7064382743232 at 0Leaving at 176.59178581187123 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 195.99215256003748 at 0
+---CREATING NODE 000---
+---NODE000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 2 Arriving at 176.59178581187123 at 105Leaving at 245.16321438329982 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 0 Arriving at 137.7064382743232 at 0Leaving at 275.4128765486464 at 0
+---CREATING NODE 0000---
+---NODE0000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 3 Arriving at 245.16321438329982 at 105Leaving at 313.73464295472843 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 0 Arriving at 137.7064382743232 at 0Leaving at 275.4128765486464 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 245.16321438329982 at 0Leaving at 441.1553669433373 at 0
+---CREATING NODE 00000---
+---NODE00000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 3 Arriving at 245.16321438329982 at 105Leaving at 313.73464295472843 at 105
+POSSIBLE OPTION: FGW 125 Block: 1 Arriving at 275.4128765486464 at 0Leaving at 314.2982240861944 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 245.16321438329982 at 0Leaving at 441.1553669433373 at 0
+---CREATING NODE 000000---
+---NODE000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+POSSIBLE OPTION: FGW 125 Block: 1 Arriving at 275.4128765486464 at 0Leaving at 314.2982240861944 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 245.16321438329982 at 0Leaving at 441.1553669433373 at 0
+---CREATING NODE 0000000---
+---NODE0000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 314.2982240861944 at 105Leaving at 382.86965265762296 at 105
+---CREATING NODE 00000000---
+---NODE00000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 382.86965265762296 at 105Leaving at 454.2621719658267 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 000000000---
+---NODE000000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 0000000000---
+---NODE0000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 5 Arriving at 505.1271622629322 at 0Leaving at 578.2982240861945 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 00000000000---
+---NODE00000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 6 Arriving at 578.2982240861945 at 105Leaving at 646.8696526576231 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 505.1271622629322 at 0Leaving at 701.1193148229697 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 000000000000---
+---NODE000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 6 Arriving at 578.2982240861945 at 105Leaving at 646.8696526576231 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 505.1271622629322 at 0Leaving at 701.1193148229697 at 0
+---CREATING NODE 0000000000000---
+---NODE0000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 7 Arriving at 646.8696526576231 at 105Leaving at 715.4410812290516 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 505.1271622629322 at 0Leaving at 701.1193148229697 at 0
+---CREATING NODE 00000000000000---
+---NODE00000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 7 Arriving at 646.8696526576231 at 105Leaving at 715.4410812290516 at 105
+POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 701.1193148229697 at 0Leaving at 774.2903766462321 at 105
+POSSIBLE OPTION: Class 60 Block: 3 Arriving at 578.8618052176605 at 0Leaving at 654.853957777698 at 0
+---CREATING NODE 000000000000000---
+---NODE000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 7 Arriving at 646.8696526576231 at 105Leaving at 715.4410812290516 at 105
+POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 701.1193148229697 at 0Leaving at 774.2903766462321 at 105
+---CREATING NODE 0000000000000000---
+---NODE0000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 8 Arriving at 715.4410812290516 at 105Leaving at 786.8336005372554 at 0
+POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 701.1193148229697 at 0Leaving at 774.2903766462321 at 105
+---CREATING NODE 00000000000000000---
+---NODE00000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 8 Arriving at 715.4410812290516 at 105Leaving at 786.8336005372554 at 0
+POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 774.2903766462321 at 105Leaving at 842.8618052176606 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 4 Arriving at 701.1193148229697 at 0Leaving at 897.1114673830073 at 0
+---CREATING NODE 000000000000000000---
+---NODE000000000000000000---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 774.2903766462321 at 105Leaving at 842.8618052176606 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 4 Arriving at 701.1193148229697 at 0Leaving at 897.1114673830073 at 0
+---CREATING NODE 0000000000000000000---
+---NODE0000000000000000000---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 842.8618052176606 at 105Leaving at 911.4332337890892 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 4 Arriving at 701.1193148229697 at 0Leaving at 897.1114673830073 at 0
+---CREATING NODE 00000000000000000000---
+---NODE00000000000000000000---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 842.8618052176606 at 105Leaving at 911.4332337890892 at 105
+POSSIBLE OPTION: Class 60 Block: 5 Arriving at 897.1114673830073 at 0Leaving at 970.2825292062696 at 105
+---CREATING NODE 000000000000000000000---
+---NODE000000000000000000000---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 911.4332337890892 at 105Leaving at 982.8257530972929 at 0
+POSSIBLE OPTION: Class 60 Block: 5 Arriving at 897.1114673830073 at 0Leaving at 970.2825292062696 at 105
+---CREATING NODE 0000000000000000000000---
+---NODE0000000000000000000000---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 911.4332337890892 at 105Leaving at 982.8257530972929 at 0
+POSSIBLE OPTION: Class 60 Block: 6 Arriving at 970.2825292062696 at 105Leaving at 1038.8539577776983 at 105
+---CREATING NODE 00000000000000000000000---
+---NODE00000000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 60 Block: 6 Arriving at 970.2825292062696 at 105Leaving at 1038.8539577776983 at 105
+---CREATING NODE 000000000000000000000000---
+---NODE000000000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 60 Block: 7 Arriving at 1038.8539577776983 at 105Leaving at 1107.425386349127 at 105
+---CREATING NODE 0000000000000000000000000---
+---NODE0000000000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 60 Block: 8 Arriving at 1107.425386349127 at 105Leaving at 1178.8179056573306 at 0
+---CREATING NODE 01---
+---NODE01---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 1 Arriving at 137.7064382743232 at 0Leaving at 176.59178581187123 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 0.0 at 0Leaving at 195.99215256003748 at 0
+---CREATING NODE 010---
+---NODE010---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 0 Arriving at 137.7064382743232 at 0Leaving at 275.4128765486464 at 0
+POSSIBLE OPTION: FGW 125 Block: 2 Arriving at 176.59178581187123 at 105Leaving at 245.16321438329982 at 105
+---CREATING NODE 0100---
+---NODE0100---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 0 Arriving at 137.7064382743232 at 0Leaving at 275.4128765486464 at 0
+POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 245.16321438329982 at 105Leaving at 313.73464295472843 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 245.16321438329982 at 0Leaving at 441.1553669433373 at 0
+---CREATING NODE 01000---
+---NODE01000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 1 Arriving at 275.4128765486464 at 0Leaving at 314.2982240861944 at 105
+POSSIBLE OPTION: FGW 125 Block: 3 Arriving at 245.16321438329982 at 105Leaving at 313.73464295472843 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 245.16321438329982 at 0Leaving at 441.1553669433373 at 0
+---CREATING NODE 010000---
+---NODE010000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 1 Arriving at 275.4128765486464 at 0Leaving at 314.2982240861944 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 245.16321438329982 at 0Leaving at 441.1553669433373 at 0
+---CREATING NODE 0100000---
+---NODE0100000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 2 Arriving at 314.2982240861944 at 105Leaving at 382.86965265762296 at 105
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+---CREATING NODE 01000000---
+---NODE01000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 3 Arriving at 382.86965265762296 at 105Leaving at 454.2621719658267 at 0
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 010000000---
+---NODE010000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: FGW 125 Block: 4 Arriving at 313.73464295472843 at 105Leaving at 505.1271622629322 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 0100000000---
+---NODE0100000000---
+Node Creation
+POSSIBLE OPTION: FGW 125 Block: 5 Arriving at 505.1271622629322 at 0Leaving at 578.2982240861945 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 01000000000---
+---NODE01000000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 505.1271622629322 at 0Leaving at 701.1193148229697 at 0
+POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 578.2982240861945 at 105Leaving at 646.8696526576231 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 2 Arriving at 382.86965265762296 at 0Leaving at 578.8618052176605 at 0
+---CREATING NODE 010000000000---
+---NODE010000000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 505.1271622629322 at 0Leaving at 701.1193148229697 at 0
+POSSIBLE OPTION: FGW 125 Block: 6 Arriving at 578.2982240861945 at 105Leaving at 646.8696526576231 at 105
+---CREATING NODE 0100000000000---
+---NODE0100000000000---
+Node Creation
+A STATION!!!!
+POSSIBLE OPTION: Class 66 Block: 4 Arriving at 505.1271622629322 at 0Leaving at 701.1193148229697 at 0
+POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 646.8696526576231 at 105Leaving at 715.4410812290516 at 105
+---CREATING NODE 01000000000000---
+---NODE01000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 5 Arriving at 701.1193148229697 at 0Leaving at 774.2903766462321 at 105
+POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 646.8696526576231 at 105Leaving at 715.4410812290516 at 105
+POSSIBLE OPTION: Class 60 Block: 3 Arriving at 578.8618052176605 at 0Leaving at 654.853957777698 at 0
+---CREATING NODE 010000000000000---
+---NODE010000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 5 Arriving at 701.1193148229697 at 0Leaving at 774.2903766462321 at 105
+POSSIBLE OPTION: FGW 125 Block: 7 Arriving at 646.8696526576231 at 105Leaving at 715.4410812290516 at 105
+---CREATING NODE 0100000000000000---
+---NODE0100000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 5 Arriving at 701.1193148229697 at 0Leaving at 774.2903766462321 at 105
+POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 715.4410812290516 at 105Leaving at 786.8336005372554 at 0
+---CREATING NODE 01000000000000000---
+---NODE01000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 6 Arriving at 774.2903766462321 at 105Leaving at 842.8618052176606 at 105
+POSSIBLE OPTION: FGW 125 Block: 8 Arriving at 715.4410812290516 at 105Leaving at 786.8336005372554 at 0
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 4 Arriving at 701.1193148229697 at 0Leaving at 897.1114673830073 at 0
+---CREATING NODE 010000000000000000---
+---NODE010000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 6 Arriving at 774.2903766462321 at 105Leaving at 842.8618052176606 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 4 Arriving at 701.1193148229697 at 0Leaving at 897.1114673830073 at 0
+---CREATING NODE 0100000000000000000---
+---NODE0100000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 7 Arriving at 842.8618052176606 at 105Leaving at 911.4332337890892 at 105
+A STATION!!!!
+POSSIBLE OPTION: Class 60 Block: 4 Arriving at 701.1193148229697 at 0Leaving at 897.1114673830073 at 0
+---CREATING NODE 01000000000000000000---
+---NODE01000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 7 Arriving at 842.8618052176606 at 105Leaving at 911.4332337890892 at 105
+POSSIBLE OPTION: Class 60 Block: 5 Arriving at 897.1114673830073 at 0Leaving at 970.2825292062696 at 105
+---CREATING NODE 010000000000000000000---
+---NODE010000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 8 Arriving at 911.4332337890892 at 105Leaving at 982.8257530972929 at 0
+POSSIBLE OPTION: Class 60 Block: 5 Arriving at 897.1114673830073 at 0Leaving at 970.2825292062696 at 105
+---CREATING NODE 0100000000000000000000---
+---NODE0100000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 66 Block: 8 Arriving at 911.4332337890892 at 105Leaving at 982.8257530972929 at 0
+POSSIBLE OPTION: Class 60 Block: 6 Arriving at 970.2825292062696 at 105Leaving at 1038.8539577776983 at 105
+---CREATING NODE 01000000000000000000000---
+---NODE01000000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 60 Block: 6 Arriving at 970.2825292062696 at 105Leaving at 1038.8539577776983 at 105
+---CREATING NODE 010000000000000000000000---
+---NODE010000000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 60 Block: 7 Arriving at 1038.8539577776983 at 105Leaving at 1107.425386349127 at 105
+---CREATING NODE 0100000000000000000000000---
+---NODE0100000000000000000000000---
+Node Creation
+POSSIBLE OPTION: Class 60 Block: 8 Arriving at 1107.425386349127 at 105Leaving at 1178.8179056573306 at 0

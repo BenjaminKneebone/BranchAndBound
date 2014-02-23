@@ -27,7 +27,7 @@ public class TrainDiagramCreator {
 	 * @param id File will be stored in files/chartid.jpg
 	 */
 	public void drawDiagram(ArrayList<Journey> journeys, String id){
-		File f = new File("chart" + id + ".jpg");
+		File f = new File("schedule/chart" + id + ".jpg");
 		try {
 			f.createNewFile();
 		} catch (IOException e1) {

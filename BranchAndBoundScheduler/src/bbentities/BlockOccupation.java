@@ -91,6 +91,10 @@ public class BlockOccupation implements Cloneable{
 		System.out.println(arrTime + "/" + depTime + " in block " + block.getID() + " Arr Speed: " + arrSpeed + " Dep Speed: " + depSpeed);
 	}
 	
+	public String getBlockOccupationDetail(){
+		return arrTime + "/" + depTime + " in block " + block.getID() + " Arr Speed: " + arrSpeed + " Dep Speed: " + depSpeed;
+	}
+	
 	public BlockOccupation clone(ArrayList<Block> blocks){
 		//Clone BlockOccupation using reference to block in list provided
 		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime, arrSpeed, depSpeed, station);

@@ -43,6 +43,10 @@ public class TrainDiagramCreator {
 				
 				//Draws diagonal line (transit across block) 
 				series.add(b.getArrTime(), b.getBlock().getID());
+				
+				if(b.isStation())
+					series.add(b.getStationArrivalTime(), b.getBlock().getID() + 1);
+				
 				series.add(b.getDepTime(), b.getBlock().getID() + 1);
 			}
 			dataset.addSeries(series);

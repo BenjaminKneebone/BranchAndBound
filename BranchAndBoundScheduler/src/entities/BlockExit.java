@@ -22,10 +22,6 @@ public class BlockExit {
 		this.speed = speed;
 		this.message = message;
 	}
-	
-	public void addStationTime(double time){
-		this.time += time;
-	}
 
 	public double getTime() {
 		return time;

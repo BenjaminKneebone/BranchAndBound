@@ -9,32 +9,45 @@ public class BlockOccupation implements Cloneable{
 
 	private Engine train;
 	private Block block;
+	
 	//Speed entering block
 	private int arrSpeed = 0;
 	//Speed leaving block
 	private int depSpeed = 0;
 	
 	//Time leaving block
-	private double depTime = 0;
+	private double depTime = Integer.MAX_VALUE;
 	//Time entering block
-	private double arrTime = 0;
-	private boolean station;
+	private double arrTime = Integer.MAX_VALUE;
 	
+	private int stationStopTime = 0;
+	private double stationArrivalTime = -1;
 	
-	public BlockOccupation(Engine train, Block block, double depTime, double arrTime, int arrSpeed, int depSpeed, boolean station){
+	private String message;
+	
+	public BlockOccupation(Engine train, Block block){
+		this.train = train;
+		this.block = block;
+	}
+	
+	private BlockOccupation(Engine train, Block block, double depTime, double arrTime, int arrSpeed, int depSpeed, double stationArrivalTime, int stationStopTime, String message){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
 		this.arrTime = arrTime;
 		this.depSpeed = depSpeed;
 		this.arrSpeed = arrSpeed;
-		this.station = station;
+		this.stationStopTime = stationStopTime;
+		this.stationArrivalTime = stationArrivalTime;
+		this.message = message;
 	}
 	
-	public void setStation(boolean station){
-		this.station = station;
+	public BlockOccupation clone(ArrayList<Block> blocks){
+		//Clone BlockOccupation using reference to block in list provided
+		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime, arrSpeed, depSpeed, stationArrivalTime, stationStopTime, message);
+		return bo;
 	}
-	
+		
 	public int getArrSpeed() {
 		return arrSpeed;
 	}
@@ -56,7 +69,8 @@ public class BlockOccupation implements Cloneable{
 	}
 
 	public void setDepTime(double depTime) {
-		this.depTime = depTime;
+		this.stationArrivalTime = depTime;
+		this.depTime = depTime + stationStopTime;
 	}
 
 	public double getArrTime() {
@@ -76,38 +90,34 @@ public class BlockOccupation implements Cloneable{
 	}
 	
 	public boolean isStation(){
-		return station;
+		return stationStopTime > 0;
+	}
+	
+	public void setStationStopTime(int time){
+		this.stationStopTime = time;
+	}
+		
+	public double getStationArrivalTime(){
+		return stationArrivalTime;
 	}
 	
 	public void printBlockDetail(){
-		/*
-		System.out.println("------------------------------------------------------------");
-		System.out.println("Train " + train.getID() + " using block " + block.getID());
-		System.out.println("Arrives in block at " + arrTime + " at speed " + arrSpeed);
-		System.out.println("Departs at " + depTime + " at speed " + depSpeed);
-		*/
-		
-		//System.out.printf("%.1f / %.1f ->", arrTime, depTime);
 		System.out.println(arrTime + "/" + depTime + " in block " + block.getID() + " Arr Speed: " + arrSpeed + " Dep Speed: " + depSpeed);
 	}
 	
 	public String getBlockOccupationDetail(){
-		return arrTime + "/" + depTime + " in block " + block.getID() + " Arr Speed: " + arrSpeed + " Dep Speed: " + depSpeed;
+		if(!isStation())
+			return String.format("Block %d Arriving %-8.4f (%-3dkm/h) Departing %-8.4f (%-3dkm/h) \n", block.getID(), arrTime, arrSpeed,  depTime, depSpeed); 
+		else 
+			return String.format("Block %d Arriving %-8.4f (%-3dkm/h) Departing %-8.4f (%-3dkm/h) Station Arrival: %-8.4f \n", block.getID(), arrTime, arrSpeed,  depTime, depSpeed, stationArrivalTime); 
 	}
 	
-	public BlockOccupation clone(ArrayList<Block> blocks){
-		//Clone BlockOccupation using reference to block in list provided
-		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), depTime, arrTime, arrSpeed, depSpeed, station);
-		return bo;
+	public void setMessage(String msg){
+		this.message = msg;
 	}
 	
-	public void copyBlockOccupation(BlockOccupation copyBlockOccupation){
-		this.depTime = copyBlockOccupation.getDepTime();
-		this.arrTime = copyBlockOccupation.getArrTime();
-		this.depSpeed = copyBlockOccupation.getDepSpeed();
-		this.arrSpeed = copyBlockOccupation.getArrSpeed();
-		
-		
+	public String getMessage(){
+		return message;
 	}
 	
 }

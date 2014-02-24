@@ -25,7 +25,7 @@ public class Journey {
 		for(int x = 0; x < stations.size() - 1; x++)
 			journey.addAll(d.shortestRoute(stations.get(x), stations.get(x + 1), train));
 		
-		int stationIndex = 0;
+		int stationIndex = 1;
 		
 		//Remove duplicate stops in same block.
 		for(int x = 0; x < journey.size() - 1; x++){
@@ -33,13 +33,13 @@ public class Journey {
 				journey.remove(x + 1);
 			
 			if(stations.get(stationIndex) == journey.get(x).getBlock().getID()){
-					journey.get(x).setStation(true);
+					journey.get(x).setStationStopTime(120);
 					stationIndex++;
 			}
 			
 		}
 		
-		journey.get(journey.size() - 1).setStation(true);
+		journey.get(journey.size() - 1).setStationStopTime(120);
 		
 		System.out.println("Journey Size: " + journey.size());
 		

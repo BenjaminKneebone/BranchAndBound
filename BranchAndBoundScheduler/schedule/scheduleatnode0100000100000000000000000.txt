@@ -1,13 +1,13 @@
 Class 66 schedule
 Block 0 Arriving 14.8853  (0  km/h) Departing 49.1711  (0  km/h) 
-Block 1 Arriving 49.1711  (0  km/h) Departing 117.7425 (0  km/h) 
-Block 2 Arriving 117.7425 (0  km/h) Departing 190.9136 (105km/h) 
-Block 3 Arriving 190.9136 (105km/h) Departing 377.7064 (0  km/h) 
-Block 4 Arriving 377.7064 (0  km/h) Departing 573.6986 (0  km/h) Station Arrival: 453.6986 
-Block 5 Arriving 573.6986 (0  km/h) Departing 646.8697 (105km/h) 
-Block 6 Arriving 646.8697 (105km/h) Departing 715.4411 (105km/h) 
-Block 7 Arriving 715.4411 (105km/h) Departing 784.0125 (105km/h) 
-Block 8 Arriving 784.0125 (105km/h) Departing 975.4050 (0  km/h) Station Arrival: 855.4050 
+Block 1 Arriving 49.1711  (0  km/h) Departing 190.9136 (0  km/h) 
+Block 2 Arriving 190.9136 (0  km/h) Departing 377.7064 (0  km/h) 
+Block 3 Arriving 377.7064 (0  km/h) Departing 573.6986 (0  km/h) 
+Block 4 Arriving 573.6986 (0  km/h) Departing 769.6907 (0  km/h) Station Arrival: 649.6907 
+Block 5 Arriving 769.6907 (0  km/h) Departing 842.8618 (105km/h) 
+Block 6 Arriving 842.8618 (105km/h) Departing 911.4332 (105km/h) 
+Block 7 Arriving 911.4332 (105km/h) Departing 980.0047 (105km/h) 
+Block 8 Arriving 980.0047 (105km/h) Departing 1171.3972 (0  km/h) Station Arrival: 1051.3972 
 FGW 125 schedule
 Block 0 Arriving 0.0000   (0  km/h) Departing 14.8853  (105km/h) 
 Block 1 Arriving 14.8853  (105km/h) Departing 49.1711  (105km/h) 
@@ -19,18 +19,18 @@ Block 6 Arriving 450.8775 (105km/h) Departing 519.4489 (105km/h)
 Block 7 Arriving 519.4489 (105km/h) Departing 588.0204 (105km/h) 
 Block 8 Arriving 588.0204 (105km/h) Departing 779.4129 (0  km/h) Station Arrival: 659.4129 
 Class 60 schedule
-Block 2 Arriving 190.9136 (0  km/h) Departing 377.7064 (0  km/h) 
-Block 3 Arriving 377.7064 (0  km/h) Departing 573.6986 (0  km/h) 
-Block 4 Arriving 573.6986 (0  km/h) Departing 769.6907 (0  km/h) Station Arrival: 649.6907 
-Block 5 Arriving 769.6907 (0  km/h) Departing 842.8618 (105km/h) 
-Block 6 Arriving 842.8618 (105km/h) Departing 911.4332 (105km/h) 
-Block 7 Arriving 911.4332 (105km/h) Departing 980.0047 (105km/h) 
-Block 8 Arriving 980.0047 (105km/h) Departing 1171.3972 (0  km/h) Station Arrival: 1051.3972 
+Block 2 Arriving 117.7425 (0  km/h) Departing 190.9136 (105km/h) 
+Block 3 Arriving 190.9136 (105km/h) Departing 377.7064 (0  km/h) 
+Block 4 Arriving 377.7064 (0  km/h) Departing 573.6986 (0  km/h) Station Arrival: 453.6986 
+Block 5 Arriving 573.6986 (0  km/h) Departing 646.8697 (105km/h) 
+Block 6 Arriving 646.8697 (105km/h) Departing 715.4411 (105km/h) 
+Block 7 Arriving 715.4411 (105km/h) Departing 784.0125 (105km/h) 
+Block 8 Arriving 784.0125 (105km/h) Departing 975.4050 (0  km/h) Station Arrival: 855.4050 
 Class 66 schedule
 17.7064  to traverse 0 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 12.0643   
 41.7064  to traverse 1 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 36.0643   
-73.1711  to traverse 2 Entry: 0  km/h Exit: 105km/h -- Full Power 
-71.3925  to traverse 3 Entry: 105km/h Exit: 0  km/h -- Decelerating after 65.7503   
+75.9922  to traverse 2 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 70.3500   
+75.9922  to traverse 3 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 70.3500   
 75.9922  to traverse 4 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 70.3500   
 73.1711  to traverse 5 Entry: 0  km/h Exit: 105km/h -- Full Power 
 68.5714  to traverse 6 Entry: 105km/h Exit: 105km/h -- Full Power 
@@ -49,8 +49,8 @@ FGW 125 schedule
 71.3925  to traverse 8 Entry: 105km/h Exit: 0  km/h -- Decelerating after 65.7503   
 
 Class 60 schedule
-75.9922  to traverse 2 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 70.3500   
-75.9922  to traverse 3 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 70.3500   
+73.1711  to traverse 2 Entry: 0  km/h Exit: 105km/h -- Full Power 
+71.3925  to traverse 3 Entry: 105km/h Exit: 0  km/h -- Decelerating after 65.7503   
 75.9922  to traverse 4 Entry: 0  km/h Exit: 0  km/h -- Reaching to 105km/h after 9.1993  , decelerating after 70.3500   
 73.1711  to traverse 5 Entry: 0  km/h Exit: 105km/h -- Full Power 
 68.5714  to traverse 6 Entry: 105km/h Exit: 105km/h -- Full Power 

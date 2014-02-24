@@ -153,10 +153,8 @@ public class Scheduler {
 
 				if(firstBlock.isStation()){
 					try {
-						System.out.println("A STATION!!!!");
 						b = train.exitBlockAtSetSpeed(firstBlock.getBlock(),
 								firstBlock.getArrSpeed(), 0);
-						b.addStationTime(120);
 					} catch (InvalidSpeedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -217,6 +215,7 @@ public class Scheduler {
 			firstBlock.setDepTime(firstBlock.getArrTime() + b.getTime());
 			// Speed leaving block
 			firstBlock.setDepSpeed(b.getSpeed());
+			firstBlock.setMessage(b.getMessage());
 
 			// If this is the BlockOccupation with the earliest exit
 			if (firstBlock.getDepTime() < firstArrivalTime) {
@@ -347,12 +346,18 @@ public class Scheduler {
 
 			print = new PrintWriter(write);
 
+			for (Journey journey : journeys) {
+				print.write(journey.getTrain().getName() + " schedule\n");
+
+				for (BlockOccupation b : journey.getBlockOccupations())
+					print.write(b.getBlockOccupationDetail());
+			}
 			
 			for (Journey journey : journeys) {
 				print.write(journey.getTrain().getName() + " schedule\n");
 
 				for (BlockOccupation b : journey.getBlockOccupations())
-					print.printf("Block %d Arriving %-8.4f (%-3dkm/h) Departing %-8.4f (%-3dkm/h) \n", b.getBlock().getID(), b.getArrTime(), b.getArrSpeed(),  b.getDepTime(), b.getDepSpeed()); 
+					print.printf(b.getMessage()); 
 			
 				print.write("\n");
 			}

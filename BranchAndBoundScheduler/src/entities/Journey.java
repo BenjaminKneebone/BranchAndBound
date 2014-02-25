@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import entities.Block;
 import entities.Engine;
-import entities.Network;
 import exceptions.RouteNotFoundException;
 
 import algorithms.Dijkstra;
@@ -15,12 +14,14 @@ public class Journey {
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	//The index of the first unscheduled BlockOccupation
 	private int nextToBeScheduled;
-	private int index;
+	private int id;
 	
-	//When journey is first initialised
-	public Journey(Engine train, ArrayList<Integer> stations, Dijkstra d, int nextToBeScheduled, int index) throws RouteNotFoundException{
+	
+	public Journey(Engine train, ArrayList<Integer> stations, Dijkstra d, int nextToBeScheduled, int id) throws RouteNotFoundException{
 		this.train = train;
-			
+		this.id = id;	
+		
+		
 		//Get separate parts of the route (between stations)
 		for(int x = 0; x < stations.size() - 1; x++)
 			journey.addAll(d.shortestRoute(stations.get(x), stations.get(x + 1), train));
@@ -32,6 +33,7 @@ public class Journey {
 			if(journey.get(x).getBlock() == journey.get(x + 1).getBlock())
 				journey.remove(x + 1);
 			
+			//Set station times
 			if(stations.get(stationIndex) == journey.get(x).getBlock().getID()){
 					journey.get(x).setStationStopTime(120);
 					stationIndex++;
@@ -39,24 +41,19 @@ public class Journey {
 			
 		}
 		
+		//Set stopping time in last block
 		journey.get(journey.size() - 1).setStationStopTime(120);
 		
-		System.out.println("Journey Size: " + journey.size());
-		
-		//Set start of journey to time 0, speed 0
+		//Set start of journey to time 0
 		journey.get(0).setArrTime(0);
-		journey.get(0).setArrSpeed(0);
-		
-		this.index = index;	
 	}
 	
 	//When journey is cloned
-	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, int index){
+	public Journey(ArrayList<BlockOccupation> blockOccupation, Engine train, int nextToBeScheduled, int id){
 		this.train = train;
 		this.journey = blockOccupation;
-		this.index = index;
-		
 		this.nextToBeScheduled = nextToBeScheduled;
+		this.id = id;
 	}
 	
 	public void printJourney(){
@@ -80,13 +77,8 @@ public class Journey {
 	public BlockOccupation getSecondToBeScheduled(){
 		return journey.get(nextToBeScheduled+1);
 	}
-		
-	public int getIndex(){
-		return index;
-	}
 	
-	/**Increment counter pointing at next block to be scheduled
-	 */
+	/**Increment counter pointing at next block to be scheduled*/
 	public void incrementJourney(){
 		nextToBeScheduled++;
 	}
@@ -112,6 +104,10 @@ public class Journey {
 		return journey.get(nextToBeScheduled - 1);
 	}
 	
+	public int getID(){
+		return id;
+	}
+	
 	/**
 	 * @return true if the next block to be scheduled is the last block in the journey
 	 */
@@ -124,7 +120,7 @@ public class Journey {
 		for(BlockOccupation bo: journey)
 			cloneBO.add(bo.clone(blocks));
 		
-		Journey j = new Journey(cloneBO, train, nextToBeScheduled, index);
+		Journey j = new Journey(cloneBO, train, nextToBeScheduled, id);
 		
 		return j;
 	}

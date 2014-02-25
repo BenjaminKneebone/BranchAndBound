@@ -3,8 +3,8 @@ package control;
 import java.util.ArrayList;
 
 import algorithms.Dijkstra;
-import bbentities.BlockOccupation;
-import bbentities.Journey;
+import entities.BlockOccupation;
+import entities.Journey;
 import entities.Block;
 import entities.BlockExit;
 import entities.Engine;

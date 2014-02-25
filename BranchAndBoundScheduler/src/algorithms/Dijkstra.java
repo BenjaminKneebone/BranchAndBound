@@ -2,8 +2,7 @@ package algorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import bbentities.BlockOccupation;
+import entities.BlockOccupation;
 
 import entities.Block;
 import entities.Engine;

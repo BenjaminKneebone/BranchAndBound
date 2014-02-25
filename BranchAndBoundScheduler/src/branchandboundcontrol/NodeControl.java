@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 
 import traindiagrams.TrainDiagramCreator;
 import entities.Block;
@@ -19,14 +21,14 @@ public class NodeControl {
 	private double globalMaximum = Integer.MAX_VALUE;
 	private Node bestNode;
 
-	ArrayList<Node> nodes = new ArrayList<Node>();
+	Deque<Node> nodes = new ArrayDeque<Node>();
 	
 	
 	public NodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks, ArrayList<Engine> trains){
-		nodes.add(new Node(journeys, blocks, trains));
+		nodes.push(new Node(journeys, blocks, trains));
 		
 		while(!nodes.isEmpty()){
-			schedule(nodes.get(0));
+			schedule(nodes.pop());
 		}
 		
 		saveOptimal();
@@ -218,7 +220,7 @@ public class NodeControl {
 					scheduleComplete(node);
 				} else {
 					// Create node and reset blocks
-					nodes.add(new Node(node.getJourneyCopy(), node.getBlocks(), node.getTrains(),
+					nodes.push(new Node(node.getJourneyCopy(), node.getBlocks(), node.getTrains(),
 							jou, jou.getID(), node.getId().concat(String
 									.valueOf(childID++))));
 				}
@@ -233,7 +235,7 @@ public class NodeControl {
 			}
 		}
 		
-		nodes.remove(0);
+		//nodes.remove(0);
 
 	}
 	

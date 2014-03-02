@@ -17,6 +17,7 @@ public class Test {
 	
 	public static void main(String[] args){
 		Network n = new Network("files/8BlockLoopNetwork.json");
+		n.printNetworkInfo();
 		
 		Dijkstra d = new Dijkstra(n);
 
@@ -35,73 +36,14 @@ public class Test {
 		stations.add(0);
 		stations.add(4);
 		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
+		
 		
 		ArrayList<Integer> stations2 = new ArrayList<Integer>();
-		stations2.add(2);
+		stations2.add(0);
 		stations2.add(4);
 		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		stations2.add(2);
-		stations2.add(4);
-		stations2.add(7);
-		
-		ArrayList<Integer> stations3 = new ArrayList<Integer>();
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
-		stations3.add(4);
-		stations3.add(7);
-		stations3.add(0);
+
+
 		
 		
 		System.out.println("---INITIAL STATE---");
@@ -112,6 +54,9 @@ public class Test {
 		Journey j;
 		try {
 			j = new Journey(n.getTrains().get(0), stations, d, 0, 0);
+			journies.add(j);
+			j.printJourney();
+			j = new Journey(n.getTrains().get(1), stations, d, 0, 1);
 			journies.add(j);
 			j.printJourney();
 

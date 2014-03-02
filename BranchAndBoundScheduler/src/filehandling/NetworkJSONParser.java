@@ -158,7 +158,7 @@ public class NetworkJSONParser {
 			//Add Blocks leading out of the join
 			for(int x = 1; x < ids.size(); x++){
 				//Block leading out of block - add to adjacency for source block
-				dest.add(blocks.get(Integer.parseInt(((JSONObject) ids.get(1)).get("id").toString())));
+				dest.add(blocks.get(Integer.parseInt(((JSONObject) ids.get(x)).get("id").toString())));
 			}
 			
 			//Position based on the source Blocks ID

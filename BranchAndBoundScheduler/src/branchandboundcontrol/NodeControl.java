@@ -52,8 +52,12 @@ public class NodeControl {
 
 	public void schedule(Node node) {
 
-		System.out.println("Node Creation");
+		System.out.println("Scheduling " + node.getId());
 
+		for(Block b: node.getBlocks())
+			b.printBlockDetail();
+		
+		
 		int x = 0;
 		
 		// Schedule next block for each train
@@ -271,7 +275,7 @@ public class NodeControl {
 			}
 		}
 		
-		nodes.remove(0);
+		//nodes.remove(0);
 
 	}
 	

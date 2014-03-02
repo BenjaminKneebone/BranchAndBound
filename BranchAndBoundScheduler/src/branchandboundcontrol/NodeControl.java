@@ -32,6 +32,7 @@ public class NodeControl {
 		
 		//Perform scheduling on node Depth First
 		while(!nodes.isEmpty()){
+			System.out.println(nodes.size());
 			schedule(nodes.pop());
 		}
 		
@@ -53,12 +54,16 @@ public class NodeControl {
 
 		System.out.println("Node Creation");
 
+		int x = 0;
+		
 		// Schedule next block for each train
 		for (Journey j : node.getJourneys()) {
 
 			if (!canBeScheduled(j))
 				continue;
 
+			x++;
+			
 			// Get first block to be scheduled on journey
 			BlockOccupation currentBlock = j.getNextToBeScheduled();
 
@@ -150,6 +155,9 @@ public class NodeControl {
 			}
 
 		}
+		
+		System.out.println("schedule: " + x);
+		
 		
 		createNewNodes(node);
 		
@@ -263,7 +271,7 @@ public class NodeControl {
 			}
 		}
 		
-		//nodes.remove(0);
+		nodes.remove(0);
 
 	}
 	
@@ -282,7 +290,7 @@ public class NodeControl {
 					timeSum += b.getArrTime();
 		}
 		
-		System.out.println("COMPLETE SCHEDULE TIME: " + timeSum);
+		//System.out.println("COMPLETE SCHEDULE TIME: " + timeSum);
 		
 		
 		if(timeSum < globalMinimum){
@@ -297,7 +305,7 @@ public class NodeControl {
 	public void saveOptimal(){
 		
 		
-		File sch = new File("schedule/scheduleatnode" + bestNode.getId() + ".txt");
+		File sch = new File("schedule/scheduleatnode.txt");
 
 		FileWriter write = null;
 		PrintWriter print = null;

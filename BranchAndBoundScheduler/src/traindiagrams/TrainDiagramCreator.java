@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
@@ -19,13 +20,17 @@ import entities.Journey;
 
 public class TrainDiagramCreator {
 
+	int maxRange = 0;
+	
+	
+	
 	/**
 	 * Creates a train diagram
 	 * @param journeys The journeys the schedule consists of
 	 * @param id File will be stored in files/chartid.jpg
 	 */
 	public void drawDiagram(ArrayList<Journey> journeys, String id){
-		File f = new File("schedule/chart" + id + ".jpg");
+		File f = new File("schedule/chart.jpg");
 		try {
 			f.createNewFile();
 		} catch (IOException e1) {
@@ -46,17 +51,22 @@ public class TrainDiagramCreator {
 					series.add(b.getStationArrivalTime(), b.getBlock().getID() + 1);
 				
 				series.add(b.getDepTime(), b.getBlock().getID() + 1);
+				
+				if(b.getDepTime() > maxRange){
+					maxRange = (int) (b.getDepTime() + 5);
+				}
+				
 			}
 			dataset.addSeries(series);
 		}
 		
 		// Generate the graph
 		JFreeChart chart = ChartFactory.createXYLineChart(
-		"XY Chart",
+		"Train Diagram",
 		// Title
-		"x-axis",
+		"Time (Seconds)",
 		// x-axis Label
-		"y-axis",
+		"Block",
 		// y-axis Label
 		dataset,
 		// Dataset
@@ -78,6 +88,11 @@ public class TrainDiagramCreator {
 			renderer.setSeriesShape(x, cross);
 		
 		chart.getXYPlot().setRenderer(renderer);
+		
+		NumberAxis xAxis = new NumberAxis();
+		xAxis.setAutoRange(false);
+		xAxis.setRange(0, maxRange);
+		chart.getXYPlot().setDomainAxis(xAxis);
 		
 		try {
 		ChartUtilities.saveChartAsJPEG(f, chart, 500, 300);

@@ -18,21 +18,36 @@ import exceptions.InvalidSpeedException;
 
 public class NodeControl {
 
-	private double globalMaximum = Integer.MAX_VALUE;
+	//The minimum sum of times found so far
+	private double globalMinimum = Integer.MAX_VALUE;
+	//The node with the schedule producing the global minimum
 	private Node bestNode;
-
-	Deque<Node> nodes = new ArrayDeque<Node>();
+	//Used as a stack to store the nodes
+	private Deque<Node> nodes = new ArrayDeque<Node>();
 	
 	
 	public NodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks, ArrayList<Engine> trains){
+		//Root node pushed onto tree
 		nodes.push(new Node(journeys, blocks, trains));
 		
+		//Perform scheduling on node Depth First
 		while(!nodes.isEmpty()){
 			schedule(nodes.pop());
 		}
 		
 		saveOptimal();
 	}
+
+	/*
+	* schedule() will attempt to schedule the next BlockOccupation of each
+	* Journey. It will alter the BlockOccupation objects stored within
+	* journeys. So after schedule has been called, journeys will store the
+	* journeys each with another Block scheduled (where feasible). It will find
+	* the first arrival time and the block in which this occurs and pass it to
+	* the node creation method. Note: No alterations are made to either
+	* journeyCopy or blocks
+	*/
+
 
 	public void schedule(Node node) {
 
@@ -140,6 +155,19 @@ public class NodeControl {
 		
 	}
 	
+	/*
+	* createNewNodes() will loop through the journeys finding any journey where
+	* the the next BlockOccupation's departure time is before the first arrival
+	* time and in the same block as the first arrival time.
+	*
+	* It makes a copy of the block to be altered before any change is made. It
+	* then passes journeyCopy (clean list of journeys) and the altered journey
+	* into a new node (Where the altered journey is added to a clone of
+	* journeyCopy).
+	*
+	* The altered block is then made to copy the values copied before it was
+	* altered (The block is reset to its initial state in this node).
+	*/
 	
 	private void createNewNodes(Node node) {
 		// ----STEP 3
@@ -239,6 +267,11 @@ public class NodeControl {
 
 	}
 	
+	/** 
+	 * Takes a complete schedule, calculates if it is the optimal schedule, and stores node in bestNode
+	 * if so.  
+	 * @param node A leaf node with all journeys completely scheduled
+	 */
 	private void scheduleComplete(Node node) {
 		
 		double timeSum = 0;
@@ -252,12 +285,15 @@ public class NodeControl {
 		System.out.println("COMPLETE SCHEDULE TIME: " + timeSum);
 		
 		
-		if(timeSum < globalMaximum){
+		if(timeSum < globalMinimum){
 			bestNode = node;
 		}
 		
 	}
 	
+	/**
+	 * Save the optimal schedule found & its train diagram
+	 */
 	public void saveOptimal(){
 		
 		
@@ -320,6 +356,11 @@ public class NodeControl {
 
 	}
 
+	/**
+	 * 
+	 * @param node 
+	 * @return True if all journeys in the node have been scheduled
+	 */
 	private boolean allJourneysScheduled(Node node) {
 
 		// Return false if any journey is not fully scheduled

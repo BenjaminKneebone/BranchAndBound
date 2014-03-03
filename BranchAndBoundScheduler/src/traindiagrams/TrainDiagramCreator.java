@@ -42,18 +42,22 @@ public class TrainDiagramCreator {
 		
 		for(Journey j: journeys){
 			XYSeries series = new XYSeries(j.getTrain().getName());
-			for(BlockOccupation b: j.getBlockOccupations()){
+			ArrayList<BlockOccupation> bo = j.getBlockOccupations();
+			for(int x = 0; x < bo.size(); x++){
 				
 				//Draws diagonal line (transit across block) 
-				series.add(b.getArrTime(), b.getBlock().getID());
+				if(x == 0)
+					series.add(bo.get(x).getArrTime(), bo.get(x).getBlock().getID() - 1);
+				else
+					series.add(bo.get(x).getArrTime(), bo.get(x - 1).getBlock().getID());
 				
-				if(b.isStation())
-					series.add(b.getStationArrivalTime(), b.getBlock().getID() + 1);
+				if(bo.get(x).isStation())
+					series.add(bo.get(x).getStationArrivalTime(), bo.get(x).getBlock().getID());
 				
-				series.add(b.getDepTime(), b.getBlock().getID() + 1);
+				series.add(bo.get(x).getDepTime(), bo.get(x).getBlock().getID());
 				
-				if(b.getDepTime() > maxRange){
-					maxRange = (int) (b.getDepTime() + 5);
+				if(bo.get(x).getDepTime() > maxRange){
+					maxRange = (int) (bo.get(x).getDepTime() + 5);
 				}
 				
 			}

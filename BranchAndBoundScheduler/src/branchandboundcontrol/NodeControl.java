@@ -32,7 +32,6 @@ public class NodeControl {
 		
 		//Perform scheduling on node Depth First
 		while(!nodes.isEmpty()){
-			System.out.println(nodes.size());
 			schedule(nodes.pop());
 		}
 		
@@ -53,10 +52,6 @@ public class NodeControl {
 	public void schedule(Node node) {
 
 		System.out.println("Scheduling " + node.getId());
-
-		for(Block b: node.getBlocks())
-			b.printBlockDetail();
-		
 		
 		int x = 0;
 		

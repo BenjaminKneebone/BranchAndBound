@@ -8,15 +8,16 @@ import entities.Journey;
 import entities.Block;
 import entities.BlockExit;
 import entities.Engine;
+import entities.JourneyCreator;
 import entities.Network;
 import exceptions.RouteNotFoundException;
 
 public class Test {
 	
-	static ArrayList<Journey> journies = new ArrayList<Journey>();
+	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
 	
 	public static void main(String[] args){
-		Network n = new Network("files/8BlockLoopNetwork.json");
+		Network n = new Network("files/8BlockLoop1siding.json");
 		n.printNetworkInfo();
 		
 		Dijkstra d = new Dijkstra(n);
@@ -26,24 +27,8 @@ public class Test {
 		ArrayList<Integer> stations = new ArrayList<Integer>();
 		stations.add(0);
 		stations.add(4);
-		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
-		stations.add(0);
-		stations.add(4);
-		stations.add(7);
 		
 		
-		ArrayList<Integer> stations2 = new ArrayList<Integer>();
-		stations2.add(0);
-		stations2.add(4);
-		stations2.add(7);
-
-
 		
 		
 		System.out.println("---INITIAL STATE---");
@@ -51,23 +36,19 @@ public class Test {
 		for(Block b: n.getBlocks())
 			b.printBlockDetail();
 		System.out.println("---JOURNEYS---");
-		Journey j;
 		try {
-			j = new Journey(n.getTrains().get(0), stations, d, 0, 0);
-			journies.add(j);
-			j.printJourney();
-			j = new Journey(n.getTrains().get(1), stations, d, 0, 1);
-			journies.add(j);
-			j.printJourney();
-
+			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
 		} catch (RouteNotFoundException e) {
 			e.printStackTrace();
 		}
 		System.out.println("---END INITIAL STATE---");
 		
+		journeys.get(0).printJourney();
+		
 		
 		//Create a scheduler with original configuration
-		new NodeControl(journies, n.getBlocks(), n.getTrains());		
+		//new NodeControl(journeys, n.getBlocks(), n.getTrains());	
+		
 	}
 	
 }

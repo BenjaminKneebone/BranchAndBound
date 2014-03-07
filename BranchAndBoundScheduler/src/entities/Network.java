@@ -8,7 +8,7 @@ public class Network {
 
 	private ArrayList<Engine> trains;
 	private ArrayList<Block> blocks;
-	private ArrayList<Join> joins;
+	private ArrayList<ArrayList<Join>> joins;
 	
 	/**
 	 * @param filename File to parse network data from
@@ -28,7 +28,7 @@ public class Network {
 		return trains;
 	}
 	
-	public ArrayList<Join> getJoins(){
+	public ArrayList<ArrayList<Join>> getJoins(){
 		return joins;
 	}
 	
@@ -40,16 +40,13 @@ public class Network {
 		for(Engine t: trains)
 			System.out.println("train: " + t.getID() + " length: " + t.getLength() + " weight: " + t.getWeight() + " Speed: " + t.getSpeedProfile()[0]);
 		
-		for(Join j: joins){
-			System.out.print("Source: " + j.getSource().getID());
-	
-			if(j.getDest() == null)
-				System.out.println(" has no attached blocks");
-			else{
-				for(Block b: j.getDest())
-					System.out.print(" connects to " + b.getID());
-				System.out.print("\n");
+		for(int x = 0; x < joins.size(); x++){
+			System.out.println("Block " + x + " has the connections:");
+			
+			for(Join j: joins.get(x)){
+				j.printConnections(x);
 			}
+			
 		}
 	}
 	

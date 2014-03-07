@@ -8,16 +8,21 @@ import entities.Block;
 import entities.Engine;
 import entities.Join;
 import entities.Network;
+import exceptions.NoOutsFromInException;
 import exceptions.RouteNotFoundException;
 
 public class Dijkstra {
 
 	private ArrayList<Block> blocks;
-	private ArrayList<Join> joins;
+	private ArrayList<ArrayList<Join>> joins;
+	private ArrayList<Join> prevJoins;
 	
 	public Dijkstra(Network network){
 		blocks = network.getBlocks();
 		joins = network.getJoins();
+		prevJoins = new ArrayList<Join>(blocks.size());
+		for(int x = 0; x < blocks.size(); x++)
+			prevJoins.add(null);
 	}
 	
 	/**
@@ -37,13 +42,14 @@ public class Dijkstra {
 		//The "Front"
 		ArrayList<Join> activeJoins = new ArrayList<Join>();
 				
-		//Get the first join
-		activeJoins.add(joins.get(sourceID));
+		//Get the joins associated with the first block
+		activeJoins.addAll(joins.get(sourceID));
 		
-		//Set distance to first join
-		joins.get(sourceID).setMinDistance(blocks.get(sourceID).getLength());
-		//Set this join to beginning of the chain
-		joins.get(sourceID).setPrevJoin(null);	
+		for(Join j: activeJoins){
+			//Set distance to first join
+			j.setMinDistance(blocks.get(sourceID).getLength());
+			j.setCurrentIn(sourceID);
+		}
 		
 		//Whilst we have active joins
 		while(activeJoins.size() > 0){
@@ -57,58 +63,61 @@ public class Dijkstra {
 			//For each join on the "front"
 			for(Join oldJ: activeJoins){
 				
-				//If not a terminal
-				if(oldJ.getDest() != null){
-					
-					//Get dest blocks
-					for(Block b: oldJ.getDest()){
-						
+				//Get dest blocks
+				try {
+					for(Block b: oldJ.getOuts(blocks.get(oldJ.getCurrentIn()))){
+
 						//See if better route found to destination
 						if(b.getID() == destID){
 							destFound = true;
 							if(oldJ.getMinDistance() + b.getLength() < globalMin){
 								globalMin = oldJ.getMinDistance() + b.getLength();
-								joins.get(destID).setPrevJoin(oldJ);
+								prevJoins.set(destID, oldJ);
 							}
 						}else{
-							Join newJ = joins.get(b.getID());
-							
-							//Check if quicker route has been found to this join
-							if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
-								//Set new minimum distance values and add join to the "Front"
-								newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
-								newJ.setPrevJoin(oldJ);
-								newActive.add(newJ);
+							for(Join newJ : joins.get(b.getID())){
+
+								//Check if quicker route has been found to this join
+								if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
+									//Set new minimum distance values and add join to the "Front"
+									newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
+									newJ.setCurrentIn(b.getID());
+									prevJoins.set(b.getID(), oldJ);
+									newActive.add(newJ);
+								}
 							}
 						}
-					}		
-				}
+					}
+				} catch (NoOutsFromInException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+				
 			}
 		
 			activeJoins = newActive;
 		}
 		
 		//Reset min distance for the joins
-		for(Join j: joins)
-			j.setMinDistance(10000000);
+		for(ArrayList<Join> aj: joins)
+			for(Join j: aj)
+				j.setMinDistance(10000000);
 		
 		if(globalMin == 10000000){
-			//No solution found - reset joins
-			for(Join j: joins)
-				j.setPrevJoin(null);
-			
 			throw new RouteNotFoundException(sourceID, destID);
 		}else{
 			//Solution found - create route
 			ArrayList<BlockOccupation> route = new ArrayList<BlockOccupation>();
 			
 			//Get join of the destination
-			Join last = joins.get(destID);
+			Join last = prevJoins.get(destID);
+			
+			int blockID;
 			
 			//Loop through adding blocks to root
-			while(last.getPrevJoin() != null){
-				route.add(new BlockOccupation(train, last.getSource()));
-				last = last.getPrevJoin();
+			while(last.getCurrentIn() != sourceID){
+				route.add(new BlockOccupation(train, blocks.get(last.getCurrentIn())));
+				last = prevJoins.get(last.getCurrentIn());
 			}
 			
 			//Add source block
@@ -116,11 +125,7 @@ public class Dijkstra {
 			
 			//reverse route (Now source to destination)
 			Collections.reverse(route);
-			
-			//Reset joins
-			for(Join j: joins)
-				j.setPrevJoin(null);
-			
+						
 			return route;
 		}
 	}

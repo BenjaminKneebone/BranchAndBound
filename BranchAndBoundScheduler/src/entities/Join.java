@@ -2,37 +2,71 @@ package entities;
 
 import java.util.ArrayList;
 
+import exceptions.NoOutsFromInException;
+
 public class Join {
 
-	private Block source;
-	//Null if no connection from source
-	private ArrayList<Block> dest;
+	private ArrayList<Connection> connections = new ArrayList<Connection>();
 	//Large number (Initialisation of shortest route calculation)
 	private int minDistance = 10000000;
-	//Used in Dijkstra to indicate previous join in route (forms chain)
-	private Join prevJoin;
+
+	private int currentIn;
 	
-	/**
-	 * @param source The Block leading into the Join
-	 * @param dest The Blocks leading out of the Join
-	 */
-	public Join(Block source, ArrayList<Block> dest){
-		this.source = source;
-		this.dest = dest;
+	public int getCurrentIn() {
+		return currentIn;
+	}
+
+	public void setCurrentIn(int currentIn) {
+		this.currentIn = currentIn;
+	}
+
+	public Join(){	
 	}
 	
 	/**
-	 * @return The Block leading into this Join
+	 * @param in The entry block into this join 
+	 * @return A list of the blocks where valid connections exist from the in block across this join.
+	 * @throws NoOutsFromInException
 	 */
-	public Block getSource(){
-		return source;
+	public ArrayList<Block> getOuts(Block in) throws NoOutsFromInException{
+		ArrayList<Block> outs = new ArrayList<Block>();
+		
+		for(Connection c: connections){
+			if(c.getIn() == in)
+				outs.add(c.getOut());
+		}
+		
+		if(outs.size() == 0){
+			throw new NoOutsFromInException(in.getID());
+		}else{
+			return outs;
+		}
 	}
 	
 	/**
-	 * @return The Blocks leading out of this Join
+	 * @return All the blocks that a train can be in before traversing this join. 
 	 */
-	public ArrayList<Block> getDest(){
-		return dest;
+	public ArrayList<Block> getIns(){
+		ArrayList<Block> ins = new ArrayList<Block>();
+		
+		for(Connection c: connections){
+			//Avoid duplicating blocks that have multiple connections across join
+			if(!ins.contains(c.getIn()))
+				ins.add(c.getIn());
+		}
+			
+		return ins;
+	}
+	
+	public void printConnections(int in){
+		for(Connection c: connections){
+			if(c.getIn().getID() == in)
+				System.out.println(in  + " connects to " + c.getOut().getID());
+		}
+	}
+	
+	public void addConnection(Connection c){
+		connections.add(c);
 	}
 	
 	/**
@@ -50,25 +84,10 @@ public class Join {
 	}
 	
 	/**
-	 * @param prev The Join to be set as the Join before this one in some route
-	 */
-	public void setPrevJoin(Join prev){
-		prevJoin = prev;
-	}
-	
-	/**
-	 * @return The Join before this join
-	 */
-	public Join getPrevJoin(){
-		return prevJoin;
-	}
-	
-	/**
 	 * Set routing variables (previous Join and minimum distance to initial state). Does not
 	 * change source or destination Blocks
 	 */
 	public void resetJoin(){
-		prevJoin = null;
 		minDistance = 10000000;
 	}	
 }

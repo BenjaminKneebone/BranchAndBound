@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import entities.Block;
+import entities.Connection;
 import entities.Engine;
 import entities.Join;
 
@@ -20,7 +21,7 @@ public class NetworkJSONParser {
 	private JSONObject network;
 	private ArrayList<Engine> trains;
 	private ArrayList<Block> blocks;
-	private ArrayList<Join> joins;
+	private ArrayList<ArrayList<Join>> joins;
 	
 	/**
 	 * @param filename File to parse network data from
@@ -128,13 +129,16 @@ public class NetworkJSONParser {
 		 * ID. Ordering is now guaranteed.
 		 */
 		
-		joins = new ArrayList<Join>();
+		joins = new ArrayList<ArrayList<Join>>();
 		JSONArray blockObjects = (JSONArray) network.get("blocks");
 		
-		//Initialise adjacency arraylist
-		for(int x = 0; x < blockObjects.size(); x++)
-			joins.add(new Join(blocks.get(x), null));
+		ArrayList<Join> joinList;
 		
+		//Initialise adjacency arraylist
+		for(int x = 0; x < blockObjects.size(); x++){
+			joinList = new ArrayList<Join>();
+			joins.add(joinList);
+		}
 		
 		JSONArray joinObjects = (JSONArray) network.get("joins");
 		
@@ -145,24 +149,28 @@ public class NetworkJSONParser {
 		while(joinIterator.hasNext()){
 			
 			//Get all blocks either side of the join
-			JSONArray ids = (JSONArray) joinIterator.next().get("ids");
+			@SuppressWarnings("unchecked")
+			Iterator<JSONObject> allowedIterator = ((JSONArray) joinIterator.next().get("allowed")).iterator();
 			
-			//Block leading into the join
-			JSONObject sourceBlock = (JSONObject) ids.get(0);
-			int sourceID = Integer.parseInt(sourceBlock.get("id").toString());
-			Block source = blocks.get(sourceID);
+			Join newJoin = new Join();
+
+			Block in;
+			Block out;
 			
-			//Blocks leading from the join
-			ArrayList<Block> dest = new ArrayList<Block>();
-			
-			//Add Blocks leading out of the join
-			for(int x = 1; x < ids.size(); x++){
-				//Block leading out of block - add to adjacency for source block
-				dest.add(blocks.get(Integer.parseInt(((JSONObject) ids.get(x)).get("id").toString())));
+			while(allowedIterator.hasNext()){
+				JSONObject nextConnection = (JSONObject) allowedIterator.next();
+				
+				in = blocks.get(Integer.parseInt(nextConnection.get("in").toString()));
+				out = blocks.get(Integer.parseInt(nextConnection.get("out").toString()));
+				
+				newJoin.addConnection(new Connection(in, out));
 			}
 			
-			//Position based on the source Blocks ID
-			joins.set(sourceID, new Join(source, dest));	
+			for(Block b: newJoin.getIns()){
+				System.out.println("Adding to " + b.getID());
+				joins.get(b.getID()).add(newJoin);
+			}
+			
 		}
 	}
 	
@@ -170,7 +178,7 @@ public class NetworkJSONParser {
 		return trains;
 	}
 	
-	public ArrayList<Join> getJoins(){
+	public ArrayList<ArrayList<Join>> getJoins(){
 		return joins;
 	}
 	

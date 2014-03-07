@@ -89,57 +89,71 @@
 	}
 	],
 	"joins": [{
-		"ids": [{
-			"id": 0,
-			"type": "direct"
-		}, {
-			"id": 1,
-			"type": "direct"
-		}],
-		"restrict": [ 
-		]
-	}, {
-		"ids": [{
-			"id": 1,
-			"type": "direct"
-		}, {
-			"id": 2,
-			"type": "direct"
-		}],
-		"restrict": [ 
-		]
-	}, {
-		"ids": [{
-			"id": 2,
-			"type": "direct"
-		}, {
-			"id": 3,
-			"type": "direct"
-		}],
-		"restrict": [ 
-		]
-	}, {
-		"ids": [{
-			"id": 3,
-			"type": "direct"
-		}, {
-			"id": 4,
-			"type": "direct"
-		}],
-		"restrict": [ 
-		]
-	}, {
-		"ids": [{ 
-			"id": 4,
-			"type": "fanin"
-		}, {
-			"id": 8,
+		"allowed": [{
+			"in": 0,
+			"out": 1,
 			"type": "straight"
-		}, {
-			"id": 5,
+		},{
+			"in": 1,
+			"out": 0,
+			"type": "straight"
+		}],
+		"restrict": [ 
+		]
+	}, {
+		"allowed": [{
+			"in": 1,
+			"out": 2,
+			"type": "straight"
+		},{
+			"in": 2,
+			"out": 1,
+			"type": "straight"
+		}],
+		"restrict": [ 
+		]
+	}, {
+		"allowed": [{
+			"in": 2,
+			"out": 3,
+			"type": "straight"
+		},{
+			"in": 3,
+			"out": 2,
+			"type": "straight"
+		}],
+		"restrict": [ 
+		]
+	}, {
+		"allowed": [{
+			"in": 3,
+			"out": 4,
+			"type": "straight"
+		},{
+			"in": 4,
+			"out": 3,
+			"type": "straight"
+		}],
+		"restrict": [ 
+		]
+	}, {
+		"allowed": [{
+			"in": 4,
+			"out": 5,
+			"type": "straight"
+		},{
+			"in": 5,
+			"out": 4,
+			"type": "straight"
+		},{
+			"in": 4,
+			"out": 8,
 			"type": "diverge"
-		}
-		],
+		},{
+			"in": 8,
+			"out": 4,
+			"type": "diverge"
+		}],
 		"restrict": [
 			{
 				"ids": [1, 2]
@@ -163,32 +177,38 @@
 			}
 		}
 	}, {
-		"ids": [{
-			"id": 5,
-			"type": "direct"
-		}, {
-			"id": 6,
-			"type": "direct"
+		"allowed": [{
+			"in": 5,
+			"out": 6,
+			"type": "straight"
+		},{
+			"in": 6,
+			"out": 5,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]
 	},{
-		"ids": [{
-			"id": 6,
-			"type": "direct"
-		}, {
-			"id": 7,
-			"type": "direct"
+		"allowed": [{
+			"in": 6,
+			"out": 7,
+			"type": "straight"
+		},{
+			"in": 7,
+			"out": 6,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]
 	},{
-		"ids": [{
-			"id": 7,
-			"type": "direct"
-		}, {
-			"id": 0,
-			"type": "direct"
+		"allowed": [{
+			"in": 7,
+			"out": 0,
+			"type": "straight"
+		},{
+			"in": 0,
+			"out": 7,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]

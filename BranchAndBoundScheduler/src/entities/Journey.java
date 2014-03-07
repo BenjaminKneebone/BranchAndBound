@@ -13,14 +13,13 @@ public class Journey {
 	private Engine train;
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	//The index of the first unscheduled BlockOccupation
-	private int nextToBeScheduled;
+	private int nextToBeScheduled = 0;
 	private int id;
 	
 	
-	public Journey(Engine train, ArrayList<Integer> stations, Dijkstra d, int nextToBeScheduled, int id) throws RouteNotFoundException{
+	public Journey(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys) throws RouteNotFoundException{
 		this.train = train;
-		this.id = id;	
-		
+		this.id = journeys.size();	
 		
 		//Get separate parts of the route (between stations)
 		for(int x = 0; x < stations.size() - 1; x++)

@@ -76,7 +76,7 @@ public class Dijkstra {
 							}
 						}else{
 							for(Join newJ : joins.get(b.getID())){
-
+								
 								//Check if quicker route has been found to this join
 								if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
 									//Set new minimum distance values and add join to the "Front"
@@ -112,7 +112,7 @@ public class Dijkstra {
 			//Get join of the destination
 			Join last = prevJoins.get(destID);
 			
-			int blockID;
+			route.add(new BlockOccupation(train, blocks.get(destID)));
 			
 			//Loop through adding blocks to root
 			while(last.getCurrentIn() != sourceID){

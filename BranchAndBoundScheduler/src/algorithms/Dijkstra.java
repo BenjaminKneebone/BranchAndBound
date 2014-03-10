@@ -2,6 +2,7 @@ package algorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -117,6 +118,8 @@ public class Dijkstra {
 			}
 		
 			activeJoins = newActive;
+			
+			Collections.sort(activeJoins, new JoinComparator());
 		}
 				
 		if(globalMin == 10000000){
@@ -155,5 +158,14 @@ public class Dijkstra {
 		}
 		
 		return true;
+	}
+	
+	private class JoinComparator implements Comparator<Join>{
+
+		@Override
+		public int compare(Join o1, Join o2) {
+			return minDistance.get(o1) < minDistance.get(o2) ? -1 : minDistance.get(o1) == minDistance.get(o2) ? 0 : 1;
+		}
+		
 	}
 }

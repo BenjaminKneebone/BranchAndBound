@@ -9,6 +9,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
@@ -21,7 +22,7 @@ import entities.Journey;
 public class TrainDiagramCreator {
 
 	int maxRange = 0;
-	
+	int maxBlock = 0;
 	
 	
 	/**
@@ -58,6 +59,10 @@ public class TrainDiagramCreator {
 				
 				if(bo.get(x).getDepTime() > maxRange){
 					maxRange = (int) (bo.get(x).getDepTime() + 5);
+				}
+				
+				if(bo.get(x).getBlock().getID() > maxBlock){
+					maxBlock = bo.get(x).getBlock().getID();
 				}
 				
 			}
@@ -97,6 +102,11 @@ public class TrainDiagramCreator {
 		xAxis.setAutoRange(false);
 		xAxis.setRange(0, maxRange);
 		chart.getXYPlot().setDomainAxis(xAxis);
+		NumberAxis yAxis = new NumberAxis();
+		yAxis.setAutoRange(false);
+		yAxis.setRange(-1, maxBlock+1);
+		yAxis.setTickUnit(new NumberTickUnit(1));
+		chart.getXYPlot().setRangeAxis(yAxis);
 		
 		try {
 		ChartUtilities.saveChartAsJPEG(f, chart, 500, 300);

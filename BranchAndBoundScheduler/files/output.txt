@@ -1,1 +1,35 @@
-Error: Could not find or load main class control.Test
+---JOURNEYS---
+exceptions.RouteNotFoundException: There is no route between 2 and 0
+	at algorithms.Dijkstra.shortestRoute(Dijkstra.java:107)
+	at entities.Journey.<init>(Journey.java:29)
+	at entities.JourneyCreator.createSingleJourney(JourneyCreator.java:47)
+	at branchandboundcontrol.Test.main(Test.java:53)
+Train Class 66 journey . Length: 6000
+Train: 0   Block: 6   Length: 2000  Station: false
+Train: 0   Block: 4   Length: 2000  Station: false
+Train: 0   Block: 0   Length: 2000  Station: true
+Train Class 66 journey . Length: 12000
+Train: 0   Block: 10  Length: 2000  Station: false
+Train: 0   Block: 8   Length: 2000  Station: false
+Train: 0   Block: 7   Length: 2000  Station: false
+Train: 0   Block: 5   Length: 2000  Station: false
+Train: 0   Block: 4   Length: 2000  Station: false
+Train: 0   Block: 0   Length: 2000  Station: true
+Train Class 66 journey . Length: 16000
+Train: 0   Block: 13  Length: 2000  Station: false
+Train: 0   Block: 11  Length: 2000  Station: false
+Train: 0   Block: 9   Length: 2000  Station: false
+Train: 0   Block: 8   Length: 2000  Station: false
+Train: 0   Block: 7   Length: 2000  Station: false
+Train: 0   Block: 5   Length: 2000  Station: false
+Train: 0   Block: 4   Length: 2000  Station: false
+Train: 0   Block: 0   Length: 2000  Station: true
+Train Class 66 journey . Length: 16000
+Train: 0   Block: 12  Length: 2000  Station: false
+Train: 0   Block: 11  Length: 2000  Station: false
+Train: 0   Block: 9   Length: 2000  Station: false
+Train: 0   Block: 8   Length: 2000  Station: false
+Train: 0   Block: 7   Length: 2000  Station: false
+Train: 0   Block: 5   Length: 2000  Station: false
+Train: 0   Block: 4   Length: 2000  Station: false
+Train: 0   Block: 0   Length: 2000  Station: true

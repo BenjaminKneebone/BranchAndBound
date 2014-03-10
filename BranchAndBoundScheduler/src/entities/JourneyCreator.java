@@ -16,13 +16,20 @@ public class JourneyCreator {
 	 * @param journeys Newly created journeys will be added to this list
 	 * @throws RouteNotFoundException 
 	 */
-	public static void createRepeatedJourneys(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys, int interval, int num) throws RouteNotFoundException{
+	public static void createRepeatedJourneys(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys, int interval, int num){
 		
 		for(int x = 0; x < num; x++){
 			
-			Journey j = new Journey(train, stations, d, journeys);
-			j.getBlockOccupations().get(0).setArrTime(x * interval);
-			journeys.add(j);
+			Journey j;
+			try {
+				j = new Journey(train, stations, d, journeys);
+				j.getBlockOccupations().get(0).setArrTime(x * interval);
+				journeys.add(j);
+			} catch (RouteNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	
@@ -34,8 +41,15 @@ public class JourneyCreator {
 	 * @param journeys Newly created journeys will be added to this list
 	 * @throws RouteNotFoundException 
 	 */
-	public static void createSingleJourney(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys) throws RouteNotFoundException{
-		Journey j = new Journey(train, stations, d, journeys);
-		journeys.add(j);
+	public static void createSingleJourney(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys){
+		Journey j;
+		try {
+			j = new Journey(train, stations, d, journeys);
+			journeys.add(j);
+		} catch (RouteNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

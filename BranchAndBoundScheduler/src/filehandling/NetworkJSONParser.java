@@ -167,7 +167,7 @@ public class NetworkJSONParser {
 			}
 			
 			for(Block b: newJoin.getIns()){
-				System.out.println("Adding to " + b.getID());
+				//System.out.println("Adding to " + b.getID());
 				joins.get(b.getID()).add(newJoin);
 			}
 			

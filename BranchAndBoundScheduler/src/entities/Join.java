@@ -59,6 +59,7 @@ public class Join {
 	}
 	
 	public void printConnections(int in){
+		
 		for(Connection c: connections){
 			if(c.getIn().getID() == in)
 				System.out.println(in  + " connects to " + c.getOut().getID());

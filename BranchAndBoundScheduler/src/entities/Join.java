@@ -10,16 +10,6 @@ public class Join {
 	//Large number (Initialisation of shortest route calculation)
 	private int minDistance = 10000000;
 
-	private int currentIn;
-	
-	public int getCurrentIn() {
-		return currentIn;
-	}
-
-	public void setCurrentIn(int currentIn) {
-		this.currentIn = currentIn;
-	}
-
 	public Join(){	
 	}
 	

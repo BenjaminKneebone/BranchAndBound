@@ -2,6 +2,9 @@ package algorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import entities.BlockOccupation;
 
 import entities.Block;
@@ -16,6 +19,8 @@ public class Dijkstra {
 	private ArrayList<Block> blocks;
 	private ArrayList<ArrayList<Join>> joins;
 	private ArrayList<Join> prevJoins;
+	
+	private Map<Join, Integer> currentIn = new HashMap<Join, Integer>();
 	
 	public Dijkstra(Network network){
 		blocks = network.getBlocks();
@@ -48,7 +53,7 @@ public class Dijkstra {
 		for(Join j: activeJoins){
 			//Set distance to first join
 			j.setMinDistance(blocks.get(sourceID).getLength());
-			j.setCurrentIn(sourceID);
+			currentIn.put(j, sourceID);
 		}
 		
 		//Whilst we have active joins
@@ -65,7 +70,7 @@ public class Dijkstra {
 				
 				//Get dest blocks
 				try {
-					for(Block b: oldJ.getOuts(blocks.get(oldJ.getCurrentIn()))){
+					for(Block b: oldJ.getOuts(blocks.get(currentIn.get(oldJ)))){
 
 						//See if better route found to destination
 						if(b.getID() == destID){
@@ -83,7 +88,7 @@ public class Dijkstra {
 									if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
 										//Set new minimum distance values and add join to the "Front"
 										newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
-										newJ.setCurrentIn(b.getID());
+										currentIn.put(newJ, b.getID());
 										prevJoins.set(b.getID(), oldJ);
 										newActive.add(newJ);
 									}
@@ -118,9 +123,9 @@ public class Dijkstra {
 			route.add(new BlockOccupation(train, blocks.get(destID)));
 			
 			//Loop through adding blocks to root
-			while(last.getCurrentIn() != sourceID){
-				route.add(new BlockOccupation(train, blocks.get(last.getCurrentIn())));
-				last = prevJoins.get(last.getCurrentIn());
+			while(currentIn.get(last) != sourceID){
+				route.add(new BlockOccupation(train, blocks.get(currentIn.get(last))));
+				last = prevJoins.get(currentIn.get(last));
 			}
 			
 			//Add source block

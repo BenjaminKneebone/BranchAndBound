@@ -19,7 +19,7 @@ public class Dijkstra {
 	private ArrayList<Block> blocks;
 	private ArrayList<ArrayList<Join>> joins;
 	private ArrayList<Join> prevJoins;
-	
+	private Map<Join, Integer> minDistance = new HashMap<Join, Integer>();
 	private Map<Join, Integer> currentIn = new HashMap<Join, Integer>();
 	
 	public Dijkstra(Network network){
@@ -28,6 +28,7 @@ public class Dijkstra {
 		prevJoins = new ArrayList<Join>(blocks.size());
 		for(int x = 0; x < blocks.size(); x++)
 			prevJoins.add(null);
+		
 	}
 	
 	/**
@@ -40,6 +41,12 @@ public class Dijkstra {
 	 */
 	public ArrayList<BlockOccupation> shortestRoute(int sourceID, int destID, Engine train) throws RouteNotFoundException{
 			
+		//Set high distance for each join (As some joins will appear in 
+		//multiple lists, will perform unnecessary puts
+		for(ArrayList<Join> joinList: joins)
+			for(Join j: joinList)
+				minDistance.put(j, 1000000);
+		
 		//Large number so found routes are smaller
 		int globalMin = 10000000;
 		boolean destFound = false;
@@ -52,7 +59,7 @@ public class Dijkstra {
 		
 		for(Join j: activeJoins){
 			//Set distance to first join
-			j.setMinDistance(blocks.get(sourceID).getLength());
+			minDistance.put(j, blocks.get(sourceID).getLength());
 			currentIn.put(j, sourceID);
 		}
 		
@@ -75,8 +82,8 @@ public class Dijkstra {
 						//See if better route found to destination
 						if(b.getID() == destID){
 							destFound = true;
-							if(oldJ.getMinDistance() + b.getLength() < globalMin){
-								globalMin = oldJ.getMinDistance() + b.getLength();
+							if(minDistance.get(oldJ) + b.getLength() < globalMin){
+								globalMin = minDistance.get(oldJ) + b.getLength();
 								prevJoins.set(destID, oldJ);
 							}
 						}else{
@@ -85,9 +92,9 @@ public class Dijkstra {
 								//Do not check join in direction we've arrived from
 								if(newJ != oldJ){
 									//Check if quicker route has been found to this join
-									if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
+									if(minDistance.get(newJ) > minDistance.get(oldJ) + b.getLength()){
 										//Set new minimum distance values and add join to the "Front"
-										newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
+										minDistance.put(newJ, minDistance.get(oldJ) + b.getLength());
 										currentIn.put(newJ, b.getID());
 										prevJoins.set(b.getID(), oldJ);
 										newActive.add(newJ);
@@ -105,12 +112,7 @@ public class Dijkstra {
 		
 			activeJoins = newActive;
 		}
-		
-		//Reset min distance for the joins
-		for(ArrayList<Join> aj: joins)
-			for(Join j: aj)
-				j.setMinDistance(10000000);
-		
+				
 		if(globalMin == 10000000){
 			throw new RouteNotFoundException(sourceID, destID);
 		}else{
@@ -141,7 +143,7 @@ public class Dijkstra {
 	private boolean checkComplete(ArrayList<Join> active, int globalMin){
 		
 		for(Join j: active){
-			if(j.getMinDistance() < globalMin)
+			if(minDistance.get(j) < globalMin)
 				return false;
 		}
 		

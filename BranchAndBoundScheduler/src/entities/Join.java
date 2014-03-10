@@ -7,8 +7,6 @@ import exceptions.NoOutsFromInException;
 public class Join {
 
 	private ArrayList<Connection> connections = new ArrayList<Connection>();
-	//Large number (Initialisation of shortest route calculation)
-	private int minDistance = 10000000;
 
 	public Join(){	
 	}
@@ -59,26 +57,4 @@ public class Join {
 	public void addConnection(Connection c){
 		connections.add(c);
 	}
-	
-	/**
-	 * @param dist Set the minimum distance to this Join (In metres) (Used in Dijkstra)
-	 */
-	public void setMinDistance(int dist){
-		minDistance = dist;
-	}
-	
-	/**
-	 * @return Get the minimum distance found to this Join (In metres)
-	 */
-	public int getMinDistance(){
-		return minDistance;
-	}
-	
-	/**
-	 * Set routing variables (previous Join and minimum distance to initial state). Does not
-	 * change source or destination Blocks
-	 */
-	public void resetJoin(){
-		minDistance = 10000000;
-	}	
 }

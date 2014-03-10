@@ -119,6 +119,14 @@ public class BlockOccupation implements Cloneable{
 	public double getStationArrivalTime(){
 		return stationArrivalTime;
 	}
+	
+	public int getLength(){
+		if(connection != null){
+			return connection.getLength() + block.getLength();
+		}else{
+			return block.getLength();
+		}
+	}
 		
 	public String getBlockOccupationDetail(){
 		if(!isStation())

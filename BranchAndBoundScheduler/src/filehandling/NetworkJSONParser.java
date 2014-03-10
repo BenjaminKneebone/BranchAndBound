@@ -164,7 +164,7 @@ public class NetworkJSONParser {
 				in = blocks.get(Integer.parseInt(nextConnection.get("in").toString()));
 				out = blocks.get(Integer.parseInt(nextConnection.get("out").toString()));
 				length = Integer.parseInt(nextConnection.get("length").toString());
-				
+				System.out.println("Connection length: " + length);
 				newJoin.addConnection(new Connection(in, out, length));
 			}
 			

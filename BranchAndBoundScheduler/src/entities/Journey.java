@@ -37,7 +37,7 @@ public class Journey {
 					journey.remove(x + 1);	
 				}
 				
-				length += journey.get(x).getBlock().getLength();
+				length += journey.get(x).getLength();
 				
 				//Set station times
 				if(stations.get(stationIndex) == journey.get(x).getBlock().getID()){
@@ -50,7 +50,7 @@ public class Journey {
 			//Set stopping time in last block
 			journey.get(journey.size() - 1).setStationStopTime(120);
 			
-			length += journey.get(journey.size() - 1).getBlock().getLength();
+			length += journey.get(journey.size() - 1).getLength();
 			
 			//Set start of journey to time 0
 			journey.get(0).setArrTime(0);

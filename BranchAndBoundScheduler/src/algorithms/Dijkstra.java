@@ -8,6 +8,7 @@ import java.util.Map;
 import entities.BlockOccupation;
 
 import entities.Block;
+import entities.Connection;
 import entities.Engine;
 import entities.Join;
 import entities.Network;
@@ -18,16 +19,15 @@ public class Dijkstra {
 
 	private ArrayList<Block> blocks;
 	private ArrayList<ArrayList<Join>> joins;
-	private ArrayList<Join> prevJoins;
+	private ArrayList<Connection> prevConn;
 	private Map<Join, Integer> minDistance = new HashMap<Join, Integer>();
 	private Map<Join, Integer> currentIn = new HashMap<Join, Integer>();
 	
 	public Dijkstra(Network network){
 		blocks = network.getBlocks();
 		joins = network.getJoins();
-		prevJoins = new ArrayList<Join>(blocks.size());
-		for(int x = 0; x < blocks.size(); x++)
-			prevJoins.add(null);
+		prevConn = new ArrayList<Connection>(blocks.size());
+		
 		
 	}
 	
@@ -46,6 +46,12 @@ public class Dijkstra {
 		for(ArrayList<Join> joinList: joins)
 			for(Join j: joinList)
 				minDistance.put(j, 1000000);
+		
+		prevConn = new ArrayList<Connection>(blocks.size());
+		for(int x = 0; x < blocks.size(); x++)
+			prevConn.add(null);
+		
+		currentIn = new HashMap<Join, Integer>();
 		
 		//Large number so found routes are smaller
 		int globalMin = 10000000;
@@ -77,26 +83,26 @@ public class Dijkstra {
 				
 				//Get dest blocks
 				try {
-					for(Block b: oldJ.getOuts(blocks.get(currentIn.get(oldJ)))){
+					for(Connection c: oldJ.getConnections(blocks.get(currentIn.get(oldJ)))){
 
 						//See if better route found to destination
-						if(b.getID() == destID){
+						if(c.getOut().getID() == destID){
 							destFound = true;
-							if(minDistance.get(oldJ) + b.getLength() < globalMin){
-								globalMin = minDistance.get(oldJ) + b.getLength();
-								prevJoins.set(destID, oldJ);
+							if(minDistance.get(oldJ) + c.getOut().getLength() < globalMin){
+								globalMin = minDistance.get(oldJ) +  c.getOut().getLength();
+								prevConn.set(c.getOut().getID(), c);
 							}
 						}else{
-							for(Join newJ : joins.get(b.getID())){
+							for(Join newJ : joins.get(c.getOut().getID())){
 								
 								//Do not check join in direction we've arrived from
 								if(newJ != oldJ){
 									//Check if quicker route has been found to this join
-									if(minDistance.get(newJ) > minDistance.get(oldJ) + b.getLength()){
+									if(minDistance.get(newJ) > minDistance.get(oldJ) + c.getOut().getLength()){
 										//Set new minimum distance values and add join to the "Front"
-										minDistance.put(newJ, minDistance.get(oldJ) + b.getLength());
-										currentIn.put(newJ, b.getID());
-										prevJoins.set(b.getID(), oldJ);
+										minDistance.put(newJ, minDistance.get(oldJ) + c.getOut().getLength());
+										currentIn.put(newJ, c.getOut().getID());
+										prevConn.set(c.getOut().getID(), c);
 										newActive.add(newJ);
 									}
 								}
@@ -120,18 +126,19 @@ public class Dijkstra {
 			ArrayList<BlockOccupation> route = new ArrayList<BlockOccupation>();
 			
 			//Get join of the destination
-			Join last = prevJoins.get(destID);
-			
-			route.add(new BlockOccupation(train, blocks.get(destID)));
-			
+			Connection first = prevConn.get(destID);
+			Connection second = prevConn.get(first.getIn().getID()); 
+								
+			route.add(new BlockOccupation(train, blocks.get(destID), first));
 			//Loop through adding blocks to root
-			while(currentIn.get(last) != sourceID){
-				route.add(new BlockOccupation(train, blocks.get(currentIn.get(last))));
-				last = prevJoins.get(currentIn.get(last));
+			while(second != null){
+				route.add(new BlockOccupation(train, first.getIn(), second));
+				first = second;
+				second = prevConn.get(second.getIn().getID());	
 			}
 			
 			//Add source block
-			route.add(new BlockOccupation(train, blocks.get(sourceID)));
+			route.add(new BlockOccupation(train, blocks.get(sourceID), null));
 			
 			//reverse route (Now source to destination)
 			Collections.reverse(route);

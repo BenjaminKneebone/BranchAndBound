@@ -127,18 +127,22 @@
 		"allowed": [{
 			"in": 0,
 			"out": 1,
+			"length": 10,
 			"type": "straight"
 		},{
 			"in": 0,
 			"out": 4,
+			"length": 100,
 			"type": "straight"
 		},{
 			"in": 1,
 			"out": 0,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 4,
 			"out": 0,
+			"length": 0,
 			"type": "straight"
 		},],
 		"restrict": [ 
@@ -147,14 +151,17 @@
 		"allowed": [{
 			"in": 1,
 			"out": 2,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 1,
 			"out": 3,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 3,
 			"out": 1,
+			"length": 0,
 			"type": "straight"
 		}],
 		"restrict": [ 
@@ -163,18 +170,22 @@
 		"allowed": [{
 			"in": 4,
 			"out": 5,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 4,
 			"out": 6,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 5,
 			"out": 4,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 6,
 			"out": 4,
+			"length": 0,
 			"type": "straight"
 		}],
 		"restrict": [ 
@@ -183,10 +194,12 @@
 		"allowed": [{
 			"in": 5,
 			"out": 7,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 7,
 			"out": 5,
+			"length": 0,
 			"type": "straight"
 		}],
 		"restrict": [ 
@@ -195,10 +208,12 @@
 		"allowed": [{
 			"in": 7,
 			"out": 8,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 8,
 			"out": 7,
+			"length": 0,
 			"type": "straight"
 		}],
 		"restrict": [
@@ -227,14 +242,17 @@
 		"allowed": [{
 			"in": 8,
 			"out": 9,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 10,
 			"out": 8,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 9,
 			"out": 8,
+			"length": 0,
 			"type": "straight"
 		}],
 		"restrict": [ 
@@ -243,10 +261,12 @@
 		"allowed": [{
 			"in": 9,
 			"out": 11,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 11,
 			"out": 9,
+			"length": 0,
 		 	"type": "straight"
 		}],
 		"restrict": [ 
@@ -255,14 +275,17 @@
 		"allowed": [{
 			"in": 11,
 			"out": 13,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 13,
 			"out": 11,
+			"length": 0,
 			"type": "straight"
 		},{
 			"in": 12,
 			"out": 11,
+			"length": 0,
 			"type": "straight"
 		}],
 		"restrict": [ 

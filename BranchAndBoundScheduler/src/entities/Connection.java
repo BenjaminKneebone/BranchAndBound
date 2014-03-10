@@ -9,6 +9,7 @@ public class Connection {
 	public Connection(Block in, Block out, int length){
 		this.in = in;
 		this.out = out;
+		this.length = length;
 	}
 
 	public Block getIn() {

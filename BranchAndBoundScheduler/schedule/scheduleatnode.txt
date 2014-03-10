@@ -1,0 +1,37 @@
+Class 66 schedule
+Block 0 Arriving 0.0000   (0  km/h) Departing 73.1711  (105km/h) 
+Block 1 Arriving 73.1711  (105km/h) Departing 141.7425 (105km/h) 
+Block 2 Arriving 141.7425 (105km/h) Departing 333.1350 (0  km/h) Station Arrival: 213.1350 
+Class 66 schedule
+Block 0 Arriving 73.1711  (0  km/h) Departing 146.3421 (105km/h) 
+Block 4 Arriving 146.3421 (105km/h) Departing 214.9136 (105km/h) 
+Block 6 Arriving 214.9136 (105km/h) Departing 406.3061 (0  km/h) Station Arrival: 286.3061 
+Class 66 schedule
+Block 0 Arriving 146.3421 (0  km/h) Departing 219.5132 (105km/h) 
+Block 4 Arriving 219.5132 (105km/h) Departing 288.0846 (105km/h) 
+Block 5 Arriving 288.0846 (105km/h) Departing 356.6560 (105km/h) 
+Block 7 Arriving 356.6560 (105km/h) Departing 425.2275 (105km/h) 
+Block 8 Arriving 425.2275 (105km/h) Departing 493.7989 (105km/h) 
+Block 9 Arriving 493.7989 (105km/h) Departing 562.3703 (105km/h) 
+Block 11 Arriving 562.3703 (105km/h) Departing 630.9418 (105km/h) 
+Block 13 Arriving 630.9418 (105km/h) Departing 822.3343 (0  km/h) Station Arrival: 702.3343 
+Class 66 schedule
+73.1711  to traverse 0 Entry: 0  km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 1 Entry: 105km/h Exit: 105km/h -- Full Power 
+71.3925  to traverse 2 Entry: 105km/h Exit: 0  km/h -- Decelerating after 65.7503   
+
+Class 66 schedule
+73.1711  to traverse 0 Entry: 0  km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 4 Entry: 105km/h Exit: 105km/h -- Full Power 
+71.3925  to traverse 6 Entry: 105km/h Exit: 0  km/h -- Decelerating after 65.7503   
+
+Class 66 schedule
+73.1711  to traverse 0 Entry: 0  km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 4 Entry: 105km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 5 Entry: 105km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 7 Entry: 105km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 8 Entry: 105km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 9 Entry: 105km/h Exit: 105km/h -- Full Power 
+68.5714  to traverse 11 Entry: 105km/h Exit: 105km/h -- Full Power 
+71.3925  to traverse 13 Entry: 105km/h Exit: 0  km/h -- Decelerating after 65.7503   
+

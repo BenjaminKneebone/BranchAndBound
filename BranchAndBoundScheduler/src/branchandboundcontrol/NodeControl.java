@@ -15,6 +15,7 @@ import entities.BlockOccupation;
 import entities.Engine;
 import entities.Journey;
 import exceptions.InvalidSpeedException;
+import filehandling.ScheduleJSONWriter;
 
 public class NodeControl {
 
@@ -326,6 +327,7 @@ public class NodeControl {
 	 */
 	public void saveOptimal(){
 		
+		ScheduleJSONWriter.writeJSONSchedule(bestNode);
 		
 		File sch = new File("schedule/scheduleatnode.txt");
 

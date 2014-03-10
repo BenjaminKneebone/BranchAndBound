@@ -96,6 +96,10 @@ public class BlockOccupation implements Cloneable{
 	public void setStationStopTime(int time){
 		this.stationStopTime = time;
 	}
+	
+	public int getStationStopTime(){
+		return stationStopTime;
+	}
 		
 	public double getStationArrivalTime(){
 		return stationArrivalTime;

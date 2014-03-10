@@ -31,6 +31,31 @@ public class Join {
 		}
 	}
 	
+	public ArrayList<Connection> getConnections(Block in) throws NoOutsFromInException{
+		ArrayList<Connection> conn = new ArrayList<Connection>();
+		
+		for(Connection c: connections){
+			if(c.getIn() == in)
+				conn.add(c);
+		}
+		
+		if(conn.size() == 0){
+			throw new NoOutsFromInException(in.getID());
+		}else{
+			return conn;
+		}
+	}
+	
+	public Connection getConnection(int in, int out){
+		
+		for(Connection c: connections){
+			if(c.getIn().getID() == in && c.getOut().getID() == out)
+				return c;
+		}
+
+		return null;
+	}
+	
 	/**
 	 * @return All the blocks that a train can be in before traversing this join. 
 	 */

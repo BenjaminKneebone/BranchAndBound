@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Block implements Cloneable {
 
-	private int id;
-	private int length;
+	private int id = -1;
+	private int length = -1;
 	private double nextPossibleEntry;
 	private double lastEntry = 0;
-	public boolean occupied = false;
+	private boolean occupied = false;
 	private ArrayList<Engine> sequence = new ArrayList<Engine>();
 	
 	public Block(int id, int length){
@@ -16,7 +16,7 @@ public class Block implements Cloneable {
 		this.length = length;
 	}
 	
-	public Block(int id, int length, double lastEntry, double nextPossibleEntry, boolean occupied){
+	private Block(int id, int length, double lastEntry, double nextPossibleEntry, boolean occupied){
 		this.id = id;
 		this.length = length;
 		this.lastEntry = lastEntry;

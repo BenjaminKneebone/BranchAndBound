@@ -73,7 +73,7 @@ public class Journey {
 	public void printSimpleJourney(){
 		System.out.println("Train " + train.getName() + " journey . Length: " + length);
 		for(BlockOccupation j: journey)
-			System.out.printf("Train: %-3d Block: %-3d Length: %-5d Station: %s\n", train.getID(), j.getBlock().getID(), j.getBlock().getLength(), j.isStation());
+			j.printOccupationDetail();
 	}
 	
 	public int getLength(){

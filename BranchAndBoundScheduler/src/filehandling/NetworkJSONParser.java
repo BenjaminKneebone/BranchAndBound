@@ -101,7 +101,7 @@ public class NetworkJSONParser {
 		
 		//Initialise adjacency ArrayList
 		for(int x = 0; x < blockObjects.size(); x++)
-			blocks.add(new Block(0, 0, 0 , 0, false));
+			blocks.add(new Block(0, 0));
 		
 		
 		@SuppressWarnings("unchecked")
@@ -114,7 +114,7 @@ public class NetworkJSONParser {
 			sourceID = Integer.parseInt(block.get("id").toString());
 			
 			//create block
-			Block temp = new Block(sourceID, Integer.parseInt(block.get("length").toString()), 0, 0, false);
+			Block temp = new Block(sourceID, Integer.parseInt(block.get("length").toString()));
 			
 			//add in correct place
 			blocks.set(sourceID, temp);
@@ -156,14 +156,16 @@ public class NetworkJSONParser {
 
 			Block in;
 			Block out;
+			int length;
 			
 			while(allowedIterator.hasNext()){
 				JSONObject nextConnection = (JSONObject) allowedIterator.next();
 				
 				in = blocks.get(Integer.parseInt(nextConnection.get("in").toString()));
 				out = blocks.get(Integer.parseInt(nextConnection.get("out").toString()));
+				length = Integer.parseInt(nextConnection.get("length").toString());
 				
-				newJoin.addConnection(new Connection(in, out));
+				newJoin.addConnection(new Connection(in, out, length));
 			}
 			
 			for(Block b: newJoin.getIns()){

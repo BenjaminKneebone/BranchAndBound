@@ -254,10 +254,13 @@ public class NodeControl {
 				if (allJourneysScheduled(node)) {
 					scheduleComplete(node);
 				} else {
-					// Create node and reset blocks
-					nodes.push(new Node(node.getJourneyCopy(), node.getBlocks(), node.getTrains(),
-							jou, jou.getID(), node.getId().concat(String
-									.valueOf(childID++))));
+					
+					if(getArrivalTimePartialSchedSum(node, jou.getID()) < globalMinimum){
+						// Create node and reset blocks
+						nodes.push(new Node(node.getJourneyCopy(), node.getBlocks(), node.getTrains(),
+								jou, jou.getID(), node.getId().concat(String
+										.valueOf(childID++))));
+					}
 				}
 				
 				/*RESET BLOCKS*/
@@ -269,18 +272,33 @@ public class NodeControl {
 				}
 			}
 		}
-		
-		//nodes.remove(0);
 
 	}
 	
-	/** 
-	 * Takes a complete schedule, calculates if it is the optimal schedule, and stores node in bestNode
-	 * if so.  
-	 * @param node A leaf node with all journeys completely scheduled
+	/**Sums the journeys in this node (Sums the journeys in the clean copy, except
+	 * for the ID provided which is taken from the altered version). 
+	 * @param node Node to be measured
+	 * @param journeyID Altered journey ID
+	 * @return Total time sum for the journeys at this node
 	 */
-	private void scheduleComplete(Node node) {
+	private double getArrivalTimePartialSchedSum(Node node, int journeyID){
+		double timeSum = 0;
 		
+		for(Journey j: node.getJourneyCopy()){
+			if(j.getID() != journeyID)
+				for(BlockOccupation b: j.getBlockOccupations())
+					if(b.getArrTime() != Integer.MAX_VALUE)
+						timeSum += b.getArrTime();
+		}
+		
+		for(BlockOccupation b: node.getJourneys().get(journeyID).getBlockOccupations())
+			if(b.getArrTime() != Integer.MAX_VALUE)
+				timeSum += b.getArrTime();
+		
+		return timeSum;
+	}
+	
+	private double getArrivalTimeCompleteSchedSum(Node node){
 		double timeSum = 0;
 		
 		for(Journey j: node.getJourneys()){
@@ -289,13 +307,18 @@ public class NodeControl {
 					timeSum += b.getArrTime();
 		}
 		
-		//System.out.println("COMPLETE SCHEDULE TIME: " + timeSum);
+		return timeSum;
 		
-		
-		if(timeSum < globalMinimum){
+	}
+	
+	/** 
+	 * Takes a complete schedule, calculates if it is the optimal schedule, and stores node in bestNode
+	 * if so.  
+	 * @param node A leaf node with all journeys completely scheduled
+	 */
+	private void scheduleComplete(Node node) {
+		if(getArrivalTimeCompleteSchedSum(node) < globalMinimum)
 			bestNode = node;
-		}
-		
 	}
 	
 	/**

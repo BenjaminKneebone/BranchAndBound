@@ -77,13 +77,16 @@ public class Dijkstra {
 						}else{
 							for(Join newJ : joins.get(b.getID())){
 								
-								//Check if quicker route has been found to this join
-								if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
-									//Set new minimum distance values and add join to the "Front"
-									newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
-									newJ.setCurrentIn(b.getID());
-									prevJoins.set(b.getID(), oldJ);
-									newActive.add(newJ);
+								//Do not check join in direction we've arrived from
+								if(newJ != oldJ){
+									//Check if quicker route has been found to this join
+									if(newJ.getMinDistance() > oldJ.getMinDistance() + b.getLength()){
+										//Set new minimum distance values and add join to the "Front"
+										newJ.setMinDistance(oldJ.getMinDistance() + b.getLength());
+										newJ.setCurrentIn(b.getID());
+										prevJoins.set(b.getID(), oldJ);
+										newActive.add(newJ);
+									}
 								}
 							}
 						}

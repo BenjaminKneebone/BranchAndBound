@@ -83,7 +83,7 @@ public class NodeControl {
 				/*LAST BLOCK OF JOURNEY, HALT AT END OF BLOCK*/
 				
 				try {
-					b = train.exitBlockAtSetSpeed(currentBlock.getBlock(),
+					b = train.exitBlockAtSetSpeed(currentBlock,
 							currentBlock.getArrSpeed(), 0);
 				} catch (InvalidSpeedException e) {
 					e.printStackTrace();
@@ -96,17 +96,17 @@ public class NodeControl {
 				if(currentBlock.isStation()){
 					/*STATION - HALT AT END OF BLOCK*/
 					try {
-						b = train.exitBlockAtSetSpeed(currentBlock.getBlock(),
+						b = train.exitBlockAtSetSpeed(currentBlock,
 								currentBlock.getArrSpeed(), 0);
 					} catch (InvalidSpeedException e) {
 						e.printStackTrace();
 					}
 				}else{
 				
-					if (train.canStopInBlock(nextBlock.getBlock())) {
+					if (train.canStopInBlock(nextBlock)) {
 						/*CAN ENTER NEXT BLOCK AT ANY SPEED - FULL SPEED AHEAD*/
 						try {
-							b = train.timeToTraverse(currentBlock.getBlock(),
+							b = train.timeToTraverse(currentBlock,
 									currentBlock.getArrSpeed());
 						} catch (InvalidSpeedException e) {
 							e.printStackTrace();
@@ -114,10 +114,10 @@ public class NodeControl {
 					} else {
 						/*MUST ENTER NEXT BLOCK AT REDUCED SPEED*/
 						
-						int depSpeed = train.highestBlockEntrySpeed(nextBlock.getBlock());
+						int depSpeed = train.highestBlockEntrySpeed(nextBlock);
 	
 						try {
-							b = train.exitBlockAtSetSpeed(currentBlock.getBlock(),
+							b = train.exitBlockAtSetSpeed(currentBlock,
 									currentBlock.getArrSpeed(), depSpeed);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
@@ -134,7 +134,7 @@ public class NodeControl {
 	
 						// Train needs to stop at the end of the block
 						try {
-							b = train.exitBlockAtSetSpeed(currentBlock.getBlock(),
+							b = train.exitBlockAtSetSpeed(currentBlock,
 									currentBlock.getArrSpeed(), 0);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block

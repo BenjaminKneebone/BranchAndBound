@@ -64,7 +64,7 @@ public class Engine implements Train{
 	 * Calculates time and speed at block exit assuming train
 	 * is at full power across block
 	 * 
-	 * @param block
+	 * @param bo
 	 *            - block to be traversed
 	 * @param speed
 	 *            - entry speed (km/h)
@@ -72,21 +72,22 @@ public class Engine implements Train{
 	 *         (km/h)
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit timeToTraverse(Block block, int speed)
+	public BlockExit timeToTraverse(BlockOccupation bo, int speed)
 			throws InvalidSpeedException {
 
 		if (speed < 0 || speed > speedProfile[9])
 			throw new InvalidSpeedException(speed, name, speedProfile[9]);
 
+		double timeToLeavePreviousBlock = 0;
 		double time;
 		int newVel;
 		
 		// Not enough time to reach full speed
-		if (distanceToFullSpeed(speed) > block.getLength()) {
+		if (distanceToFullSpeed(speed) > bo.getLength()) {
 
 			// The final velocity achievable over the distance (sqrt(u^2 + 2as))
 			double finalVel = Math.sqrt(Math.pow(kmhToMs(speed), 2)
-					+ (2 * acceleration * block.getLength()));
+					+ (2 * acceleration * bo.getLength()));
 
 			// Round down to nearest km/h
 			newVel = (int) Math.floor(msToKmh(finalVel));
@@ -100,7 +101,7 @@ public class Engine implements Train{
 			
 		} else {
 
-			double distanceAtFullSpeed = block.getLength()
+			double distanceAtFullSpeed = bo.getLength()
 					- distanceToFullSpeed(speed);
 
 			// Time to accelerate to full speed and to cover remaining distance
@@ -111,8 +112,9 @@ public class Engine implements Train{
 			newVel = speedProfile[9];
 		}
 		
+		
 		String message = 
-				String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Full Power \n", time, block.getID(), speed, newVel);
+				String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Full Power \n", time, bo.getBlock().getID(), speed, newVel);
 		
 		return new BlockExit(time, newVel, message);
 	}
@@ -121,7 +123,7 @@ public class Engine implements Train{
 	 * Calculates exit time if train must exit the block
 	 * at a certain speed
 	 * 
-	 * @param block
+	 * @param bo
 	 *            block to be traversed
 	 * @param speed
 	 *            entry speed (km/h)
@@ -130,7 +132,7 @@ public class Engine implements Train{
 	 * @return Block Exit item
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit exitBlockAtSetSpeed(Block block, int speed, int finalSpeed)
+	public BlockExit exitBlockAtSetSpeed(BlockOccupation bo, int speed, int finalSpeed)
 			throws InvalidSpeedException {
 
 		if (speed < 0 || speed > speedProfile[9])
@@ -162,7 +164,7 @@ public class Engine implements Train{
 					// System.out.println("Changing speed dist " +
 					// (accelerationDist + decelerationDist));
 
-					if (block.getLength() < accelerationDist + decelerationDist) {
+					if (bo.getLength() < accelerationDist + decelerationDist) {
 						maxSpeed--;
 						break;
 					}
@@ -174,7 +176,7 @@ public class Engine implements Train{
 				decelerationTime = timeToChangeSpeed(maxSpeed, 0);
 				accelerationDist = distanceToChangeSpeed(0, maxSpeed);
 				decelerationDist = distanceToChangeSpeed(maxSpeed, 0);
-				constantTime = timeToTraverseSetSpeed(block.getLength()
+				constantTime = timeToTraverseSetSpeed(bo.getLength()
 						- accelerationDist - decelerationDist, maxSpeed);
 
 				// System.out.println("ACC: " + accelerationTime);
@@ -183,7 +185,7 @@ public class Engine implements Train{
 
 				String message = 
 						String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Reaching to %-3dkm/h after %-8.4f, decelerating after %-8.4f  \n", 
-								(accelerationTime + constantTime + decelerationTime), block.getID(), 0, 0, maxSpeed, accelerationTime, (accelerationTime + constantTime));
+								(accelerationTime + constantTime + decelerationTime), bo.getBlock().getID(), 0, 0, maxSpeed, accelerationTime, (accelerationTime + constantTime));
 				
 				return new BlockExit(
 						(accelerationTime + constantTime + decelerationTime),
@@ -194,9 +196,9 @@ public class Engine implements Train{
 			// Stay at constant speed
 			String message = 
 					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Constant Speed  \n", 
-							timeToTraverseSetSpeed(block.getLength(), speed), block.getID(), speed, speed);
+							timeToTraverseSetSpeed(bo.getLength(), speed), bo.getBlock().getID(), speed, speed);
 					
-			return new BlockExit(timeToTraverseSetSpeed(block.getLength(),
+			return new BlockExit(timeToTraverseSetSpeed(bo.getLength(),
 					speed), speed, message);
 		}
 
@@ -206,7 +208,7 @@ public class Engine implements Train{
 			double accelerationDist = distanceToChangeSpeed(speed, finalSpeed);
 
 			// Time at constant speed
-			double constantTime = timeToTraverseSetSpeed(block.getLength()
+			double constantTime = timeToTraverseSetSpeed(bo.getLength()
 					- accelerationDist, finalSpeed);
 
 			
@@ -214,7 +216,7 @@ public class Engine implements Train{
 			
 			String message = 
 					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Accelerating after %-8.4f  \n", 
-							(accelerationTime + constantTime), block.getID(), speed, finalSpeed, accelerationTime);
+							(accelerationTime + constantTime), bo.getBlock().getID(), speed, finalSpeed, accelerationTime);
 
 			return new BlockExit(accelerationTime + constantTime, finalSpeed,
 					message);
@@ -224,12 +226,12 @@ public class Engine implements Train{
 			double decelerationDist = distanceToChangeSpeed(speed, finalSpeed);
 
 			// Time at constant speed
-			double constantTime = timeToTraverseSetSpeed(block.getLength()
+			double constantTime = timeToTraverseSetSpeed(bo.getLength()
 					- decelerationDist, speed);
 
 			String message = 
 					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Decelerating after %-8.4f  \n", 
-							(constantTime + decelerationTime), block.getID(), speed, finalSpeed, constantTime);
+							(constantTime + decelerationTime), bo.getBlock().getID(), speed, finalSpeed, constantTime);
 			
 			return new BlockExit(decelerationTime + constantTime, finalSpeed,
 					message);
@@ -240,7 +242,7 @@ public class Engine implements Train{
 	 * Calculates exit speed if train must spend certain amount
 	 * of time in the block
 	 * 
-	 * @param block
+	 * @param bo
 	 *            - block to be traversed
 	 * @param speed
 	 *            - entry speed
@@ -249,7 +251,7 @@ public class Engine implements Train{
 	 * @return BlockExit object containing time to traverse block and exit speed
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit minimumTimeTraversal(Block block, int speed, double time)
+	public BlockExit minimumTimeTraversal(BlockOccupation bo, int speed, double time)
 			throws InvalidSpeedException {
 
 		if (speed < 0 || speed > speedProfile[9])
@@ -258,7 +260,7 @@ public class Engine implements Train{
 		int newSpeed = speed;
 
 		// Time taken if speed does not change
-		double timeAtInputSpeed = timeToTraverseSetSpeed(block.getLength(),
+		double timeAtInputSpeed = timeToTraverseSetSpeed(bo.getLength(),
 				speed);
 
 		// Should train slow down or accelerate in block?
@@ -288,12 +290,12 @@ public class Engine implements Train{
 
 					// Amount of time to travel at entry speed before
 					// decelerating
-					constantTime = timeToTraverseSetSpeed(block.getLength()
+					constantTime = timeToTraverseSetSpeed(bo.getLength()
 							- stopDist, speed);
 
 					String message = 
 							String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Decelerating after %-8.4f  \n", 
-									(stopTime + constantTime), block.getID(), speed, 0, constantTime);
+									(stopTime + constantTime), bo.getBlock().getID(), speed, 0, constantTime);
 
 
 					return new BlockExit(stopTime + constantTime, 0, message);
@@ -303,14 +305,14 @@ public class Engine implements Train{
 					decelerationDist = distanceToChangeSpeed(speed, newSpeed);
 
 					// Time at constant speed
-					constantTime = timeToTraverseSetSpeed(block.getLength()
+					constantTime = timeToTraverseSetSpeed(bo.getLength()
 							- decelerationDist, newSpeed);
 				}
 			}
 
 			String message = 
 					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Decelerating after %-8.4f  \n", 
-							(decelerationTime + constantTime), block.getID(), newSpeed, 0, constantTime);
+							(decelerationTime + constantTime), bo.getBlock().getID(), newSpeed, 0, constantTime);
 					
 
 			return new BlockExit(decelerationTime + constantTime, newSpeed,
@@ -343,7 +345,7 @@ public class Engine implements Train{
 					accelerationDist = distanceToChangeSpeed(speed, newSpeed);
 
 					// Time at constant speed
-					constantTime = timeToTraverseSetSpeed(block.getLength()
+					constantTime = timeToTraverseSetSpeed(bo.getLength()
 							- accelerationDist, newSpeed);
 				}
 			}
@@ -354,12 +356,12 @@ public class Engine implements Train{
 			// longer time than minimum time)
 			accelerationTime = timeToChangeSpeed(speed, newSpeed);
 			accelerationDist = distanceToChangeSpeed(speed, newSpeed);
-			constantTime = timeToTraverseSetSpeed(block.getLength()
+			constantTime = timeToTraverseSetSpeed(bo.getLength()
 					- accelerationDist, newSpeed);
 
 			String message = 
 					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Accelerating after %-8.4f  \n", 
-							(accelerationTime + constantTime), block.getID(), speed, newSpeed, constantTime);
+							(accelerationTime + constantTime), bo.getBlock().getID(), speed, newSpeed, constantTime);
 
 			return new BlockExit(accelerationTime + constantTime, newSpeed,
 					message);
@@ -373,8 +375,8 @@ public class Engine implements Train{
 	 *            block in question
 	 * @return true is block is long enough for train to stop at full speed
 	 */
-	public boolean canStopInBlock(Block block) {
-		return block.getLength() > distanceToStop(speedProfile[9]);
+	public boolean canStopInBlock(BlockOccupation bo) {
+		return bo.getLength() > distanceToStop(speedProfile[9]);
 	}
 
 	/**
@@ -383,10 +385,10 @@ public class Engine implements Train{
 	 * @return The highest speed the train can arrive in the block and stop in
 	 *         the block
 	 */
-	public int highestBlockEntrySpeed(Block block) {
+	public int highestBlockEntrySpeed(BlockOccupation bo) {
 		// u = rt(v^2 - 2as), with v = 0
 		return (int) Math
-				.floor(Math.sqrt(2 * block.getLength() * deceleration));
+				.floor(Math.sqrt(2 * bo.getLength() * deceleration));
 	}
 
 	public void printDetails() {

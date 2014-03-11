@@ -10,6 +10,7 @@ public class BlockExit {
 
 	private double time;
 	private int speed;
+	private double timeToTraverseLengthOfTrain;
 	private String message;
 	
 	/**
@@ -17,10 +18,11 @@ public class BlockExit {
 	 * @param speed Speed leaving block
 	 * @param message Message to display information about train in block
 	 */
-	public BlockExit(double time, int speed, String message){
+	public BlockExit(double time, int speed, String message, double trainLengthTraversalTime){
 		this.time = time;
 		this.speed = speed;
 		this.message = message;
+		this.timeToTraverseLengthOfTrain = trainLengthTraversalTime;
 	}
 
 	public double getTime() {
@@ -33,5 +35,9 @@ public class BlockExit {
 	
 	public String getMessage(){
 		return message;
+	}
+	
+	public double getTimeToEnterBlock(){
+		return timeToTraverseLengthOfTrain;
 	}
 }

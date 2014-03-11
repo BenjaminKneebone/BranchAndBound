@@ -26,6 +26,8 @@ public class BlockOccupation implements Cloneable{
 	//Arrival Time at station
 	private double stationArrivalTime = -1;
 	
+	private double timeToEnterBlock = 0;
+	
 	//Some information about BlockOccupation (Acceleration/Deceleration etc.)
 	private String message;
 	
@@ -35,7 +37,7 @@ public class BlockOccupation implements Cloneable{
 		this.connection = conn;
 	}
 	
-	private BlockOccupation(Engine train, Block block, Connection conn, double depTime, double arrTime, int arrSpeed, int depSpeed, double stationArrivalTime, int stationStopTime, String message){
+	private BlockOccupation(Engine train, Block block, Connection conn, double depTime, double arrTime, int arrSpeed, int depSpeed, double stationArrivalTime, int stationStopTime, double timeToEnterBlock, String message){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
@@ -46,6 +48,7 @@ public class BlockOccupation implements Cloneable{
 		this.stationArrivalTime = stationArrivalTime;
 		this.message = message;
 		this.connection = conn;
+		this.timeToEnterBlock = timeToEnterBlock;
 	}
 	
 	/**Clones this BlockOccupation. Clone will reference Block in the 
@@ -55,10 +58,22 @@ public class BlockOccupation implements Cloneable{
 	 */
 	public BlockOccupation clone(ArrayList<Block> blocks){
 		//Clone BlockOccupation using reference to block in list provided
-		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), connection, depTime, arrTime, arrSpeed, depSpeed, stationArrivalTime, stationStopTime, message);
+		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), connection, depTime, arrTime, arrSpeed, depSpeed, stationArrivalTime, stationStopTime, timeToEnterBlock, message);
 		return bo;
 	}
 		
+	public void updateWithBlockExit(BlockExit b){
+		this.depSpeed = b.getSpeed();
+		this.stationArrivalTime = arrTime + b.getTime();
+		this.depTime = b.getTime() + stationStopTime + arrTime;
+		this.timeToEnterBlock = b.getTimeToEnterBlock();
+		this.message = b.getMessage();
+	}
+	
+	public double getTimeToEnterBlock(){
+		return timeToEnterBlock;
+	}
+	
 	public int getArrSpeed() {
 		return arrSpeed;
 	}
@@ -84,8 +99,7 @@ public class BlockOccupation implements Cloneable{
 	 * after time at station passes.
 	 */
 	public void setDepTime(double depTime) {
-		this.stationArrivalTime = depTime;
-		this.depTime = depTime + stationStopTime;
+		
 	}
 
 	public double getArrTime() {

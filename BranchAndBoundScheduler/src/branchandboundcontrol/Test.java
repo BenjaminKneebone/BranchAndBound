@@ -15,7 +15,7 @@ public class Test {
 	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
 	
 	public static void main(String[] args){
-		Network n = new Network("files/TestNetwork bi.json");
+		Network n = new Network("files/8BlockLoop1siding.json");
 		n.printNetworkInfo();
 		
 		Dijkstra d = new Dijkstra(n);
@@ -24,7 +24,7 @@ public class Test {
 			
 		ArrayList<Integer> stations = new ArrayList<Integer>();
 		stations.add(0);
-		stations.add(2);
+		stations.add(8);
 		
 		ArrayList<Integer> stations1 = new ArrayList<Integer>();
 		stations1.add(0);
@@ -48,10 +48,11 @@ public class Test {
 			//b.printBlockDetail();
 		System.out.println("---JOURNEYS---");
 			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
-			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations1, d, journeys);
-			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations2, d, journeys);
-			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations3, d, journeys);
-			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations4, d, journeys);
+			JourneyCreator.createSingleJourney(n.getTrains().get(1), stations, d, journeys);
+			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
+			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
+			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
+			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations4, d, journeys);
 		
 		//System.out.println("---END INITIAL STATE---");
 		
@@ -60,7 +61,7 @@ public class Test {
 		
 		
 		//Create a scheduler with original configuration
-		//new NodeControl(journeys, n.getBlocks(), n.getTrains());	
+		new NodeControl(journeys, n.getBlocks(), n.getTrains());	
 		
 	}
 	

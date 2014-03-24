@@ -222,11 +222,6 @@
 			"out": 0,
 			"length" : 0,
 			"type": "straight"
-		},{
-			"in": 0,
-			"out": 7,
-			"length" : 0,
-			"type": "straight"
 		}],
 		"restrict": [ 
 		]

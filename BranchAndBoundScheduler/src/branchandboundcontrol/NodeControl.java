@@ -84,12 +84,19 @@ public class NodeControl {
 
 			Engine train = currentBlock.getTrain();
 			BlockExit b = null;
+			
+			int blockLength = currentBlock.getLength();
+			int blockID = currentBlock.getBlock().getID();
+			
+			if(j.firstBlock()){
+				blockLength = blockLength - j.getTrain().getLength();
+			}
 
 			if (j.lastBlock()) {
 				/*LAST BLOCK OF JOURNEY, HALT AT END OF BLOCK*/
 				
 				try {
-					b = train.exitBlockAtSetSpeed(currentBlock,
+					b = train.exitBlockAtSetSpeed(blockLength, blockID,
 							currentBlock.getArrSpeed(), 0);
 				} catch (InvalidSpeedException e) {
 					e.printStackTrace();
@@ -102,17 +109,17 @@ public class NodeControl {
 				if(currentBlock.isStation()){
 					/*STATION - HALT AT END OF BLOCK*/
 					try {
-						b = train.exitBlockAtSetSpeed(currentBlock,
+						b = train.exitBlockAtSetSpeed(blockLength, blockID,
 								currentBlock.getArrSpeed(), 0);
 					} catch (InvalidSpeedException e) {
 						e.printStackTrace();
 					}
 				}else{
 				
-					if (train.canStopInBlock(nextBlock)) {
+					if (train.canStopInBlock(blockLength)) {
 						/*CAN ENTER NEXT BLOCK AT ANY SPEED - FULL SPEED AHEAD*/
 						try {
-							b = train.timeToTraverse(currentBlock,
+							b = train.timeToTraverse(blockLength, blockID,
 									currentBlock.getArrSpeed());
 						} catch (InvalidSpeedException e) {
 							e.printStackTrace();
@@ -120,10 +127,10 @@ public class NodeControl {
 					} else {
 						/*MUST ENTER NEXT BLOCK AT REDUCED SPEED*/
 						
-						int depSpeed = train.highestBlockEntrySpeed(nextBlock);
+						int depSpeed = train.highestBlockEntrySpeed(blockLength);
 	
 						try {
-							b = train.exitBlockAtSetSpeed(currentBlock,
+							b = train.exitBlockAtSetSpeed(blockLength, blockID,
 									currentBlock.getArrSpeed(), depSpeed);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
@@ -140,7 +147,7 @@ public class NodeControl {
 	
 						// Train needs to stop at the end of the block
 						try {
-							b = train.exitBlockAtSetSpeed(currentBlock,
+							b = train.exitBlockAtSetSpeed(blockLength, blockID,
 									currentBlock.getArrSpeed(), 0);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
@@ -158,7 +165,7 @@ public class NodeControl {
 			
 			System.out.println("Node First Arrival: " + node.firstArrivalTime);
 			System.out.println("Jou First Arrival: " + currentBlock.getDepTime());
-			
+			System.out.println("Time to leave previous block " + currentBlock.getTimeToEnterBlock());
 			
 			/*CHECK IF EARLIEST EXIT*/
 			if (currentBlock.getDepTime() < node.firstArrivalTime) {
@@ -207,12 +214,12 @@ public class NodeControl {
 				continue;
 				
 			}
-
+			/*
 			System.out.println("First Arrival Block: " + currentBlock);
 			System.out.println("Next on journey: " + jou.getNextToBeScheduled().getBlock());
 			System.out.println("First Arrival Time: " + firstArrivalTime);
 			System.out.println("Journey arrival time: " + jou.getNextToBeScheduled().getArrTime());
-			
+			*/
 			// If next block is that of earliest arrival and depij < mav
 			if (currentBlock == jou.getNextToBeScheduled().getBlock()
 					&& jou.getNextToBeScheduled().getArrTime() <= firstArrivalTime) {

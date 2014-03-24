@@ -15,7 +15,7 @@ public class Test {
 	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
 	
 	public static void main(String[] args){
-		Network n = new Network("files/8BlockLoop1siding.json");
+		Network n = new Network("files/8BlockLoopNetwork.json");
 		n.printNetworkInfo();
 		
 		Dijkstra d = new Dijkstra(n);
@@ -23,8 +23,14 @@ public class Test {
 		Engine t = n.getTrains().get(0);
 			
 		ArrayList<Integer> stations = new ArrayList<Integer>();
-		stations.add(0);
-		stations.add(8);
+		stations.add(4);
+		stations.add(7);
+		stations.add(4);
+		stations.add(7);
+		stations.add(4);
+		stations.add(7);
+		stations.add(4);
+	
 		
 		ArrayList<Integer> stations1 = new ArrayList<Integer>();
 		stations1.add(0);
@@ -49,6 +55,7 @@ public class Test {
 		System.out.println("---JOURNEYS---");
 			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
 			JourneyCreator.createSingleJourney(n.getTrains().get(1), stations, d, journeys);
+			JourneyCreator.createSingleJourney(n.getTrains().get(2), stations, d, journeys);
 			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
 			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
 			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);

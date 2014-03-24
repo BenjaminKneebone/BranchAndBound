@@ -22,7 +22,7 @@ public interface Train {
 	 * @param speed entry speed
 	 * @return BlockExit detailing information if train enters at speed
 	 */
-	public BlockExit timeToTraverse(BlockOccupation bo, int speed)
+	public BlockExit timeToTraverse(int blockLength, int blockID, int speed)
 			throws InvalidSpeedException;
 	
 	/**
@@ -33,7 +33,7 @@ public interface Train {
 	 * @return BlockExit detailing information if train must leave block at speed
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit exitBlockAtSetSpeed(BlockOccupation bo, int speed, int finalSpeed)
+	public BlockExit exitBlockAtSetSpeed(int blockLength, int blockID, int speed, int finalSpeed)
 			throws InvalidSpeedException;
 	
 	/**
@@ -45,20 +45,20 @@ public interface Train {
 	 * at least time to traverse block
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit minimumTimeTraversal(BlockOccupation bo, int speed, double time)
+	public BlockExit minimumTimeTraversal(int blockLength, int blockID, int speed, double time)
 			throws InvalidSpeedException;
 	
 	/**
 	 * @param block
 	 * @return True if train can stop in block from full speed
 	 */
-	public boolean canStopInBlock(BlockOccupation bo);
+	public boolean canStopInBlock(int blockLength);
 
 	/**Return highest speed at which a train can enter and still stop in a block
 	 * @param block
 	 * @return
 	 */
-	public int highestBlockEntrySpeed(BlockOccupation bo);
+	public int highestBlockEntrySpeed(int blockLength);
 
 	public void printDetails();
 }

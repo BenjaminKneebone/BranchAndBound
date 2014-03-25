@@ -27,8 +27,11 @@ public class NodeControl {
 	//Used as a stack to store the nodes
 	private Deque<Node> nodes = new ArrayDeque<Node>();
 	
+	//Indicates which blocks are occupied
 	private HashMap<Block, Boolean> occupied;
+	//Indicates the last departure time for each block
 	private HashMap<Block, Double> lastEntry;
+	//Indicates the next possible entry time for each block
 	private HashMap<Block, Double> nextPossibleEntry;
 	
 	
@@ -57,6 +60,7 @@ public class NodeControl {
 
 	public void schedule(Node node) {
 
+		//Retrieve network status at node
 		occupied = node.getOccupied();
 		lastEntry = node.getLastEntry();
 		nextPossibleEntry = node.getNextPossibleEntry();
@@ -71,17 +75,10 @@ public class NodeControl {
 		// Schedule next block for each train
 		for (Journey j : node.getJourneys()) {
 			
-			//Do not schedule first block, train starts at end of block (In station)
-			if(j.firstBlock())
-				j.incrementJourney();
-			
-			
 			if (!canBeScheduled(j))
 				continue;
 
-			
 			System.out.println("Attemtping to schedule " + j.getTrain().getName() + " in " + j.getNextToBeScheduled().getBlock().getID());
-			
 			
 			// Get first block to be scheduled on journey
 			BlockOccupation currentBlock = j.getNextToBeScheduled();
@@ -89,7 +86,6 @@ public class NodeControl {
 			//If halted in previous block, push arrival time from that block back
 			if (currentBlock.getArrTime() < nextPossibleEntry.get(currentBlock.getBlock())) {
 				currentBlock.setArrTime(nextPossibleEntry.get(currentBlock.getBlock()));
-
 				j.getPreviousBlock().setDepTime(nextPossibleEntry.get(currentBlock.getBlock()));
 			}
 
@@ -207,19 +203,10 @@ public class NodeControl {
 
 		for (Journey jou : node.getJourneys()) {
 			
-			System.out.println("For this Journey");
-			
 			if (!canBeScheduled(jou)){
-				System.out.println("Rejected");
 				continue;		
 			}
 			
-			/*
-			System.out.println("First Arrival Block: " + currentBlock);
-			System.out.println("Next on journey: " + jou.getNextToBeScheduled().getBlock());
-			System.out.println("First Arrival Time: " + firstArrivalTime);
-			System.out.println("Journey arrival time: " + jou.getNextToBeScheduled().getArrTime());
-			*/
 			// If next block is that of earliest arrival and depij < mav
 			if (currentBlock == jou.getNextToBeScheduled().getBlock()
 					&& jou.getNextToBeScheduled().getArrTime() <= firstArrivalTime) {
@@ -414,9 +401,7 @@ public class NodeControl {
 		// Journey already scheduled
 		if (jou.isScheduled())
 			return false;
-		
-		System.out.println("Scheduled");
-		
+	
 		// Train halted before next block and block is occupied
 		if (jou.getNextToBeScheduled().getArrSpeed() == 0
 				&& occupied.get((jou.getNextToBeScheduled().getBlock())))

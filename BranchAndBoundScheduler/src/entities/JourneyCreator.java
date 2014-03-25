@@ -16,7 +16,7 @@ public class JourneyCreator {
 	 * @param journeys Newly created journeys will be added to this list
 	 * @throws RouteNotFoundException 
 	 */
-	public static void createRepeatedJourneys(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys, int interval, int num){
+	public static void createRepeatedJourneys(Engine train, ArrayList<Stop> stations, Dijkstra d, ArrayList<Journey> journeys, int interval, int num){
 		
 		for(int x = 0; x < num; x++){
 			Journey j;
@@ -40,7 +40,7 @@ public class JourneyCreator {
 	 * @param journeys Newly created journeys will be added to this list
 	 * @throws RouteNotFoundException 
 	 */
-	public static void createSingleJourney(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys){
+	public static void createSingleJourney(Engine train, ArrayList<Stop> stations, Dijkstra d, ArrayList<Journey> journeys){
 		Journey j;
 		try {
 			j = new Journey(train, stations, d, journeys);

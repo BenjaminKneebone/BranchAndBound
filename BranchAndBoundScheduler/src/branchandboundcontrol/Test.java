@@ -10,6 +10,7 @@ import entities.BlockExit;
 import entities.Engine;
 import entities.JourneyCreator;
 import entities.Network;
+import entities.Stop;
 public class Test {
 	
 	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
@@ -20,11 +21,11 @@ public class Test {
 		
 		Dijkstra d = new Dijkstra(n);
 
-		ArrayList<Integer> stations = new ArrayList<Integer>();
-		stations.add(0);
-		stations.add(7);
-		stations.add(0);
-		stations.add(7);
+		ArrayList<Stop> stations = new ArrayList<Stop>();
+		stations.add(new Stop(0,0));
+		stations.add(new Stop(4,120));
+		stations.add(new Stop(0,60));
+		stations.add(new Stop(4,120));
 
 		
 		ArrayList<Integer> stations1 = new ArrayList<Integer>();

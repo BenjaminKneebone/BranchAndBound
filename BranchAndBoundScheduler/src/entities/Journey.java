@@ -12,19 +12,19 @@ public class Journey {
 
 	private Engine train;
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
-	//The index of the first unscheduled BlockOccupation
-	private int nextToBeScheduled = 0;
+	//Start at 2nd block. Train starts journey at end of first block
+	private int nextToBeScheduled = 1;
 	private int id;
 	private int length = 0;
 	
 	
-	public Journey(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys) throws RouteNotFoundException{
+	public Journey(Engine train, ArrayList<Stop> stations, Dijkstra d, ArrayList<Journey> journeys) throws RouteNotFoundException{
 		this.train = train;
 		this.id = journeys.size();	
 		
 		//Get separate parts of the route (between stations)
 		for(int x = 0; x < stations.size() - 1; x++)
-				journey.addAll(d.shortestRoute(stations.get(x), stations.get(x + 1), train));
+				journey.addAll(d.shortestRoute(stations.get(x).getBlockID(), stations.get(x + 1).getBlockID(), train));
 			
 		//Ignore stopping time in first block (index 0)
 		int stationIndex = 1;
@@ -45,8 +45,8 @@ public class Journey {
 			if(!(stations.get(0) == stations.get(1) && x == 0))
 				
 				//Set station stop times
-				if(stations.get(stationIndex) == journey.get(x).getBlock().getID()){
-						journey.get(x).setStationStopTime(120);
+				if(stations.get(stationIndex).getBlockID() == journey.get(x).getBlock().getID()){
+						journey.get(x).setStationStopTime(stations.get(stationIndex).getStopTime());
 						stationIndex++;
 				}
 			

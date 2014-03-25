@@ -1,6 +1,8 @@
 package branchandboundcontrol;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import entities.Block;
 import entities.Engine;
@@ -23,8 +25,12 @@ public class Node {
 	private String id;
 
 	// Details for earliest block exit for this node
-	Block firstArrivalBlock = null;
-	double firstArrivalTime = Integer.MAX_VALUE;
+	private Block firstArrivalBlock = null;
+	private double firstArrivalTime = Integer.MAX_VALUE;
+	
+	private Map<Block, Boolean> occupied = new HashMap<Block, Boolean>();
+	private Map<Block, Boolean> occupiedCopy = new HashMap<Block, Boolean>();
+	
 	
 	public Node(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains) {
@@ -33,6 +39,11 @@ public class Node {
 		this.blocks = blocks;
 		this.trains = trains;
 		this.id = "0";
+		
+		for(Block b: blocks){
+			occupied.put(b, false);
+			occupiedCopy.put(b, false);
+		}
 
 		// Clone journeys
 		ArrayList<Journey> newJournies = new ArrayList<Journey>();
@@ -44,7 +55,7 @@ public class Node {
 	
 	public Node(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains, Journey alteredJourney, int index,
-			String id) {
+			String id, HashMap<Block, Boolean> occupied) {
 
 		System.out.println("---NODE" + id + "---");
 
@@ -55,6 +66,11 @@ public class Node {
 
 		this.blocks = newBlocks;
 
+		for(Block b: this.blocks){
+			this.occupied.put(b, occupied.get(blocks.get(b.getID())));
+			this.occupiedCopy.put(b, occupied.get(blocks.get(b.getID())));
+		}
+		
 		alteredJourney = alteredJourney.clone(this.blocks);
 
 		// Clone journeys, pass in newly cloned blocks
@@ -83,6 +99,14 @@ public class Node {
 
 		// No need to clone trains
 		this.trains = trains;
+	}
+	
+	public HashMap<Block, Boolean> getOccupied(){
+		return (HashMap<Block, Boolean>) occupied;
+	}
+	
+	public HashMap<Block, Boolean> getOccupiedCopy(){
+		return (HashMap<Block, Boolean>) occupiedCopy;
 	}
 
 	public Block getFirstArrivalBlock() {

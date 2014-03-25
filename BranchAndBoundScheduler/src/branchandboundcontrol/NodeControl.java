@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashMap;
 
 import traindiagrams.TrainDiagramCreator;
 import entities.Block;
@@ -25,6 +26,9 @@ public class NodeControl {
 	private Node bestNode;
 	//Used as a stack to store the nodes
 	private Deque<Node> nodes = new ArrayDeque<Node>();
+	
+	private HashMap<Block, Boolean> occupied;
+	private HashMap<Block, Boolean> occupiedCopy;
 	
 	
 	public NodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks, ArrayList<Engine> trains){
@@ -52,6 +56,8 @@ public class NodeControl {
 
 	public void schedule(Node node) {
 
+		occupied = node.getOccupied();
+		
 		System.out.println("Scheduling " + node.getId());
 
 		for(Block b: node.getBlocks())
@@ -104,7 +110,7 @@ public class NodeControl {
 
 				BlockOccupation nextBlock = j.getSecondToBeScheduled();
 
-				if(currentBlock.isStation() || nextBlock.getBlock().isOccupied()){
+				if(currentBlock.isStation() || occupied.get(nextBlock.getBlock())){
 					/*HALT AT END OF BLOCK*/
 					try {
 						b = train.exitBlockAtSetSpeed(blockLength, blockID,
@@ -158,12 +164,12 @@ public class NodeControl {
 			
 			System.out.println("BLOCK TIME: " + b.getTime() + " SPEED: " + b.getSpeed());
 			
-			System.out.println("Node First Arrival: " + node.firstArrivalTime);
+			System.out.println("Node First Arrival: " + node.getFirstArrivalTime());
 			System.out.println("Jou First Arrival: " + currentBlock.getDepTime());
 			System.out.println("Time to leave previous block " + currentBlock.getTimeToEnterBlock());
 			
 			/*CHECK IF EARLIEST EXIT*/
-			if (currentBlock.getDepTime() < node.firstArrivalTime) {
+			if (currentBlock.getDepTime() < node.getFirstArrivalTime()) {
 				node.setFirstArrivalTime(currentBlock.getDepTime());
 				node.setFirstArrivalBlock(currentBlock.getBlock());
 			}
@@ -219,6 +225,9 @@ public class NodeControl {
 			if (currentBlock == jou.getNextToBeScheduled().getBlock()
 					&& jou.getNextToBeScheduled().getArrTime() <= firstArrivalTime) {
 				
+				occupied = node.getOccupiedCopy();
+				
+				
 				BlockOccupation prev = jou.getPreviousBlock();
 				BlockOccupation current = jou.getNextToBeScheduled();
 				BlockOccupation next = null;
@@ -234,7 +243,7 @@ public class NodeControl {
 				
 				//Update previous Block now train has left
 				prev.getBlock().setNextPossibleEntry(current.getArrTime() + current.getTimeToEnterBlock());
-				prev.getBlock().setOccupied(false);
+				occupied.put(prev.getBlock(), false);
 				
 
 				//Was halted outside this block, update this block with time train arrived
@@ -247,8 +256,8 @@ public class NodeControl {
 					//Won't be last Block 
 					
 					//Occupy both blocks
-					currentBlock.setOccupied(true);
-					next.getBlock().setOccupied(true);
+					occupied.put(currentBlock, true);
+					occupied.put(next.getBlock(), true);
 					
 					//Set Arrival time at next Block
 					next.setArrTime(current.getDepTime());
@@ -256,11 +265,11 @@ public class NodeControl {
 					next.getBlock().setLastEntry(current.getDepTime());
 				}else{
 					//Occupy Block where train is halted
-					currentBlock.setOccupied(true);
+					occupied.put(currentBlock, true);
 
 					if(jou.lastBlock()){
 						//Last block
-						current.getBlock().setOccupied(false);
+						occupied.put(currentBlock, false);
 						current.getBlock().setNextPossibleEntry(current.getDepTime());
 					}else{
 						next.setArrTime(current.getDepTime());
@@ -281,7 +290,7 @@ public class NodeControl {
 						// Create node and reset blocks
 						nodes.push(new Node(node.getJourneyCopy(), node.getBlocks(), node.getTrains(),
 								jou, jou.getID(), node.getId().concat(String
-										.valueOf(childID++))));
+										.valueOf(childID++)), occupied));
 					}
 				}
 				
@@ -295,6 +304,8 @@ public class NodeControl {
 				if (!jou.lastBlock()) {
 					next.getBlock().copyBlock(nextCopy);
 				}
+				
+				
 			}
 		}
 
@@ -411,7 +422,7 @@ public class NodeControl {
 		
 		// Train halted before next block and block is occupied
 		if (jou.getNextToBeScheduled().getArrSpeed() == 0
-				&& jou.getNextToBeScheduled().getBlock().isOccupied())
+				&& occupied.get((jou.getNextToBeScheduled().getBlock())))
 			return false;
 
 		return true;

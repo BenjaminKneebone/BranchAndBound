@@ -28,7 +28,8 @@ public class NodeControl {
 	private Deque<Node> nodes = new ArrayDeque<Node>();
 	
 	private HashMap<Block, Boolean> occupied;
-	private HashMap<Block, Boolean> occupiedCopy;
+	private HashMap<Block, Double> lastEntry;
+	private HashMap<Block, Double> nextPossibleEntry;
 	
 	
 	public NodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks, ArrayList<Engine> trains){
@@ -57,6 +58,8 @@ public class NodeControl {
 	public void schedule(Node node) {
 
 		occupied = node.getOccupied();
+		lastEntry = node.getLastEntry();
+		nextPossibleEntry = node.getNextPossibleEntry();
 		
 		System.out.println("Scheduling " + node.getId());
 
@@ -84,10 +87,10 @@ public class NodeControl {
 			BlockOccupation currentBlock = j.getNextToBeScheduled();
 
 			//If halted in previous block, push arrival time from that block back
-			if (currentBlock.getArrTime() < currentBlock.getBlock().getNextPossibleEntry()) {
-				currentBlock.setArrTime(currentBlock.getBlock().getNextPossibleEntry());
+			if (currentBlock.getArrTime() < nextPossibleEntry.get(currentBlock.getBlock())) {
+				currentBlock.setArrTime(nextPossibleEntry.get(currentBlock.getBlock()));
 
-				j.getPreviousBlock().setDepTime(currentBlock.getBlock().getNextPossibleEntry());
+				j.getPreviousBlock().setDepTime(nextPossibleEntry.get(currentBlock.getBlock()));
 			}
 
 			Engine train = currentBlock.getTrain();
@@ -144,12 +147,10 @@ public class NodeControl {
 	
 					
 					/*CHECK IF TRAIN ENTERS NEXT BLOCK TOO SOON*/
-					if (currentBlock.getArrTime() + b.getTime() < nextBlock
-									.getBlock().getNextPossibleEntry()) {
+					if (currentBlock.getArrTime() + b.getTime() < nextPossibleEntry.get(nextBlock.getBlock())) {
 						// TRAIN MUST SPEND LONGER IN BLOCK
 						try {
-							b = train.minimumTimeTraversal(blockLength, blockID, currentBlock.getArrSpeed(), nextBlock
-									.getBlock().getNextPossibleEntry() - currentBlock.getArrTime());
+							b = train.minimumTimeTraversal(blockLength, blockID, currentBlock.getArrSpeed(), nextPossibleEntry.get(nextBlock.getBlock()) - currentBlock.getArrTime());
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -199,22 +200,20 @@ public class NodeControl {
 	
 	private void createNewNodes(Node node) {
 		// ----STEP 3
-
 		Block currentBlock = node.getFirstArrivalBlock();
 		double firstArrivalTime = node.getFirstArrivalTime();
-		
-		//Take copy of block being modified
-		Block currentCopy = currentBlock.clone();
-		
+				
 		int childID = 0;
 
 		for (Journey jou : node.getJourneys()) {
 			
+			System.out.println("For this Journey");
 			
 			if (!canBeScheduled(jou)){
-				continue;
-				
+				System.out.println("Rejected");
+				continue;		
 			}
+			
 			/*
 			System.out.println("First Arrival Block: " + currentBlock);
 			System.out.println("Next on journey: " + jou.getNextToBeScheduled().getBlock());
@@ -225,30 +224,24 @@ public class NodeControl {
 			if (currentBlock == jou.getNextToBeScheduled().getBlock()
 					&& jou.getNextToBeScheduled().getArrTime() <= firstArrivalTime) {
 				
-				occupied = node.getOccupiedCopy();
-				
+				System.out.println("CREATING NODES");
 				
 				BlockOccupation prev = jou.getPreviousBlock();
 				BlockOccupation current = jou.getNextToBeScheduled();
 				BlockOccupation next = null;
 
-				//Copies of blocks that may be altered
-				Block prevCopy = jou.getPreviousBlock().getBlock().clone();
-				Block nextCopy = null;
-				
 				if(!jou.lastBlock()){
-					nextCopy = jou.getSecondToBeScheduled().getBlock().clone();
 					next = jou.getSecondToBeScheduled();
 				}
 				
 				//Update previous Block now train has left
-				prev.getBlock().setNextPossibleEntry(current.getArrTime() + current.getTimeToEnterBlock());
+				nextPossibleEntry.put(prev.getBlock() ,current.getArrTime() + current.getTimeToEnterBlock());
 				occupied.put(prev.getBlock(), false);
 				
 
 				//Was halted outside this block, update this block with time train arrived
 				if(current.getArrSpeed() == 0)
-					current.getBlock().setLastEntry(current.getArrTime());
+					lastEntry.put(current.getBlock(), current.getArrTime());
 
 				
 				// ----LEAVING CURRENT BLOCK?----//
@@ -262,7 +255,7 @@ public class NodeControl {
 					//Set Arrival time at next Block
 					next.setArrTime(current.getDepTime());
 					next.setArrSpeed(current.getDepSpeed());
-					next.getBlock().setLastEntry(current.getDepTime());
+					lastEntry.put(next.getBlock(), current.getArrTime());
 				}else{
 					//Occupy Block where train is halted
 					occupied.put(currentBlock, true);
@@ -270,7 +263,7 @@ public class NodeControl {
 					if(jou.lastBlock()){
 						//Last block
 						occupied.put(currentBlock, false);
-						current.getBlock().setNextPossibleEntry(current.getDepTime());
+						nextPossibleEntry.put(current.getBlock(), current.getDepTime());
 					}else{
 						next.setArrTime(current.getDepTime());
 					}
@@ -290,20 +283,25 @@ public class NodeControl {
 						// Create node and reset blocks
 						nodes.push(new Node(node.getJourneyCopy(), node.getBlocks(), node.getTrains(),
 								jou, jou.getID(), node.getId().concat(String
-										.valueOf(childID++)), occupied));
+										.valueOf(childID++)), occupied, lastEntry, nextPossibleEntry));
 					}
 				}
 				
 				jou.decrementJourney();
 				/*RESET BLOCKS*/
-				
-				currentBlock.copyBlock(currentCopy);
-				
-				prev.getBlock().copyBlock(prevCopy);
-				
+								
 				if (!jou.lastBlock()) {
-					next.getBlock().copyBlock(nextCopy);
+					occupied.put(next.getBlock(), node.getOccupiedCopy().get(next.getBlock()));
+					lastEntry.put(next.getBlock(), node.getLastEntryCopy().get(next.getBlock()));
+					nextPossibleEntry.put(next.getBlock(), node.getNextPossibleEntryCopy().get(next.getBlock()));
 				}
+				
+				occupied.put(prev.getBlock(), node.getOccupiedCopy().get(prev.getBlock()));
+				occupied.put(current.getBlock(), node.getOccupiedCopy().get(current.getBlock()));
+				lastEntry.put(prev.getBlock(), node.getLastEntryCopy().get(prev.getBlock()));
+				lastEntry.put(current.getBlock(), node.getLastEntryCopy().get(current.getBlock()));
+				nextPossibleEntry.put(prev.getBlock(), node.getNextPossibleEntryCopy().get(prev.getBlock()));
+				nextPossibleEntry.put(current.getBlock(), node.getNextPossibleEntryCopy().get(current.getBlock()));
 				
 				
 			}
@@ -416,9 +414,8 @@ public class NodeControl {
 		// Journey already scheduled
 		if (jou.isScheduled())
 			return false;
-
-		System.out.println(jou.getNextToBeScheduled().getBlock().getID());
-		System.out.println(jou.getNextToBeScheduled().getArrSpeed());
+		
+		System.out.println("Scheduled");
 		
 		// Train halted before next block and block is occupied
 		if (jou.getNextToBeScheduled().getArrSpeed() == 0

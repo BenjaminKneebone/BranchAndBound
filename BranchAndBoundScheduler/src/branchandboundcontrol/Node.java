@@ -30,7 +30,10 @@ public class Node {
 	
 	private Map<Block, Boolean> occupied = new HashMap<Block, Boolean>();
 	private Map<Block, Boolean> occupiedCopy = new HashMap<Block, Boolean>();
-	
+	private Map<Block, Double> lastEntry = new HashMap<Block, Double>();
+	private Map<Block, Double> lastEntryCopy = new HashMap<Block, Double>();
+	private Map<Block, Double> nextPossibleEntry = new HashMap<Block, Double>();
+	private Map<Block, Double> nextPossibleEntryCopy = new HashMap<Block, Double>();
 	
 	public Node(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains) {
@@ -43,6 +46,10 @@ public class Node {
 		for(Block b: blocks){
 			occupied.put(b, false);
 			occupiedCopy.put(b, false);
+			lastEntry.put(b, 0.0);
+			lastEntryCopy.put(b, 0.0);
+			nextPossibleEntry.put(b, 0.0);
+			nextPossibleEntryCopy.put(b, 0.0);
 		}
 
 		// Clone journeys
@@ -55,25 +62,24 @@ public class Node {
 	
 	public Node(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains, Journey alteredJourney, int index,
-			String id, HashMap<Block, Boolean> occupied) {
+			String id, HashMap<Block, Boolean> occupied, HashMap<Block, Double> lastEntry, HashMap<Block, Double> nextPossibleEntry) {
 
 		System.out.println("---NODE" + id + "---");
 
-		// Clone blocks
-		ArrayList<Block> newBlocks = new ArrayList<Block>();
-		for (Block b : blocks)
-			newBlocks.add(b.clone());
-
-		this.blocks = newBlocks;
+		this.blocks = blocks;
 
 		for(Block b: this.blocks){
 			this.occupied.put(b, occupied.get(blocks.get(b.getID())));
 			this.occupiedCopy.put(b, occupied.get(blocks.get(b.getID())));
+			this.lastEntry.put(b, lastEntry.get(blocks.get(b.getID())));
+			this.lastEntryCopy.put(b, lastEntry.get(blocks.get(b.getID())));
+			this.nextPossibleEntry.put(b, nextPossibleEntry.get(blocks.get(b.getID())));
+			this.nextPossibleEntryCopy.put(b, nextPossibleEntry.get(blocks.get(b.getID())));
 		}
 		
 		alteredJourney = alteredJourney.clone(this.blocks);
 
-		// Clone journeys, pass in newly cloned blocks
+		// Clone journeys
 		ArrayList<Journey> newJournies = new ArrayList<Journey>();
 		for (Journey j : journeys)
 			newJournies.add(j.clone(this.blocks));
@@ -107,6 +113,22 @@ public class Node {
 	
 	public HashMap<Block, Boolean> getOccupiedCopy(){
 		return (HashMap<Block, Boolean>) occupiedCopy;
+	}
+	
+	public HashMap<Block, Double> getLastEntry(){
+		return (HashMap<Block, Double>) lastEntry;
+	}
+	
+	public HashMap<Block, Double> getLastEntryCopy(){
+		return (HashMap<Block, Double>) lastEntryCopy;
+	}
+	
+	public HashMap<Block, Double> getNextPossibleEntry(){
+		return (HashMap<Block, Double>) nextPossibleEntry;
+	}
+	
+	public HashMap<Block, Double> getNextPossibleEntryCopy(){
+		return (HashMap<Block, Double>) nextPossibleEntryCopy;
 	}
 
 	public Block getFirstArrivalBlock() {

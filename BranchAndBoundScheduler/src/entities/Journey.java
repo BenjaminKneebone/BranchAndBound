@@ -22,38 +22,50 @@ public class Journey {
 		this.train = train;
 		this.id = journeys.size();	
 		
-
-		
 		//Get separate parts of the route (between stations)
 		for(int x = 0; x < stations.size() - 1; x++)
 				journey.addAll(d.shortestRoute(stations.get(x), stations.get(x + 1), train));
 			
+		//Ignore stopping time in first block (index 0)
+		int stationIndex = 1;
 		
-			int stationIndex = 1;
+		
+		for(int x = 0; x < journey.size() - 1; x++){
 			
 			//Remove duplicate stops in same block.
-			for(int x = 0; x < journey.size() - 1; x++){
-				if(journey.get(x).getBlock() == journey.get(x + 1).getBlock()){
-					journey.remove(x + 1);	
-				}
+			if(journey.get(x).getBlock() == journey.get(x + 1).getBlock()){
+				journey.remove(x + 1);	
+			}
+			
+			//Add to journey total length
+			length += journey.get(x).getLength();
+			
+			
+			//For loops, the second station will match the first block also, we must ignore this
+			if(!(stations.get(0) == stations.get(1) && x == 0))
 				
-				length += journey.get(x).getLength();
-				
-				//Set station times
+				//Set station stop times
 				if(stations.get(stationIndex) == journey.get(x).getBlock().getID()){
 						journey.get(x).setStationStopTime(120);
 						stationIndex++;
 				}
-				
-			}
 			
-			//Set stopping time in last block
-			journey.get(journey.size() - 1).setStationStopTime(120);
-			
-			length += journey.get(journey.size() - 1).getLength();
-			
-			//Set start of journey to time 0
-			journey.get(0).setArrTime(0);
+		}
+		
+		//Block occupation 0 isn't scheduled. Train starts at end of that block (In station)
+		journey.get(0).setDepTime(0);
+		journey.get(0).setDepSpeed(0);
+		journey.get(0).setMessage("");
+		journey.get(1).setArrTime(0);
+		journey.get(1).setArrSpeed(0);
+		
+		//Set stopping time in last block
+		journey.get(journey.size() - 1).setStationStopTime(120);
+		
+		length += journey.get(journey.size() - 1).getLength();
+		
+		//Set start of journey to time 0
+		journey.get(0).setArrTime(0);
 	}
 	
 	//When journey is cloned

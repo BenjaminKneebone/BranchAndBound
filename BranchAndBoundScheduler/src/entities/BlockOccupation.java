@@ -99,7 +99,7 @@ public class BlockOccupation implements Cloneable{
 	 * after time at station passes.
 	 */
 	public void setDepTime(double depTime) {
-		
+		this.depTime = depTime;
 	}
 
 	public double getArrTime() {

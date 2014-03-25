@@ -1,1 +1,228 @@
-{"journeys":[{"stations":[{"departure":408.5635811314661,"arrival":288.5635811314661,"stationID":8,"stopLength":120}],"blocks":[{"depTime":73.1710618232623,"arrTime":0.0,"block":0,"depSpeed":105,"arrSpeed":0},{"depTime":76.59963325183374,"arrTime":73.1710618232623,"block":1,"depSpeed":105,"arrSpeed":105},{"depTime":80.02820468040517,"arrTime":76.59963325183374,"block":2,"depSpeed":105,"arrSpeed":105},{"depTime":148.59963325183375,"arrTime":80.02820468040517,"block":3,"depSpeed":105,"arrSpeed":105},{"depTime":217.17106182326233,"arrTime":148.59963325183375,"block":4,"depSpeed":105,"arrSpeed":105},{"depTime":408.5635811314661,"arrTime":217.17106182326233,"block":8,"depSpeed":0,"arrSpeed":105}],"trainID":0,"trainName":"Class 66"},{"stations":[{"departure":604.5557336915035,"arrival":484.5557336915036,"stationID":8,"stopLength":120}],"blocks":[{"depTime":146.3421236465246,"arrTime":73.1710618232623,"block":0,"depSpeed":105,"arrSpeed":0},{"depTime":149.77069507509603,"arrTime":146.3421236465246,"block":1,"depSpeed":105,"arrSpeed":105},{"depTime":153.19926650366745,"arrTime":149.77069507509603,"block":2,"depSpeed":105,"arrSpeed":105},{"depTime":221.77069507509603,"arrTime":153.19926650366745,"block":3,"depSpeed":105,"arrSpeed":105},{"depTime":408.5635811314661,"arrTime":221.77069507509603,"block":4,"depSpeed":0,"arrSpeed":105},{"depTime":604.5557336915035,"arrTime":408.5635811314661,"block":8,"depSpeed":0,"arrSpeed":0}],"trainID":0,"trainName":"Class 66"},{"stations":[{"departure":800.5478862515411,"arrival":680.5478862515411,"stationID":8,"stopLength":120}],"blocks":[{"depTime":219.51318546978692,"arrTime":146.3421236465246,"block":0,"depSpeed":105,"arrSpeed":0},{"depTime":222.94175689835834,"arrTime":219.51318546978692,"block":1,"depSpeed":105,"arrSpeed":105},{"depTime":226.37032832692975,"arrTime":222.94175689835834,"block":2,"depSpeed":105,"arrSpeed":105},{"depTime":408.5635811314661,"arrTime":226.37032832692975,"block":3,"depSpeed":0,"arrSpeed":105},{"depTime":604.5557336915035,"arrTime":408.5635811314661,"block":4,"depSpeed":0,"arrSpeed":0},{"depTime":800.5478862515411,"arrTime":604.5557336915035,"block":8,"depSpeed":0,"arrSpeed":0}],"trainID":0,"trainName":"Class 66"},{"stations":[{"departure":996.5400388115786,"arrival":876.5400388115786,"stationID":8,"stopLength":120}],"blocks":[{"depTime":292.6842472930492,"arrTime":219.51318546978692,"block":0,"depSpeed":105,"arrSpeed":0},{"depTime":296.11281872162067,"arrTime":292.6842472930492,"block":1,"depSpeed":105,"arrSpeed":105},{"depTime":408.5635811314661,"arrTime":296.11281872162067,"block":2,"depSpeed":0,"arrSpeed":105},{"depTime":604.5557336915035,"arrTime":408.5635811314661,"block":3,"depSpeed":0,"arrSpeed":0},{"depTime":800.5478862515411,"arrTime":604.5557336915035,"block":4,"depSpeed":0,"arrSpeed":0},{"depTime":996.5400388115786,"arrTime":800.5478862515411,"block":8,"depSpeed":0,"arrSpeed":0}],"trainID":0,"trainName":"Class 66"}]}
+{
+    "journeys": [
+        {
+            "blocks": [
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 0.0, 
+                    "block": 0, 
+                    "depSpeed": 105, 
+                    "depTime": 73.171061823262306
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 73.171061823262306, 
+                    "block": 1, 
+                    "depSpeed": 105, 
+                    "depTime": 76.599633251833737
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 76.599633251833737, 
+                    "block": 2, 
+                    "depSpeed": 105, 
+                    "depTime": 80.028204680405167
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 80.028204680405167, 
+                    "block": 3, 
+                    "depSpeed": 105, 
+                    "depTime": 148.59963325183375
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 148.59963325183375, 
+                    "block": 4, 
+                    "depSpeed": 105, 
+                    "depTime": 217.17106182326233
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 217.17106182326233, 
+                    "block": 8, 
+                    "depSpeed": 0, 
+                    "depTime": 408.56358113146609
+                }
+            ], 
+            "stations": [
+                {
+                    "arrival": 288.56358113146609, 
+                    "departure": 408.56358113146609, 
+                    "stationID": 8, 
+                    "stopLength": 120
+                }
+            ], 
+            "trainID": 0, 
+            "trainName": "Class 66"
+        }, 
+        {
+            "blocks": [
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 73.171061823262306, 
+                    "block": 0, 
+                    "depSpeed": 105, 
+                    "depTime": 146.34212364652461
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 146.34212364652461, 
+                    "block": 1, 
+                    "depSpeed": 105, 
+                    "depTime": 149.77069507509603
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 149.77069507509603, 
+                    "block": 2, 
+                    "depSpeed": 105, 
+                    "depTime": 153.19926650366745
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 153.19926650366745, 
+                    "block": 3, 
+                    "depSpeed": 105, 
+                    "depTime": 221.77069507509603
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 221.77069507509603, 
+                    "block": 4, 
+                    "depSpeed": 0, 
+                    "depTime": 408.56358113146609
+                }, 
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 408.56358113146609, 
+                    "block": 8, 
+                    "depSpeed": 0, 
+                    "depTime": 604.55573369150352
+                }
+            ], 
+            "stations": [
+                {
+                    "arrival": 484.55573369150358, 
+                    "departure": 604.55573369150352, 
+                    "stationID": 8, 
+                    "stopLength": 120
+                }
+            ], 
+            "trainID": 0, 
+            "trainName": "Class 66"
+        }, 
+        {
+            "blocks": [
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 146.34212364652461, 
+                    "block": 0, 
+                    "depSpeed": 105, 
+                    "depTime": 219.51318546978692
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 219.51318546978692, 
+                    "block": 1, 
+                    "depSpeed": 105, 
+                    "depTime": 222.94175689835834
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 222.94175689835834, 
+                    "block": 2, 
+                    "depSpeed": 105, 
+                    "depTime": 226.37032832692975
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 226.37032832692975, 
+                    "block": 3, 
+                    "depSpeed": 0, 
+                    "depTime": 408.56358113146609
+                }, 
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 408.56358113146609, 
+                    "block": 4, 
+                    "depSpeed": 0, 
+                    "depTime": 604.55573369150352
+                }, 
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 604.55573369150352, 
+                    "block": 8, 
+                    "depSpeed": 0, 
+                    "depTime": 800.54788625154106
+                }
+            ], 
+            "stations": [
+                {
+                    "arrival": 680.54788625154106, 
+                    "departure": 800.54788625154106, 
+                    "stationID": 8, 
+                    "stopLength": 120
+                }
+            ], 
+            "trainID": 0, 
+            "trainName": "Class 66"
+        }, 
+        {
+            "blocks": [
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 219.51318546978692, 
+                    "block": 0, 
+                    "depSpeed": 105, 
+                    "depTime": 292.68424729304922
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 292.68424729304922, 
+                    "block": 1, 
+                    "depSpeed": 105, 
+                    "depTime": 296.11281872162067
+                }, 
+                {
+                    "arrSpeed": 105, 
+                    "arrTime": 296.11281872162067, 
+                    "block": 2, 
+                    "depSpeed": 0, 
+                    "depTime": 408.56358113146609
+                }, 
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 408.56358113146609, 
+                    "block": 3, 
+                    "depSpeed": 0, 
+                    "depTime": 604.55573369150352
+                }, 
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 604.55573369150352, 
+                    "block": 4, 
+                    "depSpeed": 0, 
+                    "depTime": 800.54788625154106
+                }, 
+                {
+                    "arrSpeed": 0, 
+                    "arrTime": 800.54788625154106, 
+                    "block": 8, 
+                    "depSpeed": 0, 
+                    "depTime": 996.5400388115786
+                }
+            ], 
+            "stations": [
+                {
+                    "arrival": 876.5400388115786, 
+                    "departure": 996.5400388115786, 
+                    "stationID": 8, 
+                    "stopLength": 120
+                }
+            ], 
+            "trainID": 0, 
+            "trainName": "Class 66"
+        }
+    ]
+}

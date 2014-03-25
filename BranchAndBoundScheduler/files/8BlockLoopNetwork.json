@@ -87,34 +87,6 @@
 			"out": 1,
 			"length" : 0,
 			"type": "straight"
-		},{
-			"in": 1,
-			"out": 0,
-			"length" : 0,
-			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	}, {
-		"allowed": [{
-			"in": 0,
-			"out": 1,
-			"length" : 0,
-			"type": "straight"
-		},{
-			"in": 1,
-			"out": 0,
-			"length" : 0,
-			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	},{
-		"allowed": [{
-			"in": 0,
-			"out": 1,
-			"length" : 0,
-			"type": "straight"
 		}],
 		"restrict": [ 
 		]
@@ -181,7 +153,7 @@
 		}],
 		"restrict": [ 
 		]
-	},
+	}
 	],
 	"engines": [{
 		"id": 0,
@@ -199,7 +171,7 @@
 		"driving force": 409000,
 		"braking force": 666852, 
 		"speed": [0,20,38,53,67,77,84,93,100,105]
-	}, ,{
+	},{
 		"id": 2,
 		"name": "Class 60",
 		"length": 21, 

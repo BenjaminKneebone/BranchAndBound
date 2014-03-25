@@ -86,10 +86,13 @@ public class Dijkstra {
 				try {
 					for(Connection c: oldJ.getConnections(blocks.get(currentIn.get(oldJ)))){
 
+						System.out.println(c.getOut().getID());
+						
 						//See if better route found to destination
 						if(c.getOut().getID() == destID){
 							destFound = true;
 							if(minDistance.get(oldJ) + c.getOut().getLength() < globalMin){
+								System.out.println("Best distance found");
 								globalMin = minDistance.get(oldJ) +  c.getOut().getLength();
 								prevConn.set(c.getOut().getID(), c);
 							}
@@ -122,6 +125,7 @@ public class Dijkstra {
 			Collections.sort(activeJoins, new JoinComparator());
 		}
 				
+		
 		if(globalMin == 10000000){
 			throw new RouteNotFoundException(sourceID, destID);
 		}else{
@@ -135,6 +139,9 @@ public class Dijkstra {
 			route.add(new BlockOccupation(train, blocks.get(destID), first));
 			//Loop through adding blocks to root
 			while(second != null){
+				if(first.getIn().getID() == destID)
+					break;
+				
 				route.add(new BlockOccupation(train, first.getIn(), second));
 				first = second;
 				second = prevConn.get(second.getIn().getID());	

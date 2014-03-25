@@ -19,7 +19,6 @@ public class JourneyCreator {
 	public static void createRepeatedJourneys(Engine train, ArrayList<Integer> stations, Dijkstra d, ArrayList<Journey> journeys, int interval, int num){
 		
 		for(int x = 0; x < num; x++){
-			
 			Journey j;
 			try {
 				j = new Journey(train, stations, d, journeys);

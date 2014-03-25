@@ -164,6 +164,8 @@ public class Engine implements Train{
 	public BlockExit exitBlockAtSetSpeed(int blockLength, int blockID, int speed, int finalSpeed)
 			throws InvalidSpeedException {
 
+		System.out.println("Exit block at set speed");
+		
 		if (speed < 0 || speed > speedProfile[9])
 			throw new InvalidSpeedException(speed, name, speedProfile[9]);
 
@@ -172,8 +174,10 @@ public class Engine implements Train{
 
 		if (finalSpeed == speed) {
 
+			System.out.println("a");
+			
 			if (speed == 0) {
-
+				System.out.println("b");
 				// System.out.println("Speed up and down in block");
 
 				int maxSpeed = 1;
@@ -226,16 +230,19 @@ public class Engine implements Train{
 				
 				//If train fully enters block whilst accelerating
 				if(accelerationDist >length){
+					System.out.println("c");
 					speedOutOfPreviousBlock = Math.sqrt(Math.pow(kmhToMs(speed), 2) + (2 * acceleration * length));
 					
 					timeToLeavePreviousBlock = (length * 2) / (speedOutOfPreviousBlock);
 				}else{
+					System.out.println("d");
 					//Train fully enters block whilst constant speed
 					if(accelerationDist + constantDist > length){
 						//Time to accelerate and traverse rest of distance
 						timeToLeavePreviousBlock = accelerationTime;
 						timeToLeavePreviousBlock += (length - accelerationDist) / kmhToMs(maxSpeed);
 					}else{
+						System.out.println("e");
 						//Time accelerating, and constant, and whilst slowing down
 						timeToLeavePreviousBlock = accelerationTime + constantTime;
 						
@@ -267,6 +274,7 @@ public class Engine implements Train{
 		}
 
 		if (finalSpeed > speed) {
+			System.out.println("f");
 			// Accelerates over the block
 			double accelerationTime = timeToChangeSpeed(speed, finalSpeed);
 			double accelerationDist = distanceToChangeSpeed(speed, finalSpeed);
@@ -288,10 +296,12 @@ public class Engine implements Train{
 			
 			//Train fully enters block whilst accelerating
 			if(accelerationDist > length){
+				System.out.println("g");
 				speedOutOfPreviousBlock = Math.sqrt(Math.pow(kmhToMs(speed), 2) + (2 * acceleration * length));
 				
 				timeToLeavePreviousBlock = (length * 2) / (kmhToMs(speed) + speedOutOfPreviousBlock);
 			}else{
+				System.out.println("h");
 				//Train reaches full speed before leaving block. Acc time + const time
 				timeToLeavePreviousBlock = accelerationTime;
 				timeToLeavePreviousBlock += (length - accelerationDist) / 
@@ -301,6 +311,7 @@ public class Engine implements Train{
 			return new BlockExit(accelerationTime + constantTime, finalSpeed,
 					message, timeToLeavePreviousBlock);
 		} else {
+			System.out.println("i");
 			// Decelerates over the block
 			double decelerationTime = timeToChangeSpeed(speed, finalSpeed);
 			double decelerationDist = distanceToChangeSpeed(speed, finalSpeed);
@@ -321,9 +332,11 @@ public class Engine implements Train{
 			
 			//Train fully enters block whilst accelerating
 			if(constantDist > length){
-				timeToLeavePreviousBlock += (length - decelerationDist) / 
+				System.out.println("j");
+				timeToLeavePreviousBlock += length / 
 						kmhToMs(speed);
 			}else{
+				System.out.println("k");
 				//Train reaches full speed before leaving block. Acc time + const time
 				timeToLeavePreviousBlock = constantTime;
 				

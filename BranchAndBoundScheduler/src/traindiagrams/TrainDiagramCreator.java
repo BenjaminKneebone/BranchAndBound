@@ -10,6 +10,7 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.axis.SymbolAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
@@ -48,7 +49,7 @@ public class TrainDiagramCreator {
 				
 				//Draws diagonal line (transit across block) 
 				if(x == 0)
-					series.add(bo.get(x).getArrTime(), bo.get(x).getBlock().getID() - 1);
+					series.add(bo.get(x).getDepTime(), bo.get(0).getBlock().getID());
 				else
 					series.add(bo.get(x).getArrTime(), bo.get(x - 1).getBlock().getID());
 				
@@ -57,12 +58,15 @@ public class TrainDiagramCreator {
 				
 				series.add(bo.get(x).getDepTime(), bo.get(x).getBlock().getID());
 				
+				
+				
+				
 				if(bo.get(x).getDepTime() > maxRange){
 					maxRange = (int) (bo.get(x).getDepTime() + 5);
 				}
 				
 				if(bo.get(x).getBlock().getID() > maxBlock){
-					maxBlock = bo.get(x).getBlock().getID();
+					maxBlock = bo.get(x).getBlock().getID() + 1;
 				}
 				
 			}
@@ -99,14 +103,23 @@ public class TrainDiagramCreator {
 		chart.getXYPlot().setRenderer(renderer);
 		
 		NumberAxis xAxis = new NumberAxis();
+		xAxis.setLabel("Time (Seconds)");
 		xAxis.setAutoRange(false);
 		xAxis.setRange(0, maxRange);
 		chart.getXYPlot().setDomainAxis(xAxis);
-		NumberAxis yAxis = new NumberAxis();
-		yAxis.setAutoRange(false);
-		yAxis.setRange(-1, maxBlock+1);
-		yAxis.setTickUnit(new NumberTickUnit(1));
-		chart.getXYPlot().setRangeAxis(yAxis);
+		
+		ArrayList<String> blockLabels = new ArrayList<String>();
+		
+		for(int x = 0; x <= maxBlock; x++)
+			blockLabels.add(String.valueOf(x));
+		
+		blockLabels.add("");
+		
+		
+		SymbolAxis sa = new SymbolAxis("Block",
+			   blockLabels.toArray(new String[blockLabels.size()]));
+		chart.getXYPlot().setRangeAxis(sa);
+		
 		
 		try {
 		ChartUtilities.saveChartAsJPEG(f, chart, 500, 300);

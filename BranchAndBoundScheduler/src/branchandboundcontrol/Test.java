@@ -20,17 +20,12 @@ public class Test {
 		
 		Dijkstra d = new Dijkstra(n);
 
-		Engine t = n.getTrains().get(0);
-			
 		ArrayList<Integer> stations = new ArrayList<Integer>();
-		stations.add(4);
+		stations.add(0);
 		stations.add(7);
-		stations.add(4);
+		stations.add(0);
 		stations.add(7);
-		stations.add(4);
-		stations.add(7);
-		stations.add(4);
-	
+
 		
 		ArrayList<Integer> stations1 = new ArrayList<Integer>();
 		stations1.add(0);
@@ -48,28 +43,21 @@ public class Test {
 		stations3.add(0);
 		stations3.add(13);
 		
-		//System.out.println("---INITIAL STATE---");
-		//System.out.println("---BLOCKS---");
-		//for(Block b: n.getBlocks())
-			//b.printBlockDetail();
 		System.out.println("---JOURNEYS---");
-			JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
-			JourneyCreator.createSingleJourney(n.getTrains().get(1), stations, d, journeys);
-			JourneyCreator.createSingleJourney(n.getTrains().get(2), stations, d, journeys);
-			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
-			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
-			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
-			//JourneyCreator.createSingleJourney(n.getTrains().get(0), stations4, d, journeys);
-		
-		//System.out.println("---END INITIAL STATE---");
-		
-		for(Journey j: journeys)
-			j.printSimpleJourney();
+		JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
+		JourneyCreator.createSingleJourney(n.getTrains().get(1), stations, d, journeys);
+		JourneyCreator.createSingleJourney(n.getTrains().get(2), stations, d, journeys);
 		
 		
-		//Create a scheduler with original configuration
-		new NodeControl(journeys, n.getBlocks(), n.getTrains());	
+		if(journeys.size() > 0){
+			
+			for(Journey j: journeys)
+				j.printSimpleJourney();
 		
-	}
+			//Create a scheduler with original configuration
+			new NodeControl(journeys, n.getBlocks(), n.getTrains());	
+		}else
+			System.out.println("No Journeys could be routed");
+		}
 	
 }

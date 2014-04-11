@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 import traindiagrams.TrainDiagramCreator;
 import entities.Block;
-import entities.BlockExit;
 import entities.BlockOccupation;
 import entities.Engine;
 import entities.Journey;
@@ -90,17 +89,14 @@ public class NodeControl {
 			}
 
 			Engine train = currentBlock.getTrain();
-			BlockExit b = null;
-			
-			int blockLength = currentBlock.getLength();
-			int blockID = currentBlock.getBlock().getID();
+		
+
 			
 			if (j.lastBlock()) {
 				/*LAST BLOCK OF JOURNEY, HALT AT END OF BLOCK*/
 				
 				try {
-					b = train.exitBlockAtSetSpeed(blockLength, blockID,
-							currentBlock.getArrSpeed(), 0);
+					currentBlock = train.exitBlockAtSetSpeed(currentBlock, 0);
 				} catch (InvalidSpeedException e) {
 					e.printStackTrace();
 				}
@@ -112,29 +108,26 @@ public class NodeControl {
 				if(currentBlock.isStation() || occupied.get(nextBlock.getBlock())){
 					/*HALT AT END OF BLOCK*/
 					try {
-						b = train.exitBlockAtSetSpeed(blockLength, blockID,
-								currentBlock.getArrSpeed(), 0);
+						currentBlock = train.exitBlockAtSetSpeed(currentBlock, 0);
 					} catch (InvalidSpeedException e) {
 						e.printStackTrace();
 					}
 				}else{
 				
-					if (train.canStopInBlock(blockLength)) {
+					if (train.canStopInBlock(currentBlock.getLength())) {
 						/*CAN ENTER NEXT BLOCK AT ANY SPEED - FULL SPEED AHEAD*/
 						try {
-							b = train.timeToTraverse(blockLength, blockID,
-									currentBlock.getArrSpeed());
+							currentBlock = train.timeToTraverse(currentBlock);
 						} catch (InvalidSpeedException e) {
 							e.printStackTrace();
 						}
 					} else {
 						/*MUST ENTER NEXT BLOCK AT REDUCED SPEED*/
 						
-						int depSpeed = train.highestBlockEntrySpeed(blockLength);
+						int depSpeed = train.highestBlockEntrySpeed(currentBlock.getLength());
 	
 						try {
-							b = train.exitBlockAtSetSpeed(blockLength, blockID,
-									currentBlock.getArrSpeed(), depSpeed);
+							currentBlock = train.exitBlockAtSetSpeed(currentBlock, depSpeed);
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -143,10 +136,10 @@ public class NodeControl {
 	
 					
 					/*CHECK IF TRAIN ENTERS NEXT BLOCK TOO SOON*/
-					if (currentBlock.getArrTime() + b.getTime() < nextPossibleEntry.get(nextBlock.getBlock())) {
+					if (currentBlock.getDepTime() < nextPossibleEntry.get(nextBlock.getBlock())) {
 						// TRAIN MUST SPEND LONGER IN BLOCK
 						try {
-							b = train.minimumTimeTraversal(blockLength, blockID, currentBlock.getArrSpeed(), nextPossibleEntry.get(nextBlock.getBlock()) - currentBlock.getArrTime());
+							currentBlock = train.minimumTimeTraversal(currentBlock, nextPossibleEntry.get(nextBlock.getBlock()) - currentBlock.getArrTime());
 						} catch (InvalidSpeedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -154,12 +147,10 @@ public class NodeControl {
 					}
 				}
 			}
-
-			currentBlock.updateWithBlockExit(b);
 			
 			System.out.println("---CHECK IF EARLIEST FOUND---");
 			
-			System.out.println("BLOCK TIME: " + b.getTime() + " SPEED: " + b.getSpeed());
+			System.out.println("BLOCK TIME: " + currentBlock.getTimeInBlock() + " SPEED: " + currentBlock.getDepSpeed());
 			
 			System.out.println("Node First Arrival: " + node.getFirstArrivalTime());
 			System.out.println("Jou First Arrival: " + currentBlock.getDepTime());

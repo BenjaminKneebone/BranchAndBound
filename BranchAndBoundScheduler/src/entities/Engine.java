@@ -72,9 +72,12 @@ public class Engine implements Train{
 	 *         (km/h)
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit timeToTraverse(int blockLength, int blockID, int speed)
-			throws InvalidSpeedException {
+	public BlockOccupation timeToTraverse(BlockOccupation b) throws InvalidSpeedException {
 
+		int blockLength = b.getLength();
+		int blockID = b.getBlock().getID();
+		int speed = b.getArrSpeed();
+				
 		System.out.println("Full power");
 		
 		if (speed < 0 || speed > speedProfile[9])
@@ -145,7 +148,13 @@ public class Engine implements Train{
 		String message = 
 				String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Full Power \n", time, blockID, speed, newVel);
 		
-		return new BlockExit(time, newVel, message, timeToLeavePreviousBlock);
+		b.setDepTime(b.getArrTime() + b.getStationStopTime() + time);
+		b.setDepSpeed(newVel);
+		b.setMessage(message);
+		b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+		b.setStationArrivalTime(b.getArrTime() + time);
+		
+		return b;
 	}
 
 	/**
@@ -161,8 +170,11 @@ public class Engine implements Train{
 	 * @return Block Exit item
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit exitBlockAtSetSpeed(int blockLength, int blockID, int speed, int finalSpeed)
-			throws InvalidSpeedException {
+	public BlockOccupation exitBlockAtSetSpeed(BlockOccupation b, int finalSpeed) throws InvalidSpeedException {
+
+		int blockLength = b.getLength();
+		int blockID = b.getBlock().getID();
+		int speed = b.getArrSpeed();
 
 		System.out.println("Exit block at set speed");
 		
@@ -252,10 +264,14 @@ public class Engine implements Train{
 					}
 				}
 				
-				return new BlockExit(
-						(accelerationTime + constantTime + decelerationTime),
-						speed, message, timeToLeavePreviousBlock);
-
+				b.setDepTime(b.getArrTime() + b.getStationStopTime() + accelerationTime + constantTime + decelerationTime);
+				b.setDepSpeed(speed);
+				b.setMessage(message);
+				b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+				b.setStationArrivalTime(b.getArrTime() + accelerationTime + constantTime + decelerationTime);
+				
+				
+				return b;
 			}
 
 			// Stay at constant speed
@@ -269,8 +285,14 @@ public class Engine implements Train{
 			
 			timeToLeavePreviousBlock = length / kmhToMs(speed);
 			
-			return new BlockExit(timeToTraverseSetSpeed(blockLength,
-					speed), speed, message, timeToLeavePreviousBlock);
+			b.setDepTime(b.getArrTime() + b.getStationStopTime() + timeToTraverseSetSpeed(blockLength,speed));
+			b.setDepSpeed(speed);
+			b.setMessage(message);
+			b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+			b.setStationArrivalTime(b.getArrTime() + timeToTraverseSetSpeed(blockLength, speed));
+			
+			
+			return b;
 		}
 
 		if (finalSpeed > speed) {
@@ -308,8 +330,13 @@ public class Engine implements Train{
 						kmhToMs(finalSpeed);
 			}
 			
-			return new BlockExit(accelerationTime + constantTime, finalSpeed,
-					message, timeToLeavePreviousBlock);
+			b.setDepTime(b.getArrTime() + b.getStationStopTime() + accelerationTime + constantTime);
+			b.setDepSpeed(finalSpeed);
+			b.setMessage(message);
+			b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+			b.setStationArrivalTime(b.getArrTime() + accelerationTime + constantTime);
+			
+			return b;
 		} else {
 			System.out.println("i");
 			// Decelerates over the block
@@ -346,9 +373,13 @@ public class Engine implements Train{
 				
 			}
 			
-	
-			return new BlockExit(decelerationTime + constantTime, finalSpeed,
-					message, timeToLeavePreviousBlock);
+			b.setDepTime(b.getArrTime() + b.getStationStopTime() + decelerationTime + constantTime);
+			b.setDepSpeed(finalSpeed);
+			b.setMessage(message);
+			b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+			b.setStationArrivalTime(b.getArrTime() + decelerationTime + constantTime);
+			
+			return b;
 		}
 	}
 
@@ -365,9 +396,12 @@ public class Engine implements Train{
 	 * @return BlockExit object containing time to traverse block and exit speed
 	 * @throws InvalidSpeedException
 	 */
-	public BlockExit minimumTimeTraversal(int blockLength, int blockID, int speed, double time)
-			throws InvalidSpeedException {
+	public BlockOccupation minimumTimeTraversal(BlockOccupation b, double time) throws InvalidSpeedException {
 
+		int blockLength = b.getLength();
+		int blockID = b.getBlock().getID();
+		int speed = b.getArrSpeed();
+		
 		if (speed < 0 || speed > speedProfile[9])
 			throw new InvalidSpeedException(speed, name, speedProfile[9]);
 
@@ -440,8 +474,13 @@ public class Engine implements Train{
 						kmhToMs(newSpeed);
 			}
 			
-			return new BlockExit(decelerationTime + constantTime, newSpeed,
-					message, timeToLeavePreviousBlock);
+			b.setDepTime(b.getArrTime() + b.getStationStopTime() + decelerationTime + constantTime);
+			b.setDepSpeed(newSpeed);
+			b.setMessage(message);
+			b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+			b.setStationArrivalTime(b.getArrTime() + decelerationTime + constantTime);
+			
+			return b;
 		} else {
 
 			// Too slow - can speed up
@@ -505,9 +544,13 @@ public class Engine implements Train{
 						kmhToMs(newSpeed);
 			}
 			
+			b.setDepTime(b.getArrTime() + b.getStationStopTime() + accelerationTime + constantTime);
+			b.setDepSpeed(newSpeed);
+			b.setMessage(message);
+			b.setTimeToEnterBlock(timeToLeavePreviousBlock);
+			b.setStationArrivalTime(b.getArrTime() + accelerationTime + constantTime);
 			
-			return new BlockExit(accelerationTime + constantTime, newSpeed,
-					message, timeToLeavePreviousBlock);
+			return b;
 		}
 	}
 

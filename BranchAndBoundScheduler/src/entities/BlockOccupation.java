@@ -61,14 +61,6 @@ public class BlockOccupation implements Cloneable{
 		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), connection, depTime, arrTime, arrSpeed, depSpeed, stationArrivalTime, stationStopTime, timeToEnterBlock, message);
 		return bo;
 	}
-		
-	public void updateWithBlockExit(BlockExit b){
-		this.depSpeed = b.getSpeed();
-		this.stationArrivalTime = arrTime + b.getTime();
-		this.depTime = b.getTime() + stationStopTime + arrTime;
-		this.timeToEnterBlock = b.getTimeToEnterBlock();
-		this.message = b.getMessage();
-	}
 	
 	public double getTimeToEnterBlock(){
 		return timeToEnterBlock;
@@ -141,6 +133,14 @@ public class BlockOccupation implements Cloneable{
 			return block.getLength();
 		}
 	}
+	
+	public void setStationArrivalTime(double time){
+		this.stationArrivalTime = time;
+	}
+	
+	public void setTimeToEnterBlock(double time){
+		this.timeToEnterBlock = time;
+	}
 		
 	public String getBlockOccupationDetail(){
 		if(!isStation())
@@ -162,6 +162,10 @@ public class BlockOccupation implements Cloneable{
 	
 	public String getMessage(){
 		return message;
+	}
+	
+	public double getTimeInBlock(){
+		return depTime - stationStopTime - arrTime;
 	}
 	
 }

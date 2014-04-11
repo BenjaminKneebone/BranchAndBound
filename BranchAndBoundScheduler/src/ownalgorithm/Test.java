@@ -1,4 +1,4 @@
-package branchandboundcontrol;
+package ownalgorithm;
 
 import java.util.ArrayList;
 import algorithms.Dijkstra;
@@ -6,6 +6,7 @@ import entities.Journey;
 import entities.JourneyCreator;
 import entities.Network;
 import entities.Stop;
+
 public class Test {
 	
 	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
@@ -51,9 +52,10 @@ public class Test {
 				j.printSimpleJourney();
 		
 			//Create a scheduler with original configuration
-			new NodeControl(journeys, n.getBlocks(), n.getTrains());	
+			new NodeControl(journeys, n.getBlocks().size());	
 		}else
 			System.out.println("No Journeys could be routed");
 		}
 	
 }
+

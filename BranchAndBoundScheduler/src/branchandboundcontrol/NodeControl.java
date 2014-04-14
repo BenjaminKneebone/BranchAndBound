@@ -65,9 +65,6 @@ public class NodeControl {
 		nextPossibleEntry = node.getNextPossibleEntry();
 		
 		System.out.println("Scheduling " + node.getId());
-
-		for(Block b: node.getBlocks())
-			b.printBlockDetail();
 		
 		System.out.println(node.getJourneys().size());
 		
@@ -165,6 +162,14 @@ public class NodeControl {
 			
 
 		}
+		
+		if(node.getFirstArrivalTime() == Integer.MAX_VALUE){
+			System.out.println("No journeys could be scheduled");
+			bestNode = node;
+			saveOptimal();
+			System.exit(0);
+		}
+		
 		
 		
 		createNewNodes(node);
@@ -351,9 +356,10 @@ public class NodeControl {
 
 			for (Journey journey : bestNode.getJourneys()) {
 				print.write(journey.getTrain().getName() + " schedule\n");
-
-				for (BlockOccupation b : journey.getBlockOccupations())
+				
+				for (BlockOccupation b : journey.getBlockOccupations()){
 					print.write(b.getBlockOccupationDetail());
+				}
 			}
 			
 			for (Journey journey : bestNode.getJourneys()) {

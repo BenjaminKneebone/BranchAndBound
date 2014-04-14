@@ -29,7 +29,7 @@ public class BlockOccupation implements Cloneable{
 	private double timeToEnterBlock = 0;
 	
 	//Some information about BlockOccupation (Acceleration/Deceleration etc.)
-	private String message;
+	private String message = "";
 	
 	public BlockOccupation(Engine train, Block block, Connection conn){
 		this.train = train;

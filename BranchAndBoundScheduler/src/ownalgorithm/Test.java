@@ -12,7 +12,7 @@ public class Test {
 	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
 	
 	public static void main(String[] args){
-		Network n = new Network("files/8BlockLoopNetwork.json");
+		Network n = new Network("files/bidirectionalstraight.json");
 		n.printNetworkInfo();
 		
 		Dijkstra d = new Dijkstra(n);
@@ -20,13 +20,11 @@ public class Test {
 		ArrayList<Stop> stations = new ArrayList<Stop>();
 		stations.add(new Stop(0,20));
 		stations.add(new Stop(4,120));
-		stations.add(new Stop(0,60));
-		stations.add(new Stop(4,120));
 
 		
-		ArrayList<Integer> stations1 = new ArrayList<Integer>();
-		stations1.add(0);
-		stations1.add(6);
+		ArrayList<Stop> stations1 = new ArrayList<Stop>();
+		stations1.add(new Stop(4,20));
+		stations1.add(new Stop(0,120));
 		
 		ArrayList<Integer> stations2 = new ArrayList<Integer>();
 		stations2.add(0);
@@ -43,7 +41,6 @@ public class Test {
 		System.out.println("---JOURNEYS---");
 		JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
 		JourneyCreator.createSingleJourney(n.getTrains().get(1), stations, d, journeys);
-		JourneyCreator.createSingleJourney(n.getTrains().get(2), stations, d, journeys);
 		
 		
 		if(journeys.size() > 0){
@@ -52,7 +49,7 @@ public class Test {
 				j.printSimpleJourney();
 		
 			//Create a scheduler with original configuration
-			new NodeControl(journeys, n.getBlocks().size());	
+			new NodeControl(journeys, n.getBlocks());	
 		}else
 			System.out.println("No Journeys could be routed");
 		}

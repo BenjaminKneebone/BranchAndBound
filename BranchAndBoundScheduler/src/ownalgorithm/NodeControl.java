@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import traindiagrams.TrainDiagramCreator;
@@ -24,11 +25,20 @@ public class NodeControl {
 	private ArrayList<Journey> journeys;
 	private OccupationComparator occComp = new OccupationComparator();
 	
-	
+	private HashMap<BlockOccupation, Integer> nextBlockHash = new HashMap<BlockOccupation, Integer>();
 	
 	public NodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks){
 		
 		this.journeys = journeys;
+		
+		for(Journey j: journeys){
+			for(int x = 0; x < j.getBlockOccupations().size() - 1; x++){
+				nextBlockHash.put(j.getBlockOccupations().get(x),
+						j.getBlockOccupations().get(x + 1).getBlock().getID());
+			}
+				
+		}
+		
 		
 		occupied = new ArrayList<ArrayList<BlockOccupation>>(blocks.size());
 		
@@ -143,6 +153,14 @@ public class NodeControl {
 		
 		System.out.println("NEXT BLOCK: " + currBlock.getBlock().getID());
 		
+		//Next train arrival time
+		double lastExitTime = Integer.MAX_VALUE;
+		for(BlockOccupation b: currOccupied)
+			if(b.getArrTime() > currBlock.getArrTime()){
+				lastExitTime = b.getArrTime();
+				break;
+			}
+	
 		if(journey.lastBlock()){
 				
 			System.out.println("LAST BLOCK");
@@ -153,11 +171,8 @@ public class NodeControl {
 				System.out.println(currBlock.getBlockOccupationDetail());
 				
 				//If train leaves after next train arrives, infeasible scheduling
-				for(BlockOccupation b: currOccupied)
-					if(b.getArrTime() > currBlock.getArrTime() && currBlock.getDepTime() > currBlock.getArrTime()){
-						System.out.println("REJECTED");
-						return false;
-					}
+				if(currBlock.getDepTime() >= lastExitTime)
+					return false;
 				
 				currOccupied.add(currBlock);
 				System.out.println(currBlock.getBlockOccupationDetail());
@@ -176,29 +191,12 @@ public class NodeControl {
 			BlockOccupation nextBlock = journey.getSecondToBeScheduled();
 			ArrayList<BlockOccupation> nextOccupied = occupied.get(nextBlock.getBlock().getID());
  			
-			//Get the time this train must leave the current block by
-			double lastExitTime = Integer.MAX_VALUE;
-			
-			for(BlockOccupation b: currOccupied)
-				//Next arrival after current train
-				if(b.getArrTime() > currBlock.getArrTime()){
-					lastExitTime = b.getArrTime();
-					//If collides with occupation in next block
-					for(BlockOccupation bo: nextOccupied)
-						if(isTimeCollision(lastExitTime, bo)){
-							//Bring exit time forward
-							lastExitTime = bo.getArrTime();
-							break;
-						}
-					break;
-				}
-			
 			System.out.println("ENTRY TIME: " + currBlock.getArrTime());
 			System.out.println("LAST EXIT TIME: " + lastExitTime);
 			
 			//Next block is occupied for the duration of the free time in the current block
 			for(BlockOccupation b: nextOccupied)
-				if(b.getArrTime() <= currBlock.getArrTime() && b.getDepTime() >= lastExitTime){
+				if(b.getArrTime() <= currBlock.getArrTime() && b.getDepTime() > lastExitTime){
 					System.out.println("Next block occupied for duration");
 					return false;
 				}
@@ -206,14 +204,33 @@ public class NodeControl {
 			//Earliest train can enter next block
 			double earliestExitTime = currBlock.getArrTime();
 			
-			for(BlockOccupation b: nextOccupied)
-				if(isTimeCollision(currBlock.getArrTime(), b))
-					earliestExitTime = b.getDepTime();
 			
+			for(int x = 0; x < nextOccupied.size(); x++){
+				//If current arrival time is occupied in next block
+				if(isTimeCollision(currBlock.getArrTime(), nextOccupied.get(x)))
+					earliestExitTime = nextOccupied.get(x).getDepTime();
+			
+				//If current exit time is occupied in next block
+				if(isTimeCollision(lastExitTime, nextOccupied.get(x))){
+					//If train in next block enters this block - avoid deadlock
+					if(nextOccupied.get(x).getDepTime() == lastExitTime && 
+							nextBlockHash.get(nextOccupied.get(x)) == currBlock.getBlock().getID())
+						lastExitTime = nextOccupied.get(x).getArrTime() - 1;
+					
+					if(nextOccupied.get(x).getDepTime() != lastExitTime){
+						//Bring exit time forward
+						lastExitTime = nextOccupied.get(x).getArrTime() - 1;
+						break;
+					}
+						
+					
+				}	
+			}
+						
 			System.out.println("EARLIEST NEXT BLOCK ENTRY: " + earliestExitTime);
+			System.out.println("LAST EXIT TIME: " + lastExitTime);
 			
 			//STATION
-			
 			if(currBlock.isStation()){
 				System.out.println("Station");
 				try {
@@ -232,6 +249,7 @@ public class NodeControl {
 				}else{
 					nextBlock.setArrSpeed(0);
 					
+					//Do we need to keep train in station?
 					if(currBlock.getDepTime() < earliestExitTime){
 						//Push back departure time
 						currBlock.setDepTime(earliestExitTime);
@@ -241,7 +259,6 @@ public class NodeControl {
 					nextBlock.setArrTime(currBlock.getDepTime());
 					
 					currOccupied.add(currBlock);
-					
 					
 					System.out.println("Station Block Info");
 					System.out.println(currBlock.getBlockOccupationDetail());
@@ -255,11 +272,12 @@ public class NodeControl {
 						
 						//Check other free slots
 						for(BlockOccupation b: occupied.get(nextBlock.getBlock().getID())){
-							if(b.getArrTime() > earliestExitTime && b.getDepTime() < lastExitTime){
+							if(b.getArrTime() > earliestExitTime && b.getDepTime() <= lastExitTime){
 								potential.add(b);
 							}	
 						}
 						
+						//Attempt to schedule the train in the next block after the occupation
 						for(BlockOccupation b: potential){					
 							currBlock.setDepTime(b.getDepTime());
 							nextBlock.setArrTime(b.getDepTime());
@@ -311,10 +329,6 @@ public class NodeControl {
 
 				System.out.println("Dep Time:" + currBlock.getDepTime());
 				
-				if(currBlock.getDepTime() >= lastExitTime)
-					return false;
-				
-				
 				if(currBlock.getDepTime() < earliestExitTime){
 					System.out.println("Train arrives too early, push back departure");
 					try {
@@ -324,6 +338,10 @@ public class NodeControl {
 						e.printStackTrace();
 					}
 				}
+				
+				//Train needs too long in the block - May not be at an integer speed - Unlikely
+				if(currBlock.getDepTime() > lastExitTime)
+					return false;
 				
 				nextBlock.setArrTime(currBlock.getDepTime());
 				nextBlock.setArrSpeed(currBlock.getDepSpeed());
@@ -353,6 +371,10 @@ public class NodeControl {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							
+							//Train needs too long in the block - May not be at an integer speed - Unlikely
+							if(currBlock.getDepTime() > lastExitTime)
+								return false;
 							
 							nextBlock.setArrTime(currBlock.getDepTime());
 							nextBlock.setArrSpeed(currBlock.getDepSpeed());

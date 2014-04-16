@@ -64,77 +64,151 @@ public class NodeControl {
 		
 		ArrayList<BlockOccupation> nextBlockOccupied;
 		BlockOccupation nextBlock;
+		ArrayList<BlockOccupation> originOccupied;
+		BlockOccupation origin;
 		
 		for(Journey j: journeys){
 			
-			sortOccupied();
-			
-			
 			System.out.println("---JOURNEY " + j.getTrain().getName());
 			
+			sortOccupied();
+			
+			origin = j.getPreviousBlock();
 			nextBlock = j.getNextToBeScheduled();
-			
 			nextBlockOccupied = occupied.get(nextBlock.getBlock().getID());
+			originOccupied = occupied.get(origin.getBlock().getID());
 			
-			//Set arrival in first block to departure time
-			nextBlock.setArrTime(j.getPreviousBlock().getDepTime());
+			//The windows in which the train can depart the origin block
+			ArrayList<TimeWindow> timeWindows = new ArrayList<TimeWindow>();
 			
-			if(nextBlockOccupied.isEmpty()){
-				System.out.println("No occupations");
-				
-				//First block has no occupations - Retain original arrival time
-				if(!scheduleBlock(j))
-					return false;
-			}else{
+			int stationStopTime = origin.getStationStopTime();
 			
-				System.out.println("Size: " + nextBlockOccupied.size());
+			System.out.println(stationStopTime);
+			
+			if(originOccupied.isEmpty()){
+				timeWindows.add(new TimeWindow(stationStopTime, Integer.MAX_VALUE));
+			}else{			
 				
-				//Find valid arrival time in first block to be traversed			
-				for(int x = 0; x <= nextBlockOccupied.size(); x++){
-					System.out.println(x);
-					
-					System.out.println("Entry time: " +  nextBlock.getArrTime());
-					
-					if(x == nextBlockOccupied.size()){
-						
-						System.out.println("Last occupation");
-						
-						//Last occupation, make or break
-						if(!scheduleBlock(j)){
-							//Journey cannot be scheduled
-							return false;
-						}else{
-							//Schedule next journey
-							break;
-						}
-						
-					}
-					
-					if(isTimeCollision(nextBlock.getArrTime(), nextBlockOccupied.get(x))){
-						System.out.println("Time collision");
-						j.getPreviousBlock().setDepTime(nextBlockOccupied.get(x).getDepTime());
-						nextBlock.setArrTime(nextBlockOccupied.get(x).getDepTime());
-						continue;
-					}
+				//Can the train be in the station from time 0?
+				if(originOccupied.get(0).getArrTime() > stationStopTime)
+					timeWindows.add(new TimeWindow(stationStopTime, originOccupied.get(0).getArrTime()));
 				
-					//Attempt to schedule
-					if(!scheduleBlock(j)){
-						System.out.println("Try next block");
-						//Arrival time is after the last occupation
-						j.getPreviousBlock().setDepTime(nextBlockOccupied.get(x).getDepTime());
-						nextBlock.setArrTime(nextBlockOccupied.get(x).getDepTime());
-						continue;
-					}else{
-						break;
+				//Any gaps in the origin block
+				for(int x = 0; x < originOccupied.size() - 1; x++){
+					if(originOccupied.get(x + 1).getArrTime() != originOccupied.get(x).getDepTime()){
+						timeWindows.add(new TimeWindow(originOccupied.get(x + 1).getArrTime(), originOccupied.get(x).getDepTime() + stationStopTime));
 					}
 				}
-				
+			
+				//Gap after all occupations
+				timeWindows.add(new TimeWindow(originOccupied.get(originOccupied.size() - 1).getDepTime() + stationStopTime, Integer.MAX_VALUE));
 			}
+			
+			for(TimeWindow t : timeWindows){
+				System.out.print("Start:" + t.getStart() + " End: " + t.getEnd());
+			}
+			
+			//Attempt to schedule
+			origin.setDepTime(timeWindows.get(0).getStart());
+			origin.setArrTime(origin.getDepTime() - stationStopTime);
+			origin.setStationArrivalTime(origin.getArrTime());
+			nextBlock.setArrTime(origin.getDepTime());
+			
+			System.out.println("Origin dep Time: " + origin.getDepTime());
+			System.out.println("Next block arr Time: " + nextBlock.getArrTime());
+			
+			if(nextBlockOccupied.isEmpty()){
+				System.out.println("Next block empty");
+				
+				//Should be able to schedule
+				originOccupied.add(origin);
+				if(scheduleBlock(j))
+					continue;
+				else
+					return false;
+			}else{
+				System.out.println("Next block not empty");
+				
+				//Find first point when it can enter next block
+				for(BlockOccupation b: nextBlockOccupied)
+					if(isTimeCollision(origin.getDepTime(), b) && origin.getDepTime() != b.getDepTime()){
+						if(nextBlockHash.get(b) != origin.getBlock().getID()){
+							origin.setDepTime(b.getDepTime());
+							origin.setArrTime(origin.getDepTime() - stationStopTime);
+							origin.setStationArrivalTime(origin.getArrTime());
+							nextBlock.setArrTime(origin.getDepTime());
+							break;
+						}else{
+							timeWindows.remove(0);
+							//Attempt to schedule
+							origin.setDepTime(timeWindows.get(0).getStart());
+							origin.setArrTime(origin.getDepTime() - stationStopTime);
+							origin.setStationArrivalTime(origin.getArrTime());
+							nextBlock.setArrTime(origin.getDepTime());
+						}
+					}
+					
+				boolean lastAttempt = false;
+				
+				originOccupied.add(origin);
+				while(!scheduleBlock(j)){
+					originOccupied.remove(origin);
+					
+					if(lastAttempt)
+						return false;
+					
+					//Try next departure time
+					if(origin.getDepTime() + 1 > timeWindows.get(0).getEnd()){
+						timeWindows.remove(0);
+						
+						System.out.println("New time window");
+						
+						origin.setDepTime(timeWindows.get(0).getStart());
+						origin.setArrTime(origin.getDepTime() - stationStopTime);
+						origin.setStationArrivalTime(origin.getArrTime());
+						nextBlock.setArrTime(origin.getDepTime());
+						
+					}else{
+						origin.setDepTime(origin.getDepTime() + 1);
+						origin.setArrTime(origin.getDepTime() - stationStopTime);
+						origin.setStationArrivalTime(origin.getArrTime());
+						nextBlock.setArrTime(origin.getDepTime());
+					}
+					
+					
+					for(int x = 0; x < nextBlockOccupied.size(); x++){
+						if(isTimeCollision(origin.getDepTime(), nextBlockOccupied.get(x))){
+							
+							if(nextBlockOccupied.get(x).getDepTime() <= timeWindows.get(0).getEnd() && nextBlockHash.get(nextBlockOccupied.get(x)) != origin.getBlock().getID()){
+								System.out.println("Same time window");
+								origin.setDepTime(nextBlockOccupied.get(x).getDepTime());
+								origin.setArrTime(origin.getDepTime() - stationStopTime);
+								origin.setStationArrivalTime(origin.getArrTime());
+								nextBlock.setArrTime(origin.getDepTime());
+							}else{
+								timeWindows.remove(0);
+								origin.setDepTime(timeWindows.get(0).getStart());
+								origin.setArrTime(origin.getDepTime() - stationStopTime);
+								origin.setStationArrivalTime(origin.getArrTime());
+								nextBlock.setArrTime(origin.getDepTime());
+							}
+							if(x == nextBlockOccupied.size() - 1)
+								lastAttempt = true;
+						}
+					}
+					originOccupied.add(origin);
+					
+				}
+				continue;
+			}	
 		
 		}
+		return true;	
+			
+			
+	
 		
-		//All journeys scheduled
-		return true;
+	
 		
 	}
 	
@@ -482,6 +556,27 @@ public class NodeControl {
 				else
 					return - 1;
 		}
+		
+	}
+	
+	private class TimeWindow{
+		double start;
+		double end;
+		
+		public TimeWindow(double start, double end){
+			this.start = start;
+			this.end = end;
+		}
+		
+		public double getStart(){
+			return start;
+		}
+		
+		public double getEnd(){
+			return end;
+		}
+		
+		
 		
 	}
 	

@@ -27,7 +27,7 @@ public class Journey {
 				journey.addAll(d.shortestRoute(stations.get(x).getBlockID(), stations.get(x + 1).getBlockID(), train));
 			
 		//Ignore stopping time in first block (index 0)
-		int stationIndex = 1;
+		int stationIndex = 0;
 		
 		
 		for(int x = 0; x < journey.size() - 1; x++){

@@ -11,6 +11,8 @@ public class BlockOccupation implements Cloneable{
 	private Block block;
 	private Connection connection;
 	
+	private boolean turnaround = false;
+	
 	//Speed entering block
 	private int arrSpeed = 0;
 	//Speed leaving block
@@ -31,13 +33,14 @@ public class BlockOccupation implements Cloneable{
 	//Some information about BlockOccupation (Acceleration/Deceleration etc.)
 	private String message = "";
 	
-	public BlockOccupation(Engine train, Block block, Connection conn){
+	public BlockOccupation(Engine train, Block block, Connection conn, boolean turnaround){
 		this.train = train;
 		this.block = block;
 		this.connection = conn;
+		this.turnaround = turnaround;
 	}
 	
-	private BlockOccupation(Engine train, Block block, Connection conn, double depTime, double arrTime, int arrSpeed, int depSpeed, double stationArrivalTime, int stationStopTime, double timeToEnterBlock, String message){
+	private BlockOccupation(Engine train, Block block, Connection conn, double depTime, double arrTime, int arrSpeed, int depSpeed, double stationArrivalTime, int stationStopTime, double timeToEnterBlock, String message, boolean turnaround){
 		this.train = train;
 		this.block = block;
 		this.depTime = depTime;
@@ -49,6 +52,7 @@ public class BlockOccupation implements Cloneable{
 		this.message = message;
 		this.connection = conn;
 		this.timeToEnterBlock = timeToEnterBlock;
+		this.turnaround = turnaround;
 	}
 	
 	/**Clones this BlockOccupation. Clone will reference Block in the 
@@ -58,7 +62,7 @@ public class BlockOccupation implements Cloneable{
 	 */
 	public BlockOccupation clone(ArrayList<Block> blocks){
 		//Clone BlockOccupation using reference to block in list provided
-		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), connection, depTime, arrTime, arrSpeed, depSpeed, stationArrivalTime, stationStopTime, timeToEnterBlock, message);
+		BlockOccupation bo = new BlockOccupation(train, blocks.get(block.getID()), connection, depTime, arrTime, arrSpeed, depSpeed, stationArrivalTime, stationStopTime, timeToEnterBlock, message, turnaround);
 		return bo;
 	}
 	
@@ -128,7 +132,10 @@ public class BlockOccupation implements Cloneable{
 	
 	public int getLength(){
 		if(connection != null){
-			return connection.getLength() + block.getLength();
+			if(turnaround)
+				return connection.getLength() + train.getLength();
+			else
+				return connection.getLength() + block.getLength();
 		}else{
 			return block.getLength();
 		}
@@ -149,11 +156,15 @@ public class BlockOccupation implements Cloneable{
 			return String.format("Block %d Arriving %-8.4f (%-3dkm/h) Departing %-8.4f (%-3dkm/h) Station Arrival: %-8.4f \n", block.getID(), arrTime, arrSpeed,  depTime, depSpeed, stationArrivalTime); 
 	}
 	
+	public boolean isTurnaround(){
+		return turnaround;
+	}
+	
 	public void printOccupationDetail(){
 		if(connection != null){
 			System.out.println("Connection " + connection.getIn().getID() + " to " + connection.getOut().getID() + " length: " + connection.getLength());
 		}
-		System.out.printf("Train: %-3d Block: %-3d Length: %-5d Station: %s\n", train.getID(), block.getID(), block.getLength(), isStation());
+		System.out.printf("Train: %-3d Block: %-3d Length: %-5d Station: %s Turnaround: %s\n", train.getID(), block.getID(), this.getLength(), isStation(), turnaround);
 	}
 	
 	public void setMessage(String msg){

@@ -2,6 +2,7 @@ package branchandboundcontrol;
 
 import java.util.ArrayList;
 import algorithms.Dijkstra;
+import algorithms.Dijkstra;
 import entities.Journey;
 import entities.JourneyCreator;
 import entities.Network;
@@ -11,7 +12,7 @@ public class Test {
 	private static ArrayList<Journey> journeys = new ArrayList<Journey>();
 	
 	public static void main(String[] args){
-		Network n = new Network("files/bidirectionalstraight.json");
+		Network n = new Network("files/6BlockLoop1siding.json");
 		n.printNetworkInfo();
 		
 		Dijkstra d = new Dijkstra(n);
@@ -22,8 +23,8 @@ public class Test {
 
 		
 		ArrayList<Stop> stations1 = new ArrayList<Stop>();
-		stations1.add(new Stop(4,20));
-		stations1.add(new Stop(0,120));
+		stations1.add(new Stop(0,20));
+		stations1.add(new Stop(6,120));
 		
 		ArrayList<Integer> stations2 = new ArrayList<Integer>();
 		stations2.add(0);
@@ -38,8 +39,11 @@ public class Test {
 		stations3.add(13);
 		
 		System.out.println("---JOURNEYS---");
-		JourneyCreator.createSingleJourney(n.getTrains().get(0), stations, d, journeys);
 		JourneyCreator.createSingleJourney(n.getTrains().get(1), stations1, d, journeys);
+		JourneyCreator.createSingleJourney(n.getTrains().get(1), stations1, d, journeys);
+		JourneyCreator.createSingleJourney(n.getTrains().get(1), stations1, d, journeys);
+		JourneyCreator.createSingleJourney(n.getTrains().get(1), stations1, d, journeys);
+		
 		
 		if(journeys.size() > 0){
 			

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import exceptions.RouteNotFoundException;
 
 import algorithms.Dijkstra;
+import algorithms.Dijkstra;
 
 public class JourneyCreator {
 

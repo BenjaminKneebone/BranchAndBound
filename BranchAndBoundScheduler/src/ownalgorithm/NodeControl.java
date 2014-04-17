@@ -73,8 +73,8 @@ public class NodeControl {
 			
 			sortOccupied();
 			
-			origin = j.getPreviousBlock();
-			nextBlock = j.getNextToBeScheduled();
+			origin = j.getNextToBeScheduled();
+			nextBlock = j.getSecondToBeScheduled();
 			nextBlockOccupied = occupied.get(nextBlock.getBlock().getID());
 			originOccupied = occupied.get(origin.getBlock().getID());
 			

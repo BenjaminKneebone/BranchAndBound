@@ -11,6 +11,10 @@ public class Join {
 	public Join(){	
 	}
 	
+	public ArrayList<Connection> getConnections(){
+		return connections;
+	}
+	
 	/**
 	 * @param in The entry block into this join 
 	 * @return A list of the blocks where valid connections exist from the in block across this join.

@@ -7,13 +7,14 @@ import entities.Engine;
 import exceptions.RouteNotFoundException;
 
 import algorithms.Dijkstra;
+import algorithms.Dijkstra;
 
 public class Journey {
 
 	private Engine train;
 	private ArrayList<BlockOccupation> journey = new ArrayList<BlockOccupation>();
 	//Start at 2nd block. Train starts journey at end of first block
-	private int nextToBeScheduled = 1;
+	private int nextToBeScheduled = 0;
 	private int id;
 	private int length = 0;
 	
@@ -51,13 +52,6 @@ public class Journey {
 				}
 			
 		}
-		
-		//Block occupation 0 isn't scheduled. Train starts at end of that block (In station)
-		journey.get(0).setDepTime(0);
-		journey.get(0).setDepSpeed(0);
-		journey.get(0).setMessage("");
-		journey.get(1).setArrTime(0);
-		journey.get(1).setArrSpeed(0);
 		
 		//Set stopping time in last block
 		journey.get(journey.size() - 1).setStationStopTime(120);
@@ -153,6 +147,14 @@ public class Journey {
 		Journey j = new Journey(cloneBO, train, nextToBeScheduled, id);
 		
 		return j;
+	}
+	
+	public boolean isFirstBlock(){
+		return nextToBeScheduled == 0;
+	}
+	
+	public boolean isSecondBlock(){
+		return nextToBeScheduled == 1;
 	}
 	
 	

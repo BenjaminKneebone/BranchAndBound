@@ -20,16 +20,15 @@ public class Dijkstra {
 
 	private ArrayList<Block> blocks;
 	private ArrayList<ArrayList<Join>> joins;
-	private ArrayList<Connection> prevConn;
-	private Map<Join, Integer> minDistance = new HashMap<Join, Integer>();
-	private Map<Join, Integer> currentIn = new HashMap<Join, Integer>();
+	//private ArrayList<Connection> prevConn;
+	
+	private Map<Connection, Connection> prevConn;
+	private Map<Connection, Integer> minDistance = new HashMap<Connection, Integer>();
 	
 	public Dijkstra(Network network){
 		blocks = network.getBlocks();
 		joins = network.getJoins();
-		prevConn = new ArrayList<Connection>(blocks.size());
-		
-		
+		prevConn = new HashMap<Connection, Connection>(blocks.size());	
 	}
 	
 	/**
@@ -41,136 +40,134 @@ public class Dijkstra {
 	 * @throws RouteNotFoundException
 	 */
 	public ArrayList<BlockOccupation> shortestRoute(int sourceID, int destID, Engine train) throws RouteNotFoundException{
-			
-		//Set high distance for each join (As some joins will appear in 
+		
+		//The last connection in a route
+		Connection lastConn = null;
+		
+		//Set high distance for each connection (As some connections will appear in 
 		//multiple lists, will perform unnecessary puts
 		for(ArrayList<Join> joinList: joins)
 			for(Join j: joinList)
-				minDistance.put(j, 1000000);
+				for(Connection c: j.getConnections())
+					minDistance.put(c, 1000000);
 		
-		prevConn = new ArrayList<Connection>(blocks.size());
-		for(int x = 0; x < blocks.size(); x++)
-			prevConn.add(null);
-		
-		currentIn = new HashMap<Join, Integer>();
+		prevConn = new HashMap<Connection, Connection>(minDistance.size());
 		
 		//Large number so found routes are smaller
 		int globalMin = 10000000;
 		boolean destFound = false;
 		
 		//The "Front"
-		ArrayList<Join> activeJoins = new ArrayList<Join>();
+		ArrayList<Connection> activeConnections = new ArrayList<Connection>();
 				
 		//Get the joins associated with the first block
-		activeJoins.addAll(joins.get(sourceID));
-		
-		for(Join j: activeJoins){
-			//Set distance to first join
-			minDistance.put(j, blocks.get(sourceID).getLength());
-			currentIn.put(j, sourceID);
-		}
-		
-		//Whilst we have active joins
-		while(activeJoins.size() > 0){
-			
-			//If we have encountered the destination and no shorter possible - Finished
-			if(destFound && checkComplete(activeJoins, globalMin))
-				break;
-			
-			ArrayList<Join> newActive = new ArrayList<Join>();
-			
-			//For each join on the "front"
-			for(Join oldJ: activeJoins){
-				
-				//Get dest blocks
-				try {
-					for(Connection c: oldJ.getConnections(blocks.get(currentIn.get(oldJ)))){
-
-						System.out.println(c.getOut().getID());
-						
-						//See if better route found to destination
-						if(c.getOut().getID() == destID){
-							destFound = true;
-							if(minDistance.get(oldJ) + c.getOut().getLength() < globalMin){
-								System.out.println("Best distance found");
-								globalMin = minDistance.get(oldJ) +  c.getOut().getLength();
-								prevConn.set(c.getOut().getID(), c);
-							}
-						}else{
-							for(Join newJ : joins.get(c.getOut().getID())){
-								
-								//Do not check join in direction we've arrived from
-								if(newJ != oldJ){
-									//Check if quicker route has been found to this join
-									if(minDistance.get(newJ) > minDistance.get(oldJ) + c.getOut().getLength()){
-										//Set new minimum distance values and add join to the "Front"
-										minDistance.put(newJ, minDistance.get(oldJ) + c.getOut().getLength());
-										currentIn.put(newJ, c.getOut().getID());
-										prevConn.set(c.getOut().getID(), c);
-										newActive.add(newJ);
-									}
-								}
-							}
-						}
-					}
-				} catch (NoOutsFromInException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}		
+		for(Join j: joins.get(sourceID)){
+			try {
+				for(Connection c: j.getConnections(blocks.get(sourceID))){
+					activeConnections.add(c);
+					minDistance.put(c, 0);
+					prevConn.put(c, null);
+				}
+			} catch (NoOutsFromInException e) {
 				
 			}
-		
-			activeJoins = newActive;
+		}
+
+		//Whilst we have active joins
+		while(activeConnections.size() > 0){
 			
-			Collections.sort(activeJoins, new JoinComparator());
+			//If we have encountered the destination and no shorter possible - Finished
+			if(destFound && checkComplete(activeConnections, globalMin))
+				break;
+			
+			ArrayList<Connection> newActive = new ArrayList<Connection>();
+			
+			//For each join on the "front"
+			for(Connection oldC: activeConnections){
+				
+				//Get dest block
+				Block out = oldC.getOut();
+				if(out.getID() == destID){
+					destFound = true;
+					if(minDistance.get(oldC) + out.getLength() < globalMin){
+						System.out.println("Best distance found");
+						globalMin = minDistance.get(oldC) +  out.getLength();
+						lastConn = oldC;
+					}
+				}else{
+					for(Join j: joins.get(out.getID())){
+						try {
+							for(Connection c: j.getConnections(out)){
+								//Check if quicker route has been found to this Connection
+								if(minDistance.get(oldC) + out.getLength() < minDistance.get(c)){
+									//Set new minimum distance values and add join to the "Front"
+									minDistance.put(c, minDistance.get(oldC) + out.getLength());
+									prevConn.put(c, oldC);
+									newActive.add(c);
+								}
+							}
+						} catch (NoOutsFromInException e) {
+						}	
+					}
+				}
+			}
+			
+		
+			activeConnections = newActive;
+			
+			Collections.sort(activeConnections, new ConnectionComparator());
 		}
 				
 		
-		if(globalMin == 10000000){
+		if(lastConn == null){
 			throw new RouteNotFoundException(sourceID, destID);
 		}else{
 			//Solution found - create route
 			ArrayList<BlockOccupation> route = new ArrayList<BlockOccupation>();
-			
-			//Get join of the destination
-			Connection first = prevConn.get(destID);
-			Connection second = prevConn.get(first.getIn().getID()); 
 								
-			route.add(new BlockOccupation(train, blocks.get(destID), first));
+			route.add(new BlockOccupation(train, blocks.get(destID), lastConn, false));
 			//Loop through adding blocks to root
-			while(second != null){
-				if(first.getIn().getID() == destID)
+			while(prevConn.get(lastConn) != null){
+				
+				//If same Join, train has turned around in block
+				if(lastConn.getJoin() == prevConn.get(lastConn).getJoin()){
+					route.add(new BlockOccupation(train, blocks.get(prevConn.get(lastConn).getOut().getID()), prevConn.get(lastConn), true));
+				}else{
+					route.add(new BlockOccupation(train, blocks.get(prevConn.get(lastConn).getOut().getID()), prevConn.get(lastConn), false));
+				}
+				
+				lastConn = prevConn.get(lastConn);
+				
+				if(prevConn.get(lastConn) == null)
 					break;
 				
-				route.add(new BlockOccupation(train, first.getIn(), second));
-				first = second;
-				second = prevConn.get(second.getIn().getID());	
 			}
 			
 			//Add source block
-			route.add(new BlockOccupation(train, blocks.get(sourceID), null));
+			route.add(new BlockOccupation(train, blocks.get(sourceID), null, false));
 			
 			//reverse route (Now source to destination)
 			Collections.reverse(route);
 						
 			return route;
 		}
+		
 	}
 	
-	private boolean checkComplete(ArrayList<Join> active, int globalMin){
+	private boolean checkComplete(ArrayList<Connection> active, int globalMin){
 		
-		for(Join j: active){
-			if(minDistance.get(j) < globalMin)
+		for(Connection c: active){
+			if(minDistance.get(c) < globalMin)
 				return false;
 		}
 		
 		return true;
 	}
 	
-	private class JoinComparator implements Comparator<Join>{
+	private class ConnectionComparator implements Comparator<Connection>{
 
 		@Override
-		public int compare(Join o1, Join o2) {
+		public int compare(Connection o1, Connection o2) {
 			return minDistance.get(o1) < minDistance.get(o2) ? -1 : minDistance.get(o1) == minDistance.get(o2) ? 0 : 1;
 		}
 		

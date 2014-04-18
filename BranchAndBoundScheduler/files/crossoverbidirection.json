@@ -46,7 +46,7 @@
 		"output_hw": "7FD441000000",
 		"output_id": 0,
 		"polarity": 0,
-		"restrict": []
+		"restrict": [5]
 	}, {
 		"id": 3,
 		"length": 2000, 
@@ -70,8 +70,8 @@
 		"output_hw": "7FD441000000",
 		"output_id": 0,
 		"polarity": 0,
-		"restrict": []
-	}, {
+		"restrict": [2]
+	},{
 		"id": 6,
 		"length": 2000, 
 		"scale": 10, 
@@ -79,7 +79,7 @@
 		"output_id": 0,
 		"polarity": 0,
 		"restrict": []
-	}, {
+	},{
 		"id": 7,
 		"length": 2000, 
 		"scale": 10, 
@@ -87,12 +87,24 @@
 		"output_id": 0,
 		"polarity": 0,
 		"restrict": []
-	}
-	],
+	},{
+		"id": 8,
+		"length": 2000, 
+		"scale": 10, 
+		"output_hw": "7FD441000000",
+		"output_id": 0,
+		"polarity": 0,
+		"restrict": []
+	}],
 	"joins": [{
 		"allowed": [{
 			"in": 0,
 			"out": 1,
+			"length" : 0,
+			"type": "straight"
+		},{
+			"in": 1,
+			"out": 0,
 			"length" : 0,
 			"type": "straight"
 		}],
@@ -104,31 +116,37 @@
 			"out": 2,
 			"length" : 0,
 			"type": "straight"
+		},{
+			"in": 2,
+			"out": 1,
+			"length" : 0,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]
-	},{
+	}, {
 		"allowed": [{
 			"in": 2,
 			"out": 3,
 			"length" : 0,
 			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	},{
-		"allowed": [{
+		},{
 			"in": 3,
-			"out": 4,
+			"out": 2,
 			"length" : 0,
 			"type": "straight"
 		}],
 		"restrict": [ 
 		]
-	},{
+	}, {
 		"allowed": [{
 			"in": 4,
 			"out": 5,
+			"length" : 0,
+			"type": "straight"
+		},{
+			"in": 5,
+			"out": 4,
 			"length" : 0,
 			"type": "straight"
 		}],
@@ -140,22 +158,23 @@
 			"out": 6,
 			"length" : 0,
 			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	},{
-		"allowed": [{
+		},{
 			"in": 6,
-			"out": 7,
+			"out": 5,
 			"length" : 0,
 			"type": "straight"
 		}],
 		"restrict": [ 
 		]
-	},{
+	}, {
 		"allowed": [{
+			"in": 6,
+			"out": 7,
+			"length" : 0,
+			"type": "straight"
+		},{
 			"in": 7,
-			"out": 0,
+			"out": 6,
 			"length" : 0,
 			"type": "straight"
 		}],
@@ -166,7 +185,7 @@
 	"engines": [{
 		"id": 0,
 		"name": "Class 66",
-		"length": 21, 
+		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,
 		"braking force": 666852, 
@@ -174,15 +193,15 @@
 	},{
 		"id": 1,
 		"name": "FGW 125",
-		"length": 21, 
+		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,
 		"braking force": 666852, 
 		"speed": [0,20,38,53,67,77,84,93,100,105]
-	},{
+	}, ,{
 		"id": 2,
 		"name": "Class 60",
-		"length": 21, 
+		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,
 		"braking force": 666852, 

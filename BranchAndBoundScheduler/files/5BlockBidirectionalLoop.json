@@ -5,7 +5,7 @@
 
 	"blocks": [{
 		"id": 0,
-		"length": 2000, 
+		"length": 20, 
 		"output_hw": "7BD304000000",
 		"output_id": 0,
 		"polarity": 1,
@@ -34,14 +34,14 @@
 		}
 	}, {
 		"id": 1,
-		"length": 2000,
+		"length": 4000,
 		"output_hw": "7BD304000000",
 		"output_id": 1,
 		"polarity": 0,
 		"restrict": []
 	}, {
 		"id": 2,
-		"length": 2000, 
+		"length": 4000, 
 		"scale": 10, 
 		"output_hw": "7FD441000000",
 		"output_id": 0,
@@ -49,7 +49,7 @@
 		"restrict": []
 	}, {
 		"id": 3,
-		"length": 2000, 
+		"length": 20, 
 		"scale": 10, 
 		"output_hw": "7FD441000000",
 		"output_id": 0,
@@ -57,31 +57,7 @@
 		"restrict": []
 	}, {
 		"id": 4,
-		"length": 2000, 
-		"scale": 10, 
-		"output_hw": "7FD441000000",
-		"output_id": 0,
-		"polarity": 0,
-		"restrict": []
-	}, {
-		"id": 5,
-		"length": 2000, 
-		"scale": 10, 
-		"output_hw": "7FD441000000",
-		"output_id": 0,
-		"polarity": 0,
-		"restrict": []
-	}, {
-		"id": 6,
-		"length": 2000, 
-		"scale": 10, 
-		"output_hw": "7FD441000000",
-		"output_id": 0,
-		"polarity": 0,
-		"restrict": []
-	}, {
-		"id": 7,
-		"length": 2000, 
+		"length": 4000, 
 		"scale": 10, 
 		"output_hw": "7FD441000000",
 		"output_id": 0,
@@ -95,6 +71,11 @@
 			"out": 1,
 			"length" : 0,
 			"type": "straight"
+		},{
+			"in": 1,
+			"out": 0,
+			"length" : 0,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]
@@ -102,6 +83,11 @@
 		"allowed": [{
 			"in": 1,
 			"out": 2,
+			"length" : 0,
+			"type": "straight"
+		}{
+			"in": 2,
+			"out": 1,
 			"length" : 0,
 			"type": "straight"
 		}],
@@ -113,6 +99,11 @@
 			"out": 3,
 			"length" : 0,
 			"type": "straight"
+		}{
+			"in": 3,
+			"out": 2,
+			"length" : 0,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]
@@ -122,40 +113,23 @@
 			"out": 4,
 			"length" : 0,
 			"type": "straight"
+		}{
+			"in": 4,
+			"out": 3,
+			"length" : 0,
+			"type": "straight"
 		}],
 		"restrict": [ 
 		]
 	},{
 		"allowed": [{
 			"in": 4,
-			"out": 5,
-			"length" : 0,
-			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	}, {
-		"allowed": [{
-			"in": 5,
-			"out": 6,
-			"length" : 0,
-			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	},{
-		"allowed": [{
-			"in": 6,
-			"out": 7,
-			"length" : 0,
-			"type": "straight"
-		}],
-		"restrict": [ 
-		]
-	},{
-		"allowed": [{
-			"in": 7,
 			"out": 0,
+			"length" : 0,
+			"type": "straight"
+		}{
+			"in": 0,
+			"out": 4,
 			"length" : 0,
 			"type": "straight"
 		}],
@@ -166,7 +140,7 @@
 	"engines": [{
 		"id": 0,
 		"name": "Class 66",
-		"length": 21, 
+		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,
 		"braking force": 666852, 
@@ -174,7 +148,7 @@
 	},{
 		"id": 1,
 		"name": "FGW 125",
-		"length": 21, 
+		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,
 		"braking force": 666852, 
@@ -182,7 +156,7 @@
 	},{
 		"id": 2,
 		"name": "Class 60",
-		"length": 21, 
+		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,
 		"braking force": 666852, 

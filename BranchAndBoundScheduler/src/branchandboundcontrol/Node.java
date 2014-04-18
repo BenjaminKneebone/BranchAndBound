@@ -7,6 +7,7 @@ import java.util.Map;
 import entities.Block;
 import entities.Engine;
 import entities.Journey;
+import entities.Train;
 
 public class Node {
 	
@@ -28,8 +29,8 @@ public class Node {
 	private Block firstArrivalBlock = null;
 	private double firstArrivalTime = Integer.MAX_VALUE;
 	
-	private Map<Block, Boolean> occupied = new HashMap<Block, Boolean>();
-	private Map<Block, Boolean> occupiedCopy = new HashMap<Block, Boolean>();
+	private Map<Block, ArrayList<Train>> occupied = new HashMap<Block, ArrayList<Train>>();
+	private Map<Block, ArrayList<Train>> occupiedCopy = new HashMap<Block, ArrayList<Train>>();
 	private Map<Block, Double> lastEntry = new HashMap<Block, Double>();
 	private Map<Block, Double> lastEntryCopy = new HashMap<Block, Double>();
 	private Map<Block, Double> nextPossibleEntry = new HashMap<Block, Double>();
@@ -44,8 +45,8 @@ public class Node {
 		this.id = "0";
 		
 		for(Block b: blocks){
-			occupied.put(b, false);
-			occupiedCopy.put(b, false);
+			occupied.put(b, new ArrayList<Train>());
+			occupiedCopy.put(b, new ArrayList<Train>());
 			lastEntry.put(b, 0.0);
 			lastEntryCopy.put(b, 0.0);
 			nextPossibleEntry.put(b, 0.0);
@@ -62,15 +63,22 @@ public class Node {
 	
 	public Node(ArrayList<Journey> journeys, ArrayList<Block> blocks,
 			ArrayList<Engine> trains, Journey alteredJourney, int index,
-			String id, HashMap<Block, Boolean> occupied, HashMap<Block, Double> lastEntry, HashMap<Block, Double> nextPossibleEntry) {
+			String id, HashMap<Block, ArrayList<Train>> occupied, HashMap<Block, Double> lastEntry, HashMap<Block, Double> nextPossibleEntry) {
 
 		System.out.println("---NODE" + id + "---");
 
 		this.blocks = blocks;
 
 		for(Block b: this.blocks){
-			this.occupied.put(b, occupied.get(blocks.get(b.getID())));
-			this.occupiedCopy.put(b, occupied.get(blocks.get(b.getID())));
+			ArrayList<Train> newOccupied = new ArrayList<Train>();
+			ArrayList<Train> newOccupiedCopy = new ArrayList<Train>();
+			for(Train t: occupied.get(blocks.get(b.getID()))){
+					newOccupied.add(t);
+					newOccupiedCopy.add(t);
+			}
+			
+			this.occupied.put(b, newOccupied);
+			this.occupiedCopy.put(b, newOccupiedCopy);
 			this.lastEntry.put(b, lastEntry.get(blocks.get(b.getID())));
 			this.lastEntryCopy.put(b, lastEntry.get(blocks.get(b.getID())));
 			this.nextPossibleEntry.put(b, nextPossibleEntry.get(blocks.get(b.getID())));
@@ -107,12 +115,12 @@ public class Node {
 		this.trains = trains;
 	}
 	
-	public HashMap<Block, Boolean> getOccupied(){
-		return (HashMap<Block, Boolean>) occupied;
+	public HashMap<Block, ArrayList<Train>> getOccupied(){
+		return (HashMap<Block, ArrayList<Train>>) occupied;
 	}
 	
-	public HashMap<Block, Boolean> getOccupiedCopy(){
-		return (HashMap<Block, Boolean>) occupiedCopy;
+	public HashMap<Block, ArrayList<Train>> getOccupiedCopy(){
+		return (HashMap<Block, ArrayList<Train>>) occupiedCopy;
 	}
 	
 	public HashMap<Block, Double> getLastEntry(){

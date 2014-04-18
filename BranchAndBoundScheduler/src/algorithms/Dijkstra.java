@@ -125,16 +125,11 @@ public class Dijkstra {
 			//Solution found - create route
 			ArrayList<BlockOccupation> route = new ArrayList<BlockOccupation>();
 								
-			route.add(new BlockOccupation(train, blocks.get(destID), lastConn, false));
+			route.add(new BlockOccupation(train, blocks.get(destID), lastConn, false, true));
 			//Loop through adding blocks to root
 			while(prevConn.get(lastConn) != null){
 				
-				//If same Join, train has turned around in block
-				if(lastConn.getJoin() == prevConn.get(lastConn).getJoin()){
-					route.add(new BlockOccupation(train, blocks.get(prevConn.get(lastConn).getOut().getID()), prevConn.get(lastConn), true));
-				}else{
-					route.add(new BlockOccupation(train, blocks.get(prevConn.get(lastConn).getOut().getID()), prevConn.get(lastConn), false));
-				}
+				route.add(new BlockOccupation(train, blocks.get(prevConn.get(lastConn).getOut().getID()), prevConn.get(lastConn), false, false));
 				
 				lastConn = prevConn.get(lastConn);
 				
@@ -144,7 +139,7 @@ public class Dijkstra {
 			}
 			
 			//Add source block
-			route.add(new BlockOccupation(train, blocks.get(sourceID), null, false));
+			route.add(new BlockOccupation(train, blocks.get(sourceID), null, true, false));
 			
 			//reverse route (Now source to destination)
 			Collections.reverse(route);

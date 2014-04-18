@@ -34,7 +34,7 @@ public class Network {
 	
 	public void printNetworkInfo(){
 		for(Block b: blocks)
-			System.out.println("block" + b.getID() + " length: " + b.getLength());
+			b.printBlockDetail();
 		
 		
 		for(Engine t: trains)

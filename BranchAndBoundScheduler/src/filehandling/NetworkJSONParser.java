@@ -87,6 +87,7 @@ public class NetworkJSONParser {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void createBlocks(){
 		
 		/*Empty list set up so that blocks can be added to the list in the
@@ -118,6 +119,27 @@ public class NetworkJSONParser {
 			
 			//add in correct place
 			blocks.set(sourceID, temp);
+		}
+				
+		
+		blockIterator = blockObjects.iterator();
+		
+		while (blockIterator.hasNext()) {
+			JSONObject block = blockIterator.next();
+			sourceID = Integer.parseInt(block.get("id").toString());
+			
+			//System.out.println(block.toJSONString());
+			
+			JSONArray restricted = (JSONArray) block.get("restrict");			
+						
+			if(!restricted.isEmpty()){
+				@SuppressWarnings("unchecked")
+				Iterator<Long> restrictIterator = restricted.iterator();
+				
+				while(restrictIterator.hasNext()){		
+					blocks.get(sourceID).addRestrictedBlock(blocks.get(restrictIterator.next().intValue()));
+				}
+			}
 		}
 	}
 	
@@ -174,6 +196,16 @@ public class NetworkJSONParser {
 			}
 			
 		}
+		
+		for(Block b: blocks){
+			if(joins.get(b.getID()).size() == 2)
+				b.setBidirectional(true);
+		}
+		
+		
+		
+		
+		
 	}
 	
 	public ArrayList<Engine> getTrains(){

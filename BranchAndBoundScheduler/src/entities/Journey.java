@@ -17,7 +17,7 @@ public class Journey {
 	private int nextToBeScheduled = 0;
 	private int id;
 	private int length = 0;
-	
+	private int noConnLength;
 	
 	public Journey(Engine train, ArrayList<Stop> stations, Dijkstra d, ArrayList<Journey> journeys) throws RouteNotFoundException{
 		this.train = train;
@@ -40,6 +40,7 @@ public class Journey {
 			
 			//Add to journey total length
 			length += journey.get(x).getLength();
+			noConnLength += journey.get(x).noConnLength();
 			
 			
 			//For loops, the second station will match the first block also, we must ignore this
@@ -53,10 +54,23 @@ public class Journey {
 			
 		}
 		
+		if(journey.size() >= 3){
+			System.out.println(journey.size());
+			for(int x = 1; x < journey.size() - 1; x++){
+				System.out.println(x);
+				if(journey.get(x).getConnection().getJoin() == journey.get(x+1).getConnection().getJoin())
+					journey.get(x).setTurnaround(true);
+			}
+			
+		}
+		
+		
+		
 		//Set stopping time in last block
 		journey.get(journey.size() - 1).setStationStopTime(120);
 		
 		length += journey.get(journey.size() - 1).getLength();
+		noConnLength += journey.get(journey.size() - 1).noConnLength();
 		
 		//Set start of journey to time 0
 		journey.get(0).setArrTime(0);
@@ -77,9 +91,29 @@ public class Journey {
 	}
 	
 	public void printSimpleJourney(){
-		System.out.println("Train " + train.getName() + " journey . Length: " + length);
+		System.out.println(" \\begin{center} \n \\begin{tabular}{| c | c | c | c |} \n" +
+							"\\hline \n" +
+							"\\multicolumn{4}{|c|}{Train " + train.getName() + " manifest - Journey Length: " + (double) length/1000 + "km}\\\\ \n" + 
+							"\\hline \n" +
+							"\\textbf{Block/Conn.} & \\textbf{Distance to traverse} & \\textbf{Station} & \\textbf{Turnaround}\\\\ \n" +
+							"\\hline ");
+		
 		for(BlockOccupation j: journey)
 			j.printOccupationDetail();
+		System.out.println(" \\end{tabular}\n \\end{center}");
+	}
+	
+	public void printNoConnectionJourney(){
+		System.out.println("\\begin{center} \n \\begin{tabular}{| c | c | c |} \n" +
+							"\\hline \n" +
+							"\\multicolumn{3}{|c|}{Train " + train.getName() + " manifest - Journey Length: " + (double) noConnLength/1000 + "km}\\\\ \n" + 
+							"\\hline \n" +
+							"\\textbf{Block.} & \\textbf{Distance to traverse} & \\textbf{Station}\\\\ \n" +
+							"\\hline \n ");
+		
+		for(BlockOccupation j: journey)
+			j.printNoConnOccupationDetail();
+		System.out.println(" \\end{tabular} \n \\end{center}");
 	}
 	
 	public int getLength(){
@@ -155,6 +189,25 @@ public class Journey {
 	
 	public boolean isSecondBlock(){
 		return nextToBeScheduled == 1;
+	}
+	
+
+	public ArrayList<BlockOccupation> getRemainingBlocks(){
+		ArrayList<BlockOccupation> remJourney = new ArrayList<BlockOccupation>();
+		for(int x = nextToBeScheduled + 1; x < journey.size(); x++)
+			remJourney.add(journey.get(x));
+		
+		return remJourney;
+		
+	}
+	
+	public ArrayList<BlockOccupation> getPreviousBlocks(){
+		ArrayList<BlockOccupation> remJourney = new ArrayList<BlockOccupation>();
+		for(int x = nextToBeScheduled - 1; x >= 0; x--)
+			remJourney.add(journey.get(x));
+		
+		return remJourney;
+		
 	}
 	
 	

@@ -140,15 +140,18 @@ public class Engine implements Train{
 		}
 	
 		
-		String message = 
-				String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Full Power \n", time, blockID, speed, newVel);
+		
 		
 		b.setDepTime(b.getArrTime() + b.getStationStopTime() + time);
 		b.setDepSpeed(newVel);
-		b.setMessage(message);
+		
 		b.setTimeToEnterBlock(timeToLeavePreviousBlock);
 		b.setStationArrivalTime(b.getArrTime() + time);
 		
+		String message = 
+				String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Full Power %-8.4f-%-8.4f & \\\\ \n", time, blockID, speed, newVel, b.getArrTime(), b.getDepTime());
+		
+		b.setMessage(message);
 		return b;
 	}
 
@@ -169,7 +172,7 @@ public class Engine implements Train{
 
 		System.out.println("BLOCK LENGTH:" + b.getLength());
 		System.out.println("TRAIN LENGTH:" + this.getLength());
-		
+		System.out.println("ENTRY SPEED:" + finalSpeed);
 		int blockLength = b.getLength();
 		int blockID = b.getBlock().getID();
 		int speed = b.getArrSpeed();
@@ -227,8 +230,8 @@ public class Engine implements Train{
 				System.out.println("This one");
 				
 				String message = 
-						String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Reaching to %-3dkm/h after %-8.4f, decelerating after %-8.4f  \n", 
-								(accelerationTime + constantTime + decelerationTime), blockID, 0, 0, maxSpeed, accelerationTime, (accelerationTime + constantTime));
+						String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Acc. to %-3dkm/h %-8.4f-%-8.4f & Dec. to %dkm/h %-8.4f-%-8.4f  \\\\ \n", 
+								(accelerationTime + constantTime + decelerationTime), blockID, 0, 0, maxSpeed, b.getArrTime(), b.getArrTime() + accelerationTime, finalSpeed, b.getArrTime() + (accelerationTime + constantTime),  b.getArrTime() + (accelerationTime + constantTime + decelerationTime));
 				
 				/* TIME FOR TRAIN TO ENTER BLOCK */
 				
@@ -277,7 +280,7 @@ public class Engine implements Train{
 
 			// Stay at constant speed
 			String message = 
-					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Constant Speed  \n", 
+					String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Constant Speed Across Block & \\\\ \n", 
 							timeToTraverseSetSpeed(blockLength, speed), blockID, speed, speed);
 				
 			/* TIME FOR TRAIN TO ENTER BLOCK */
@@ -308,8 +311,8 @@ public class Engine implements Train{
 			
 			
 			String message = 
-					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Accelerating after %-8.4f  \n", 
-							(accelerationTime + constantTime), blockID, speed, finalSpeed, 0.0);
+					String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Acc. to %-3dkm/h %-8.4f- %-8.4f & Remainder at constant speed \\\\  \n", 
+							(accelerationTime + constantTime), blockID, speed, finalSpeed, finalSpeed, b.getArrTime(), b.getArrTime() + accelerationTime);
 			
 			/* TIME FOR TRAIN TO ENTER BLOCK */
 			
@@ -346,8 +349,8 @@ public class Engine implements Train{
 			double constantDist = blockLength - decelerationDist;
 			
 			String message = 
-					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Decelerating after %-8.4f  \n", 
-							(constantTime + decelerationTime), blockID, speed, finalSpeed, constantTime);
+					String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Constant Speed %-3dkm/h upon entry & Dec. to %-3dkm/h %-8.4f-%-8.4f\\\\ \n", 
+							(constantTime + decelerationTime), blockID, speed, finalSpeed, speed, finalSpeed, b.getArrTime() + constantTime, b.getArrTime() + constantTime + decelerationTime);
 			
 			/* TIME FOR TRAIN TO ENTER BLOCK */
 			
@@ -449,8 +452,8 @@ public class Engine implements Train{
 			}
 
 			String message = 
-					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Decelerating after %-8.4f  \n", 
-							(decelerationTime + constantTime), blockID, newSpeed, 0, 0.0);
+					String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Constant Speed %-3dkm/h upon entry & Decelerating to %-3dkm/h %-8.4f-%-8.4f  \n", 
+							(decelerationTime + constantTime), blockID, b.getArrSpeed(), newSpeed, b.getArrSpeed(), newSpeed, b.getArrTime() + constantTime, b.getArrTime() + constantTime + decelerationTime);
 
 			/* TIME FOR TRAIN TO ENTER BLOCK */
 			
@@ -519,8 +522,8 @@ public class Engine implements Train{
 					- accelerationDist, newSpeed);
 
 			String message = 
-					String.format("%-8.4f to traverse %d Entry: %-3dkm/h Exit: %-3dkm/h -- Accelerating after %-8.4f  \n", 
-							(accelerationTime + constantTime), blockID, speed, newSpeed, 0.0);
+					String.format("%-8.4f to traverse %d & Entry: %-3dkm/h Exit: %-3dkm/h \\\\ Acc. to %-3dkm/h %-8.4f-%-8.4f & Remain at constant speed \\\\ \n", 
+							(accelerationTime + constantTime), blockID, speed, newSpeed, newSpeed, b.getArrTime(), b.getArrTime() + accelerationTime);
 
 			/* TIME FOR TRAIN TO ENTER BLOCK */
 			
@@ -568,6 +571,8 @@ public class Engine implements Train{
 	 */
 	public int highestBlockEntrySpeed(int blockLength) {
 		// u = rt(v^2 - 2as), with v = 0
+		System.out.println(blockLength);
+		System.out.println(deceleration);
 		return (int) Math
 				.floor(Math.sqrt(2 * blockLength * deceleration));
 	}

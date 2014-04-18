@@ -31,8 +31,8 @@ public class TrainDiagramCreator {
 	 * @param journeys The journeys the schedule consists of
 	 * @param id File will be stored in files/chartid.jpg
 	 */
-	public void drawDiagram(ArrayList<Journey> journeys, String id){
-		File f = new File("schedule/chart.jpg");
+	public void drawDiagram(ArrayList<Journey> journeys, String id, String name){
+		File f = new File("schedule/"+name+".jpg");
 		try {
 			f.createNewFile();
 		} catch (IOException e1) {
@@ -66,7 +66,7 @@ public class TrainDiagramCreator {
 				}
 				
 				if(bo.get(x).getBlock().getID() > maxBlock){
-					maxBlock = bo.get(x).getBlock().getID() + 1;
+					maxBlock = bo.get(x).getBlock().getID();
 				}
 				
 			}

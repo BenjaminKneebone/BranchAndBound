@@ -5,10 +5,11 @@
 
 	"blocks": [{
 		"id": 0,
-		"length": 2000, 
+		"length": 20, 
 		"output_hw": "7BD304000000",
 		"output_id": 0,
 		"polarity": 1,
+		"restrict": [],
 		"signals": { 
 			"lead_green": {
 			"output_hw": "7FD441000000",
@@ -36,42 +37,24 @@
 		"length": 2000,
 		"output_hw": "7BD304000000",
 		"output_id": 1,
-		"polarity": 0
+		"polarity": 0,
+		"restrict": []
 	}, {
 		"id": 2,
 		"length": 2000, 
 		"scale": 10, 
 		"output_hw": "7FD441000000",
 		"output_id": 0,
-		"polarity": 0
+		"polarity": 0,
+		"restrict": []
 	}, {
 		"id": 3,
 		"length": 2000, 
 		"scale": 10, 
 		"output_hw": "7FD441000000",
 		"output_id": 0,
-		"polarity": 0
-	}, {
-		"id": 4,
-		"length": 2000, 
-		"scale": 10, 
-		"output_hw": "7FD441000000",
-		"output_id": 0,
-		"polarity": 0
-	}, {
-		"id": 5,
-		"length": 2000, 
-		"scale": 10, 
-		"output_hw": "7FD441000000",
-		"output_id": 0,
-		"polarity": 0
-	},{
-		"id": 6,
-		"length": 2000, 
-		"scale": 10, 
-		"output_hw": "7FD441000000",
-		"output_id": 0,
-		"polarity": 0
+		"polarity": 0,
+		"restrict": []
 	}],
 	"joins": [{
 		"allowed": [{
@@ -115,15 +98,15 @@
 		}],
 		"restrict": [ 
 		]
-	}, {
+	},{
 		"allowed": [{
 			"in": 3,
-			"out": 4,
+			"out": 3,
 			"length" : 0,
 			"type": "straight"
 		},{
-			"in": 4,
-			"out": 3,
+			"in": 0,
+			"out": 0,
 			"length" : 0,
 			"type": "straight"
 		}],
@@ -147,9 +130,17 @@
 		"driving force": 409000,
 		"braking force": 666852, 
 		"speed": [0,20,38,53,67,77,84,93,100,105]
-	}, ,{
+	},{
 		"id": 2,
 		"name": "Class 60",
+		"length": 20, 
+		"weight": 129000,
+		"driving force": 409000,
+		"braking force": 666852, 
+		"speed": [0,20,38,53,67,77,84,93,100,105]
+	},{
+		"id": 3,
+		"name": "Class 165",
 		"length": 20, 
 		"weight": 129000,
 		"driving force": 409000,

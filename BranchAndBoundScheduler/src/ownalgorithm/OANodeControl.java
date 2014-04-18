@@ -18,8 +18,9 @@ import entities.BlockOccupation;
 import entities.Engine;
 import entities.Journey;
 import exceptions.InvalidSpeedException;
+import filehandling.ScheduleJSONWriter;
 
-public class NodeControl {
+public class OANodeControl {
 
 	private ArrayList<ArrayList<BlockOccupation>> occupied;
 	private ArrayList<Journey> journeys;
@@ -27,7 +28,7 @@ public class NodeControl {
 	
 	private HashMap<BlockOccupation, Integer> nextBlockHash = new HashMap<BlockOccupation, Integer>();
 	
-	public NodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks){
+	public OANodeControl(ArrayList<Journey> journeys, ArrayList<Block> blocks){
 		
 		this.journeys = journeys;
 		
@@ -214,6 +215,8 @@ public class NodeControl {
 	
 	private boolean scheduleBlock(Journey journey){
 		
+		journey.incrementJourney();
+		
 		System.out.println("-------------------------------------------------------------------------------");
 		
 		for(ArrayList<BlockOccupation> al: occupied)
@@ -226,6 +229,8 @@ public class NodeControl {
 		ArrayList<BlockOccupation> prevOccupied = occupied.get(prevBlock.getBlock().getID());
 		
 		System.out.println("NEXT BLOCK: " + currBlock.getBlock().getID());
+		System.out.println("Arr Speed: " + currBlock.getArrSpeed());
+		
 		
 		//Next train arrival time
 		double lastExitTime = Integer.MAX_VALUE;
@@ -245,8 +250,11 @@ public class NodeControl {
 				System.out.println(currBlock.getBlockOccupationDetail());
 				
 				//If train leaves after next train arrives, infeasible scheduling
-				if(currBlock.getDepTime() >= lastExitTime)
+				if(currBlock.getDepTime() >= lastExitTime){
+					journey.decrementJourney();
 					return false;
+				}
+					
 				
 				currOccupied.add(currBlock);
 				System.out.println(currBlock.getBlockOccupationDetail());
@@ -272,6 +280,7 @@ public class NodeControl {
 			for(BlockOccupation b: nextOccupied)
 				if(b.getArrTime() <= currBlock.getArrTime() && b.getDepTime() > lastExitTime){
 					System.out.println("Next block occupied for duration");
+					journey.decrementJourney();
 					return false;
 				}
 			
@@ -319,6 +328,7 @@ public class NodeControl {
 					System.out.println(currBlock.getBlockOccupationDetail());
 					System.out.println("REJECTED");
 					currOccupied.remove(currBlock);
+					journey.decrementJourney();
 					return false;
 				}else{
 					nextBlock.setArrSpeed(0);
@@ -338,9 +348,7 @@ public class NodeControl {
 					System.out.println(currBlock.getBlockOccupationDetail());
 					
 					printOccupied();
-					journey.incrementJourney();
 					if(!scheduleBlock(journey)){
-						journey.decrementJourney();
 						
 						ArrayList<BlockOccupation> potential = new ArrayList<BlockOccupation>();
 						
@@ -357,7 +365,7 @@ public class NodeControl {
 							nextBlock.setArrTime(b.getDepTime());
 							
 							currOccupied.add(currBlock);
-							journey.incrementJourney();
+							
 							
 							printOccupied();
 							
@@ -365,7 +373,7 @@ public class NodeControl {
 								return true;
 							}
 							
-							journey.decrementJourney();
+							
 						}	
 						
 					}else{
@@ -373,6 +381,7 @@ public class NodeControl {
 					}
 					System.out.println("REJECTED");
 					currOccupied.remove(currBlock);
+					journey.decrementJourney();
 					return false;
 					
 				}
@@ -391,8 +400,8 @@ public class NodeControl {
 				} else {
 					/*MUST ENTER NEXT BLOCK AT REDUCED SPEED*/
 					System.out.println("Reduced Exit Speed Block");
-					int depSpeed = journey.getTrain().highestBlockEntrySpeed(currBlock.getLength());
-
+					int depSpeed = journey.getTrain().highestBlockEntrySpeed(nextBlock.getLength());
+					System.out.println(depSpeed);
 					try {
 						currBlock = journey.getTrain().exitBlockAtSetSpeed(currBlock, depSpeed);
 					} catch (InvalidSpeedException e) {
@@ -414,18 +423,18 @@ public class NodeControl {
 				}
 				
 				//Train needs too long in the block - May not be at an integer speed - Unlikely
-				if(currBlock.getDepTime() > lastExitTime)
+				if(currBlock.getDepTime() > lastExitTime){
+					journey.decrementJourney();
 					return false;
-				
+				}
+					
 				nextBlock.setArrTime(currBlock.getDepTime());
 				nextBlock.setArrSpeed(currBlock.getDepSpeed());
 				currOccupied.add(currBlock);
 				System.out.println(currBlock.getBlockOccupationDetail());
 				printOccupied();
-				journey.incrementJourney();
 				if(!scheduleBlock(journey)){
 					currOccupied.remove(currBlock);
-					journey.decrementJourney();
 					
 					ArrayList<BlockOccupation> potential = new ArrayList<BlockOccupation>();
 					
@@ -447,24 +456,28 @@ public class NodeControl {
 							}
 							
 							//Train needs too long in the block - May not be at an integer speed - Unlikely
-							if(currBlock.getDepTime() > lastExitTime)
+							if(currBlock.getDepTime() > lastExitTime){
+								journey.decrementJourney();
 								return false;
+							}
+								
 							
 							nextBlock.setArrTime(currBlock.getDepTime());
 							nextBlock.setArrSpeed(currBlock.getDepSpeed());
 							
 							currOccupied.add(currBlock);
 							printOccupied();
-							journey.incrementJourney();
+							
 							if(scheduleBlock(journey)){
 								return true;
 							}
 							currOccupied.remove(currBlock);
-							journey.decrementJourney();
+							
 					}		
 					
 					System.out.println("REJECTED");
 					//No possible free blocks
+					journey.decrementJourney();
 					return false;
 				}else{
 					return true;
@@ -473,6 +486,7 @@ public class NodeControl {
 			
 		}
 		currOccupied.remove(currBlock);
+		journey.decrementJourney();
 		return false;	
 	}
 	
@@ -486,9 +500,9 @@ public class NodeControl {
 	 */
 	public void saveOptimal(){
 		
-		//ScheduleJSONWriter.writeJSONSchedule(bestNode);
+		ScheduleJSONWriter.writeJSONSchedule(journeys);
 		
-		File sch = new File("schedule/scheduleatnode.txt");
+		File sch = new File("schedule/OAscheduleatnode.txt");
 
 		FileWriter write = null;
 		PrintWriter print = null;
@@ -525,7 +539,7 @@ public class NodeControl {
 		}
 
 		TrainDiagramCreator tdc = new TrainDiagramCreator();
-		tdc.drawDiagram(journeys, "1");
+		tdc.drawDiagram(journeys, "1", "OAChart");
 	}
 	
 	private void printOccupied(){
